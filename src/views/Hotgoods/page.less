@@ -1,0 +1,197 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "PingFang SC","STHeitiSC-Light","Helvetica Neue","Helvetica","Arial",sans-serif,"Mircosoft YaHei";
+  background: #ffffff;
+  height: 100%;
+  font-weight: 200;
+}
+:global {
+  .extend {
+    position: relative;
+  }
+  .extend:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    left: -10px;
+    z-index: 10;
+  }
+  .hide {
+    display: none;
+  }
+}
+/***** Mixin *****/
+.flex {
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
+  display:flex;
+}
+.flex-justify {
+  -webkit-box-pack:justify;
+  -webkit-justify-content:space-between;
+  -ms-flex-pack:justify;
+  justify-content:space-between;
+}
+.flex-vertical {
+  -webkit-box-orient:vertical;
+  -webkit-flex-direction:column;
+  -ms-flex-direction:column;
+  flex-direction:column;
+}
+.flex-item-auto {
+  -webkit-box-flex:auto;
+  -webkit-flex:auto;
+  -ms-flex:auto;
+  flex:auto;
+}
+.flex-item-none {
+  -webkit-box-flex:none;
+  -webkit-flex:none;
+  -ms-flex:none;
+  flex:none;
+}
+.flex-align-center {
+  -webkit-box-align:center;
+  -webkit-align-items:center;
+  -ms-flex-align:center;
+  align-items:center;
+}
+.flex-center {
+  -webkit-box-pack:center;
+  -webkit-justify-content:center;
+  -ms-flex-pack:center;
+  justify-content:center;
+}
+
+main{
+  .hots-swiper{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    z-index: 1;
+    .react-swipe-container{
+      a{
+        display: block;
+        img{
+          width: 100%;
+          height: 150px;
+        }
+      }
+    }
+    .swiper-pagination {
+      position: absolute;
+      text-align: center;
+      -webkit-transition: .3s;
+      -moz-transition: .3s;
+      -o-transition: .3s;
+      transition: .3s;
+      -webkit-transform: translate3d(0,0,0);
+      -ms-transform: translate3d(0,0,0);
+      -o-transform: translate3d(0,0,0);
+      transform: translate3d(0,0,0);
+      z-index: 10;
+      bottom: 8px;
+      left: 0;
+      width: 100%;
+    }
+    .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+      display: inline-block;
+      border-radius: 100%;
+      background: #000;
+      opacity: .5;
+      margin: 0 5px;
+      background-color: #fff;
+    }
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
+  }
+
+  .hots-public-title{
+    background: url('static/imgs/hotgoods/public-goods.png') no-repeat;
+    background-size: 100% 100%;
+    width: 160px;
+    height: 21px;
+    margin: 10px auto;
+  }
+  .hots-public-container{
+    display: block;
+    .hots-public-content{
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+    .hots-public-warpper{
+      position: relative;
+      font-size: 0;
+      white-space: nowrap;
+      padding-right: 10px;
+    }
+    .public-item{
+      width: 100px;
+      height: 153px;
+      display: inline;
+      background-color: #000;
+      margin-left: 10px;
+      img{
+        width: 100px;
+        height: 153px;
+      }
+    }
+  }
+  .hots-tabs-container{
+    display: block;
+    .hots-tabs-content{
+      margin: 10px auto;
+      overflow: hidden;
+      position: relative;
+    }
+    .hots-tabs-warpper{
+      position: relative;
+      font-size: 0;
+      white-space: nowrap;
+      height: 30px;
+    }
+    .tabs-item{
+      width: 60px;
+      height: 30px;
+      line-height: 30px;
+      display: inline-block;
+      text-align: center;
+      font-size: 0;
+      position: relative;
+      .tabs-ckel{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left:0;
+      }
+      span{
+        width: 40px;
+        height: 28px;
+        line-height: 28px;
+        display: inline-block;
+        margin-left: 10px;
+        color: #35353f;
+        text-align: center;
+        font-size: 14px;
+
+      }
+    }
+    .tabs-item-active{
+      span{
+        color: #fd472b;
+        border-bottom: 2px solid #fd472b;
+      }
+    }
+  }
+}

@@ -10,7 +10,7 @@ import { fetchPosts } from "components/common/fetch"
 // import ProjectItem from "./ProjectItem.js"
 
 
-import News from "./news";
+// import News from "./news";
 
 class Home extends Component {
   levelOption = {"暂无":0,"C":25,"B":50,"A":75,"PRO":100,"":0}
@@ -105,7 +105,7 @@ class Home extends Component {
               <i styleName="icon icon-arrow"></i> */}
             </div>
           </div>
-          <News/>
+          // <News/>
 
         </div>
         <div styleName="bottom-container">

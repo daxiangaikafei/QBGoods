@@ -1,0 +1,207 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "PingFang SC","STHeitiSC-Light","Helvetica Neue","Helvetica","Arial",sans-serif,"Mircosoft YaHei";
+  background: #ffffff;
+  height: 100%;
+  font-weight: 200;
+}
+:global {
+  .extend {
+    position: relative;
+  }
+  .extend:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    left: -10px;
+    z-index: 10;
+  }
+  .hide {
+    display: none;
+  }
+}
+/***** Mixin *****/
+
+
+main{
+  color: #66666e;
+  .mycustom-container{
+    .mycustom-tab{
+      position: relative;
+      z-index: 1111;
+      background-color: #fff;
+      border-top: 1px solid #e6e6e6;
+      border-bottom: 1px solid #e6e6e6;
+      div{
+        display: inline-block;
+        width: 50%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        color: #35353f;
+      }
+      div:nth-child(2){
+        border-left:  1px solid #e6e6e6;
+        margin-left: -1px;
+      }
+      .mycustom-active{
+        color: #ff5a00;
+      }
+    }
+    .shop-content{
+      margin: 20px auto 0;
+      width: 98%;
+      .shop-list{
+        margin-left: -18px;
+        text-align: center;
+        margin-bottom: 78px;
+        .shop-item{
+          width: 70px;
+          display: inline-block;
+          text-align: center;
+          margin-left: 18px;
+          position: relative;
+          margin-bottom: 18px;
+          img{
+            width: 70px;
+            height: 70px;
+            display: block;
+            background-color: #000;
+            border-radius: 50% 50%;
+            text-align: center;
+            margin-bottom: 5px;
+          }
+          .img-mask{
+            width: 70px;
+            height: 70px;
+            display: none;
+            border-radius: 50% 50%;
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            border: 1px solid #ff961e;
+            overflow: hidden;
+          }
+          .img-mask::after{
+            content: '';
+            width: 70px;
+            height: 70px;
+            background-color: #ff961e;
+            opacity: 0.2;
+            display: block;
+            border-radius: 50%;
+          }
+          .icon-selected{
+            background: url('static/imgs/hotgoods/icon-selected.png') no-repeat;
+            background-size: 100% 100%;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: none;
+          }
+        }
+        .selected{
+          color: #ff961e;
+          .img-mask,.icon-selected{
+            display: block;
+          }
+        }
+      }
+      .shop-tip{
+        display: none;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        position: fixed;
+        left: 0;
+        bottom: 48px;
+        span{
+          color: #ff9600;
+          padding: 0 1px;
+        }
+      }
+      .shop-tip-show{
+        display: block;
+        background-color: #fff;
+      }
+    }
+    .mycustom-btns{
+      border-top: 1px solid #e6e6e6;
+      width: 100%;
+      height: 48px;
+      background-color: #fff;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: 1111;
+      button{
+        display: inline-block;
+        width: 50%;
+        height: 48px;
+        line-height: 48px;
+        text-align: center;
+        color: #35353f;
+        font-size: 14px;
+      }
+      .btn-enter{
+        color: #ff5a00;
+      }
+    }
+
+    .self-content{
+      .self-list{
+        width: 92%;
+        margin: 10px auto 20px;
+        margin-left: 3%;
+        .self-item{
+          display: inline-block;
+          background-color: #e3f5f0;
+          border-radius: 14px;
+          width: 30%;
+          height: 28px;
+          text-align: center;
+          line-height: 28px;
+          margin-left: 3%;
+          margin-top: 10px;
+          color: #35353f;
+          position: relative;
+        }
+        .self-item.selected{
+          background-color: #fff;
+          color: #ff9600;
+          .bg{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ff9600;
+            top: -1px;
+            left: -1px;
+            border-radius: 14px;
+          }
+        }
+      }
+      .self-tip{
+        display: none;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        span{
+          color: #ff9600;
+          padding: 0 1px;
+        }
+      }
+      .self-tip-show{
+        display: block;
+        background-color: #fff;
+      }
+    }
+  }
+}

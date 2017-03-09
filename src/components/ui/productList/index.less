@@ -1,0 +1,76 @@
+@import '~libs/layout/layout-mixin.less';
+@txtColor: #35353f;
+@assetTitleColor: #90909b;
+@bdColor: #c0c0c0;
+@bodyBGColor: #f1f1f6;
+@priceTxtColor: #fd472b;
+@similarTxtColor: #66666f;
+a {
+    color: @txtColor;
+}
+
+.list {
+    background-color: @bodyBGColor;
+    padding: 5px 0 5px 5px;
+    .flex;
+    .flex-wrap;
+    .item {
+        color: @txtColor;
+        background-color: #fff;
+        width: 50%;
+        border-right: 5px solid #f1f1f6;
+        margin-bottom: 5px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        h3 {
+            font-size: 14px;
+            padding-left: 10px;
+            margin-top: 15px;
+            font-weight: normal;
+            height: 40px;
+            .text-line-feed;
+        }
+        .price {
+            color: @priceTxtColor;
+            font-size: 16px;
+            padding-left: 10px;
+            margin-top: 3px;
+        }
+        .icon {
+            display: inline-block;
+        }
+        .bottom {
+            padding: 5px 10px 15px;
+            font-size: 12px;
+            .flex;
+            .flex-justify;
+            .return {
+                color: @priceTxtColor;
+                border: 1px solid @priceTxtColor;
+                border-radius: 5px;
+                padding: 2px 5px;
+            }
+            .similar {
+                color: @similarTxtColor;
+                border: 1px solid @assetTitleColor;
+                border-radius: 5px;
+                padding: 2px 5px;
+            }
+            .sales {
+                color: @assetTitleColor;
+                font-size: 12px;
+                padding: 2px 5px;
+            }
+        }
+    }
+    &.nomore:after {
+        content: '-- 到底了 --';
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+        color: @assetTitleColor;
+        line-height: 30px;
+    }
+}

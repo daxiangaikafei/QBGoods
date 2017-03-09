@@ -22,6 +22,7 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
     return fetch(url, {
             method: type.toLocaleUpperCase(),
             headers: headers,
+            mode: 'no-cors',
             credentials: 'same-origin',
             //credentials: 'same-origin',
             body: type.toLocaleUpperCase() === "GET" ? undefined : (repType == "json" ? JSON.stringify(param) : param)
@@ -36,18 +37,18 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
             return result;
         })
         .then((data) => {
-            //console.log('收到data', data);
+            console.log('收到data', data);
             //dispatch(fetchSuccess(key, data));
             //debugger;
-            if (data && (data.returnCode === -100 || data.returnCode === "-100")&&fetchNum<30) {
-                QBFK.Business.login();
-                return fetchSetTimeout().then(()=> {
-                    return fetchPosts(url, param, type, headers, repType, fetchNum + 1);
-                })
+            // if (data && (data.returnCode === -100 || data.returnCode === "-100")&&fetchNum<30) {
+                // QBFK.Business.login();
+                // return fetchSetTimeout().then(()=> {
+                //     return fetchPosts(url, param, type, headers, repType, fetchNum + 1);
+                // })
 
 
                 //dispatch(errorClear("common,login"));
-            }
+            // }
             // else {
             //     //console.info("你的请求 内部出错了", data);
             //     //dispatch(errorSave("common", data));

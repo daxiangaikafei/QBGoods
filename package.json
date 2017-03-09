@@ -53,7 +53,9 @@
     "redux-simple-router": "^2.0.4",
     "velocity-react": "^1.1.11",
     "whatwg-fetch": "^2.0.1",
-    "yargs": "^6.5.0"
+    "yargs": "^6.5.0",
+    "swipe-js-iso": "^2.0.3",
+    "react-swipe": "^5.0.6"
   },
   "devDependencies": {
     "autoprefixer": "^6.6.1",

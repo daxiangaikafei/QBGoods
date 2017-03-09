@@ -9,19 +9,22 @@ class Tabs extends Component {
 
     constructor(props) {
         super(props)
-        // props.getLevel()
 
         this.state = {
             tabActive: props.tabsConfig.active || 0
         }
+        props.tabsConfig.model ? props[props.tabsConfig.model][props.tabsConfig.statusKey ? props.tabsConfig.statusKey : 'tabActive'] = props.tabsConfig.active || 0 : void 0
+        props.action(`${props.tabsConfig.model}/${props.tabsConfig.names[props.tabsConfig.active || 0].action}`)
     }
 
     toggleTabHandler = (e) => {
+        let index = e.currentTarget.getAttribute('data-active')
         this.setState({
-            tabActive: e
-                .currentTarget
-                .getAttribute('data-active')
+            tabActive: index
         })
+        let props = this.props
+        props.tabsConfig.model ? props[props.tabsConfig.model][props.tabsConfig.statusKey ? props.tabsConfig.statusKey : 'tabActive'] = index : void 0
+        props.action(`${props.tabsConfig.model}/${props.tabsConfig.names[index].action}`)
     }
 
     componentDidMount() {}
@@ -29,27 +32,26 @@ class Tabs extends Component {
     componentDidUpdate() {}
 
     render() {
-        let tabInner = this.props.tabsConfig.names.map((name, index) => 
-           <label key={index}>
-              <span
-                  styleName={classNames({
-                  'tab-item': true,
-                  'active': this.state.tabActive == index
-              })}
-                  data-active={index}
-                  onClick={this.toggleTabHandler}>
-                  <i>{name}</i>
-              </span>
-          </label>
-        )
-
         return (
             <div styleName="tabs">
-                {tabInner}
+                {
+                    this.props.tabsConfig.names.map((item, index) =>
+                        <label key={index}>
+                            <span
+                                styleName={classNames({
+                                    'tab-item': true,
+                                    'active': this.state.tabActive == index
+                                })}
+                                data-active={index}
+                                onClick={this.toggleTabHandler}>
+                                <i>{item.key}</i>
+                            </span>
+                        </label>
+                    )
+                }
             </div>
         )
     }
-
 };
 
 function mapStateToProps(state) {
@@ -58,6 +60,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+        action(type) {
+            dispatch({ type });
+        }
     }
 }
 

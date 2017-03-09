@@ -15,7 +15,8 @@ require.ensure([],
         var dva = require('dva').default
         var FastClick  = require('fastclick')
         var router  = require('./routes')
-        var business  = require('./model/business')
+        var business = require('./model/business')
+        var gatherGoods = require('./model/gatherGoods')
         var model  = require('./model')
 
         // ------------------------------------
@@ -26,6 +27,7 @@ require.ensure([],
             if (_app) {
 
                 _app.model(business)
+                _app.model(gatherGoods)
                 _app.model(model)
 
                 _app.router(router)
@@ -35,6 +37,7 @@ require.ensure([],
             }
             else {
                 html5ForStartApp.model(business)
+                html5ForStartApp.model(gatherGoods)
                 html5ForStartApp.model(model)
 
                 html5ForStartApp.router(router)
