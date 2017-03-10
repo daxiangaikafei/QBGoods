@@ -10,115 +10,116 @@ import { fetchPosts } from "components/common/fetch"
 // import ProjectItem from "./ProjectItem.js"
 
 
-import News from "./news";
+// import News from "./news";
 
 class Home extends Component {
-  levelOption = {"暂无":0,"C":25,"B":50,"A":75,"PRO":100,"":0}
-
-  constructor(props) {
-    super(props)
-    fetchPosts("/api/user/userId",{},"GET")
-      .then(data => {
-        props.getLevel()
-        props.getUserInfo()
-        // props.getProjList()
-      })
-
-    this.state = {
-      isShowCover: !getCookie("isShowCover","storage"),
-      isGaugeRendered: false,
-    }
-  }
-
-  showCoverHandler = (e) => {
-    if (e) e.stopPropagation();
-    this.setState({
-      isShowCover: true
-    });
-  }
-
-  hideCoverHandler = () => {
-    setCookie("isShowCover","1","storage")
-    this.setState({
-      isShowCover: false
-    });
-  }
-
-
-
-  componentDidMount() {
-
-  }
-
-  componentDidUpdate() {
-    if( !!this.props.userInfo.level && !this.state.isGaugeRendered) {
-      this.renderGauge(this.levelOption[this.props.userInfo.level.toUpperCase()])
-      // this.renderGauge(this.levelOption[this.props.userInfo.level]);
-      this.setState({
-        isGaugeRendered: true
-      });
-    }
-  }
+  // levelOption = {"暂无":0,"C":25,"B":50,"A":75,"PRO":100,"":0}
+  //
+  // constructor(props) {
+  //   super(props)
+  //   fetchPosts("/api/user/userId",{},"GET")
+  //     .then(data => {
+  //       props.getLevel()
+  //       props.getUserInfo()
+  //       // props.getProjList()
+  //     })
+  //
+  //   this.state = {
+  //     isShowCover: !getCookie("isShowCover","storage"),
+  //     isGaugeRendered: false,
+  //   }
+  // }
+  //
+  // showCoverHandler = (e) => {
+  //   if (e) e.stopPropagation();
+  //   this.setState({
+  //     isShowCover: true
+  //   });
+  // }
+  //
+  // hideCoverHandler = () => {
+  //   setCookie("isShowCover","1","storage")
+  //   this.setState({
+  //     isShowCover: false
+  //   });
+  // }
+  //
+  //
+  //
+  // componentDidMount() {
+  //
+  // }
+  //
+  // componentDidUpdate() {
+  //   if( !!this.props.userInfo.level && !this.state.isGaugeRendered) {
+  //     this.renderGauge(this.levelOption[this.props.userInfo.level.toUpperCase()])
+  //     // this.renderGauge(this.levelOption[this.props.userInfo.level]);
+  //     this.setState({
+  //       isGaugeRendered: true
+  //     });
+  //   }
+  // }
 
 
 
   render() {
     // let projItems = this.props.projList.length>0 ? this.props.projList.map((item,index) => <ProjectItem projInfo={item} key={index} />) : ""
+    // <div styleName="home-container" style={this.props.style}>
+    //   <div styleName="top-container">
+    //     <div styleName="top-bg"></div>
+    //     <div styleName="dash-container">
+    //       <canvas id="dash" styleName="dash" width='240' height='210'></canvas>
+    //     </div>
+    //     <div styleName="content">
+    //       <h5>QBII</h5>
+    //       <h3>认证等级</h3>
+    //       <h1 styleName={classNames({"nothing":this.props.userInfo.level&&this.props.userInfo.level=='暂无'})}>
+    //         {this.props.userInfo.level}
+    //       </h1>
+    //       <p>等级越高，可投项目越多</p>
+    //       <div styleName="btn-group">
+    //         <span styleName="btn" onClick={()=>QBFK.Business.go('/Theme')}>晒身份</span>
+    //         <span styleName="btn" onClick={()=>QBFK.Business.go('/About')}>了解QBII</span>
+    //       </div>
+    //     </div>
+    //   </div>
+    //   <div styleName="asset-container">
+    //     <div styleName="item">
+    //       <span>投入资产(元)</span>
+    //       <h3>{priceFormat(this.props.userInfo.assets/100)||0.00} </h3>
+    //     </div>
+    //     <div styleName="item">
+    //       <span>累计收益(元)</span>
+    //       <h3>{priceFormat(this.props.userInfo.profit/100)||0.00}</h3>
+    //     </div>
+    //   </div>
+    //   <div styleName="list-container" className={classNames({"hide":this.props.projList.length==0})}>
+    //     {/* {projItems} */}
+    //   </div>
+    //   <div styleName="news-container">
+    //     <div styleName="title">
+    //       <div styleName="name">最新资讯</div>
+    //       <div styleName="more">
+    //         {/* 查看更多
+    //         <i styleName="icon icon-arrow"></i> */}
+    //       </div>
+    //     </div>
+    //     <News/>
+    //
+    //   </div>
+    //   <div styleName="bottom-container">
+    //     <span>更多项目，敬请期待</span>
+    //   </div>
+    //   <div className="animated zoomIn" styleName={classNames("cover-container",{"active":this.state.isShowCover})}>
+    //     <p>钱宝 5.0 <br/>开启你的资本之路</p>
+    //     <div className="animated fadeIn" styleName="img"></div>
+    //     <p styleName="txt">当前认证等级</p>
+    //     <h1>{this.props.levelInfo.level}</h1>
+    //     <span styleName="btn-join" onClick={this.hideCoverHandler}>即刻加入</span>
+    //   </div>
+    // </div>
     return (
-      <div styleName="home-container" style={this.props.style}>
-        <div styleName="top-container">
-          <div styleName="top-bg"></div>
-          <div styleName="dash-container">
-            <canvas id="dash" styleName="dash" width='240' height='210'></canvas>
-          </div>
-          <div styleName="content">
-            <h5>QBII</h5>
-            <h3>认证等级</h3>
-            <h1 styleName={classNames({"nothing":this.props.userInfo.level&&this.props.userInfo.level=='暂无'})}>
-              {this.props.userInfo.level}
-            </h1>
-            <p>等级越高，可投项目越多</p>
-            <div styleName="btn-group">
-              <span styleName="btn" onClick={()=>QBFK.Business.go('/Theme')}>晒身份</span>
-              <span styleName="btn" onClick={()=>QBFK.Business.go('/About')}>了解QBII</span>
-            </div>
-          </div>
-        </div>
-        <div styleName="asset-container">
-          <div styleName="item">
-            <span>投入资产(元)</span>
-            <h3>{priceFormat(this.props.userInfo.assets/100)||0.00} </h3>
-          </div>
-          <div styleName="item">
-            <span>累计收益(元)</span>
-            <h3>{priceFormat(this.props.userInfo.profit/100)||0.00}</h3>
-          </div>
-        </div>
-        <div styleName="list-container" className={classNames({"hide":this.props.projList.length==0})}>
-          {/* {projItems} */}
-        </div>
-        <div styleName="news-container">
-          <div styleName="title">
-            <div styleName="name">最新资讯</div>
-            <div styleName="more">
-              {/* 查看更多
-              <i styleName="icon icon-arrow"></i> */}
-            </div>
-          </div>
-          <News/>
-
-        </div>
-        <div styleName="bottom-container">
-          <span>更多项目，敬请期待</span>
-        </div>
-        <div className="animated zoomIn" styleName={classNames("cover-container",{"active":this.state.isShowCover})}>
-          <p>钱宝 5.0 <br/>开启你的资本之路</p>
-          <div className="animated fadeIn" styleName="img"></div>
-          <p styleName="txt">当前认证等级</p>
-          <h1>{this.props.levelInfo.level}</h1>
-          <span styleName="btn-join" onClick={this.hideCoverHandler}>即刻加入</span>
-        </div>
-      </div>
+      <div className="Cname">this is a demo</div>
     )
   }
 
@@ -191,7 +192,7 @@ class Home extends Component {
 
 };
 
-/* 
+/*
 
    <div styleName="item" onClick={()=>QBFK.Business.go('/NewsDetail/4')}>
             <div styleName="img">
