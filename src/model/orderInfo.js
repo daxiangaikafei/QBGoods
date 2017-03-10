@@ -15,7 +15,7 @@ export default {
             type: 'fetch/query/request',
             key
         });
-        
+
     },
     *fetchSuccess(key, {put, call}) {
         yield put({
@@ -41,7 +41,7 @@ export default {
                     "Access-Control-Allow-Methods":"PUT,POST,GET,DELETE,OPTIONS"
                 });
                 dispatch({type:"orderInfo/fetchRequest"});
-                
+
                 return fetch(url, {
                     method: type.toLocaleUpperCase(),
                     headers: headers,
@@ -55,8 +55,8 @@ export default {
                     return data;
                 });
         }
-       
-        
+
+
     }
 
   },
