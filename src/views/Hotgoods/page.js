@@ -15,15 +15,7 @@ class Hotgoods extends Component {
 
   constructor(props) {
     super(props)
-    // fetchPosts("/api/user/userId",{},"GET")
-    //   .then(data => {
-    //     props.getGoods()
-    //   })
-    //
-    //   this.state = {
-    //     isShowCover: !getCookie("isShowCover","storage"),
-    //     isGaugeRendered: false,
-    //   }
+    props.getGoodsInitData();
   }
   componentDidMount() {
 
@@ -40,21 +32,28 @@ class Hotgoods extends Component {
     this.props.setTabActive(active);
   }
   render() {
+    let reactSwipe = null, goodsIscroll = null, goodsTab = null;
+    if(this.props.loadingInit){
+      reactSwipe = <ReactSwipe className="carousel" swipeOptions={{continuous: false, callback: this.swiperCallback}}>
+                    {
+                      this.props.goodsSwipers.map(function(item,i){
+                        return (<div key={i}><a href={item.link_url}><img src={item.img_url}/></a></div>)
+                      })
+                    }
+                  </ReactSwipe>;
+      goodsIscroll = <GoodsIscroll goods={this.props.goodsStuffs}></GoodsIscroll>;
+      goodsTab = <GoodsTab tabCallback={this.tabCallback} active={this.props.tabActive} tabs={this.props.goodsTabs}></GoodsTab>;
+    }
+
     return (
       <div className="hots-container">
         <div className="hots-swiper">
-          <ReactSwipe className="carousel" swipeOptions={{continuous: false, callback: this.swiperCallback}}>
-            {
-              this.props.goodsSwipers.map(function(item,i){
-                return (<div key={i}><a href={item.href}><img src={item.src}/></a></div>)
-              })
-            }
-          </ReactSwipe>
+          {reactSwipe}
           <SwiperPagination active={this.props.swiperActive} swipers={this.props.goodsSwipers}></SwiperPagination>
         </div>
         <div className="hots-public-title"></div>
-        <GoodsIscroll goods={this.props.goodsSwipers}></GoodsIscroll>
-        <GoodsTab tabCallback={this.tabCallback} active={this.props.tabActive} tabs={this.props.goodsTabs}></GoodsTab>
+        {  goodsIscroll }
+        { goodsTab }
       </div>
     )
   }
@@ -65,6 +64,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+      getGoodsInitData: function(){
+        dispatch({type:"hotgoods/getGoodsInitData"});
+      },
       setSwiperActive: function(act){
         dispatch({type:"hotgoods/swiperAct",active:act});
       },

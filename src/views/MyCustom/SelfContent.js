@@ -13,6 +13,7 @@ class SelfContent extends Component {
   componentDidUpdate() {
   }
   labelClickHandler(item , index){
+
     if(!item.check){
       this.props.editSelfTip( item.count );
     }
@@ -20,7 +21,6 @@ class SelfContent extends Component {
   }
   render() {
     var props = this.props;
-
     return (
       <div className="self-content">
         <div className="self-list">

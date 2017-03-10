@@ -1,5 +1,6 @@
 import React,{ Component } from 'react'
 import * as ReactDOM from 'react-dom';
+import Tappable from 'react-tappable';
 
 class GoodsTab extends Component {
 
@@ -53,6 +54,7 @@ class GoodsTab extends Component {
 
   }
   tabsClickHandler(active){
+    // console.log(active);
     this.props.tabCallback(active);
   }
   render() {
@@ -61,7 +63,7 @@ class GoodsTab extends Component {
         <div className="hots-tabs-content">
           <div className="hots-tabs-warpper" ref="swipe">
             {
-              this.props.tabs.map((item, i) => <div onTouchStart={this.tabsClickHandler.bind(this,i)} key={i} className={this.props.active == i ? 'tabs-item tabs-item-active' : 'tabs-item'}><span>{item.text}</span></div>)
+              this.props.tabs.map((item, i) => <Tappable onTap={this.tabsClickHandler.bind(this,i)} key={i} className={this.props.active == i ? 'tabs-item tabs-item-active' : 'tabs-item'}><span>{item.name}</span></Tappable>)
             }
           </div>
         </div>

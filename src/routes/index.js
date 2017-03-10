@@ -4,6 +4,7 @@ import CoreLayout from '../containers/layout'
 import Home from 'views/Home/page'
 import Hotgoods from 'views/Hotgoods/page'
 import MyCustom from 'views/MyCustom/page'
+import SelfSupport from 'views/SelfSupport/page'
 
 // import AnDemo from "views/AnDemo/page";
 // import DemoSwipe from "views/DemoSwipe/page";
@@ -23,6 +24,7 @@ export default function (ref) {
         <Route path='/Home' component={Home} name="QBII设置"/>
         <Route path='/Hotgoods' component={Hotgoods} name="热卖好货"/>
         <Route path='/MyCustom' component={MyCustom} name="我的定制"/>
+        <Route path='/SelfSupport' component={SelfSupport} name="钱宝自营"/>
         {/* <Route path='/HomeDo' component={HomeDo} name="QBII测试Title"/> */}
         {/* <Route path='/AnDemo' component={AnDemo} name="QBII动画效果"/> */}
         {/* <Route path='/swipe' component={DemoSwipe} name="QBII动画效果"/> */}
