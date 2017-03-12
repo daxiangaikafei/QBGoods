@@ -3,6 +3,7 @@ import { connect } from 'dva'
 import CSSModules from 'react-css-modules'
 import styles from './page.less'
 import classNames from 'classnames'
+import { Link,browserHistory } from 'react-router'
 import { fetchPosts } from "components/common/fetch"
 import ShopContent from "./ShopContent";
 import SelfContent from "./SelfContent";
@@ -11,6 +12,7 @@ class MyCustom extends Component {
 
   constructor(props) {
     super(props)
+    props.getShopLists();
   }
   componentDidMount() {
 
@@ -30,10 +32,16 @@ class MyCustom extends Component {
         tagDetailIds.push(item.tag_detail_id);
       }
     });
-    this.props.saveLabels(tagDetailIds.join(","));
-  }
-  changeHandler(){
 
+    let tagSelfDetailIds = [];
+    var selfLabels = this.props.selfLabels;
+    this.props.selfLabelsDefault.map((item,i) => {
+      if(selfLabels[i].check !== item.check){
+        tagSelfDetailIds.push(item.tag_detail_id);
+      }
+    });
+
+    this.props.saveLabels(tagDetailIds.join(","), tagSelfDetailIds.join(",") );
   }
   render() {
     let customcontent;
@@ -50,7 +58,7 @@ class MyCustom extends Component {
         </div>
         {customcontent}
         <div className="mycustom-btns">
-          <button className="btn-change" onTouchStart={this.changeHandler.bind(this)}>取消</button>
+          <button className="btn-change" onTouchStart={() => this.props.history.goBack()}>取消</button>
           <button className="btn-enter" onTouchStart={this.enterHandler.bind(this)}>确定</button>
         </div>
       </div>
@@ -69,8 +77,8 @@ function mapDispatchToProps(dispatch) {
       setTabActive: function(act){
         dispatch({type: "mycustom/tabAct",active:act});
       },
-      saveLabels: function(ids){
-        dispatch({type: "mycustom/saveLabels", tagDetailIds: ids});
+      saveLabels: function(ids, selfIds){
+        dispatch({type: "mycustom/saveLabels", tagDetailIds: ids , tagSelfDetailIds: selfIds});
       }
     }
 }

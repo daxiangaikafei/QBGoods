@@ -55,7 +55,7 @@ class Swipe extends Component {
     }
     scrollInit(){
         let dom = ReactDOM.findDOMNode(this.refs.touch); //offsetTop
-         let target = ReactDOM.findDOMNode(this.refs.swipe);
+        let target = ReactDOM.findDOMNode(this.refs.swipe);
         let {property,width,min,max,step,findScroller,vertical,findDis} = this.props;
         let prevTarget = false;
         let $ = this.$;
@@ -82,7 +82,6 @@ class Swipe extends Component {
             inertia: false, //不必需,是否有惯性。默认是true
             intelligentCorrection: true,
             touchStart: function (value,target) {
-                
 
             }
         });
@@ -114,4 +113,3 @@ Swipe.defaultProps={
 }
 
 module.exports = Swipe;
-
