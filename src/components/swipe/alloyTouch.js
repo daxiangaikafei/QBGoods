@@ -111,13 +111,13 @@ var AlloyTouch = function (option) {
     this.move = this._move.bind(this);
     this.end = this._end.bind(this);
     bind(this.element, "touchstart", this._start.bind(this));
-    bind(window, "touchmove", this.move);
+    bind(window, "touchmove", this.move,);
     bind(window, "touchend", this.end);
 
     this.destory = this.destory.bind(this);
 
     if(!this.findScroller){
-       // //console.log("this.element",this.scroller)
+       // ////console.log("this.element",this.scroller)
         Transform(this.scroller);
     }
 }
@@ -134,7 +134,7 @@ AlloyTouch.prototype = {
             this._firstTouchMove = true;
             this._preventMoveDefault = true;
 
-            console.log("触发 。----------------------------start")
+            //console.log("触发 。----------------------------start")
 
             if(evt.touches.length>1){
                 return false
@@ -150,7 +150,7 @@ AlloyTouch.prototype = {
 
                 //this.scroller = $(evt.target).parents(this.findScroller).get(0);
                 if(this.scroller ){
-                    //console.info("进入  自定义方法",this.scroller[this.property])
+                    ////console.info("进入  自定义方法",this.scroller[this.property])
                     this.scroller[this.property]===undefined&&Transform(this.scroller);
                     this.touchStart(this.scroller[this.property],this.scroller);
                     cancelAnimationFrame(this.tickID);
@@ -217,7 +217,7 @@ AlloyTouch.prototype = {
                     
                     /*tp  2016年10月18日  改写  start*/
                     if(this.reverse===false&&(d<0)){
-                            //console.log("222")
+                            ////console.log("222")
                             return false;
                     }
                     /*tp  2016年10月18日  改写  end*/
@@ -236,14 +236,14 @@ AlloyTouch.prototype = {
                     evt.preventDefault();
                 }
             }
-            console.info("触发 。----------------------------move--------------")
+            //console.info("触发 。----------------------------move--------------")
        // }.bind(this),0)
 
     },
     _end: function (evt) {
 
-        console.info("触发 。----------------------------end--------------")
-       /* //console.log("zuihou ",this.scroller[this.property]);
+        //console.info("触发 。----------------------------end--------------")
+       /* ////console.log("zuihou ",this.scroller[this.property]);
         if(this.reverse===false&&this.scroller[this.property]===0){
             return false;
         }*/
@@ -354,7 +354,7 @@ AlloyTouch.prototype = {
 
 
         var value = el[property];
-        ////console.error("你要干啥",value)
+        //////console.error("你要干啥",value)
         if (this.intelligentCorrection&&this.hasMax && this.hasMin) {
             var prevPage = this.currentPage;
             var d = this.scroller[this.property] - (this.max - prevPage * this.step);

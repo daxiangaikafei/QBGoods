@@ -53,9 +53,6 @@ class OrderList extends React.Component {
 
         this.getData(1);
     }
-    componentWillReceiveProps (nextProps) {
-        
-    }
     getData(num){
         let {pageSize,url,searchParam,upData} = this.props;
         let {page,items,isLoading,isEnd} = this.state;
@@ -100,49 +97,63 @@ class OrderList extends React.Component {
     }
     doDel(id){
         let _this = this;
-        //Modal.alert("删除","失败");
-        return fetchPosts("/api/stuff/order/delOrder.do",{id},"GET").then((data)=>{
-                if(data.responseCode===1000){
-                   let {items} = _this.state;
-                   let i = 0,j = items.length,$lis=[];
-                   while(i<j){
-                       if(items[i].id===id){
-                           items.splice(i,1);
-                       }
-                       i+=1;
-                   }
-                   _this.setState({
-                       items
-                   })
-                }else{
-                        Modal.alert("删除","失败");
-                     
-                }
-                
-                
-                
-         }).catch(function(){
-                Modal.alert("删除","失败");
-         });
+        let newId= Number(id);
+        Modal.confirm("删除","确认删除吗？").then((data)=>{
+            console.log(data);
+            if(data!=="Ok"){
+                return;
+            }
+            fetchPosts("/stuff/order/delOrder.do",{"id":id},"GET").then((data)=>{
+                    if(data.responseCode===1000){
+                    let {items} = _this.state;
+                    let i = 0,j = items.length,$lis=[];
+                    //debugger
+                    while(i<j){
+                        console.error(items[i])
+                        if(items[i].id===newId){
+                            items.splice(i,1);
+                            break;
+                        }
+                        i+=1;
+                    }
+                    Modal.alert("删除","成功");
+                    _this.setState({
+                        items
+                    })
+                    }else{
+                            Modal.alert("删除","失败");
+                        
+                    }
+                    
+                    
+                    
+            }).catch(function(error){
+                    Modal.alert("删除","失败");
+            });
+        });
 
     }
     infoClose(){
         PopUp.hide();
     }
     toInfo(id){
+
+         
+            return fetchPosts("/stuff/order/userOrder.do",{id},"GET").then((data)=>{
+                    if(data.responseCode===1000){
+                    PopUp.show(
+                            (<Info data={data.data} onClick={this.infoClose} />),{maskClosable:true}
+                    );
+                    }else{
+                            Modal.alert("查看详情","失败");
+                    }
+                    
+            }).catch(function(){
+                    Modal.alert("查看详情","失败");
+            });
+       
        // debugger;
-        return fetchPosts("/api/stuff/order/userOrder.do",{id},"GET").then((data)=>{
-                if(data.responseCode===1000){
-                   PopUp.show(
-                        (<Info data={data.data} onClick={this.infoClose} />),{maskClosable:true}
-                   );
-                }else{
-                        Modal.alert("查看详情","失败");
-                }
-                
-         }).catch(function(){
-                Modal.alert("查看详情","失败");
-         });
+        
        //PopUp.show(
     }
     handClick(event){
@@ -228,7 +239,7 @@ class OrderList extends React.Component {
 
 OrderList.defaultProps = {
     pageSize:20,
-    url:"api/stuff/order/list.do",
+    url:"/stuff/order/list.do",
     searchParam:{}
 }
 
