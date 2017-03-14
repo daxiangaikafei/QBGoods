@@ -1,0 +1,132 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "PingFang SC","STHeitiSC-Light","Helvetica Neue","Helvetica","Arial",sans-serif,"Mircosoft YaHei";
+  background: #ffffff;
+  height: 100%;
+  font-weight: 200;
+}
+:global {
+  .extend {
+    position: relative;
+  }
+  .extend:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    left: -10px;
+    z-index: 10;
+  }
+  .hide {
+    display: none;
+  }
+}
+/***** Mixin *****/
+.flex {
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
+  display:flex;
+}
+.flex-justify {
+  -webkit-box-pack:justify;
+  -webkit-justify-content:space-between;
+  -ms-flex-pack:justify;
+  justify-content:space-between;
+}
+.flex-vertical {
+  -webkit-box-orient:vertical;
+  -webkit-flex-direction:column;
+  -ms-flex-direction:column;
+  flex-direction:column;
+}
+.flex-item-auto {
+  -webkit-box-flex:auto;
+  -webkit-flex:auto;
+  -ms-flex:auto;
+  flex:auto;
+}
+.flex-item-none {
+  -webkit-box-flex:none;
+  -webkit-flex:none;
+  -ms-flex:none;
+  flex:none;
+}
+.flex-align-center {
+  -webkit-box-align:center;
+  -webkit-align-items:center;
+  -ms-flex-align:center;
+  align-items:center;
+}
+.flex-center {
+  -webkit-box-pack:center;
+  -webkit-justify-content:center;
+  -ms-flex-pack:center;
+  justify-content:center;
+}
+
+main{
+  .shop-header{
+    position: relative;
+    .shop-header-bg{
+      width: 100%;
+      min-height: 100px;
+      display: block;
+    }
+    .shop-header-warpper{
+      div{
+        display: inline-block;
+      }
+    }
+  }
+  .shop-swiper{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    z-index: 1;
+    .react-swipe-container{
+      a{
+        display: block;
+        img{
+          width: 100%;
+          height: 150px;
+        }
+      }
+    }
+    .swiper-pagination {
+      position: absolute;
+      text-align: center;
+      -webkit-transition: .3s;
+      -moz-transition: .3s;
+      -o-transition: .3s;
+      transition: .3s;
+      -webkit-transform: translate3d(0,0,0);
+      -ms-transform: translate3d(0,0,0);
+      -o-transform: translate3d(0,0,0);
+      transform: translate3d(0,0,0);
+      z-index: 10;
+      bottom: 8px;
+      left: 0;
+      width: 100%;
+    }
+    .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+      display: inline-block;
+      border-radius: 100%;
+      background: #000;
+      opacity: .5;
+      margin: 0 5px;
+      background-color: #fff;
+    }
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
+  }
+
+
+}

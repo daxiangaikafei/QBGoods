@@ -1,0 +1,95 @@
+@txtColor: #35353f;
+@assetTitleColor: #90909b;
+@bdColor: #c0c0c0;
+@bodyBGColor: #f1f1f6;
+@coverTxtColor: #ffca43;
+@listTxtColor: #aa8a72;
+@increaseTxtColor: #fd472b;
+@listBdColor: #e5e5e5;
+@subTxtColor: #acacac;
+@import '~libs/layout/layout-mixin.less';
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "PingFang SC", "STHeitiSC-Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif, "Mircosoft YaHei";
+    background: @bodyBGColor;
+    height: 100%;
+    font-weight: 200;
+}
+
+:global {
+    .extend {
+        position: relative;
+    }
+    .extend:before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        bottom: -10px;
+        left: -10px;
+        z-index: 10;
+    }
+    .hide {
+        display: none;
+    }
+}
+
+main {
+    color: @txtColor;
+    .home-container {
+        background: @bodyBGColor;
+        .banner-container {
+            padding-bottom: 40%;
+            position: relative;
+            img {
+                position: absolute;
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+/***** icon *****/
+
+.icon {
+    display: inline-block;
+    &.icon-item {
+        width: 12px;
+        height: 12px;
+        background: url("static/imgs/home/icon-item.png") no-repeat center;
+        background-size: cover;
+    }
+    &.icon-arrow {
+        width: 19px;
+        height: 10px;
+        background: url("static/imgs/home/icon-arrow.png") no-repeat center;
+        background-size: cover;
+    }
+}
+
+
+/***** ainimation *****/
+
+@-webkit-keyframes bg-ani {
+    0% {
+        -webkit-transform: perspective(0px) rotateY(0deg) scaleX(1.1);
+    }
+    100% {
+        -webkit-transform: perspective(0px) rotateY(0deg) scaleX(1.1);
+    }
+}
+
+@keyframes bg-ani {
+    0% {
+        transform: perspective(0px) rotateY(0deg) scaleX(1.1);
+    }
+    100% {
+        transform: perspective(0px) rotateY(0deg) scaleX(1.1);
+    }
+}
+
+
+/**** Component *****/
