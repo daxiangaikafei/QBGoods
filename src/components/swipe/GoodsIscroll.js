@@ -59,7 +59,10 @@ class GoodsIscroll extends Component {
           <div className="hots-public-warpper" ref="swipe">
             {
               props.goods.map(function(item,i){
-                return (<a key={i} className="public-item"><img src={item.src}/></a>)
+                return (<a key={i} href={item.link_url} className="hots-public-item">
+                  <img className="hots-public-item-img" src={item.img_url}/>
+                  <p className="hots-public-item-name">{item.name}</p>
+                </a>)
               })
             }
           </div>

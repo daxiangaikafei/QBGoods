@@ -63,7 +63,9 @@ class ShopContent extends Component {
     if(!item.check){
       this.props.editTip( item.name, item.count   );
     }
-    this.props.editLabelSelected(index , !item.check)
+    this.props.editLabelSelected(index , !item.check);
+
+    console.log(this.props.shopLabels, this.props.shopLabelsDefault );
   }
   render() {
     return (

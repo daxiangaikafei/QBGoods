@@ -27,7 +27,6 @@ class GatherGoods extends Component {
       {
         key:'我的定制',
         action: 'getHotSearchList',
-        temp: 'sales'                   //带销量
       }
     ], //required
     model : 'gatherGoods',

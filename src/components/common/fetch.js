@@ -22,7 +22,7 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
     return fetch(url, {
             method: type.toLocaleUpperCase(),
             headers: headers,
-            mode: 'no-cors',
+            // mode: 'no-cors',
             credentials: 'same-origin',
             //credentials: 'same-origin',
             body: type.toLocaleUpperCase() === "GET" ? undefined : (repType == "json" ? JSON.stringify(param) : param)
@@ -37,7 +37,7 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
             return result;
         })
         .then((data) => {
-            console.log('收到data', data);
+            // console.log('收到data', data);
             //dispatch(fetchSuccess(key, data));
             //debugger;
             // if (data && (data.returnCode === -100 || data.returnCode === "-100")&&fetchNum<30) {

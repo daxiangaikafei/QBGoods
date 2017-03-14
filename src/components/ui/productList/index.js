@@ -4,6 +4,7 @@ import CSSModules from 'react-css-modules'
 import styles from './index.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
+import { priceFormat } from 'libs/util'
 
 import Swipe from "components/swipe/swipe";
 
@@ -19,53 +20,40 @@ class ProductList extends Component {
 
     render() {
         
-
         return (
             <div styleName="list">
                 {
                     this.props.listData.length > 0 ?
-                    this.props.listConfig.temp == 'similar' ? this.props.listData.map((item, index) =>
-                        <div styleName="item" key={index}>
-                            <a href={item.link_url} ><img src={item.img_url} alt="" /></a>
-                            <a href={item.link_url} ><h3>{item.name}</h3></a>
-                            <div styleName="price">￥{item.price}
-                                <span styleName="icon"></span>
-                            </div>
-                            <div styleName="bottom">
-                                <span styleName="return">返{item.rebate_value}宝券</span>
-                                <span styleName="similar">找相似</span>
-                            </div>
-                        </div>
-                    ) : 
-                        this.props.listConfig.temp == 'sales' ?
-                        this.props.listData.map((item, index) =>
+                        this.props.listConfig.temp == 'similar' ? this.props.listData.map((item, index) =>
                             <div styleName="item" key={index}>
                                 <a href={item.link_url} ><img src={item.img_url} alt="" /></a>
                                 <a href={item.link_url} ><h3>{item.name}</h3></a>
-                                <div styleName="price">￥{item.price}
+                                <div styleName="price">￥{priceFormat(item.price)}
                                     <span styleName="icon"></span>
                                 </div>
                                 <div styleName="bottom">
                                     <span styleName="return">返{item.rebate_value}宝券</span>
-                                    <p styleName="sales">销量 <span>{item.sale_count}</span></p>
+                                    {item.sale_count!=null ? <p styleName="sales">销量 <span>{item.sale_count}</span></p> : ''}                                
+                                    <span styleName="similar">找相似</span>
                                 </div>
                             </div>
-
                         ) :
                         this.props.listData.map((item, index) =>
                             <div styleName="item" key={index}>
                                 <a href={item.link_url} ><img src={item.img_url} alt="" /></a>
                                 <a href={item.link_url} ><h3>{item.name}</h3></a>
-                                <div styleName="price">￥{item.price}
+                                <div styleName="price">￥{priceFormat(item.price)}
                                     <span styleName="icon"></span>
                                 </div>
                                 <div styleName="bottom">
                                     <span styleName="return">返{item.rebate_value}宝券</span>
+                                    {item.sale_count!=null ? <p styleName="sales">销量 <span>{item.sale_count}</span></p> : ''}                                    
                                 </div>
                             </div>
                             
-                        ) : ""
-                    }
+                        ) 
+                    : ''
+                }
             </div>
         )
     }
