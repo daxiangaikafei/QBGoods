@@ -145,7 +145,7 @@ AlloyTouch.prototype = {
             //找到 对应的 子的target 并加对应的transform事件
             //__translateX
             if(this.findScroller){
-                
+
                 this.scroller = this.findScroller(evt);
 
                 //this.scroller = $(evt.target).parents(this.findScroller).get(0);
@@ -204,7 +204,7 @@ AlloyTouch.prototype = {
                     if(evt.touches.length>1){
                         return false
                     }
-                   
+
                     var d = (this.vertical ? evt.touches[0].pageY - this.preY : evt.touches[0].pageX - this.preX) * this.sMf;
                     if (this.hasMax && this.scroller[this.property] > this.max && d > 0) {
                         this.factor1 = 0.3;
@@ -214,7 +214,7 @@ AlloyTouch.prototype = {
                         this.factor1 = 1;
                     }
                     d *= this.factor1;
-                    
+
                     /*tp  2016年10月18日  改写  start*/
                     if(this.reverse===false&&(d<0)){
                             ////console.log("222")
