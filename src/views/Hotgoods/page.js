@@ -46,17 +46,15 @@ class Hotgoods extends Component {
 
 
   touchMove(that,args){
+      let {items,isEnd} = this.state;
+      let itemsLen = items.length;
 
-      console.log("this......", this , that);
-      let {items,oneHeight} = this.state;
-      // oneHeight = oneHeight===false? 190 : oneHeight;
-
-      console.log("...............that.min:", that.min, ".......", args);
-      if(that.min-args[0]>-300){
-          // this.getData(1).then(()=>{
-          //     console.error("该加载了",-oneHeight*items.length);
-          //     that.min = -oneHeight*items.length;
-          // });
+      if(that.min-args[0]>0 && !isEnd){
+          this.getData(1).then(()=>{
+              // console.error("该加载了", arr);
+              that.min =  -(that.element.children[0].offsetHeight - that.element.offsetHeight);
+              // console.log("that.min......",that.min);
+          });
       }
   }
   getData(num , searchParam){
@@ -68,7 +66,7 @@ class Hotgoods extends Component {
           isLoading:true
       })
       let _this = this;
-      let param = Object.assign({},searchParam,{cId: 1, page: num,size: 8});
+      let param = Object.assign({},searchParam,{cId: 1, page: page,size: 8});
       page += num;
       return fetchPosts("api/goodsList.json",param,"GET").then((data)=>{
               console.log(data);
@@ -128,6 +126,8 @@ class Hotgoods extends Component {
           { goodsTab }
           <ProductList listConfig={{temp: 'sales'}} listData={this.state.items}/>
         </div>
+        {this.state.isLoading===true&&(<div className="no-up">--加载中--</div>)}
+        {this.state.page>=1&&this.state.isEnd===true&&(<div className="no-up">--已经到底了--</div>)}
       </Swipe>
     )
   }

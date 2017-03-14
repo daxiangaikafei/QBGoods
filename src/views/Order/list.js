@@ -11,8 +11,8 @@ import {fetchPosts} from "components/common/fetch";
 import NoOrder from "./noOrder";
 import Info from "./info";
 
-import Modal from "components/modal/index";
-import PopUp from "components/popup/index";
+// import Modal from "components/modal/index";
+// import PopUp from "components/popup/index";
 
 
 const RebateStatus ={
@@ -40,7 +40,7 @@ class OrderList extends React.Component {
             oneHeight:false,
             isEnd:false,
         }
-        
+
         this.getData = this.getData.bind(this);
         this.touchMove = this.touchMove.bind(this);
 
@@ -49,7 +49,7 @@ class OrderList extends React.Component {
         this.toInfo = this.toInfo.bind(this);
 
     }
-    componentWillMount() { 
+    componentWillMount() {
 
         this.getData(1);
     }
@@ -79,9 +79,9 @@ class OrderList extends React.Component {
                      _this.setState({
                         isLoading:false,});
                 }
-                
-                
-                
+
+
+
          }).catch(function(){
                     _this.setState({
                         isLoading:false,});
@@ -122,11 +122,11 @@ class OrderList extends React.Component {
                     })
                     }else{
                             Modal.alert("删除","失败");
-                        
+
                     }
-                    
-                    
-                    
+
+
+
             }).catch(function(error){
                     Modal.alert("删除","失败");
             });
@@ -138,7 +138,7 @@ class OrderList extends React.Component {
     }
     toInfo(id){
 
-         
+
             return fetchPosts("/stuff/order/userOrder.do",{id},"GET").then((data)=>{
                     if(data.responseCode===1000){
                     PopUp.show(
@@ -147,17 +147,17 @@ class OrderList extends React.Component {
                     }else{
                             Modal.alert("查看详情","失败");
                     }
-                    
+
             }).catch(function(){
                     Modal.alert("查看详情","失败");
             });
-       
+
        // debugger;
-        
+
        //PopUp.show(
     }
     handClick(event){
-       
+
         let className = event.target.className;
         let id = event.target.dataset.id;
         console.log("className:",className,"id",id);
@@ -165,13 +165,13 @@ class OrderList extends React.Component {
         if(className==='js_del'){
             this.doDel(id);
         }else if(className==='js_info'){
-            
+
             this.toInfo(id);
         }
     }
-    
+
     render() {
-        
+
         let {items,isLoading,page,isEnd} = this.state;
         let i =0,j=items.length,$lis = [],totalPrice=0,totalSb=0;
         while(i<j){
@@ -186,7 +186,7 @@ class OrderList extends React.Component {
 
                 totalPrice = (totalPrice*100+subItem.price*subItem.stuffNum*100)/100;
                 totalSb = (totalSb*100+subItem.price*subItem.rebateValue*100)/100
-                
+
                 //totalPrice += subItem.price*subItem.stuffNum;
                 $subItem.push(
                     <div key={l} className="order-item-body">
@@ -233,7 +233,7 @@ class OrderList extends React.Component {
                     {isLoading===true&&(<div className="no-up">Loading</div>)}
                     {page>1&&isEnd===true&&(<div className="no-up">已经没有更新了</div>)}
                 </Swipe>
-        ) 
+        )
     }
 };
 
@@ -244,5 +244,3 @@ OrderList.defaultProps = {
 }
 
 module.exports = OrderList;
-
-
