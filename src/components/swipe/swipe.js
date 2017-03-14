@@ -69,8 +69,9 @@ class Swipe extends Component {
         if(min==="auto"){
             min = -1000;
             min = -((vertical===false?target.offsetWidth:target.offsetHeight)-(vertical===false?dom.offsetWidth:dom.offsetHeight));
-            console.log(min);
+
             min = min>0?0:min;
+            console.log("min........", target , target.offsetHeight , dom , dom.offsetHeight);
         }
         this.alloyTouch = new this.AlloyTouch({
             touch: dom,//反馈触摸的dom
@@ -87,7 +88,7 @@ class Swipe extends Component {
             inertia: false, //不必需,是否有惯性。默认是true
             intelligentCorrection: true,
             stopPro:stopPro,
-            touchStart: function (value,target) {   
+            touchStart: function (value,target) {
                 console.log("heheda ",value)
             },
             touchMove:_.throttle(function(){

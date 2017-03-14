@@ -160,6 +160,7 @@ main{
         width: 92%;
         margin: 10px auto 20px;
         margin-left: 3%;
+
         .self-item{
           display: inline-block;
           background-color: #e3f5f0;
@@ -172,10 +173,23 @@ main{
           margin-top: 10px;
           color: #35353f;
           position: relative;
+          .icon-selected{
+            background: url('static/imgs/hotgoods/icon-selected2.png') no-repeat;
+            background-size: 100% 100%;
+            width: 10px;
+            height: 10px;
+            top: 0;
+            right: 0;
+            margin: 0 5px;
+            display: none;
+          }
         }
         .self-item.selected{
           background-color: #fff;
           color: #ff9600;
+          .icon-selected{
+            display: inline-block;
+          }
           .bg{
             position: absolute;
             width: 100%;

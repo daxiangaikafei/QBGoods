@@ -6,13 +6,16 @@ import { NavBar } from 'ui'
 var cx = require('classnames');
 
 function CoreLayout ({ children, location }) {
-  var viewHeight = window.innerHeight - 44 ;
-    var styles = Object.assign({}, {opacity:0}) // child.props.style contains an int (e.g 34)
+  var viewHeight = window.innerHeight - 0 ;
+  var styles = Object.assign({}, {opacity:0}) // child.props.style contains an int (e.g 34)
     //debugger;
+    console.info('1111111',QBFK);
+    QBFK.EventLog.sendMsg({});
   return (
     <div>
-        <NavBar {...arguments[0]}/>
-        <main style={{height:viewHeight,position: 'fixed',top: '44px',width: '100%',overflow: 'hidden'}}>
+        {/*<NavBar {...arguments[0]}/>*/}
+        <main style={{height:viewHeight,position: 'fixed',top: '0px',width: '100%',overflow: 'hidden'}}>
+        {/*<main style={{height:viewHeight,position: 'fixed',top: '44px',width: '100%',overflow: 'hidden'}}>*/}
         <ReactCSSTransitionGroup component='div'
          transitionName={{
             enter: 'default-enter',
@@ -22,8 +25,8 @@ function CoreLayout ({ children, location }) {
           }}
          style={{overflowY: 'scroll',height: '100%',position: 'absolute',top: 0,width:'100%' }}
 
-         transitionEnterTimeout={50000}
-         transitionLeaveTimeout={50000}
+         transitionEnterTimeout={1000}
+         transitionLeaveTimeout={1000}
         >
         {React.cloneElement(children, {
             style:{position: 'absolute',top: 0,left: 0,width: '100%'},

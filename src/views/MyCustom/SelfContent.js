@@ -28,7 +28,7 @@ class SelfContent extends Component {
             this.props.selfLabels.map(
               (item, i) =>
                 <div key={i} onTouchStart={this.labelClickHandler.bind(this, item, i)} className={item.check ? 'self-item selected' : 'self-item'}>
-                  <span className="label">{item.name}</span>
+                  <span className="label"><i className="icon-selected"></i>{item.name}</span>
                   <div className="bg"></div>
                 </div>
             )

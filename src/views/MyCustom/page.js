@@ -29,7 +29,7 @@ class MyCustom extends Component {
     var shopLabels = this.props.shopLabels;
     this.props.shopLabelsDefault.map((item,i) => {
       if(shopLabels[i].check !== item.check){
-        tagDetailIds.push(item.tag_detail_id);
+        tagDetailIds.push(item.tagDetailId);
       }
     });
 
@@ -37,7 +37,7 @@ class MyCustom extends Component {
     var selfLabels = this.props.selfLabels;
     this.props.selfLabelsDefault.map((item,i) => {
       if(selfLabels[i].check !== item.check){
-        tagSelfDetailIds.push(item.tag_detail_id);
+        tagSelfDetailIds.push(item.tagDetailId);
       }
     });
 

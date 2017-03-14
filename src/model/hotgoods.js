@@ -7,6 +7,7 @@ export default {
     loadingInit: false,
     swiperActive: 0,
     tabActive: 0,
+    page: 1,
     goodsStuffs: [
       {
         "id": 1001,
@@ -20,28 +21,15 @@ export default {
       }
     ],
     goodsTabs:[
-      {
-        "type":"a",
-        "text":"精选"
-      },
-      {
-        "type":"a",
-        "text":"酒水"
-      },
-      {
-        "type":"a",
-        "text":"家具"
-      },
-      {
-        "type":"a",
-        "text":"家纺"
-      }
     ],
     goodsSwipers: [
       {
         href: "11111",
         src: "http://www.swiper.com.cn/demo/img/fade1.jpg"
       }
+    ],
+    productList: [
+
     ]
   },
   effects: {
@@ -49,7 +37,7 @@ export default {
       yield put({type: 'setLoading', loading: true})
 
       let goodsClass = yield call(() => {
-        return fetchPosts("api/goodsClass.json",{  },"GET")
+        return fetchPosts("stuff/hot/goodsClass.do",{  },"GET")
           .then(data => data.data)
           .catch(err => ([
             {
@@ -60,7 +48,7 @@ export default {
       })
 
       let banners = yield call(() => {
-        return fetchPosts("api/banner.json",{ locationId: 23 },"GET")
+        return fetchPosts("stuff/ad/banner.do",{ locationId: 21 },"GET")
           .then(data => data.data)
           .catch(err => ([
             {
@@ -72,13 +60,13 @@ export default {
       })
 
       let stuffs = yield call(() => {
-        return fetchPosts("api/stuff.json",{ locationId: 22 },"GET")
+        return fetchPosts("stuff/ad/stuff.do",{ locationId: 22 },"GET")
           .then(data => data.data)
           .catch(err => ([]))
       })
 
       yield put({
-        type: 'setGoodsTabs',
+        type: 'getInitData',
         loading: false,
         loadingInit: true,
         goodsStuffs: stuffs,
@@ -86,13 +74,117 @@ export default {
         goodsSwipers: banners
       });
     },
+
+    *getCloudList(action, {  put,call }) {
+      yield put({
+        type: 'listReq',
+        loading: true
+      })
+      // const cat = yield select(select => select.gatherGoods.tabActive)
+
+      let productList = yield call(() => {
+        return fetchPosts("api/goodsList.json", {
+            cId:1,
+            userId: 10001,
+            page : 1,
+            size : 4
+          }, "GET")
+          .then(data => data.data.items)
+          .catch(err => ([
+            {
+              "id": 1001,
+              "name": "御泥坊玫瑰滋养矿物洁面乳2只装",
+              "img_url": "http://127.0.0.1:8888/images/src/static/imgs/gatherGoods/banner.png",
+              "link_url": "http://linkurl",
+              "price": "65.00",
+              "rebate_value": "100",
+              "source": "tmall",
+              "sale_count": ""
+            },
+            {
+              "id": 1002,
+              "name": "好奇纸尿裤金装",
+              "img_url": "http://imgurl",
+              "link_url": "http://linkurl",
+              "price": "119",
+              "rebate_value": "500",
+              "source": "taobao",
+              "sale_count": ""
+            }
+          ]))
+      }, action.productList)
+
+      yield put({
+        type: 'listRes',
+        loading: false,
+        productList
+      })
+    },
+
+    *getHotSearchList(action , { put, call, select }) {
+      yield put({
+        type: 'listReq',
+        loading: true
+      })
+
+      console.log("action", action);
+
+      let productList = yield call(() => {
+        return fetchPosts("stuff/hot/goodsList.do", {
+          cId: action.cid,
+          userId: 10001,
+          page: action.page,
+          size: 4
+        }, "GET")
+          .then(data => data.data.items)
+          .catch(err => ([]))
+      })
+
+      yield put({
+        type: 'listRes',
+        loading: false,
+        productList
+      })
+    },
+    *getLoadedMoreList(action , { put, call, select }) {
+      yield put({
+        type: 'listReq',
+        loading: true
+      })
+
+      console.log("action", action);
+
+      let productList = yield call(() => {
+        return fetchPosts("stuff/hot/goodsList.do", {
+          cId: action.cid,
+          userId: 10001,
+          page: action.page,
+          size: 4
+        }, "GET")
+          .then(data => data.data.items)
+          .catch(err => ([]))
+      })
+      yield put({
+        type: 'listRes',
+        loading: false,
+        productList
+      })
+    }
   },
   reducers: {
+    listReq (state, payload) {
+      return {...state, ...payload}
+    },
+    listRes (state, payload) {
+      return {...state, ...payload}
+    },
+
+
     setLoading (state, payload) {
       return {...state, ...payload}
     },
 
-    setGoodsTabs (state, payload) {
+    getInitData (state, payload) {
       return {...state, ...payload}
     },
 

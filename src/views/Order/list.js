@@ -9,6 +9,26 @@ import "./list.less";
 
 import {fetchPosts} from "components/common/fetch";
 import NoOrder from "./noOrder";
+import Info from "./info";
+
+// import Modal from "components/modal/index";
+// import PopUp from "components/popup/index";
+
+
+const RebateStatus ={
+    "-1":"记录订单",
+    0:"待返宝券",
+    1:"已返宝券",
+    2:"返宝券被收回",
+    3:"返宝券失败"
+}
+const RebateStatusShort={
+    "-1":"记录",
+    0:"待返",
+    1:"已返",
+    2:"",
+    3:""
+}
 
 class OrderList extends React.Component {
     constructor(props) {
@@ -20,22 +40,19 @@ class OrderList extends React.Component {
             oneHeight:false,
             isEnd:false,
         }
-        
+
         this.getData = this.getData.bind(this);
         this.touchMove = this.touchMove.bind(this);
+
+        this.handClick = this.handClick.bind(this);
+        this.doDel = this.doDel.bind(this);
+        this.toInfo = this.toInfo.bind(this);
+
     }
-    componentWillMount() { 
+    componentWillMount() {
 
         this.getData(1);
     }
-    componentWillReceiveProps (nextProps) {
-        
-    }
-    handleTrigger(event) {
-       
-
-    }
-
     getData(num){
         let {pageSize,url,searchParam,upData} = this.props;
         let {page,items,isLoading,isEnd} = this.state;
@@ -51,12 +68,6 @@ class OrderList extends React.Component {
         return fetchPosts(url,param,"GET").then((data)=>{
                 console.log(data);
                 if(data.responseCode===1000){
-                    // if(data.data.data.length===0){
-                    //     _this.setState({
-                    //         isEnd :true
-                    //     })
-                    //     return false;
-                    // }
                     _this.setState({
                         isLoading:false,
                         page,
@@ -68,9 +79,9 @@ class OrderList extends React.Component {
                      _this.setState({
                         isLoading:false,});
                 }
-                
-                
-                
+
+
+
          }).catch(function(){
                     _this.setState({
                         isLoading:false,});
@@ -79,41 +90,123 @@ class OrderList extends React.Component {
 
     touchMove(that,args){
         console.log(that,args);
-        let {items,oneHeight} = this.state;
-        oneHeight = oneHeight===false?that.element.children[0].children[0].clientHeight:oneHeight;
-
+        let {items} = this.state;
         if(that.min-args[0]>-300){
-            this.getData(1).then(()=>{
-                console.error("该加载了",-oneHeight*items.length);
-                that.min = -oneHeight*items.length;
-            });
-            //console.error("该加载了");
-            //that.min = -300000;
+            this.getData(1);
         }
     }
-    
+    doDel(id){
+        let _this = this;
+        let newId= Number(id);
+        Modal.confirm("删除","确认删除吗？").then((data)=>{
+            console.log(data);
+            if(data!=="Ok"){
+                return;
+            }
+            fetchPosts("/stuff/order/delOrder.do",{"id":id},"GET").then((data)=>{
+                    if(data.responseCode===1000){
+                    let {items} = _this.state;
+                    let i = 0,j = items.length,$lis=[];
+                    //debugger
+                    while(i<j){
+                        console.error(items[i])
+                        if(items[i].id===newId){
+                            items.splice(i,1);
+                            break;
+                        }
+                        i+=1;
+                    }
+                    Modal.alert("删除","成功");
+                    _this.setState({
+                        items
+                    })
+                    }else{
+                            Modal.alert("删除","失败");
+
+                    }
+
+
+
+            }).catch(function(error){
+                    Modal.alert("删除","失败");
+            });
+        });
+
+    }
+    infoClose(){
+        PopUp.hide();
+    }
+    toInfo(id){
+
+
+            return fetchPosts("/stuff/order/userOrder.do",{id},"GET").then((data)=>{
+                    if(data.responseCode===1000){
+                    PopUp.show(
+                            (<Info data={data.data} onClick={this.infoClose} />),{maskClosable:true}
+                    );
+                    }else{
+                            Modal.alert("查看详情","失败");
+                    }
+
+            }).catch(function(){
+                    Modal.alert("查看详情","失败");
+            });
+
+       // debugger;
+
+       //PopUp.show(
+    }
+    handClick(event){
+
+        let className = event.target.className;
+        let id = event.target.dataset.id;
+        console.log("className:",className,"id",id);
+        //debugger
+        if(className==='js_del'){
+            this.doDel(id);
+        }else if(className==='js_info'){
+
+            this.toInfo(id);
+        }
+    }
+
     render() {
-        
+
         let {items,isLoading,page,isEnd} = this.state;
-        let i =0,j=items.length,$lis = [];
+        let i =0,j=items.length,$lis = [],totalPrice=0,totalSb=0;
         while(i<j){
             console.log("----");
             let item = items[i];
             i+=1;
-            $lis.push(
-                <li key={i} className="order-item">
-                    <a href={item.clickUrl} target="_blank">
-                        <p className="order-item-top">已返宝券</p>
-                        <div className="order-item-body">
-                            <div className="item-image">
-                                <img src={item.imgUrl}/>
-                            </div>
-                            <p>{item.name}</p>
-                            <span>￥{item.price}</span>
+
+            let l=0,m=item.item.length,$subItem=[];
+            while(l<m){
+                let subItem = item.item[l];
+                l+=1;
+
+                totalPrice = (totalPrice*100+subItem.price*subItem.stuffNum*100)/100;
+                totalSb = (totalSb*100+subItem.price*subItem.rebateValue*100)/100
+
+                //totalPrice += subItem.price*subItem.stuffNum;
+                $subItem.push(
+                    <div key={l} className="order-item-body">
+                        <div className="item-image">
+                            <img src={subItem.imgUrl}/>
                         </div>
-                        <p className="order-item-info">共一件商品，合计:<em><i>￥</i>{item.stuffNum*item.price}</em>待返<span>{item.rebateValue}宝券</span></p>
+                        <p>{subItem.name}</p>
+                        <span>￥{subItem.price}</span>
+                    </div>
+                )
+            }
+            let rebateStatus = item.rebateStatus;
+            $lis.push(
+                <li key={item.id} className="order-item"  >
+                    <a href={item.clickUrl} target="_blank">
+                        <p className="order-item-top">{RebateStatus[rebateStatus]}</p>
+                        {$subItem}
+                        <p className="order-item-info">共一件商品，合计:<em><i>￥</i>{totalPrice}</em>{RebateStatusShort[rebateStatus]}<span>{totalSb}宝券</span></p>
                     </a>
-                    <div className="order-item-todo"><button>删除</button><button>返券详情</button></div>
+                    <div className="order-item-todo" ><button data-id={item.id} className="js_del">删除</button><button data-id={item.id} className="js_info">返券详情</button></div>
                 </li>
             )
         }
@@ -135,7 +228,7 @@ class OrderList extends React.Component {
         }
         //return ({})
         return (
-                <Swipe {...props}>
+                <Swipe {...props} onClick={this.handClick}>
                     {$lis}
                     {isLoading===true&&(<div className="no-up">Loading</div>)}
                     {page>1&&isEnd===true&&(<div className="no-up">已经没有更新了</div>)}
@@ -146,10 +239,8 @@ class OrderList extends React.Component {
 
 OrderList.defaultProps = {
     pageSize:20,
-    url:"api/stuff/order/list.do",
+    url:"/stuff/order/list.do",
     searchParam:{}
 }
 
 module.exports = OrderList;
-
-

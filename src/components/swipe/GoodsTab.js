@@ -63,7 +63,7 @@ class GoodsTab extends Component {
         <div className="hots-tabs-content">
           <div className="hots-tabs-warpper" ref="swipe">
             {
-              this.props.tabs.map((item, i) => <Tappable onTap={this.tabsClickHandler.bind(this,i)} key={i} className={this.props.active == i ? 'tabs-item tabs-item-active' : 'tabs-item'}><span>{item.name}</span></Tappable>)
+              this.props.tabs.map((item, i) => <Tappable onTap={this.tabsClickHandler.bind(this,i)} key={i} className={this.props.active == i ? 'tabs-item tabs-item-active' : 'tabs-item'}><span>{item.dirName}</span></Tappable>)
             }
           </div>
         </div>
