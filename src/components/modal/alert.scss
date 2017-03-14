@@ -1,0 +1,168 @@
+
+$browser-default-font-size:16px!default;
+
+@function strip-units($number){ 
+    @return $number / ($number * 0 + 1); 
+} 
+@mixin remCalc($property, $values...) {
+		$max: length($values); //返回$values列表的长度值 
+		$pxValues: ''; 
+		$remValues: ''; 
+			@for $i from 1 through $max { 
+				$value: strip-units(nth($values, $i));//返回$values列表中的第$i个值，并将单位值去掉 
+				$browser-default-font-size: strip-units($browser-default-font-size); 
+				//$pxValues: #{$pxValues + $value * $browser-default-font-size}px;
+                $pxValues: #{$pxValues + $value / $browser-default-font-size }rem;
+                //$px / $browser-default-font-size * 1rem;
+                //$pxValues:#{$value};
+				@if $i < $max { 
+					$pxValues: #{$pxValues + " "}; 
+				} 
+			} 
+			@for $i from 1 through $max { 
+				$value: strip-units(nth($values, $i)); 
+				$remValues: #{$remValues + $value}px;
+
+				@if $i < $max { 
+					$remValues: #{$remValues + " "}; 
+				} 
+			} 
+		#{$property}: $pxValues; 
+		//#{$property}: $remValues; 
+}
+
+
+
+.virtual-modal-wrap{
+    position: fixed;
+    overflow: auto;
+
+
+    //top: 0;
+    //top:strip-units(123px);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    z-index: 999;
+
+
+    outline: 0;
+
+    display: flex;
+
+    
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+.virtual-modal{
+    width: 74%;
+    background-color: white;
+    border-radius: 4px;
+    position: relative;
+    border: 0;
+    background-clip: padding-box;
+    text-align: center;
+    height: auto;
+    overflow: hidden;
+
+    @include remCalc(padding-top,18);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.virtual-modal-close{
+    border: 0;
+    background: transparent;
+    position: absolute;
+
+    // font-size: .48rem;
+    // left: .3rem;
+    // top: .18rem;
+
+    @include remCalc(font-size,18);
+    @include remCalc(left,12);
+    @include remCalc(top,8);
+
+
+    line-height: 1;
+    color: #bcbcbc;
+    text-decoration: none;
+    outline: none;
+    z-index: 999;
+}
+
+
+.virtual-modal-header{
+    //padding: .12rem .3rem .3rem;
+
+    @include remCalc(padding,3px,14px,14px);
+    //display: flex;
+    p{
+            margin: 0;
+            @include remCalc(font-size,18px);
+            //font-size: .34rem;
+            line-height: 1;
+            color: #000;
+            text-align: center;
+    }
+}
+.virtual-modal-body{
+    //padding: 0 .3rem .3rem;
+    @include remCalc(padding,0,16px,16px);
+    p{
+        margin: 0;
+        @include remCalc(font-size,14);
+        //font-size: .34rem;
+        line-height: 1;
+        color: #333;
+        text-align: center;
+    }
+}
+
+.virtual-modal-button-group-v{
+
+}
+
+.virtual-modal-button-group-h{
+    display: flex;
+    //flex-direction: row;
+    margin: 0;
+    padding: 0;
+    .virtual-modal-button{
+        flex: 1;
+        &:first-child{
+                color: #000;
+                border-right: 1px solid #ddd;
+        }
+    }
+}
+
+.virtual-modal-button{
+    border: 0;
+    border-top: 1px solid #ddd;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #108ee9;
+
+    // font-size: .32rem;
+    // height: 1rem;
+    // line-height: 1rem;
+    @include remCalc(font-size, 16px);
+    @include remCalc(height, 50px);
+    @include remCalc(line-height, 50px);
+    
+
+
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
