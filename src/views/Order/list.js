@@ -20,19 +20,19 @@ class OrderList extends React.Component {
             oneHeight:false,
             isEnd:false,
         }
-        
+
         this.getData = this.getData.bind(this);
         this.touchMove = this.touchMove.bind(this);
     }
-    componentWillMount() { 
+    componentWillMount() {
 
         this.getData(1);
     }
     componentWillReceiveProps (nextProps) {
-        
+
     }
     handleTrigger(event) {
-       
+
 
     }
 
@@ -68,9 +68,9 @@ class OrderList extends React.Component {
                      _this.setState({
                         isLoading:false,});
                 }
-                
-                
-                
+
+
+
          }).catch(function(){
                     _this.setState({
                         isLoading:false,});
@@ -91,9 +91,9 @@ class OrderList extends React.Component {
             //that.min = -300000;
         }
     }
-    
+
     render() {
-        
+
         let {items,isLoading,page,isEnd} = this.state;
         let i =0,j=items.length,$lis = [];
         while(i<j){
@@ -151,5 +151,3 @@ OrderList.defaultProps = {
 }
 
 module.exports = OrderList;
-
-

@@ -87,7 +87,7 @@ class Swipe extends Component {
             inertia: false, //不必需,是否有惯性。默认是true
             intelligentCorrection: true,
             stopPro:stopPro,
-            touchStart: function (value,target) {   
+            touchStart: function (value,target) {
                 console.log("heheda ",value)
             },
             touchMove:_.throttle(function(){
