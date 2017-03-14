@@ -1,0 +1,41 @@
+// .virtual-popup-mark{
+//     display: flex;
+
+//     justify-content: center;
+//     align-items: center;
+
+//     overflow: hidden;
+
+//     position: fixed;
+//     left:0;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+    
+    
+
+//     height: 100%;
+//     z-index: 999;
+//     background-color: rgba(0,0,0,.8);
+// }
+
+
+.virtual-popup{
+    position: fixed;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 999;
+}
+
+.virtual-popup-slide-up{
+    bottom: 0;
+}
+.virtual-popup-slide-down{
+    top: 0;
+}
+
+
+.am-popup-content{
+
+}

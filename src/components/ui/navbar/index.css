@@ -7,8 +7,8 @@
   -webkit-align-items: center;
   align-items: center;
   font-size: 18px;
-  background: #000;
-  color: #fff;
+  background: #fff;
+  color: #000;
   line-height: 18px;
 }
 .navbar-flex-item {
@@ -21,12 +21,17 @@
   display: flex;
 }
 .qbii-navbar-container {
-  background: #000;
+  background: #fff;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 900;
+  width: 100%;
 }
 .qbii-navbar-top,
 .qbii-navbar-bottom {
-  background: #000;
-  color: #fff;
+  background: #fff;
+  color: #000;
   height: 13px;
 }
 .qbii-navbar {
@@ -38,8 +43,8 @@
   -webkit-align-items: center;
   align-items: center;
   font-size: 18px;
-  background: #000;
-  color: #fff;
+  background: #fff;
+  color: #000;
   line-height: 18px;
 }
 .qbii-navbar .qbii-navbar-left {
@@ -65,7 +70,7 @@
   margin-right: 5px;
   width: 10px;
   height: 18px;
-  background: url('static/imgs/nav/array.png') no-repeat;
+  background: url('static/imgs/nav/array-black.png') no-repeat;
   background-size: 10px auto;
   display: inline-block;
 }

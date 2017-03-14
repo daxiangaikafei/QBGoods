@@ -7,12 +7,10 @@ import classNames from 'classnames'
 import { getCookie, setCookie, priceFormat } from 'libs/util'
 import { fetchPosts } from "components/common/fetch"
 import SwiperPagination from './SwiperPagination';
-import GoodsIscroll from "components/swipe/GoodsIscroll";
-import GoodsTab from "components/swipe/GoodsTab";
 import ReactSwipe from 'react-swipe';
 import { ProductList } from 'ui';
 
-class SelfSupport extends Component {
+class ShopActivity extends Component {
 
   constructor(props) {
     super(props);
@@ -43,11 +41,19 @@ class SelfSupport extends Component {
                       })
                     }
                   </ReactSwipe>;
-      goodsTab = <GoodsTab tabCallback={this.tabCallback} active={this.props.tabActive} tabs={this.props.tabs}></GoodsTab>;
     }
     return (
-      <div className="hots-container">
-        <div className="hots-swiper">
+      <div className="shop-container">
+        <div className="shop-header">
+          <img className="shop-header-bg" src="" />
+          <div className="shop-header-warrper">
+            <div className="shop-icon"></div>
+            <div className="shop-info">
+
+            </div>
+          </div>
+        </div>
+        <div className="shop-swiper">
           {reactSwipe}
           <SwiperPagination active={this.props.swiperActive} swipers={this.props.swipers}></SwiperPagination>
         </div>
@@ -58,26 +64,23 @@ class SelfSupport extends Component {
   }
 };
 function mapStateToProps(state) {
-    return state.selfsupport;
+    return state.ShopActivity;
 }
 
 function mapDispatchToProps(dispatch) {
     return {
       getCloudList: function(){
-        dispatch({type:"selfsupport/getCloudList"});
+        dispatch({type:"ShopActivity/getCloudList"});
       },
       getHotSearchList: function( cid, page ){
-        dispatch({type:"selfsupport/getHotSearchList" , cid: cid, page: page });
+        dispatch({type:"ShopActivity/getHotSearchList" , cid: cid, page: page });
       },
       getInitData: function(act){
-        dispatch({type:"selfsupport/getGoodsInitData"});
+        dispatch({type:"ShopActivity/getShopInitData"});
       },
       setSwiperActive: function(act){
-        dispatch({type:"selfsupport/swiperAct",active:act});
-      },
-      setTabActive: function(act){
-        dispatch({type:"selfsupport/tabAct",active:act});
+        dispatch({type:"ShopActivity/swiperAct",active:act});
       }
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(SelfSupport,styles,{allowMultiple:true}));
+export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(ShopActivity,styles,{allowMultiple:true}));
