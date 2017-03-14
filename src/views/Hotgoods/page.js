@@ -11,8 +11,6 @@ import GoodsIscroll from "components/swipe/GoodsIscroll";
 import GoodsTab from "components/swipe/GoodsTab";
 import ReactSwipe from 'react-swipe';
 import { ProductList } from 'ui';
-import iScroll from 'iscroll/build/iscroll-probe';
-import ReactIScroll from 'react-iscroll';
 import Swipe from "components/swipe/swipe";
 
 class Hotgoods extends Component {
@@ -20,7 +18,7 @@ class Hotgoods extends Component {
   constructor(props) {
     super(props)
     props.getGoodsInitData();
-    props.getCloudList();
+    // props.getCloudList();
     this.state = {
         items:[],
         page:0,
@@ -28,10 +26,11 @@ class Hotgoods extends Component {
         oneHeight:false,
         isEnd:false,
     }
+    this.getData = this.getData.bind(this);
     this.touchMove = this.touchMove.bind(this);
   }
   componentDidMount() {
-
+    this.getData(1);
   }
 
   componentDidUpdate() {
@@ -42,15 +41,15 @@ class Hotgoods extends Component {
   }
   tabCallback  = (active) => {
     this.props.setTabActive(active);
-
-    this.props.getHotSearchList(this.props.goodsTabs[active].id, 4);
+    // this.props.getHotSearchList(this.props.goodsTabs[active].id, 1);
   }
 
 
   touchMove(that,args){
-      // console.log(that,args);
+
+      console.log("this......", this , that);
       let {items,oneHeight} = this.state;
-      oneHeight = oneHeight===false?that.element.children[0].children[0].clientHeight:oneHeight;
+      // oneHeight = oneHeight===false? 190 : oneHeight;
 
       console.log("...............that.min:", that.min, ".......", args);
       if(that.min-args[0]>-300){
@@ -60,7 +59,40 @@ class Hotgoods extends Component {
           // });
       }
   }
+  getData(num , searchParam){
+      let {page,items,isLoading,isEnd} = this.state;
+      if((page!==0&&isLoading===true)||(isEnd)){
+          return;
+      }
+      this.setState({
+          isLoading:true
+      })
+      let _this = this;
+      let param = Object.assign({},searchParam,{cId: 1, page: num,size: 8});
+      page += num;
+      return fetchPosts("api/goodsList.json",param,"GET").then((data)=>{
+              console.log(data);
+              if(data.returnCode===0){
+                  _this.setState({
+                      isLoading:false,
+                      page,
+                      isEnd:data.data.items.length < 8 ?true:false,
+                      items:items.concat(data.data.items)
+                  });
 
+                  console.log("_this.......",_this.state.items);
+              }else{
+                   _this.setState({
+                      isLoading:false,});
+              }
+
+
+
+       }).catch(function(){
+                  _this.setState({
+                      isLoading:false,});
+       });
+  }
   render() {
     let reactSwipe = null, goodsIscroll = null, goodsTab = null;
     if(this.props.loadingInit){
@@ -77,15 +109,15 @@ class Hotgoods extends Component {
     let props = {
         property:"translateY",
         className:"scroll-warpper",
-        // tag:"ul",
+        tag:"ul",
         min:"auto",
-        // stopPro:false,
+        stopPro:false,
         vertical:true,
         touchMove:this.touchMove
         //step:200
     }
     return (
-      <Swipe  {...props}>
+      <Swipe  {...props} >
         <div className=" hots-container">
           <div className="hots-swiper">
             {reactSwipe}
@@ -94,7 +126,7 @@ class Hotgoods extends Component {
           <div className="hots-public-title"><div></div></div>
           {  goodsIscroll }
           { goodsTab }
-          <ProductList listConfig={{temp: 'sales'}} listData={this.props.productList}/>
+          <ProductList listConfig={{temp: 'sales'}} listData={this.state.items}/>
         </div>
       </Swipe>
     )
@@ -112,6 +144,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+      getLoadedMoreList: function(){
+        dispatch({type:"hotgoods/getLoadedMoreList", cid: cid, page: page});
+      },
       getCloudList: function(){
         dispatch({type:"hotgoods/getCloudList"});
       },

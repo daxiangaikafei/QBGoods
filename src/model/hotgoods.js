@@ -7,7 +7,7 @@ export default {
     loadingInit: false,
     swiperActive: 0,
     tabActive: 0,
-    pageActive: 0,
+    page: 1,
     goodsStuffs: [
       {
         "id": 1001,
@@ -75,10 +75,7 @@ export default {
       });
     },
 
-    *getCloudList(action, {
-      put,
-      call
-    }) {
+    *getCloudList(action, {  put,call }) {
       yield put({
         type: 'listReq',
         loading: true
@@ -143,6 +140,30 @@ export default {
           .catch(err => ([]))
       })
 
+      yield put({
+        type: 'listRes',
+        loading: false,
+        productList
+      })
+    },
+    *getLoadedMoreList(action , { put, call, select }) {
+      yield put({
+        type: 'listReq',
+        loading: true
+      })
+
+      console.log("action", action);
+
+      let productList = yield call(() => {
+        return fetchPosts("stuff/hot/goodsList.do", {
+          cId: action.cid,
+          userId: 10001,
+          page: action.page,
+          size: 4
+        }, "GET")
+          .then(data => data.data.items)
+          .catch(err => ([]))
+      })
       yield put({
         type: 'listRes',
         loading: false,
