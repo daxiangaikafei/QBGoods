@@ -1,6 +1,6 @@
-  import {fetchPosts} from "components/common/fetch"
+import {fetchPosts} from "components/common/fetch"
 export default {
-    namespace: 'selfsupport',
+    namespace: 'ShopActivity',
     state: {
         loading: true,
         loadingInit: false,
@@ -11,22 +11,11 @@ export default {
         productList: []
     },
     effects: {
-      *getGoodsInitData(action, {put, call}) {
+      *getShopInitData(action, {put, call}) {
         yield put({type: 'setLoading', loading: true})
 
-        let tabs = yield call(() => {
-          return fetchPosts("stuff/qbzy/goodsClass.do",{  },"GET")
-            .then(data => data.data)
-            .catch(err => ([
-              {
-                  "id":27,
-                  "name":"全部1"
-              }
-            ]))
-        })
-
         let swipers = yield call(() => {
-          return fetchPosts("stuff/ad/banner.do",{ locationId: 23 },"GET")
+          return fetchPosts("stuff/ad/banner.do",{ locationId: 1 },"GET")
             .then(data => data.data)
             .catch(err => ([
               {
@@ -41,7 +30,6 @@ export default {
           type: 'getInitData',
           loading: false,
           loadingInit: true,
-          tabs,
           swipers
         });
       },
@@ -57,9 +45,7 @@ export default {
         // const cat = yield select(select => select.gatherGoods.tabActive)
 
         let productList = yield call(() => {
-          return fetchPosts("stuff/qbzy/goodsList.do", {
-              userId: 10001,
-              cid: 27,
+          return fetchPosts("/api/goodsList.json", {
               page : 1,
               size : 4
             }, "GET")
@@ -104,8 +90,7 @@ export default {
         console.log("action", action);
 
         let productList = yield call(() => {
-          return fetchPosts("stuff/qbzy/goodsList.do", {
-            userId: 10001,
+          return fetchPosts("/api/hotSearch.json", {
             cid: action.cid,
             page: action.page,
             size: 4
@@ -136,9 +121,6 @@ export default {
       },
       swiperAct(state, { active }) {
         return { ...state, swiperActive: active };
-      },
-      tabAct(state, { active }) {
-        return { ...state, tabActive: active };
       }
     }
 }

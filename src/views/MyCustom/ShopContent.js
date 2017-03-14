@@ -60,9 +60,9 @@ class ShopContent extends Component {
 
   }
   labelClickHandler(item , index){
-    if(!item.check){
-      this.props.editTip( item.name, item.count   );
-    }
+    // if(!item.check){
+    //   this.props.editTip( item.name, item.count   );
+    // }
     this.props.editLabelSelected(index , !item.check);
 
     console.log(this.props.shopLabels, this.props.shopLabelsDefault );
@@ -84,7 +84,7 @@ class ShopContent extends Component {
           }
         </div>
         <p className={this.props.shopTipShow ? 'shop-tip shop-tip-show' : 'shop-tip'}>
-          当前有意向购买<span>{this.props.shopTipLabel}</span>类的人有<span>{this.props.shopTipNum}</span>人
+          与你购物喜好相似的人有<span>{this.props.shopTipNum}</span>人
         </p>
       </div>
     )

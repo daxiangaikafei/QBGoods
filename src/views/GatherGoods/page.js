@@ -18,7 +18,7 @@ class GatherGoods extends Component {
       {
         key:'云好货',
         action: 'getCloudList',
-        temp: 'similar'                 //带找相似        
+        temp: 'similar'                 //带找相似
       },
       {
         key:'热搜好货',
