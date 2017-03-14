@@ -5,6 +5,8 @@ import Hotgoods from 'views/Hotgoods/page'
 import MyCustom from 'views/MyCustom/page'
 import GatherGoods from 'views/GatherGoods/page'
 
+import Order from "views/Order/page";
+
 export default function (ref) {
   return (
     <Router history={ref.history}>
@@ -13,6 +15,7 @@ export default function (ref) {
         <Route path='/Hotgoods' component={Hotgoods} name="热卖好货" />
         <Route path='/MyCustom' component={MyCustom} name="我的定制" />
         <Route path='/GatherGoods' component={GatherGoods} name="聚好货"/>
+        <Route path='/order' component={Order} name="我的好货"/>
       </Route>
     </Router>
   )

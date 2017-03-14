@@ -12,7 +12,7 @@ class GoodsIscroll extends Component {
     _this.AlloyTouch = false;
     require.ensure([], () => {
        _this.AlloyTouch = require("./alloyTouch.js");
-       _this.$ = require("./zepto.js");
+       //_this.$ = require("./zepto.js");
     })
   }
   componentDidMount(){
@@ -22,7 +22,7 @@ class GoodsIscroll extends Component {
       }else{
           require.ensure([], () => {
              _this.AlloyTouch = require("./alloyTouch.js");
-             _this.$ = require("./zepto");
+             //_this.$ = require("./zepto");
              _this.scrollInit();
           })
       }

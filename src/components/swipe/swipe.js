@@ -1,6 +1,7 @@
 
 import React, {Component, PropTypes} from 'react';
 import * as ReactDOM from 'react-dom';
+import {_} from "./help.js";
 
 class Swipe extends Component {
      constructor(props) {
@@ -20,7 +21,6 @@ class Swipe extends Component {
         _this.AlloyTouch = false;
         require.ensure([], () => {
            _this.AlloyTouch = require("./alloyTouch.js");
-           _this.$ = require("./zepto.js");
         })
     }
     componentWillReceiveProps(nextProps){
@@ -44,7 +44,6 @@ class Swipe extends Component {
         }else{
             require.ensure([], () => {
                _this.AlloyTouch = require("./alloyTouch.js");
-               _this.$ = require("./zepto");
                _this.scrollInit();
             })
         }
@@ -56,9 +55,9 @@ class Swipe extends Component {
     scrollInit(){
         let dom = ReactDOM.findDOMNode(this.refs.touch); //offsetTop
          let target = ReactDOM.findDOMNode(this.refs.swipe);
-        let {property,width,min,max,step,findScroller,vertical,findDis} = this.props;
+        let {stopPro,property,width,min,max,step,findScroller,vertical,findDis,touchMove} = this.props;
         let prevTarget = false;
-        let $ = this.$;
+        //let $ = this.$;
 
         // if(findDis!==false){
         //     let dis = $(findDis,$(dom)).eq(0).width();
@@ -67,6 +66,12 @@ class Swipe extends Component {
         // }
 
         //console.log("dom",dom);
+        if(min==="auto"){
+            min = -1000;
+            min = -((vertical===false?target.offsetWidth:target.offsetHeight)-(vertical===false?dom.offsetWidth:dom.offsetHeight));
+            console.log(min);
+            min = min>0?0:min;
+        }
         this.alloyTouch = new this.AlloyTouch({
             touch: dom,//反馈触摸的dom
             target:target,
@@ -81,10 +86,14 @@ class Swipe extends Component {
             spring: true, //不必需,是否有回弹效果。默认是true
             inertia: false, //不必需,是否有惯性。默认是true
             intelligentCorrection: true,
+            stopPro:stopPro,
             touchStart: function (value,target) {
                 
-
-            }
+                console.log("heheda ",value)
+            },
+            touchMove:_.throttle(function(){
+                touchMove(this,arguments);
+            },300),
         });
 
     }
@@ -109,7 +118,11 @@ Swipe.defaultProps={
     findScroller:false,
     target:"",
     className:"",
-    findDis:false
+    findDis:false,
+    stopPro:true,
+    touchMove:function(x){
+        //console.error("sssssss",this,x)
+    }
 
 }
 

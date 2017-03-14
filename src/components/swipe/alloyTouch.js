@@ -5,8 +5,7 @@
  */
 /*; (function () {*/
 
-//import * as _ from './../util/underscore';
-//import {$}  from 'zepto';
+
 import Transform from './transform';
 
 
@@ -93,7 +92,8 @@ var AlloyTouch = function (option) {
     this.touchMove = option.touchMove || function () { };
     this.reboundEnd = option.reboundEnd || function () { };
     this.animationEnd = option.animationEnd || function () { };
-    this.preventDefaultException = { tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT|A)$/ };
+    this.preventDefaultException = { tagName: option.tagName||/^(INPUT|TEXTAREA|BUTTON|SELECT|A)$/ };
+    this.stopPro = option.stopPro===true?true:false;//阻止默认事件冒泡
     this.hasMin = !(this.min === undefined);
     this.hasMax = !(this.max === undefined);
     this.isTouchStart = false;
@@ -318,9 +318,11 @@ AlloyTouch.prototype = {
                     self.correction(self.scroller, self.property);
                 }
             }
-            if (!preventDefaultTest(evt.target, this.preventDefaultException)) {
+            //debugger
+            if (this.stopPro&&!preventDefaultTest(evt.target, this.preventDefaultException)) {
                 evt.preventDefault();
             }
+            //debugger;
             this.isTouchStart = false;
         }
     },
