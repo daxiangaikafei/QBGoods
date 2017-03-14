@@ -13,7 +13,7 @@ class GoodsTab extends Component {
     _this.AlloyTouch = false;
     require.ensure([], () => {
        _this.AlloyTouch = require("./alloyTouch.js");
-       _this.$ = require("./zepto.js");
+      // _this.$ = require("./zepto.js");
     })
   }
   componentDidMount(){
@@ -23,7 +23,7 @@ class GoodsTab extends Component {
       }else{
           require.ensure([], () => {
              _this.AlloyTouch = require("./alloyTouch.js");
-             _this.$ = require("./zepto");
+             //_this.$ = require("./zepto");
              _this.scrollInit();
           })
       }
@@ -36,7 +36,7 @@ class GoodsTab extends Component {
       let target = ReactDOM.findDOMNode(this.refs.swipe);
       let {property,width,min,max,step,findScroller,vertical,findDis} = this.props;
       let prevTarget = false;
-      let $ = this.$;
+      //let $ = this.$;
       let goodsNum = this.props.tabs.length;
       let touchMin = goodsNum * 60+10 <= innerWidth ? 0 : (goodsNum * 60 +10- innerWidth) * -1;
       this.alloyTouch = new this.AlloyTouch({
