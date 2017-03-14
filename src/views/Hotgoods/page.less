@@ -1,4 +1,10 @@
 
+@assetTitleColor: #90909b;
+@bdColor: #c0c0c0;
+@bodyBGColor: #f1f1f6;
+@priceTxtColor: #fd472b;
+@similarTxtColor: #66666f;
+
 html, body {
   margin: 0;
   padding: 0;
@@ -69,7 +75,18 @@ html, body {
 }
 
 main{
+  >div{
+    overflow-y: hidden;
+    -webkit-transform:translate3d(0,0,0);
+  }
+  .scroll-warpper{
+    -webkit-transform:translate3d(0,0,0);
+  }
+  .hots-container{
+    overflow: hidden;
+  }
   .hots-swiper{
+    background: #fff;
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -116,14 +133,21 @@ main{
   }
 
   .hots-public-title{
-    background: url('static/imgs/hotgoods/public-goods.png') no-repeat;
-    background-size: 100% 100%;
-    width: 160px;
-    height: 21px;
-    margin: 10px auto;
+    background: #fff;
+    height: 40px;
+    overflow: hidden;
+    div{
+      background: url('static/imgs/hotgoods/public-goods.png') no-repeat;
+      background-size: 100% 100%;
+      width: 160px;
+      height: 20px;
+      margin: 10px auto;
+    }
   }
   .hots-public-container{
     display: block;
+    background: #fff;
+    overflow: hidden;
     .hots-public-content{
       margin: 0 auto;
       overflow: hidden;
@@ -135,29 +159,83 @@ main{
       white-space: nowrap;
       padding-right: 10px;
     }
-    .hots-public-item{
-      width: 100px;
-      height: 153px;
-      display: inline-block;
-      color: #35353f;
-      margin-left: 10px;
-      .hots-public-item-img{
+    // .hots-public-item{
+    //   width: 100px;
+    //   height: 153px;
+    //   display: inline-block;
+    //   color: #35353f;
+    //   margin-left: 10px;
+    //   .hots-public-item-img{
+    //     width: 100px;
+    //     height: 100px;
+    //   }
+      // .hots-public-item-name{
+      //   font-size: 14px;
+      //   text-overflow:ellipsis;
+      //   white-space:nowrap;
+      //   overflow:hidden;
+      // }
+    // }
+    // .hots-public-item:hover{
+    //   color: #35353f;
+    // }
+    .hots-public-item {
+        color: #35353f;
+        // background-color: #fff;
         width: 100px;
-        height: 100px;
-      }
-      .hots-public-item-name{
-        font-size: 14px;
-        text-overflow:ellipsis;
-        white-space:nowrap;
-        overflow:hidden;
-      }
-    }
-    .hots-public-item:hover{
-      color: #35353f;
+        height: 190px;
+        display: inline-block;
+        color: #35353f;
+        margin-left: 10px;
+        .hots-public-item-img{
+          width: 100px;
+          height: 100px;
+        }
+        h3 {
+            font-size: 14px;
+            height: 30px;
+            line-height: 30px;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+            overflow:hidden;
+        }
+        .price {
+            color: @priceTxtColor;
+            font-size: 16px;
+            // padding-left: 10px;
+            // margin-top: 3px;
+        }
+        .icon {
+            display: inline-block;
+        }
+        .bottom {
+            padding: 5px 10px 15px 0;
+            font-size: 12px;
+            .flex;
+            .flex-justify;
+            .return {
+                color: @priceTxtColor;
+                border: 1px solid @priceTxtColor;
+                border-radius: 5px;
+                padding: 2px 5px;
+            }
+            .similar {
+                color: @similarTxtColor;
+                border: 1px solid @assetTitleColor;
+                border-radius: 5px;
+                padding: 2px 5px;
+            }
+            .sales {
+                color: @assetTitleColor;
+                font-size: 12px;
+                padding: 2px 5px;
+            }
+        }
     }
   }
   .hots-tabs-container{
     display: block;
+    background-color: #fff;
     .hots-tabs-content{
       margin: 10px auto;
       overflow: hidden;
@@ -167,12 +245,12 @@ main{
       position: relative;
       font-size: 0;
       white-space: nowrap;
-      height: 30px;
+      height: 40px;
     }
     .tabs-item{
-      width: 60px;
-      height: 30px;
-      line-height: 30px;
+      min-width: 60px;
+      height: 40px;
+      line-height: 40px;
       display: inline-block;
       text-align: center;
       font-size: 0;
@@ -185,14 +263,16 @@ main{
         left:0;
       }
       span{
-        width: 40px;
-        height: 28px;
-        line-height: 28px;
+        min-width: 40px;
+        height: 38px;
+        line-height: 38px;
         display: inline-block;
         margin-left: 10px;
         color: #35353f;
         text-align: center;
         font-size: 14px;
+
+        padding: 0 2px;
 
       }
     }

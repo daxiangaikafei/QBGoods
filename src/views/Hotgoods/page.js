@@ -10,12 +10,14 @@ import SwiperPagination from './SwiperPagination';
 import GoodsIscroll from "components/swipe/GoodsIscroll";
 import GoodsTab from "components/swipe/GoodsTab";
 import ReactSwipe from 'react-swipe';
+import { ProductList } from 'ui';
 
 class Hotgoods extends Component {
 
   constructor(props) {
     super(props)
     props.getGoodsInitData();
+    props.getCloudList();
   }
   componentDidMount() {
 
@@ -28,8 +30,9 @@ class Hotgoods extends Component {
     this.props.setSwiperActive(active);
   }
   tabCallback  = (active) => {
-    console.log("active:",active);
     this.props.setTabActive(active);
+
+    this.props.getHotSearchList(this.props.goodsTabs[active].id, 4);
   }
   render() {
     let reactSwipe = null, goodsIscroll = null, goodsTab = null;
@@ -51,9 +54,10 @@ class Hotgoods extends Component {
           {reactSwipe}
           <SwiperPagination active={this.props.swiperActive} swipers={this.props.goodsSwipers}></SwiperPagination>
         </div>
-        <div className="hots-public-title"></div>
+        <div className="hots-public-title"><div></div></div>
         {  goodsIscroll }
         { goodsTab }
+        <ProductList listConfig={{temp: 'sales'}} listData={this.props.productList}/>
       </div>
     )
   }
@@ -64,6 +68,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+      getCloudList: function(){
+        dispatch({type:"hotgoods/getCloudList"});
+      },
+      getHotSearchList: function( cid, page ){
+        dispatch({type:"hotgoods/getHotSearchList" , cid: cid, page: page });
+      },
       getGoodsInitData: function(){
         dispatch({type:"hotgoods/getGoodsInitData"});
       },

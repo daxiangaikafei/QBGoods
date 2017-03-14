@@ -115,40 +115,9 @@ main{
     }
   }
 
-  .hots-public-title{
-    background: url('static/imgs/hotgoods/public-goods.png') no-repeat;
-    background-size: 100% 100%;
-    width: 160px;
-    height: 21px;
-    margin: 10px auto;
-  }
-  .hots-public-container{
-    display: block;
-    .hots-public-content{
-      margin: 0 auto;
-      overflow: hidden;
-      position: relative;
-    }
-    .hots-public-warpper{
-      position: relative;
-      font-size: 0;
-      white-space: nowrap;
-      padding-right: 10px;
-    }
-    .public-item{
-      width: 100px;
-      height: 153px;
-      display: inline;
-      background-color: #000;
-      margin-left: 10px;
-      img{
-        width: 100px;
-        height: 153px;
-      }
-    }
-  }
   .hots-tabs-container{
     display: block;
+    background-color: #fff;
     .hots-tabs-content{
       margin: 10px auto;
       overflow: hidden;
@@ -158,12 +127,12 @@ main{
       position: relative;
       font-size: 0;
       white-space: nowrap;
-      height: 30px;
+      height: 40px;
     }
     .tabs-item{
-      width: 60px;
-      height: 30px;
-      line-height: 30px;
+      min-width: 60px;
+      height: 40px;
+      line-height: 40px;
       display: inline-block;
       text-align: center;
       font-size: 0;
@@ -176,14 +145,16 @@ main{
         left:0;
       }
       span{
-        width: 40px;
-        height: 28px;
-        line-height: 28px;
+        min-width: 40px;
+        height: 38px;
+        line-height: 38px;
         display: inline-block;
         margin-left: 10px;
         color: #35353f;
         text-align: center;
         font-size: 14px;
+
+        padding: 0 2px;
 
       }
     }

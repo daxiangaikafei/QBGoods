@@ -17,6 +17,10 @@ require.ensure([],
         var router  = require('./routes')
         var business = require('./model/business')
         var gatherGoods = require('./model/gatherGoods')
+        var hotgoods = require('./model/hotgoods')
+        var mycustom = require('./model/mycustom')
+        var selfsupport = require('./model/selfsupport')
+        var shopActivity = require('./model/ShopActivity')
         var model  = require('./model')
 
         // ------------------------------------
@@ -28,6 +32,10 @@ require.ensure([],
 
                 _app.model(business)
                 _app.model(gatherGoods)
+                _app.model(hotgoods)
+                _app.model(mycustom)
+                _app.model(selfsupport)
+                _app.model(shopActivity)
                 _app.model(model)
 
                 _app.router(router)
@@ -38,6 +46,10 @@ require.ensure([],
             else {
                 html5ForStartApp.model(business)
                 html5ForStartApp.model(gatherGoods)
+                html5ForStartApp.model(hotgoods)
+                html5ForStartApp.model(mycustom)
+                html5ForStartApp.model(selfsupport)
+                html5ForStartApp.model(shopActivity)
                 html5ForStartApp.model(model)
 
                 html5ForStartApp.router(router)
