@@ -8,6 +8,7 @@ import { priceFormat } from 'libs/util'
 import ReactSwipe from 'react-swipe';
 import Swipe from "components/swipe/swipe";
 
+import { Banner } from 'ui'
 import { Tabs } from 'ui'
 import { ProductList } from 'ui'
 
@@ -78,20 +79,7 @@ class GatherGoods extends Component {
     return (
       <Swipe {...props}>
         <div styleName="home-container">
-          {
-            this.props.bannerList.length > 0 ?
-              <ReactSwipe styleName="banner-container" swipeOptions={{ continuous: false }}>
-                {
-                  this.props.bannerList.map((item, index) =>
-                    <div key={index}><a href={item.linkUrl}><img src={item.imgUrl} /></a></div>
-                  )
-                }
-              </ReactSwipe>
-              : ''
-          }
-          {/*<div styleName="banner-container">
-            <img src={require("static/imgs/gatherGoods/banner.png")} alt=""/>
-          </div>*/}
+          <Banner bannerList={this.props.bannerList} />
           <Tabs tabsConfig={this.tabsConfig} />
           <ProductList listConfig={{ 
             temp: this.tabsConfig.names[this.props.tabActive]['temp'], 

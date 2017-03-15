@@ -5,6 +5,7 @@ import styles from './page.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
 import ReactSwipe from 'react-swipe';
+import { Banner } from 'ui'
 
 class GatherStore extends Component {
   
@@ -19,17 +20,8 @@ class GatherStore extends Component {
   render() {
     return (
       <div styleName="home-container">
-        {
-          this.props.bannerList.length > 0 ?
-          <ReactSwipe styleName="banner-container" swipeOptions={{ continuous: false, callback: this.swiperCallback }}>
-          {
-            this.props.bannerList.map((item, index) =>
-              <div key={index}><a href={item.linkUrl}><img src={item.imgUrl} /></a></div>
-            )
-          }
-          </ReactSwipe>
-          : ''
-        }
+        <Banner bannerList={this.props.bannerList} />
+
         <div styleName="title">精选好店</div>
         <div styleName="list-container">
         {
