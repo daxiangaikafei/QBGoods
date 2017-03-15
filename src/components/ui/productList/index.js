@@ -63,6 +63,22 @@ class ProductList extends Component {
                                 </div>
                             </div>
                         )
+                    : this.props.listConfig.temp == 'activity' ?
+                        this.props.listData.map((item, index) =>
+                            <div styleName="item" key={index}>
+                                <a styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
+                                <a href={item.url} ><h3>{item.name}</h3></a>
+                                <div styleName="price">￥{priceFormat(item.finalPrice)}
+                                    <span styleName="icon"><img  src={this.icons[item.source]}  alt="" /></span>
+                                </div>
+                                <div styleName="bottom score">
+                                    <p styleName="sales">销量 <span>{item.orderNum}</span></p>
+                                    <div styleName="tip">
+                                        <div styleName="haohuoScore">{item.haohuoScore}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
                     : this.props.listData.map((item, index) =>
                             <div styleName="item" key={index}>
                                 <a styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
