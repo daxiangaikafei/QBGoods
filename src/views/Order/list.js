@@ -11,8 +11,8 @@ import {fetchPosts} from "components/common/fetch";
 import NoOrder from "./noOrder";
 import Info from "./info";
 
-// import Modal from "components/modal/index";
-// import PopUp from "components/popup/index";
+import Modal from "components/modal/index";
+import PopUp from "components/popup/index";
 
 
 const RebateStatus ={
@@ -199,12 +199,16 @@ class OrderList extends React.Component {
                 )
             }
             let rebateStatus = item.rebateStatus;
+            let short = RebateStatusShort[rebateStatus];
             $lis.push(
                 <li key={item.id} className="order-item"  >
                     <a href={item.clickUrl} target="_blank">
                         <p className="order-item-top">{RebateStatus[rebateStatus]}</p>
                         {$subItem}
-                        <p className="order-item-info">共一件商品，合计:<em><i>￥</i>{totalPrice}</em>{RebateStatusShort[rebateStatus]}<span>{totalSb}宝券</span></p>
+                        <p className="order-item-info">共一件商品，合计:<em><i>￥</i>{totalPrice}</em>
+                        {rebateStatus<2&&short}
+                        {rebateStatus<2&&(<span>{totalSb}宝券</span>)}
+                        </p>
                     </a>
                     <div className="order-item-todo" ><button data-id={item.id} className="js_del">删除</button><button data-id={item.id} className="js_info">返券详情</button></div>
                 </li>
@@ -221,7 +225,7 @@ class OrderList extends React.Component {
             touchMove:this.touchMove
             //step:200
         }
-        if(j===0&&page===0&&isLoading===false){
+        if(j===0&&isLoading===false){
             return(<div className="my-order-list"><NoOrder /></div>)
         }else if(j===0&&page===0){
             return (<div></div>)

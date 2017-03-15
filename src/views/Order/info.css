@@ -1,0 +1,22 @@
+.vi-nav-bar {
+  height: 44px;
+  width: 100%;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 18px;
+  background: #fff;
+  color: #000;
+  line-height: 18px;
+}
+.vi-nav-bar .left-icon {
+  width: 40%;
+  height: 18px;
+  background: url('static/imgs/nav/array-black.png') no-repeat;
+  background-size: 10px auto;
+  position: absolute;
+  left: 15px;
+  top: 11px;
+}

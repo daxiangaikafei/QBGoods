@@ -31,6 +31,12 @@ class GoodsTab extends Component {
   componentWillUnmount(){
       this.alloyTouch&&this.alloyTouch.destory();
   }
+  componentDidUpdate(prevProps,prevState){
+    // let {property,width,min,max,step,findScroller,vertical,findDis} = this.props;
+    // let target = ReactDOM.findDOMNode(this.refs.swipe);
+    // let dom = ReactDOM.findDOMNode(this.refs.touch); //offsetTop
+    // console.log(".....2222.....",target.clientWidth, dom.clientWidth);
+  }
   scrollInit(){
       let dom = ReactDOM.findDOMNode(this.refs.touch); //offsetTop
       let target = ReactDOM.findDOMNode(this.refs.swipe);
@@ -38,14 +44,22 @@ class GoodsTab extends Component {
       let prevTarget = false;
       //let $ = this.$;
       let goodsNum = this.props.tabs.length;
-      let touchMin = goodsNum * 60+10 <= innerWidth ? 0 : (goodsNum * 60 +10- innerWidth) * -1;
+      let touchMin = 0;
+
+      let childrensT = target.children;
+      for(let i = 0; i < childrensT.length; i++){
+        touchMin += childrensT[i].clientWidth;
+      }
+      // childrensT.map(function(n,i){
+      //   console.log(n.clientWidth);
+      // });
       this.alloyTouch = new this.AlloyTouch({
           touch: dom,//反馈触摸的dom
           target:target,
           vertical: false,//不必需，默认是true代表监听竖直方向touch
           target: target, //运动的对象
           property: "translateX",
-          min: touchMin,
+          min: touchMin <= innerWidth ? 0 : (touchMin - innerWidth) * -1,
           max: 0,
           touchStart: function (value,target) {
 
