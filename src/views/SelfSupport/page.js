@@ -1,4 +1,5 @@
 import React,{ Component } from 'react'
+import * as ReactDOM from 'react-dom';
 import { connect } from 'dva'
 import CSSModules from 'react-css-modules'
 import styles from './page.less'
@@ -55,11 +56,19 @@ class SelfSupport extends Component {
 
   touchMove(that,args){
       let {items,isEnd} = this.state;
-      let itemsLen = items.length;
-
-      if(that.min-args[0]>30 && !isEnd){
+      let cTop = args[0];
+      if(that.min-cTop>30 && !isEnd){
           this.getData(1);
       }
+      // let swiper = ReactDOM.findDOMNode(this.refs.swiper);
+      // let tab = ReactDOM.findDOMNode(this.refs.tap).children[0];
+      // let swiperH = (swiper.clientHeight+10) * -1;
+      // if(cTop <= swiperH ){
+      //   tab.style.transform="translateY("+((cTop - swiperH) * -1)+"px)";
+      // }else{
+      //   tab.style.transform="translateY(0px)";
+      // }
+
   }
   getData(num , searchParam){
       let {page,items,active,isLoading,isEnd} = this.state;
@@ -110,18 +119,26 @@ class SelfSupport extends Component {
   render() {
     let reactSwipe = null, goodsTab = null;
     if(this.props.loadingInit){
-      reactSwipe = <ReactSwipe className="carousel" swipeOptions={{continuous: false, callback: this.swiperCallback}}>
+      reactSwipe = <ReactSwipe ref="swiper" className="carousel" swipeOptions={{continuous: false, callback: this.swiperCallback}}>
                     {
                       this.props.swipers.map(function(item,i){
                         return (<div key={i}><a href={item.linkUrl}><img src={item.imgUrl}/></a></div>)
                       })
                     }
                   </ReactSwipe>;
-      goodsTab = <GoodsTab tabCallback={this.tabCallback} active={this.props.tabActive} tabs={this.props.tabs}></GoodsTab>;
+      goodsTab = <GoodsTab ref="tap" tabCallback={this.tabCallback} active={this.props.tabActive} tabs={this.props.tabs}></GoodsTab>;
     }
-    let noDataTip = "已经到底了";
+    let noDataTip = "--已经到底了--";
     if(this.state.items.length===0){
-      noDataTip = "无数据"
+      noDataTip = "--无数据--"
+    }
+    let noTip = null;
+    if(this.state.isLoading){
+      noTip = <div className="no-up">--加载中--</div>;
+    }else{
+      if(this.state.page>=1&&this.state.isEnd===true){
+        noTip = <div className="no-up">{noDataTip}</div>;
+      }
     }
     let props = {
         property:"translateY",
@@ -143,8 +160,7 @@ class SelfSupport extends Component {
           {goodsTab}
           <ProductList listConfig={{temp: 'score'}} listData={this.state.items}/>
         </div>
-        {this.state.isLoading===true&&(<div className="no-up">--加载中--</div>)}
-        {this.state.page>=1&&this.state.isEnd===true&&(<div className="no-up">--{noDataTip}--</div>)}
+        { noTip }
       </Swipe>
     )
   }

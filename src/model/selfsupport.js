@@ -101,8 +101,6 @@ export default {
           loading: true
         })
 
-        console.log("action", action);
-
         let productList = yield call(() => {
           return fetchPosts("stuff/qbzy/goodsList.do", {
             userId: 10001,

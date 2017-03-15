@@ -70,27 +70,30 @@ require.ensure([],
         // ------------------------------------
         // Client Login
         // ------------------------------------
-        if(navigator.userAgent.match(/Android/i)) {
-            if (typeof QBaoJSBridge != 'undefined') {
-                QBaoJSBridge.login("mqbii.qbao.com", String(html5ForLogin(html5ForStartApp)));
-            }
-        }
-        else if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
-            if (typeof ioswebview != 'undefined') {
-                ioswebview.showLoginViewAnd("mqbii.qbao.com", String(html5ForLogin(html5ForStartApp)));
-            }
-        }
-        else {
-            html5ForLogin(html5ForStartApp);
-        }
+        //if(navigator.userAgent.match(/Android/i)) {
+        //    if (typeof QBaoJSBridge != 'undefined') {
+        //        QBaoJSBridge.login("goodstuff.qbao.com", String(html5ForLogin(html5ForStartApp)));
+        //    }
+        //}
+        //else if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+        //    if (typeof ioswebview != 'undefined') {
+        //        ioswebview.showLoginViewAnd("goodstuff.qbao.com", String(html5ForLogin(html5ForStartApp)));
+        //    }
+        //}
+        //else {
+        //    html5ForLogin(html5ForStartApp);
+        //}
 
         // ------------------------------------
         // Fast Click Adding For System
         // ------------------------------------
         if ('addEventListener' in document) {
-            document.addEventListener('DOMContentLoaded', function () {
-                FastClick.attach(document.body);
-            }, false);
+            //document.addEventListener('DOMContentLoaded', function () {debugger;
+            //    FastClick.attach(document.body);
+            //}, false);
+            window.addEventListener( "load", function() {
+                FastClick.attach( document.body );
+            }, false );
         }
 
     }
