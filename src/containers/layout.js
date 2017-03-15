@@ -9,7 +9,8 @@ function CoreLayout ({ children, location }) {
   var viewHeight = window.innerHeight - 0 ;
   var styles = Object.assign({}, {opacity:0}) // child.props.style contains an int (e.g 34)
     //debugger;
-    console.info('1111111',QBFK);
+    //console.info('1111111',QBFK);
+    //location.pathname.test()
     QBFK.EventLog.sendMsg({});
   return (
     <div>
