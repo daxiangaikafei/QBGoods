@@ -1,7 +1,9 @@
 import React,{ Component } from 'react'
 import * as ReactDOM from 'react-dom';
 import Tappable from 'react-tappable';
+import styles from './tabs.less'
 
+let isInit =true;
 class GoodsTab extends Component {
 
   constructor(props) {
@@ -27,9 +29,16 @@ class GoodsTab extends Component {
              _this.scrollInit();
           })
       }
+      if(isInit){
+        isInit = false;
+        this.props.tabCallback(0);
+      }
   }
   componentWillUnmount(){
       this.alloyTouch&&this.alloyTouch.destory();
+  }
+  componentDidUpdate(prevProps,prevState){
+    // console.log("this.props.tabs",this.props.tabs);
   }
   scrollInit(){
       let dom = ReactDOM.findDOMNode(this.refs.touch); //offsetTop
@@ -38,19 +47,28 @@ class GoodsTab extends Component {
       let prevTarget = false;
       //let $ = this.$;
       let goodsNum = this.props.tabs.length;
-      let touchMin = goodsNum * 60+10 <= innerWidth ? 0 : (goodsNum * 60 +10- innerWidth) * -1;
+      let touchMin = 0;
+
+      let childrensT = target.children;
+      for(let i = 0; i < childrensT.length; i++){
+        touchMin += childrensT[i].clientWidth;
+      }
+      // childrensT.map(function(n,i){
+      //   console.log(n.clientWidth);
+      // });
       this.alloyTouch = new this.AlloyTouch({
           touch: dom,//反馈触摸的dom
           target:target,
           vertical: false,//不必需，默认是true代表监听竖直方向touch
           target: target, //运动的对象
           property: "translateX",
-          min: touchMin,
+          min: touchMin <= innerWidth ? 0 : (touchMin - innerWidth) * -1,
           max: 0,
           touchStart: function (value,target) {
 
           }
       });
+
 
   }
   tabsClickHandler(active){
@@ -71,4 +89,7 @@ class GoodsTab extends Component {
     )
   }
 };
+GoodsTab.defaultProps = {
+    isInit: true
+}
 export default GoodsTab;

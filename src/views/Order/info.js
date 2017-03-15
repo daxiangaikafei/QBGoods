@@ -4,7 +4,7 @@ import * as React from 'react';
 //import * as _ from "lodash";
 
 
-
+import "./info.less";
 
 
 class Info extends React.Component {

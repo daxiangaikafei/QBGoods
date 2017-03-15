@@ -4,23 +4,60 @@ import CSSModules from 'react-css-modules'
 import styles from './page.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
+import ReactSwipe from 'react-swipe';
 
 class GatherStore extends Component {
   
-
   constructor(props) {
     super(props)
     this.state = {
     }
+    props.getStoreList()
+    props.getBannerList(24)
   }
 
   render() {
     return (
       <div styleName="home-container">
-        <div styleName="banner-container">
-          <img src={require("static/imgs/gatherGoods/banner.png")} alt=""/>
+        {
+          this.props.bannerList.length > 0 ?
+          <ReactSwipe styleName="banner-container" swipeOptions={{ continuous: false, callback: this.swiperCallback }}>
+          {
+            this.props.bannerList.map((item, index) =>
+              <div key={index}><a href={item.linkUrl}><img src={item.imgUrl} /></a></div>
+            )
+          }
+          </ReactSwipe>
+          : ''
+        }
+        <div styleName="title">精选好店</div>
+        <div styleName="list-container">
+        {
+          this.props.storeList.map((shop, index) => 
+            <div styleName="item" key={index}>
+              <div styleName="header">
+                <img src={shop.shopCover} alt=""/>
+                <div styleName="info">
+                  <h3>{shop.name}</h3>
+                  <p>
+                    {/*<span><i></i>10赞</span>*/}
+                    <a styleName="goin" href={shop.shopUrl}>进店 <i>></i></a>
+                  </p>
+                </div>
+              </div>
+              <div styleName="bottom">
+              {
+                shop.ad_stuff.map((stuff, index) => 
+                  <div key={index}>
+                    <img src={stuff.imgUrl} alt="" />
+                  </div>
+                ) 
+              }
+              </div>
+            </div>
+          )
+        }
         </div>
-        
       </div>
     )
   }
@@ -28,11 +65,17 @@ class GatherStore extends Component {
 };
 
 function mapStateToProps(state) {
-  return state.gatherGoods;
+  return state.gatherStore;
 }
 
 function mapDispatchToProps(dispatch) {
   return {
+    getStoreList() {
+      dispatch({ type: 'gatherStore/getStoreList' });
+    },
+    getBannerList(id) {
+      dispatch({ type: 'gatherStore/getBannerList', id });
+    }
   }
 }
 
