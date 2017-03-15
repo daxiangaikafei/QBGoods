@@ -66,7 +66,7 @@ class GoodsIscroll extends Component {
                 return (<div className="hots-public-item" key={index}>
                     <a href={item.linkUrl} ><img src={item.imgUrl} alt="" className="hots-public-item-img" /></a>
                     <a href={item.linkUrl} ><h3>{item.name}</h3></a>
-                    <div className="price">￥{item.reservePrice}
+                    <div className="price">￥{item.finalPrice}
                         <span className="icon"></span>
                     </div>
                     <div className="bottom">

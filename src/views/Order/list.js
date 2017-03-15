@@ -11,8 +11,8 @@ import {fetchPosts} from "components/common/fetch";
 import NoOrder from "./noOrder";
 import Info from "./info";
 
-// import Modal from "components/modal/index";
-// import PopUp from "components/popup/index";
+import Modal from "components/modal/index";
+import PopUp from "components/popup/index";
 
 
 const RebateStatus ={

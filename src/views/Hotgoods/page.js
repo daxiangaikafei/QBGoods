@@ -21,8 +21,9 @@ class Hotgoods extends Component {
     // props.getCloudList();
     this.state = {
         items:[],
-        page:0,
-        isLoading:true,
+        page: 1,
+        active: 0,
+        isLoading: false,
         oneHeight:false,
         isEnd:false,
     }
@@ -31,57 +32,83 @@ class Hotgoods extends Component {
   }
   componentDidMount() {
     this.getData(1);
+    // console.log("this.props.goodsTabs....",this.props.goodsTabs)
+
   }
-
   componentDidUpdate() {
-
+    console.log("this.props.goodsTabs.length", this.props.goodsTabs.length);
+    if(this.props.goodsTabs.length !== 0){
+      // if(this.props.tapActive===0){
+      //
+      //   this.getData(1, {
+      //     page:1,
+      //     cId: this.props.goodsTabs[0].id
+      //   });
+      //
+      // }
+    }
   }
   swiperCallback  = (active) => {
     this.props.setSwiperActive(active);
   }
   tabCallback  = (active) => {
+    if(this.props.tabActive === active){
+      return;
+    }
     this.props.setTabActive(active);
     // this.props.getHotSearchList(this.props.goodsTabs[active].id, 1);
-  }
 
+    this.getData(1, {
+      page:1,
+      cId: this.props.goodsTabs[active].id
+    });
+  }
 
   touchMove(that,args){
       let {items,isEnd} = this.state;
       let itemsLen = items.length;
 
-      if(that.min-args[0]>0 && !isEnd){
-          this.getData(1).then(()=>{
-              // console.error("该加载了", arr);
-              that.min =  -(that.element.children[0].offsetHeight - that.element.offsetHeight);
-              // console.log("that.min......",that.min);
-          });
+      if(that.min-args[0]>30 && !isEnd){
+          this.getData(1);
       }
   }
   getData(num , searchParam){
-      let {page,items,isLoading,isEnd} = this.state;
-      if((page!==0&&isLoading===true)||(isEnd)){
+
+      let {page,items,active,isLoading,isEnd} = this.state;
+
+      if(isLoading || isEnd){
           return;
       }
       this.setState({
           isLoading:true
       })
       let _this = this;
-      let param = Object.assign({},searchParam,{cId: 1, page: page,size: 8});
-      page += num;
-      return fetchPosts("api/goodsList.json",param,"GET").then((data)=>{
-              console.log(data);
-              if(data.returnCode===0){
-                  _this.setState({
-                      isLoading:false,
-                      page,
-                      isEnd:data.data.items.length < 8 ?true:false,
-                      items:items.concat(data.data.items)
-                  });
+      let param = Object.assign({},{cId: active, page: page,size: 8},searchParam);
+      page = param.page;
+      return fetchPosts("stuff/hot/goodsList.do",param,"GET").then((data)=>{
+              if(data.responseCode===1000){
+                  page += num;
+                  if(searchParam){
+                    _this.setState({
+                        isLoading:false,
+                        page,
+                        active: param.cId,
+                        isEnd: false,
+                        items:data.data
+                    });
+                  }else{
+                    _this.setState({
+                        isLoading:false,
+                        page,
+                        active: param.cId,
+                        isEnd:data.data.length < 8 ?true:false,
+                        items:items.concat(data.data)
+                    });
+                  }
 
-                  console.log("_this.......",_this.state.items);
               }else{
                    _this.setState({
-                      isLoading:false,});
+                      isLoading:false,items:[],isEnd: true});
               }
 
 
@@ -103,6 +130,10 @@ class Hotgoods extends Component {
                   </ReactSwipe>;
       goodsIscroll = <GoodsIscroll goods={this.props.goodsStuffs}></GoodsIscroll>;
       goodsTab = <GoodsTab tabCallback={this.tabCallback} active={this.props.tabActive} tabs={this.props.goodsTabs}></GoodsTab>;
+    }
+    let noDataTip = "已经到底了";
+    if(this.state.items.length===0){
+      noDataTip = "无数据"
     }
     let props = {
         property:"translateY",
@@ -126,18 +157,16 @@ class Hotgoods extends Component {
           { goodsTab }
           <ProductList listConfig={{temp: 'sales'}} listData={this.state.items}/>
         </div>
+
         {this.state.isLoading===true&&(<div className="no-up">--加载中--</div>)}
-        {this.state.page>=1&&this.state.isEnd===true&&(<div className="no-up">--已经到底了--</div>)}
+        {this.state.page>=1&&this.state.isEnd===true&&(<div className="no-up">--{noDataTip}--</div>)}
       </Swipe>
     )
   }
 };
-// Hotgoods.defaultProps = {
-//     options: {
-//         mouseWheel: true,
-//         scrollbars: true
-//     }
-// }
+Hotgoods.defaultProps = {
+    tapActive: 0
+}
 function mapStateToProps(state) {
     return state.hotgoods;
 }
