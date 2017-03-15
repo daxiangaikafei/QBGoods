@@ -68,8 +68,8 @@ class GoodsIscroll extends Component {
             {
               props.goods.map(function(item,index){
                 return (<div className="hots-public-item" key={index}>
-                    <a href={item.linkUrl} ><img src={item.imgUrl} alt="" className="hots-public-item-img" /></a>
-                    <a href={item.linkUrl} ><h3>{item.name}</h3></a>
+                    <a href={item.url} ><img src={item.imgUrl} alt="" className="hots-public-item-img" /></a>
+                    <a href={item.url} ><h3>{item.name}</h3></a>
                     <div className="price">￥{item.finalPrice}<div className="icon"><i className={item.source}></i></div></div>
                     <div className="bottom">
                         <span className="return">返{item.rebateValue}宝券</span>
