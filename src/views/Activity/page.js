@@ -7,7 +7,7 @@ import * as React from 'react';
 
 import "./page.scss";
 
-// import {fetchPosts} from "components/common/fetch";
+ import {fetchPosts} from "components/common/fetch";
 
 // import Modal from "components/modal/index";
 // import PopUp from "components/popup/index";
@@ -29,31 +29,38 @@ class Activity extends React.Component {
         //this.touchMove = this.touchMove.bind(this);
 
     }
+    componentWillMount() {
+
+        this.getData(1);
+    }
 
     render() {
 
         let {items,isLoading,page,isEnd} = this.state;
-        let i =0,j=items.length||2,$lis = [],totalPrice=0,totalSb=0;
+        let i =0,j=items.length,$lis = [],totalPrice=0,totalSb=0;
         while(i<j){
             console.log("----");
             let item = items[i];
             i+=1;
+            let price = item.finalPrice.toString().split(".");
             $lis.push(
-                <li className="activity_normal-item">
-                    <div className="activity_normal-item-left">
-                        <img src="" />
-                    </div>
-                    <div className="activity_normal-item-right">
-                        <h3>商品名称商品名称商品名称商品名称商品名称商品名称商品名称</h3>
-                        <div className="item-left-info">
-                            <span>￥1200<em>.00</em></span>
-                            <b>销量 100</b>
+                <li key={item.id} className="activity_normal-item">
+                    <a href={item.linkUrl}>
+                        <div className="activity_normal-item-left">
+                            <img src={item.imgUrl} />
                         </div>
-                        <div className="item-good">
-                            <span><i className="good-index"></i>好货指数</span>
-                            <span>32.5<i className="good-arror-right"></i></span>
+                        <div className="activity_normal-item-right">
+                            <h3>{item.name}</h3>
+                            <div className="item-left-info">
+                                <span>￥{price[0]}<em>.{price[1]}</em></span>
+                                <b>销量 {item.orderNum}</b>
+                            </div>
+                            {/*<div className="item-good">
+                                <span><i className="good-index"></i>好货指数</span>
+                                <span>{12}<i className="good-arror-right"></i></span>
+                            </div>*/}
                         </div>
-                    </div>
+                    </a>
                 </li>
             )
             
@@ -71,12 +78,47 @@ class Activity extends React.Component {
                 </div>
         )
     }
+
+     getData(num){
+        let {pageSize,url,searchParam,upData} = this.props;
+        let {page,items,isLoading,isEnd} = this.state;
+        if((page!==0&&isLoading===true)||(isEnd)){
+            return;
+        }
+        this.setState({
+            isLoading:true
+        })
+        let _this = this;
+        let param = Object.assign({},searchParam,{page,size:pageSize})
+        page += num;
+        return fetchPosts(url,param,"GET").then((data)=>{
+                console.log(data);
+                if(data.responseCode===1000){
+                    _this.setState({
+                        isLoading:false,
+                        page,
+                        isEnd:data.data.length<pageSize?true:false,
+                        items:items.concat(data.data)
+                    });
+                    upData(data);
+                }else{
+                     _this.setState({
+                        isLoading:false,});
+                }
+
+
+
+         }).catch(function(){
+                    _this.setState({
+                        isLoading:false,});
+         });
+    }
 };
 
 Activity.defaultProps = {
     pageSize:20,
-    url:"/stuff/order/list.do",
-    searchParam:{},
+    url:"/stuff/hot/goodsList.do",
+    searchParam:{cId:23,userId:0},
     option:{
         property:"translateY",
         className:"my-order-list",
