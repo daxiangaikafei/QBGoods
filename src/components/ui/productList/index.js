@@ -24,8 +24,8 @@ class ProductList extends Component {
                         this.props.listConfig.temp == 'similar' ? 
                             this.props.listData.map((item, index) =>
                                 <div styleName="item" key={index}>
-                                    <a styleName="img" href={item.linkUrl} ><img src={item.imgUrl} alt="" /></a>
-                                    <a href={item.linkUrl} ><h3>{item.name}</h3></a>
+                                    <a styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
+                                    <a href={item.url} ><h3>{item.name}</h3></a>
                                     <div styleName="price">￥{priceFormat(item.finalPrice)}
                                         <span styleName="icon"></span>
                                     </div>
