@@ -8,6 +8,7 @@ import GatherGoods from 'views/GatherGoods/page'
 import GatherStore from 'views/GatherStore/page'
 
 import Order from "views/Order/page"
+import Activity from "views/Activity/page"
 
 export default function (ref) {
   return (
@@ -20,6 +21,7 @@ export default function (ref) {
         <Route path='/GatherGoods' component={GatherGoods} name="聚好货" />
         <Route path='/GatherStore' component={GatherStore} name="聚好店"/>
         <Route path='/Order' component={Order} name="我的好货"/>
+        <Route path='/Activity' component={Activity} name="活动页面"/>
       </Route>
     </Router>
   )
