@@ -84,7 +84,7 @@ class ShopContent extends Component {
                     <div className="border"></div>
                   </div>
                   <div className="icon-selected"></div>
-                  <span className="label">{item.name}</span>
+                  <div className="shop-name">{item.name}</div>
                 </div>
             )
           }
