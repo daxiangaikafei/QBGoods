@@ -1,4 +1,5 @@
 import React,{ Component } from 'react'
+import * as ReactDOM from 'react-dom';
 import { connect } from 'dva'
 import CSSModules from 'react-css-modules'
 import styles from './page.less'
@@ -66,11 +67,21 @@ class Hotgoods extends Component {
 
   touchMove(that,args){
       let {items,isEnd} = this.state;
-      let itemsLen = items.length;
+      let cTop = args[0];
 
       if(that.min-args[0]>30 && !isEnd){
           this.getData(1);
       }
+
+      // let swiper = ReactDOM.findDOMNode(this.refs.swiper);
+      // let stuff = ReactDOM.findDOMNode(this.refs.stuff);
+      // let tab = ReactDOM.findDOMNode(this.refs.tap).children[0];
+      // let swiperH = (swiper.clientHeight+stuff.clientHeight+50) * -1;
+      // if(cTop <= swiperH ){
+      //   tab.style.transform="translateY("+((cTop - swiperH) * -1)+"px)";
+      // }else{
+      //   tab.style.transform="translateY(0px)";
+      // }
   }
   getData(num , searchParam){
 
@@ -88,7 +99,6 @@ class Hotgoods extends Component {
       return fetchPosts("stuff/hot/goodsList.do",param,"GET").then((data)=>{
         console.log("data.data.lenght" , data.data.length);
               if(data.responseCode===1000){
-
                   if(page===1){
                     _this.setState({
                         isLoading:false,
@@ -121,19 +131,27 @@ class Hotgoods extends Component {
   render() {
     let reactSwipe = null, goodsIscroll = null, goodsTab = null;
     if(this.props.loadingInit){
-      reactSwipe = <ReactSwipe className="carousel" swipeOptions={{continuous: false, callback: this.swiperCallback}}>
+      reactSwipe = <ReactSwipe  ref="swiper" className="carousel" swipeOptions={{continuous: false, callback: this.swiperCallback}}>
                     {
                       this.props.goodsSwipers.map(function(item,i){
-                        return (<div key={i}><a href={item.link_url}><img src={item.img_url}/></a></div>)
+                        return (<div key={i}><a href={item.linkUrl}><img src={item.imgUrl}/></a></div>)
                       })
                     }
                   </ReactSwipe>;
-      goodsIscroll = <GoodsIscroll goods={this.props.goodsStuffs}></GoodsIscroll>;
-      goodsTab = <GoodsTab tabCallback={this.tabCallback} active={this.props.tabActive} tabs={this.props.goodsTabs}></GoodsTab>;
+      goodsIscroll = <GoodsIscroll ref="stuff" goods={this.props.goodsStuffs}></GoodsIscroll>;
+      goodsTab = <GoodsTab  ref="tap" tabCallback={this.tabCallback} active={this.props.tabActive} tabs={this.props.goodsTabs}></GoodsTab>;
     }
-    let noDataTip = "已经到底了";
+    let noDataTip = "--已经到底了--";
     if(this.state.items.length===0){
-      noDataTip = "无数据"
+      noDataTip = "--无数据--"
+    }
+    let noTip = null;
+    if(this.state.isLoading){
+      noTip = <div className="no-up">--加载中--</div>;
+    }else{
+      if(this.state.page>=1&&this.state.isEnd===true){
+        noTip = <div className="no-up">{noDataTip}</div>;
+      }
     }
     let props = {
         property:"translateY",
@@ -158,8 +176,7 @@ class Hotgoods extends Component {
           <ProductList listConfig={{temp: 'sales'}} listData={this.state.items}/>
         </div>
 
-        {this.state.isLoading===true&&(<div className="no-up">--加载中--</div>)}
-        {this.state.page>=1&&this.state.isEnd===true&&(<div className="no-up">--{noDataTip}--</div>)}
+        { noTip }
       </Swipe>
     )
   }
