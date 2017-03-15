@@ -19,7 +19,7 @@ export default function (ref) {
         <Route path='/SelfSupport' component={SelfSupport} name="钱宝自营" />
         <Route path='/GatherGoods' component={GatherGoods} name="聚好货" />
         <Route path='/GatherStore' component={GatherStore} name="聚好店"/>
-        <Route path='/order' component={Order} name="我的好货"/>
+        <Route path='/Order' component={Order} name="我的好货"/>
       </Route>
     </Router>
   )

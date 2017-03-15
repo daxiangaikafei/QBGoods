@@ -14,7 +14,7 @@ function CoreLayout ({ children, location }) {
   return (
     <div>
         {/*<NavBar {...arguments[0]}/>*/}
-        <main style={{height:viewHeight,position: 'fixed',top: '0px',width: '100%',overflow: 'hidden'}}>
+        <main>
         {/*<main style={{height:viewHeight,position: 'fixed',top: '44px',width: '100%',overflow: 'hidden'}}>*/}
         <ReactCSSTransitionGroup component='div'
          transitionName={{
