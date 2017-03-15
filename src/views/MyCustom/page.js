@@ -70,7 +70,7 @@ class MyCustom extends Component {
     })
     let _this = this;
     let param = Object.assign({},{typeId: 1},searchParam);
-    return fetchPosts("stuff/custom/updateUserTags.do",param,"GET").then((data)=>{
+    return fetchPosts("/stuff/custom/updateUserTags.do",param,"GET").then((data)=>{
             if(data.responseCode===1000){
 
               Modal.alert("提示", _this.props.tabActive === "shop" ? "购物标签保存成功" : "个人标签保存成功" );

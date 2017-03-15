@@ -10,24 +10,12 @@ export default {
     shopTipLabel: "",
     shopTipNum: 0,
     shopLabels:[
-      {
-        "tag_detail_id": 1,
-        "name": "白富美",
-        "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-        "count": 10000,
-        "check": true
-      }
+
     ],
     selfTipShow: false,
     selfTipNum: 0,
     selfLabels:[
-      {
-        "tag_detail_id": 1,
-        "name": "白富美",
-        "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-        "count": 10000,
-        "check": true
-      }
+      
     ],
     shopLabelsDefault:[
       {
@@ -53,381 +41,15 @@ export default {
       yield put({type: 'setLoading', loading: true})
 
       let shopLabels = yield call(() => {
-        return fetchPosts("stuff/custom/getUserTags.do",{ userId: 10001, typeId: 1 },"GET")
+        return fetchPosts("/stuff/custom/getUserTags.do",{ userId: 10001, typeId: 1 },"GET")
           .then(data => data.data.items)
           .catch(err => ([ ]))
       })
 
       let selfLabels = yield call(() => {
-        return fetchPosts("stuff/custom/getUserTags.do",{ userId: 10001, typeId: 2 },"GET")
+        return fetchPosts("/stuff/custom/getUserTags.do",{ userId: 10001, typeId: 2 },"GET")
           .then(data => data.data.items)
-          .catch(err => ([{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          },{
-            "tag_detail_id": 1,
-            "name": "白富美",
-            "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-            "count": 10000,
-            "check": true
-          }]))
+          .catch(err => ([]))
       })
       yield put({
         type: 'getShopLabelsRes',
@@ -442,13 +64,13 @@ export default {
       yield put({type: 'setLoading', loading: true})
 
       let results = yield call(() => {
-          return fetchPosts("stuff/custom/updateUserTags.do",{ typeId: 1 ,tagDetailIds: action.tagDetailIds },"GET")
+          return fetchPosts("/stuff/custom/updateUserTags.do",{ typeId: 1 ,tagDetailIds: action.tagDetailIds },"GET")
             .then(data => data)
             .catch(err => ({}))
       })
 
       let results2 = yield call(() => {
-          return fetchPosts("stuff/custom/updateUserTags.do",{ typeId: 2 ,tagDetailIds: action.tagSelfDetailIds },"GET")
+          return fetchPosts("/stuff/custom/updateUserTags.do",{ typeId: 2 ,tagDetailIds: action.tagSelfDetailIds },"GET")
             .then(data => data)
             .catch(err => ({}))
       })

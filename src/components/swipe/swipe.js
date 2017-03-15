@@ -36,7 +36,7 @@ class Swipe extends Component {
             //console.log("掉用这里？")
             this.scrollInit();
         }*/
-       
+
         let {stopPro,property,width,min,max,step,findScroller,vertical,findDis,touchMove} = this.props;
         if(min==="auto"&&this.alloyTouch&&vertical===true&&property==="translateY"){
             // debugger;
@@ -45,7 +45,7 @@ class Swipe extends Component {
             let length = -(target.clientHeight-dom.clientHeight);
             this.alloyTouch.min = length>0?0:length;
          }
-        
+
     }
     componentDidMount(){
         let _this = this;
@@ -97,7 +97,7 @@ class Swipe extends Component {
             inertia: false, //不必需,是否有惯性。默认是true
             intelligentCorrection: true,
             stopPro:stopPro,
-            touchStart: function (value,target) {   
+            touchStart: function (value,target) {
                 console.log("heheda ",value)
             },
             touchMove:_.throttle(function(){
@@ -136,7 +136,7 @@ Swipe.defaultProps={
         //console.error("sssssss",this,x)
     },
     onClick:function(){
-      
+
     }
 
 }

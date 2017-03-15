@@ -3,6 +3,8 @@ import * as ReactDOM from 'react-dom';
 import classNames from 'classnames'
 import { connect } from 'dva'
 
+let noimg = require('static/imgs/hotgoods/noimg.png');
+
 class ShopContent extends Component {
 
   constructor(props) {
@@ -76,12 +78,13 @@ class ShopContent extends Component {
               (item, i) =>
                 <div key={i} onTouchStart={this.labelClickHandler.bind(this, item, i)} className={item.check ? 'shop-item selected' : 'shop-item'}>
                   <div className="img-mask">
-                    <img src={item.icon}/>
+
+                    {item.icon == "http://" ? <img src={noimg}/>: <img src={item.icon}/>}
                     <div className="mask"></div>
                     <div className="border"></div>
                   </div>
                   <div className="icon-selected"></div>
-                  <span className="label">{item.name}</span>
+                  <div className="shop-name">{item.name}</div>
                 </div>
             )
           }

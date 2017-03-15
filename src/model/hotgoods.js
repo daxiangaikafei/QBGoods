@@ -37,7 +37,7 @@ export default {
       yield put({type: 'setLoading', loading: true})
 
       let goodsClass = yield call(() => {
-        return fetchPosts("stuff/hot/goodsClass.do",{  },"GET")
+        return fetchPosts("/stuff/hot/goodsClass.do",{  },"GET")
           .then(data => data.data)
           .catch(err => ([
             {
@@ -48,19 +48,13 @@ export default {
       })
 
       let banners = yield call(() => {
-        return fetchPosts("stuff/ad/banner.do",{ locationId: 21 },"GET")
+        return fetchPosts("/stuff/ad/banner.do",{ locationId: 21 },"GET")
           .then(data => data.data)
-          .catch(err => ([
-            {
-              "name": "banner1",
-              "img_url": "http://www.easyicon.net/banner1.jpg",
-              "link_url": "http://qbao.com/stuff/xxx/index.html",
-            }
-          ]))
+          .catch(err => ([]))
       })
 
       let stuffs = yield call(() => {
-        return fetchPosts("stuff/ad/stuff.do",{ locationId: 22 },"GET")
+        return fetchPosts("/stuff/ad/stuff.do",{ locationId: 22 },"GET")
           .then(data => data.data)
           .catch(err => ([]))
       })
@@ -112,7 +106,7 @@ export default {
       console.log("action", action);
 
       let productList = yield call(() => {
-        return fetchPosts("stuff/hot/goodsList.do", {
+        return fetchPosts("/stuffhot/goodsList.do", {
           cId: action.cid,
           userId: 10001,
           page: action.page,
@@ -137,7 +131,7 @@ export default {
       console.log("action", action);
 
       let productList = yield call(() => {
-        return fetchPosts("stuff/hot/goodsList.do", {
+        return fetchPosts("/stuff/hot/goodsList.do", {
           cId: action.cid,
           userId: 10001,
           page: action.page,

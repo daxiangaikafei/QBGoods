@@ -96,7 +96,7 @@ class Hotgoods extends Component {
       let _this = this;
       let param = Object.assign({},{cId: active, page: page,size: 8},searchParam);
       page = param.page;
-      return fetchPosts("stuff/hot/goodsList.do",param,"GET").then((data)=>{
+      return fetchPosts("/stuff/hot/goodsList.do",param,"GET").then((data)=>{
         console.log("data.data.lenght" , data.data.length);
               if(data.responseCode===1000){
                   if(page===1){
@@ -173,7 +173,7 @@ class Hotgoods extends Component {
           <div className="hots-public-title"><div></div></div>
           {  goodsIscroll }
           { goodsTab }
-          <ProductList listConfig={{temp: 'sales'}} listData={this.state.items}/>
+          <ProductList listConfig={{temp: 'hots'}} listData={this.state.items}/>
         </div>
 
         { noTip }
