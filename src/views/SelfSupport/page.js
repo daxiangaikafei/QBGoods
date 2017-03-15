@@ -10,7 +10,7 @@ import SwiperPagination from './SwiperPagination';
 import GoodsIscroll from "components/swipe/GoodsIscroll";
 import GoodsTab from "components/swipe/GoodsTab";
 import ReactSwipe from 'react-swipe';
-import { ProductListHots } from 'ui';
+import { ProductList } from 'ui';
 import Swipe from "components/swipe/swipe";
 
 class SelfSupport extends Component {
@@ -141,7 +141,7 @@ class SelfSupport extends Component {
             <SwiperPagination active={this.props.swiperActive} swipers={this.props.swipers}></SwiperPagination>
           </div>
           {goodsTab}
-          <ProductListHots listConfig={{temp: 'similar'}} listData={this.state.items}/>
+          <ProductList listConfig={{temp: 'score'}} listData={this.state.items}/>
         </div>
         {this.state.isLoading===true&&(<div className="no-up">--加载中--</div>)}
         {this.state.page>=1&&this.state.isEnd===true&&(<div className="no-up">--{noDataTip}--</div>)}
