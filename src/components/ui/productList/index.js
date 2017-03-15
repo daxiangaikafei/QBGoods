@@ -17,63 +17,55 @@ class ProductList extends Component {
     }
 
     render() {
-        let listHtml = "";
-        switch(this.props.listConfig.temp){
-          case "similar":
-            listHtml = this.props.listData.map((item, index) =>
-                <div styleName="item" key={index}>
-                    <a href={item.linkUrl} ><img src={item.imgUrl} alt="" /></a>
-                    <a href={item.linkUrl} ><h3>{item.name}</h3></a>
-                    <div styleName="price">￥{priceFormat(item.price)}
-                        <span styleName="icon"></span>
-                    </div>
-                    <div styleName="bottom">
-                        <span styleName="return">{item.rebateValue}</span>
-                        {item.saleCount!=null ? <p styleName="sales">销量 <span>{item.saleCount}</span></p> : ''}
-                        <span styleName="similar">找相似</span>
-                    </div>
-                </div>
-            );
-          break;
-          case "score":
-            listHtml = this.props.listData.map((item, index) =>
-                <div styleName="item" key={index}>
-                    <a href={item.link_url} ><img src={item.imgUrl} alt="" /></a>
-                    <a href={item.link_url} ><h3>{item.name}</h3></a>
-                    <div styleName="price">￥{priceFormat(item.viewPrice)}
-                        <span styleName="icon"></span>
-                    </div>
-                    <div styleName="bottom score">
-                        <p styleName="sales">销量 <span>{item.saleCount}</span></p>
-                        <div styleName="tip">
-                          <div styleName="haohuoScore">{item.haohuoScore}</div>
-                        </div>
-                    </div>
-                </div>
-            );
-          break;
-          default:
-            listHtml = this.props.listData.map((item, index) =>
-                <div styleName="item" key={index}>
-                    <a href={item.linkUrl} ><img src={item.imgUrl} alt="" /></a>
-                    <a href={item.linkUrl} ><h3>{item.name}</h3></a>
-                    <div styleName="price">￥{priceFormat(item.price)}
-                        <span styleName="icon"></span>
-                    </div>
-                    <div styleName="bottom">
-                        <span styleName="return">{item.rebateValue}</span>
-                        {item.saleCount!=null ? <p styleName="sales">销量 <span>{item.saleCount}</span></p> : ''}
-                    </div>
-                </div>
-
-            )
-          break;
-        }
         return (
             <div styleName={classNames({"list":true,"nomore":this.props.listConfig.isNoMore})}>
-
                 {
-                    this.props.listData.length > 0 ? listHtml : ''
+                    this.props.listData.length > 0 ? 
+                        this.props.listConfig.temp == 'similar' ? 
+                            this.props.listData.map((item, index) =>
+                                <div styleName="item" key={index}>
+                                    <a styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
+                                    <a href={item.url} ><h3>{item.name}</h3></a>
+                                    <div styleName="price">￥{priceFormat(item.finalPrice)}
+                                        <span styleName="icon"></span>
+                                    </div>
+                                    <div styleName="bottom">
+                                        <span styleName="return">{item.rebateValue}</span>
+                                        {item.orderNum != null ? <p styleName="sales">销量 <span>{item.orderNum}</span></p> : ''}
+                                        <span styleName="similar">找相似</span>
+                                    </div>
+                                </div>
+                            )
+                    : this.props.listConfig.temp == 'score' ?
+                        this.props.listData.map((item, index) =>
+                            <div styleName="item" key={index}>
+                                <a styleName="img" href={item.link_url} ><img src={item.imgUrl} alt="" /></a>
+                                <a href={item.link_url} ><h3>{item.name}</h3></a>
+                                <div styleName="price">￥{priceFormat(item.viewPrice)}
+                                    <span styleName="icon"></span>
+                                </div>
+                                <div styleName="bottom score">
+                                    <p styleName="sales">销量 <span>{item.saleCount}</span></p>
+                                    <div styleName="tip">
+                                        <div styleName="haohuoScore">{item.haohuoScore}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    : this.props.listData.map((item, index) =>
+                            <div styleName="item" key={index}>
+                                <a styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
+                                <a href={item.url} ><h3>{item.name}</h3></a>
+                                <div styleName="price">￥{priceFormat(item.finalPrice)}
+                                    <span styleName="icon"></span>
+                                </div>
+                                <div styleName="bottom">
+                                    <span styleName="return">{item.rebateValue}</span>
+                                    {item.saleCount != null ? <p styleName="sales">销量 <span>{item.orderNum}</span></p> : ''}
+                                </div>
+                            </div>
+                        )
+                     : ''
                 }
             </div>
         )

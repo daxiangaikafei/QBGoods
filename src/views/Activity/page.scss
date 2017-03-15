@@ -1,0 +1,165 @@
+
+$browser-default-font-size:16px!default;
+
+$mainColor:#FD472B;
+
+@function strip-units($number){ 
+    @return $number / ($number * 0 + 1); 
+} 
+@mixin remCalc($property, $values...) {
+		$max: length($values); //返回$values列表的长度值 
+		$pxValues: ''; 
+		$remValues: ''; 
+			@for $i from 1 through $max { 
+				$value: strip-units(nth($values, $i));//返回$values列表中的第$i个值，并将单位值去掉 
+				$browser-default-font-size: strip-units($browser-default-font-size); 
+                $pxValues: #{$pxValues + $value / $browser-default-font-size }rem;
+				@if $i < $max { 
+					$pxValues: #{$pxValues + " "}; 
+				} 
+			} 
+			@for $i from 1 through $max { 
+				$value: strip-units(nth($values, $i)); 
+				$remValues: #{$remValues + $value}px;
+
+				@if $i < $max { 
+					$remValues: #{$remValues + " "}; 
+				} 
+			} 
+		#{$property}: $pxValues; 
+}
+
+
+
+.container_activity_normal{
+    border-top: 1px solid #f1f1f6;
+}
+.activity_normal-item{
+    display: flex;
+    width: 100%;
+    background-color: white;
+    
+    display: flex;
+    box-sizing: border-box;
+
+    &:last-child{
+        .activity_normal-item-right{
+            border-width: 0;
+        }
+    }
+    
+    .activity_normal-item-left{
+        @include remCalc(width, 140px);
+        @include remCalc(height, 140px);
+       @include remCalc(padding,15px,15px,15px,15px);
+        flex-shrink: 0;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        
+    }
+    .activity_normal-item-right{
+       position: relative;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        @include remCalc(padding,15px,15px,15px,0);
+        border-bottom: 1px solid #f1f1f6;
+
+    }
+    h3{
+        font-size: 16px;
+        font-weight: 300;
+        min-height: 36px;
+        @include remCalc(padding-bottom, 26px);
+    }
+    .item-left-info{
+        color: $mainColor;
+        font-size: 12px;
+        line-height: 14px;
+        display: flex;
+        flex-direction: column;
+        font-weight: 300;
+         position: absolute;
+        left: 0;
+        @include remCalc(bottom, 15px);
+        span{
+           display: flex;
+           font-weight: 500;
+            font-size: 18px;
+            line-height: 20px;
+            align-items: baseline;
+             @include remCalc(padding-bottom, 5px);
+        }
+        em{
+            font-size: 12px;
+            line-height: 14px;
+            font-weight: 300;
+        }
+        b{
+            color: #90909b;
+            font-weight: 300;
+            @include remCalc(padding, 5px,0,0,0);
+        }
+    }
+    .item-good{
+        border: 1px solid $mainColor;
+        border-radius: 4px;
+        position: absolute;
+
+        @include remCalc(right, 15px);
+        @include remCalc(bottom, 15px);
+        span{
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            background-color: white;
+            font-size: 12px;
+            line-height: 12px;
+            display: flex;
+            justify-content: center;
+            padding: 3px 7px;
+            align-items: flex-end;
+            color:$mainColor;
+            &:last-child{
+                color:white;
+                background-color: $mainColor;
+                font-size: 13px;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+            }
+            i{
+                margin-left: 5px;
+            }
+        }
+    }
+    .good-index{
+        background:url("static/imgs/activity/index.png") no-repeat;
+        @include remCalc(width, 15px);
+        @include remCalc(height, 15px);
+        //display: block;
+        background-size: cover;
+    }
+    .good-arror-right{
+        background:url("static/imgs/activity/arror.png") no-repeat;
+        @include remCalc(width, 12px);
+        @include remCalc(height, 12px);
+       // display: block;
+        background-size: cover;
+    }
+
+}
+
+.container-scroll{
+    width: 100%;
+    
+}
+.scroll-end{
+    font-size: 14px;
+    text-align: center;
+    line-height: 35px;
+    color: #90909b;
+    border-bottom: 1px solid #f1f1f6;
+}

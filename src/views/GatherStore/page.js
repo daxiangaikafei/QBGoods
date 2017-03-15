@@ -5,6 +5,7 @@ import styles from './page.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
 import ReactSwipe from 'react-swipe';
+import { Banner } from 'ui'
 
 class GatherStore extends Component {
   
@@ -19,38 +20,29 @@ class GatherStore extends Component {
   render() {
     return (
       <div styleName="home-container">
-        {
-          this.props.bannerList.length > 0 ?
-          <ReactSwipe styleName="banner-container" swipeOptions={{ continuous: false, callback: this.swiperCallback }}>
-          {
-            this.props.bannerList.map((item, index) =>
-              <div key={index}><a href={item.linkUrl}><img src={item.imgUrl} /></a></div>
-            )
-          }
-          </ReactSwipe>
-          : ''
-        }
+        <Banner bannerList={this.props.bannerList} />
+
         <div styleName="title">精选好店</div>
         <div styleName="list-container">
         {
           this.props.storeList.map((shop, index) => 
             <div styleName="item" key={index}>
               <div styleName="header">
-                <img src={shop.shopCover} alt=""/>
+                <img src={shop.coverUrl} alt=""/>
                 <div styleName="info">
                   <h3>{shop.name}</h3>
                   <p>
                     {/*<span><i></i>10赞</span>*/}
-                    <a styleName="goin" href={shop.shopUrl}>进店 <i>></i></a>
+                    <a styleName="goin" href={shop.url}>进店 <i>></i></a>
                   </p>
                 </div>
               </div>
               <div styleName="bottom">
               {
-                shop.ad_stuff.map((stuff, index) => 
-                  <div key={index}>
+                shop.list.map((stuff, index) => 
+                  <a key={index} href={stuff.url}>
                     <img src={stuff.imgUrl} alt="" />
-                  </div>
+                  </a>
                 ) 
               }
               </div>
