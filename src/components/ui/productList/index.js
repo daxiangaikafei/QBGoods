@@ -20,8 +20,8 @@ class ProductList extends Component {
         return (
             <div styleName={classNames({"list":true,"nomore":this.props.listConfig.isNoMore})}>
                 {
-                    this.props.listData.length > 0 ? 
-                        this.props.listConfig.temp == 'similar' ? 
+                    this.props.listData.length > 0 ?
+                        this.props.listConfig.temp == 'similar' ?
                             this.props.listData.map((item, index) =>
                                 <div styleName="item" key={index}>
                                     <a styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
