@@ -39,7 +39,7 @@ class GatherStore extends Component {
               </div>
               <div styleName="bottom">
               {
-                shop.ad_stuff.map((stuff, index) => 
+                shop.list.map((stuff, index) => 
                   <a key={index} href={stuff.url}>
                     <img src={stuff.imgUrl} alt="" />
                   </a>
