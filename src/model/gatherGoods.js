@@ -30,7 +30,7 @@ export default {
           }, "GET")
           .then(data => { 
             isEnd = data.data.length < 4 ? true : false;
-            return _productList.concat(data.data)
+            return page == 1 ? data.data : _productList.concat(data.data)
           })
           .catch(err => ([]))
       })
@@ -62,7 +62,7 @@ export default {
         }, "GET")
           .then(data => {
             isEnd = data.data.length < 4 ? true : false;
-            return _productList.concat(data.data)
+            return page == 1 ? data.data : _productList.concat(data.data)
           })
           .catch(err => ([]))
       })
