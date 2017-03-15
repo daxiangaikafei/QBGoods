@@ -5,7 +5,7 @@ import * as React from 'react';
 
 // import Swipe from "components/swipe/swipe";
 
-import "./page.scss";
+import "./banner01.scss";
 
  import {fetchPosts} from "components/common/fetch";
 
