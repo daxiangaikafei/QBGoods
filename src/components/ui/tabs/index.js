@@ -24,6 +24,7 @@ class Tabs extends Component {
         })
         let props = this.props
         props.tabsConfig.model ? props[props.tabsConfig.model][props.tabsConfig.statusKey ? props.tabsConfig.statusKey : 'tabActive'] = index : void 0
+        props[props.tabsConfig.model]['page'] == 1
         props.action(`${props.tabsConfig.model}/${props.tabsConfig.names[index].action}`)
     }
 

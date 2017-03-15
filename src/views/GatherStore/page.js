@@ -13,7 +13,7 @@ class GatherStore extends Component {
     this.state = {
     }
     props.getStoreList()
-    props.getBannerList()
+    props.getBannerList(24)
   }
 
   render() {
@@ -24,7 +24,7 @@ class GatherStore extends Component {
           <ReactSwipe styleName="banner-container" swipeOptions={{ continuous: false, callback: this.swiperCallback }}>
           {
             this.props.bannerList.map((item, index) =>
-              <div key={index}><a href={item.link_url}><img src={item.img_url} /></a></div>
+              <div key={index}><a href={item.linkUrl}><img src={item.imgUrl} /></a></div>
             )
           }
           </ReactSwipe>
@@ -36,12 +36,12 @@ class GatherStore extends Component {
           this.props.storeList.map((shop, index) => 
             <div styleName="item" key={index}>
               <div styleName="header">
-                <img src={shop.shop_cover} alt=""/>
+                <img src={shop.shopCover} alt=""/>
                 <div styleName="info">
                   <h3>{shop.name}</h3>
                   <p>
                     {/*<span><i></i>10赞</span>*/}
-                    <a styleName="goin" href={shop.shop_url}>进店 <i>></i></a>
+                    <a styleName="goin" href={shop.shopUrl}>进店 <i>></i></a>
                   </p>
                 </div>
               </div>
@@ -49,7 +49,7 @@ class GatherStore extends Component {
               {
                 shop.ad_stuff.map((stuff, index) => 
                   <div key={index}>
-                    <img src={stuff.img_url} alt="" />
+                    <img src={stuff.imgUrl} alt="" />
                   </div>
                 ) 
               }
@@ -70,11 +70,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getStoreList(storeList) {
-      dispatch({ type: 'gatherStore/getStoreList', storeList });
+    getStoreList() {
+      dispatch({ type: 'gatherStore/getStoreList' });
     },
-    getBannerList(bannerList) {
-      dispatch({ type: 'gatherStore/getBannerList', bannerList });
+    getBannerList(id) {
+      dispatch({ type: 'gatherStore/getBannerList', id });
     }
   }
 }
