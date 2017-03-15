@@ -2,8 +2,8 @@
 @assetTitleColor: #90909b;
 @bdColor: #c0c0c0;
 @bodyBGColor: #f1f1f6;
-@coverTxtColor: #ffca43;
-@listTxtColor: #aa8a72;
+@titleTxtColor: #6c45ff;
+@listTxtColor: #ff5a00;
 @increaseTxtColor: #fd472b;
 @listBdColor: #e5e5e5;
 @subTxtColor: #acacac;
@@ -41,11 +41,90 @@ main {
     .home-container {
         background: @bodyBGColor;
         .banner-container {
-            padding-bottom: 40%;
+            width: 100%;
+            height: 140px;
             position: relative;
+            margin: 0 auto;
+            a {
+                display: block;
+            }
             img {
-                position: absolute;
                 width: 100%;
+                height: 150px;
+            }
+        }
+        .title {
+            height: 50px;
+            background: #fff url('static/imgs/gatherStore/title-bg.png') no-repeat center;
+            -webkit-background-size: 45%;
+            background-size: 45%;
+            color: @titleTxtColor;
+            font-size: 16px;
+            .flex;
+            .flex-center;
+            .flex-align-center;
+        }
+        .list-container {
+            .item {
+                background-color: #fff;
+                margin-bottom: 20px;
+                .header {
+                    height: 210px;
+                    position: relative;
+                    overflow: hidden;
+                    &>img {
+                        width: 100%;
+                    }
+                    .info {
+                        width: 240px;
+                        position: absolute;
+                        background-color: rgba(255, 255, 255, .85);
+                        text-align: center;
+                        margin: 0 auto;
+                        left: 0;
+                        right: 0;
+                        bottom: 20px;
+                        padding: 15px;
+                        h3 {
+                            color: @txtColor;
+                            font-size: 18px;
+                            font-weight: 400;
+                        }
+                        .goin {
+                            position: relative;
+                        }
+                        p {
+                            color: @listTxtColor;
+                            font-size: 12px;
+                            margin-top: 10px;
+                            text-align: center;
+                            span {
+                                margin-right: 10px;
+                            }
+                            a {
+                                color: @listTxtColor;
+                                margin-left: 10px;
+                            }
+                        }
+                    }
+                }
+                .bottom {
+                    padding-left: 9px;
+                    padding-top: 9px;
+                    .flex;
+                    .flex-wrap;
+                    &>div {
+                        width: 33.3%;
+                        box-sizing: border-box;
+                        border: 9px solid #fff;
+                        border-left: none;
+                        border-top: none;
+                        overflow: hidden;
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
             }
         }
     }
