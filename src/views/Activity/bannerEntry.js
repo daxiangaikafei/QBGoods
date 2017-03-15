@@ -49,7 +49,10 @@ class BannerEntry extends Component {
 
     return (
         <div styleName="home-container">
-          <Banner bannerList={this.props.bannerList} />
+          <ReactSwipe styleName="banner-container" swipeOptions={{ continuous: false }}>
+            <div><a href=''><img src={require('static/imgs/activity/banner2.jpg')} /></a></div>
+            <div><a href=''><img src={require('static/imgs/activity/banner3.jpg')} /></a></div>
+          </ReactSwipe>
           <Tabs tabsConfig={this.tabsConfig} />
           <ProductList listConfig={{ 
             temp: this.tabsConfig.names[this.props.tabActive]['temp'], 
