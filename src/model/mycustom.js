@@ -53,13 +53,13 @@ export default {
       yield put({type: 'setLoading', loading: true})
 
       let shopLabels = yield call(() => {
-        return fetchPosts("custom/getUserTags.do",{ userId: 10001, typeId: 1 },"GET")
+        return fetchPosts("/stuff/custom/getUserTags.do",{ userId: 10001, typeId: 1 },"GET")
           .then(data => data.data.items)
           .catch(err => ([ ]))
       })
 
       let selfLabels = yield call(() => {
-        return fetchPosts("custom/getUserTags.do",{ userId: 10001, typeId: 2 },"GET")
+        return fetchPosts("/stuff/custom/getUserTags.do",{ userId: 10001, typeId: 2 },"GET")
           .then(data => data.data.items)
           .catch(err => ([]))
       })
@@ -76,13 +76,13 @@ export default {
       yield put({type: 'setLoading', loading: true})
 
       let results = yield call(() => {
-          return fetchPosts("custom/updateUserTags.do",{ typeId: 1 ,tagDetailIds: action.tagDetailIds },"GET")
+          return fetchPosts("/stuff/custom/updateUserTags.do",{ typeId: 1 ,tagDetailIds: action.tagDetailIds },"GET")
             .then(data => data)
             .catch(err => ({}))
       })
 
       let results2 = yield call(() => {
-          return fetchPosts("custom/updateUserTags.do",{ typeId: 2 ,tagDetailIds: action.tagSelfDetailIds },"GET")
+          return fetchPosts("/stuff/custom/updateUserTags.do",{ typeId: 2 ,tagDetailIds: action.tagSelfDetailIds },"GET")
             .then(data => data)
             .catch(err => ({}))
       })

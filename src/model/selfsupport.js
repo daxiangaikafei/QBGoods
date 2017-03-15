@@ -15,7 +15,7 @@ export default {
         yield put({type: 'setLoading', loading: true})
 
         let tabs = yield call(() => {
-          return fetchPosts("qbzy/goodsClass.do",{  },"GET")
+          return fetchPosts("/stuff/qbzy/goodsClass.do",{  },"GET")
             .then(data => data.data)
             .catch(err => ([
               {
@@ -26,7 +26,7 @@ export default {
         })
 
         let swipers = yield call(() => {
-          return fetchPosts("ad/banner.do",{ locationId: 23 },"GET")
+          return fetchPosts("/stuff/ad/banner.do",{ locationId: 23 },"GET")
             .then(data => data.data)
             .catch(err => ([]))
         })
@@ -51,7 +51,7 @@ export default {
         // const cat = yield select(select => select.gatherGoods.tabActive)
 
         let productList = yield call(() => {
-          return fetchPosts("qbzy/goodsList.do", {
+          return fetchPosts("/stuff/qbzy/goodsList.do", {
               userId: 10001,
               cid: 27,
               page : 1,
@@ -75,7 +75,7 @@ export default {
         })
 
         let productList = yield call(() => {
-          return fetchPosts("qbzy/goodsList.do", {
+          return fetchPosts("/stuff/qbzy/goodsList.do", {
             userId: 10001,
             cid: action.cid,
             page: action.page,
