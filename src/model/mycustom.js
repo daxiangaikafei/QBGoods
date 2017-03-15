@@ -10,24 +10,12 @@ export default {
     shopTipLabel: "",
     shopTipNum: 0,
     shopLabels:[
-      {
-        "tag_detail_id": 1,
-        "name": "白富美",
-        "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-        "count": 10000,
-        "check": true
-      }
+
     ],
     selfTipShow: false,
     selfTipNum: 0,
     selfLabels:[
-      {
-        "tag_detail_id": 1,
-        "name": "白富美",
-        "icon" : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3199434975,3493096457&fm=111&gp=0.jpg",
-        "count": 10000,
-        "check": true
-      }
+      
     ],
     shopLabelsDefault:[
       {

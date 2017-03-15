@@ -1,5 +1,9 @@
 import React,{ Component } from 'react'
 import * as ReactDOM from 'react-dom';
+import CSSModules from 'react-css-modules'
+import { Link } from 'react-router'
+import classNames from 'classnames'
+import { priceFormat } from 'libs/util'
 
 class GoodsIscroll extends Component {
 
@@ -66,9 +70,7 @@ class GoodsIscroll extends Component {
                 return (<div className="hots-public-item" key={index}>
                     <a href={item.linkUrl} ><img src={item.imgUrl} alt="" className="hots-public-item-img" /></a>
                     <a href={item.linkUrl} ><h3>{item.name}</h3></a>
-                    <div className="price">￥{item.finalPrice}
-                        <span className="icon"></span>
-                    </div>
+                    <div className="price">￥{item.finalPrice}<div className="icon"><i className={item.source}></i></div></div>
                     <div className="bottom">
                         <span className="return">返{item.rebateValue}宝券</span>
                     </div>
