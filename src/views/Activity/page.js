@@ -32,68 +32,38 @@ class Activity extends React.Component {
 
     render() {
 
-        // let {items,isLoading,page,isEnd} = this.state;
-        // let i =0,j=items.length,$lis = [],totalPrice=0,totalSb=0;
-        // while(i<j){
-        //     console.log("----");
-        //     let item = items[i];
-        //     i+=1;
-        //     let l=0,m=item.item.length,$subItem=[];
+        let {items,isLoading,page,isEnd} = this.state;
+        let i =0,j=items.length||2,$lis = [],totalPrice=0,totalSb=0;
+        while(i<j){
+            console.log("----");
+            let item = items[i];
+            i+=1;
+            $lis.push(
+                <li className="activity_normal-item">
+                    <div className="activity_normal-item-left">
+                        <img src="" />
+                    </div>
+                    <div className="activity_normal-item-right">
+                        <h3>商品名称商品名称商品名称商品名称商品名称商品名称商品名称</h3>
+                        <div className="item-left-info">
+                            <span>￥1200<em>.00</em></span>
+                            <b>销量 100</b>
+                        </div>
+                        <div className="item-good">
+                            <span><i className="good-index"></i>好货指数</span>
+                            <span>32.5<i className="good-arror-right"></i></span>
+                        </div>
+                    </div>
+                </li>
+            )
             
-        // }
+        }
 
         let {option} = this.props;
         return (
                 <div className="container_activity_normal">
                     <ul>
-                        <li className="activity_normal-item">
-                            <div className="activity_normal-item-left">
-                                <img src="" />
-                            </div>
-                            <div className="activity_normal-item-right">
-                                <h3>商品名称商品名称商品名称商品名称商品名称商品名称商品名称</h3>
-                                <div className="item-left-info">
-                                    <span>￥1200<em>.00</em></span>
-                                    <b>销量 100</b>
-                                </div>
-                                <div className="item-good">
-                                    <span><i className="good-index"></i>好货指数</span>
-                                    <span>32.5<i className="good-arror-right"></i></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li className="activity_normal-item">
-                            <div className="activity_normal-item-left">
-                                <img src="" />
-                            </div>
-                            <div className="activity_normal-item-right">
-                                <h3>商品名称商品名称商品名称商品名称商品名称商品名称商品名称</h3>
-                                <div className="item-left-info">
-                                    <span>￥1200<em>.00</em></span>
-                                    <b>销量 100</b>
-                                </div>
-                                <div className="item-good">
-                                    <span><i className="good-index"></i>好货指数</span>
-                                    <span>32.5<i className="good-arror-right"></i></span>
-                                </div>
-                            </div>
-                        </li>
-                        <li className="activity_normal-item">
-                            <div className="activity_normal-item-left">
-                                <img src="" />
-                            </div>
-                            <div className="activity_normal-item-right">
-                                <h3>商品名称商品名称商品名称商品名称商品名称商品名称商品名称</h3>
-                                <div className="item-left-info">
-                                    <span>￥1200<em>.00</em></span>
-                                    <b>销量 100</b>
-                                </div>
-                                <div className="item-good">
-                                    <span><i className="good-index"></i>好货指数</span>
-                                    <span>32.5<i className="good-arror-right"></i></span>
-                                </div>
-                            </div>
-                        </li>
+                        {$lis}
                     </ul>
                     <div className="container-scroll scroll-end">
                         — —已经到底了— —
