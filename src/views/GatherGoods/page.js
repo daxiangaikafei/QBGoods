@@ -23,11 +23,8 @@ class GatherGoods extends Component {
       {
         key:'热搜好货',
         action: 'getHotSearchList'
-    },
-      {
-        key:'我的定制',
-        action: 'getHotSearchList',
       }
+ 
     ], //required
     model : 'gatherGoods',
     statusKey : 'tabActive'             //the statusKey in the model, default 'tabActive'
