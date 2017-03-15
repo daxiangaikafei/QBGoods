@@ -28,21 +28,21 @@ class GatherStore extends Component {
           this.props.storeList.map((shop, index) => 
             <div styleName="item" key={index}>
               <div styleName="header">
-                <img src={shop.shopCover} alt=""/>
+                <img src={shop.coverUrl} alt=""/>
                 <div styleName="info">
                   <h3>{shop.name}</h3>
                   <p>
                     {/*<span><i></i>10赞</span>*/}
-                    <a styleName="goin" href={shop.shopUrl}>进店 <i>></i></a>
+                    <a styleName="goin" href={shop.url}>进店 <i>></i></a>
                   </p>
                 </div>
               </div>
               <div styleName="bottom">
               {
                 shop.ad_stuff.map((stuff, index) => 
-                  <div key={index}>
+                  <a key={index} href={stuff.url}>
                     <img src={stuff.imgUrl} alt="" />
-                  </div>
+                  </a>
                 ) 
               }
               </div>
