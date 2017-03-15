@@ -8,7 +8,7 @@ import GatherGoods from 'views/GatherGoods/page'
 import GatherStore from 'views/GatherStore/page'
 
 import Order from "views/Order/page"
-import Banner01 from "views/Activity/bannner01"
+import Banner01 from "views/Activity/banner01"
 
 export default function (ref) {
   return (
