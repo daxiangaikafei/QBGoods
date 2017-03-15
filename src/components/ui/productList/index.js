@@ -79,6 +79,21 @@ class ProductList extends Component {
                                 </div>
                             </div>
                         )
+
+                    : this.props.listConfig.temp == 'hots' ?
+                            this.props.listData.map((item, index) =>
+                              <div styleName="item" key={index}>
+                                  <a styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
+                                  <a href={item.url} ><h3>{item.name}</h3></a>
+                                  <div styleName="price">￥{priceFormat(item.finalPrice)}
+                                      <span styleName="icon"></span>
+                                  </div>
+                                  <div styleName="bottom">
+                                      <span styleName="return">{item.rebateValue}</span>
+                                      {item.orderNum != null ? <p styleName="sales">销量 <span>{item.orderNum}</span></p> : ''}
+                                  </div>
+                              </div>
+                            )
                     : this.props.listData.map((item, index) =>
                             <div styleName="item" key={index}>
                                 <a styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>

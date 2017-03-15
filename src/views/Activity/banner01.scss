@@ -33,6 +33,11 @@ $mainColor:#FD472B;
 
 .container_activity_normal{
     border-top: 1px solid #f1f1f6;
+    a{
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+    }
 }
 .activity_normal-item{
     display: flex;
@@ -53,6 +58,8 @@ $mainColor:#FD472B;
         @include remCalc(height, 140px);
        @include remCalc(padding,15px,15px,15px,15px);
         flex-shrink: 0;
+         flex-grow: 0;
+            
         img{
             width: 100%;
             height: 100%;
@@ -60,7 +67,11 @@ $mainColor:#FD472B;
         
     }
     .activity_normal-item-right{
-       position: relative;
+        flex-grow: 1;
+        //min-width: calc(100% - 140px);
+        // width: 100%;
+        // @include remCalc(padding-left, 155px);
+        position: relative;
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
@@ -71,8 +82,14 @@ $mainColor:#FD472B;
     h3{
         font-size: 16px;
         font-weight: 300;
-        min-height: 36px;
-        @include remCalc(padding-bottom, 26px);
+        display: block;
+        line-height: 20px;
+        //height: 70px;
+        //overflow: hidden;
+        //white-space: pre-wrap;
+        //text-overflow: ellipsis;
+        //min-height: 36px;
+        @include remCalc(padding-bottom, 56px);
     }
     .item-left-info{
         color: $mainColor;
@@ -90,7 +107,7 @@ $mainColor:#FD472B;
             font-size: 18px;
             line-height: 20px;
             align-items: baseline;
-             @include remCalc(padding-bottom, 5px);
+             @include remCalc(padding-bottom, 2px);
         }
         em{
             font-size: 12px;
@@ -100,7 +117,7 @@ $mainColor:#FD472B;
         b{
             color: #90909b;
             font-weight: 300;
-            @include remCalc(padding, 5px,0,0,0);
+            @include remCalc(padding,2px,0,0,0);
         }
     }
     .item-good{
