@@ -11,8 +11,6 @@ import GoodsIscroll from "components/swipe/GoodsIscroll";
 import GoodsTab from "components/swipe/GoodsTab";
 import ReactSwipe from 'react-swipe';
 import { ProductList } from 'ui';
-import iScroll from 'iscroll/build/iscroll-probe';
-import ReactIScroll from 'react-iscroll';
 import Swipe from "components/swipe/swipe";
 
 class Hotgoods extends Component {

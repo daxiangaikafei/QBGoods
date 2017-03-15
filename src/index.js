@@ -62,7 +62,7 @@ require.ensure([],
         // ------------------------------------
         // Debug Here
         // ------------------------------------
-        // html5ForLogin(html5ForStartApp);
+        html5ForLogin(html5ForStartApp);
 
         // ------------------------------------
         // Client Login
@@ -84,10 +84,13 @@ require.ensure([],
         // ------------------------------------
         // Fast Click Adding For System
         // ------------------------------------
-        if ('addEventListener' in document) {
-            document.addEventListener('DOMContentLoaded', function () {
-                FastClick.attach(document.body);
-            }, false);
+        if ('addEventListener' in document) {debugger
+            //document.addEventListener('DOMContentLoaded', function () {debugger;
+            //    FastClick.attach(document.body);
+            //}, false);
+            //window.addEventListener( "load", function() {
+            //    FastClick.attach( document.body );
+            //}, false );
         }
 
     }
