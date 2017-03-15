@@ -17,7 +17,7 @@ class Info extends React.Component {
         let {data,onClick} = this.props;
         return (
             <div onClick={onClick} className="container-my-order-info">
-                    <div className="vi-nav-bar"><span className="left-icon"></span>返券详情</div>
+                    
                     <ol>
                         <li>下单</li>
                         <li className={data.rebateStatus==-1?"info-select":""}>记录订单</li>
@@ -41,5 +41,5 @@ Info.defaultProps = {
 }
 
 module.exports = Info;
-
+//<div className="vi-nav-bar"><span className="left-icon"></span>返券详情</div>
 
