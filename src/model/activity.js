@@ -7,105 +7,205 @@ export default {
     tabActive: 0,
     productList: [
       {
-      id: 45638,
-      name: "带上她的眼睛:刘慈欣科幻短篇小说集1:刘慈欣科幻短篇小说集1《带上她的眼睛》",
-      finalPrice: 22.7,
-      imgUrl: "http://img03.taobaocdn.com/bao/uploaded/i3/TB1EJNDNVXXXXXaaXXXXXXXXXXX_!!0-item_pic.jpg",
-      linkUrl: "http://item.taobao.com/item.htm?id=530538582731",
-      rebateValue: "返100宝券",
-      source: "tmall",
-      orderNum: 78
-    },
-    {
-      id: 10150,
-      name: "3d眼镜电影院专用偏振3D电视眼镜通用Reald圆偏光不闪式立体眼睛",
-      finalPrice: 15,
-      imgUrl: "http://image.taobao.com/bao/uploaded/i1/TB1uTOqNXXXXXcnapXXYXGcGpXX_M2.SS2",
-      linkUrl: "http://item.taobao.com/item.htm?id=538068215561",
-      rebateValue: "返100宝券",
-      source: "tmall",
-      orderNum: 156
-    },
-    {
-      id: 10167,
-      name: "新款3D眼镜电影院专用偏光式3D电视reald不闪式三4D立体眼睛通用",
-      finalPrice: 35.9,
-      imgUrl: "http://img03.taobaocdn.com/bao/uploaded/i3/826138090/TB2TqEbfrJkpuFjy1zcXXa5FFXa_!!826138090.jpg",
-      linkUrl: "http://item.taobao.com/item.htm?id=542190255825",
-      rebateValue: "返100宝券",
-      source: "taobao",
-      orderNum: 47
-    },
-    {
-      id: 10173,
-      name: "包邮 nVIDIA 3D立体眼镜 红蓝眼睛夹片 近视专用 电视电脑专用",
-      finalPrice: 9.9,
-      imgUrl: "http://img01.taobaocdn.com/bao/uploaded/i1/18883022521123013/T1jEasXxtcXXXXXXXX_!!0-item_pic.jpg",
-      linkUrl: "http://item.taobao.com/item.htm?id=20449972128",
-      rebateValue: "返100宝券",
-      source: "taobao",
-      orderNum: 15
-    },
-    {
-      id: 10219,
-      name: "3d儿童5-10岁可爱眼镜圆偏光式reald电影院专用三D眼睛电视通用",
-      finalPrice: 35,
-      imgUrl: "http://img02.taobaocdn.com/bao/uploaded/i2/TB1BwEeMVXXXXcWXpXXXXXXXXXX_!!0-item_pic.jpg",
-      linkUrl: "http://item.taobao.com/item.htm?id=529408217007",
-      rebateValue: "返100宝券",
-      source: "tmall",
-      orderNum: 42
-    },
-    {
-      id: 10222,
-      name: "抢！暴风影音红蓝3d眼镜电脑手机电视专用电影三D立体眼睛包邮",
-      finalPrice: 6.7,
-      imgUrl: "http://img03.taobaocdn.com/bao/uploaded/i3/1126062257/TB2HzcKlXXXXXaHXpXXXXXXXXXX_!!1126062257.jpg",
-      linkUrl: "http://item.taobao.com/item.htm?id=527916494538",
-      rebateValue: "返100宝券",
-      source: "taobao",
-      orderNum: 18
-    },
-    {
-      id: 37800,
-      name: "雯屋韩国live work可爱眼睛创意手作礼物包装袋多用收纳纸袋S/M/L",
-      finalPrice: 12,
-      imgUrl: "http://image.taobao.com/bao/uploaded/i5/TB1tSrSPpXXXXXRaXXXYXGcGpXX_M2.SS2",
-      linkUrl: "http://item.taobao.com/item.htm?id=545039330293",
-      rebateValue: "返100宝券",
-      source: "taobao",
-      orderNum: 10
-    },
-    {
-      id: 57334,
-      name: "夏季新款潮牌男式背心眼睛3D球赛加大肥佬无袖速干透气球衣男",
-      finalPrice: 39,
-      imgUrl: "http://img02.taobaocdn.com/bao/uploaded/i2/TB1fMOwPFXXXXcvaXXXXXXXXXXX_!!0-item_pic.jpg",
-      linkUrl: "http://item.taobao.com/item.htm?id=545538735795",
-      rebateValue: "返100宝券",
-      source: "taobao",
-      orderNum: 0
-    },
-    {
-      id: 10136,
-      name: "3d眼镜夹片电影院专用IMAX Reald偏光偏振3D电视立体眼睛近视通用",
-      finalPrice: 15,
-      imgUrl: "http://image.taobao.com/bao/uploaded/i3/TB1VtQSKFXXXXXJXFXXYXGcGpXX_M2.SS2",
-      linkUrl: "http://item.taobao.com/item.htm?id=534639536731",
-      rebateValue: "返100宝券",
-      source: "tmall",
-      orderNum: 4302
-    },
-    {
-      id: 10140,
-      name: "三d电影院专用imaxReald电视偏光偏振3d立体眼镜通用近视夹片眼睛",
-      finalPrice: 35.5,
-      imgUrl: "http://img01.taobaocdn.com/bao/uploaded/i1/TB1HljdPVXXXXaQXpXXXXXXXXXX_!!0-item_pic.jpg",
-      linkUrl: "http://item.taobao.com/item.htm?id=44423676390",
-      rebateValue: "返100宝券",
-      source: "tmall",
-      orderNum: 4873
-    }
+        stuffId: 4620990,
+        name: "联想(Lenovo)扬天V310 14/15英寸笔记本电脑",
+        viewPrice: 369900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/431541dba150fe72b8eb95487ab77cfd",
+        saleCount: 0,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=4620990"
+      },
+      {
+        stuffId: 2693525,
+        name: "联想 YOGA900S 12.5英寸触控超极本超薄笔记本",
+        viewPrice: 889900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/84836b56543d4f7c9ce6f0f9672fef01",
+        saleCount: 2,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=2693525"
+      },
+      {
+        stuffId: 2693600,
+        name: "联想YOGA900 (YOGA4 PRO)13.3英寸笔记本",
+        viewPrice: 799900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/6d1cc5436609df36f14c130dc5c8606a",
+        saleCount: 1,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=2693600"
+      },
+      {
+        stuffId: 4101602,
+        name: "ThinkPad E450 14英寸笔记本电脑 黑色系列",
+        viewPrice: 339900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/107b075548d28e4ef7985bb50d3e0cb3",
+        saleCount: 0,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=4101602"
+      },
+      {
+        stuffId: 4605359,
+        name: "联想（Lenovo）Yoga710 14英寸笔记本电脑超薄本",
+        viewPrice: 629900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/24cb19e9b5d7dc1c4bf827f7eccf1f7d",
+        saleCount: 3,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=4605359"
+      },
+      {
+        stuffId: 4300928,
+        name: "联想 YOGA700/710 11.6英寸翻转触控笔记本电脑",
+        viewPrice: 419900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/283a3c9bdd508aeecbf4e5a55fdfb4ed",
+        saleCount: 15,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=4300928"
+      },
+      {
+        stuffId: 6200470,
+        name: "联想IdeaPad510/510S 14/15.6英寸笔记本",
+        viewPrice: 489900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/a962e05e73d7eb517ce1cce72d5266c4",
+        saleCount: 0,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=6200470"
+      },
+      {
+        stuffId: 4107192,
+        name: "联想（lenovo）C4030 21.5英寸一体机电脑 ",
+        viewPrice: 359900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/a8b33be3455ad95579462e714b9dfc0a",
+        saleCount: 1,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=4107192"
+      },
+      {
+        stuffId: 4301007,
+        name: "联想 ThinkPad E460 14英寸笔记本电脑系列 ",
+        viewPrice: 459900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/4d34fc2ecac834dd25ebe9c28f9f07c2",
+        saleCount: 7,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=4301007"
+      },
+      {
+        stuffId: 4110938,
+        name: "联想（Lenovo）小新310经典版 14英寸超薄笔记本电脑",
+        viewPrice: 469900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/d6d9ca751c2d9bf46899cbd3b6b07efe",
+        saleCount: 3,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=4110938"
+      },
+      {
+        stuffId: 4330345,
+        name: "ThinkPad S3 Yoga 14英寸翻转触控商务笔记本",
+        viewPrice: 609900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/fb33d85ec944ae6b2b028175bfe5b1b6",
+        saleCount: 0,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=4330345"
+      },
+      {
+        stuffId: 4124720,
+        name: "ThinkPad New S2 13.3英寸超极笔记本电脑",
+        viewPrice: 619900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/208b89fe44d7bca20d967f06d5019392",
+        saleCount: 1,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=4124720"
+      },
+      {
+        stuffId: 2683720,
+        name: "联想 （Lenovo）天逸300 14/15英寸笔记本电脑",
+        viewPrice: 399900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/f3d73c3ef137929ac7f6fabd6c02eeed",
+        saleCount: 1,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=2683720"
+      },
+      {
+        stuffId: 4615494,
+        name: "联想 ideapad 310S 14/15.6英寸笔记本电脑",
+        viewPrice: 359900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/e9b86d8b0cb93c19156833f1bc598394",
+        saleCount: 0,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=4615494"
+      },
+      {
+        stuffId: 2688462,
+        name: "联想（Lenovo）拯救者 ISK 15.6英寸游戏本",
+        viewPrice: 599900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/009aeb09e436a889ed8c8e17fbb8e63d",
+        saleCount: 1,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=2688462"
+      },
+      {
+        stuffId: 2682054,
+        name: "联想 S41-75 /S435 14英寸笔记本 电脑系列",
+        viewPrice: 299900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/339c0d747e2bcf6809f903afcc4a2b31",
+        saleCount: 1,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=2682054"
+      },
+      {
+        stuffId: 4120230,
+        name: "联想(lenovo) 扬天M2601 台式机电脑",
+        viewPrice: 329900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/cf300cee3841abead78aad058a395166",
+        saleCount: 2,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=4120230"
+      },
+      {
+        stuffId: 2680866,
+        name: "联想 Ideapad100S 11英寸/14英寸笔记电脑系列",
+        viewPrice: 239900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/c4ed44401f229e05822d2baeb85bb7c8",
+        saleCount: 4,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=2680866"
+      },
+      {
+        stuffId: 2687455,
+        name: "联想（Lenovo）Y700 15.6英寸游戏笔记本电脑",
+        viewPrice: 659900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/8f3c6d15079bcbdf8d5aa5a2ec43aa0d",
+        saleCount: 1,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=2687455"
+      },
+      {
+        stuffId: 2683585,
+        name: "联想（Lenovo） G40-80 14英寸笔记本电脑 系列",
+        viewPrice: 359900,
+        imgUrl: "https://qn-act.qbcdn.com/goods/fd83dc8229154a1b964286349ff18449",
+        saleCount: 1,
+        source: "qbao",
+        haohuoScore: 50,
+        haohuoUrl: "https://banyanapi.qbao.com/release/h5App/goodsIndex/default/page.html?channel=60&goodsId=2683585"
+      }
     ],
     bannerList: []
   },
