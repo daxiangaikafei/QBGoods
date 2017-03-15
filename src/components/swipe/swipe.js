@@ -2,7 +2,7 @@
 import React, {Component, PropTypes} from 'react';
 import * as ReactDOM from 'react-dom';
 import {_} from "./help.js";
-
+   
 class Swipe extends Component {
      constructor(props) {
         super(props);
