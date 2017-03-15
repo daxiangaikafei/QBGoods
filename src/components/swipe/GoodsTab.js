@@ -1,6 +1,8 @@
 import React,{ Component } from 'react'
 import * as ReactDOM from 'react-dom';
 import Tappable from 'react-tappable';
+import styles from './tabs.less'
+
 let isInit =true;
 class GoodsTab extends Component {
 
