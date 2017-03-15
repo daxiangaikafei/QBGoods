@@ -1,7 +1,7 @@
 import React,{ Component } from 'react'
 import * as ReactDOM from 'react-dom';
 import Tappable from 'react-tappable';
-
+let isInit =true;
 class GoodsTab extends Component {
 
   constructor(props) {
@@ -27,15 +27,16 @@ class GoodsTab extends Component {
              _this.scrollInit();
           })
       }
+      if(isInit){
+        isInit = false;
+        this.props.tabCallback(0);
+      }
   }
   componentWillUnmount(){
       this.alloyTouch&&this.alloyTouch.destory();
   }
   componentDidUpdate(prevProps,prevState){
-    // let {property,width,min,max,step,findScroller,vertical,findDis} = this.props;
-    // let target = ReactDOM.findDOMNode(this.refs.swipe);
-    // let dom = ReactDOM.findDOMNode(this.refs.touch); //offsetTop
-    // console.log(".....2222.....",target.clientWidth, dom.clientWidth);
+    // console.log("this.props.tabs",this.props.tabs);
   }
   scrollInit(){
       let dom = ReactDOM.findDOMNode(this.refs.touch); //offsetTop
@@ -66,6 +67,7 @@ class GoodsTab extends Component {
           }
       });
 
+
   }
   tabsClickHandler(active){
     // console.log(active);
@@ -85,4 +87,7 @@ class GoodsTab extends Component {
     )
   }
 };
+GoodsTab.defaultProps = {
+    isInit: true
+}
 export default GoodsTab;

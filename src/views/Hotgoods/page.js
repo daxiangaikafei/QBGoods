@@ -31,7 +31,7 @@ class Hotgoods extends Component {
     this.touchMove = this.touchMove.bind(this);
   }
   componentDidMount() {
-    this.getData(1);
+    // this.getData(1);
     // console.log("this.props.goodsTabs....",this.props.goodsTabs)
 
   }
@@ -76,7 +76,7 @@ class Hotgoods extends Component {
 
       let {page,items,active,isLoading,isEnd} = this.state;
 
-      if(isLoading || isEnd){
+      if(isLoading){
           return;
       }
       this.setState({
@@ -86,26 +86,26 @@ class Hotgoods extends Component {
       let param = Object.assign({},{cId: active, page: page,size: 8},searchParam);
       page = param.page;
       return fetchPosts("stuff/hot/goodsList.do",param,"GET").then((data)=>{
+        console.log("data.data.lenght" , data.data.length);
               if(data.responseCode===1000){
-                  page += num;
-                  if(searchParam){
+
+                  if(page===1){
                     _this.setState({
                         isLoading:false,
-                        page,
+                        page: page + num,
                         active: param.cId,
-                        isEnd: false,
+                        isEnd: data.data.length < 8 ?true:false,
                         items:data.data
                     });
                   }else{
                     _this.setState({
                         isLoading:false,
-                        page,
+                        page: page + num,
                         active: param.cId,
-                        isEnd:data.data.length < 8 ?true:false,
+                        isEnd: data.data.length < 8 ?true:false,
                         items:items.concat(data.data)
                     });
                   }
-
               }else{
                    _this.setState({
                       isLoading:false,items:[],isEnd: true});
@@ -164,9 +164,6 @@ class Hotgoods extends Component {
     )
   }
 };
-Hotgoods.defaultProps = {
-    tapActive: 0
-}
 function mapStateToProps(state) {
     return state.hotgoods;
 }

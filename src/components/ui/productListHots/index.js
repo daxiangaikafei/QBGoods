@@ -19,7 +19,52 @@ class ProductList extends Component {
     }
 
     render() {
-
+      let itemTpl = "";
+      switch(this.props.listConfig.temp){
+        case "similar":
+          itemTpl = <div styleName="item" key={index}>
+              <a href={item.link_url} ><img src={item.img_url} alt="" /></a>
+              <a href={item.link_url} ><h3>{item.name}</h3></a>
+              <div styleName="price">￥{priceFormat(item.viewPrice)}
+                  <span styleName="icon"></span>
+              </div>
+              <div styleName="bottom">
+                  <p styleName="sales">销量 <span>{item.saleCount}</span></p>
+                  <div styleName="tip">
+                    <div styleName="haohuoScore">{item.haohuoScore}</div>
+                  </div>
+              </div>
+          </div>;
+        break;
+        case "score":
+          itemTpl = <div styleName="item" key={index}>
+              <a href={item.link_url} ><img src={item.img_url} alt="" /></a>
+              <a href={item.link_url} ><h3>{item.name}</h3></a>
+              <div styleName="price">￥{priceFormat(item.viewPrice)}
+                  <span styleName="icon"></span>
+              </div>
+              <div styleName="bottom">
+                  <p styleName="sales">销量 <span>{item.saleCount}</span></p>
+                  <div styleName="tip">
+                    <div styleName="haohuoScore">{item.haohuoScore}</div>
+                  </div>
+              </div>
+          </div>;
+        break;
+        default:
+          <div styleName="item" key={index}>
+              <a href={item.linkUrl} ><img src={item.imgUrl} alt="" /></a>
+              <a href={item.linkUrl} ><h3>{item.name}</h3></a>
+              <div styleName="price">￥{priceFormat(item.price)}
+                  <span styleName="icon"></span>
+              </div>
+              <div styleName="bottom">
+                  <span styleName="return">返{item.rebateValue}宝券</span>
+                  {item.saleCount!=null ? <p styleName="sales">销量 <span>{item.saleCount}</span></p> : ''}
+              </div>
+          </div>
+        break;
+      }
         return (
             <div styleName="list">
                 {
@@ -33,9 +78,9 @@ class ProductList extends Component {
                                 </div>
                                 <div styleName="bottom">
                                     <p styleName="sales">销量 <span>{item.saleCount}</span></p>
-                                    <p styleName="tip">
-                                      <p styleName="haohuoScore">{item.haohuoScore}</p>
-                                    </p>
+                                    <div styleName="tip">
+                                      <div styleName="haohuoScore">{item.haohuoScore}</div>
+                                    </div>
                                 </div>
                             </div>
                         ) :
