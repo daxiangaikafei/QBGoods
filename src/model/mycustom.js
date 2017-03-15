@@ -55,7 +55,7 @@ export default {
       let shopLabels = yield call(() => {
         return fetchPosts("stuff/custom/getUserTags.do",{ userId: 10001, typeId: 1 },"GET")
           .then(data => data.data.items)
-          .catch(err => ([]))
+          .catch(err => ([ ]))
       })
 
       let selfLabels = yield call(() => {
@@ -76,13 +76,13 @@ export default {
       yield put({type: 'setLoading', loading: true})
 
       let results = yield call(() => {
-          return fetchPosts("stuff/custom/updateUserTags.do",{ userId: 10001, typeId: 1 ,tagDetailIds: action.tagDetailIds },"GET")
+          return fetchPosts("stuff/custom/updateUserTags.do",{ typeId: 1 ,tagDetailIds: action.tagDetailIds },"GET")
             .then(data => data)
             .catch(err => ({}))
       })
 
       let results2 = yield call(() => {
-          return fetchPosts("stuff/custom/updateUserTags.do",{ userId: 10001, typeId: 2 ,tagDetailIds: action.tagSelfDetailIds },"GET")
+          return fetchPosts("stuff/custom/updateUserTags.do",{ typeId: 2 ,tagDetailIds: action.tagSelfDetailIds },"GET")
             .then(data => data)
             .catch(err => ({}))
       })
@@ -142,6 +142,15 @@ export default {
         selfTipNum: shopTotal,
         selfLabels: newSelfLabels
       }
+    },
+
+    setDefaultShopDatas (state, payload) {
+      let shopLabelsDefault = deepCopy(state.shopLabels);
+      return {...state, shopLabelsDefault: shopLabelsDefault }
+    },
+    setDefaultSelfDatas (state, payload) {
+      let selfLabelsDefault = deepCopy(state.selfLabels);
+      return {...state, selfLabelsDefault: selfLabelsDefault}
     },
   }
 }

@@ -44,7 +44,7 @@ export default {
 
       let bannerList = yield call(() => {
         return fetchPosts("/stuff/ad/banner.do", {
-          locationId: 24
+          locationId: action.id || 24
         }, "GET")
           .then(data => data.data)
           .catch(err => ([]))

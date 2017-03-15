@@ -5,7 +5,10 @@ export default {
   state: {
     loading: false,
     tabActive: 0,
-    productList: []
+    page: 1,
+    isEnd: false,
+    productList: [],
+    bannerList: []
   },
   effects: {
     * getCloudList(action, {
@@ -17,21 +20,27 @@ export default {
         type: 'listReq',
         loading: true
       })
-      // const cat = yield select(select => select.gatherGoods.tabActive)
-
+      let _productList = yield select(select => select.gatherGoods.productList)
+      let isEnd,page;
       let productList = yield call(() => {
+        page = action.page || 1
         return fetchPosts("/stuff/ju/cloud.do", {
-            page : 1,
+            page: page,
             size : 4
           }, "GET")
-          .then(data => data.data)
+          .then(data => { 
+            isEnd = data.data.length < 4 ? true : false;
+            return page == 1 ? data.data : _productList.concat(data.data)
+          })
           .catch(err => ([]))
-      }, action.productList)
+      })
 
       yield put({
         type: 'listRes',
         loading: false,
-        productList
+        productList,
+        isEnd: isEnd,
+        page, page
       })
     },
     * getHotSearchList(action, {
@@ -43,20 +52,49 @@ export default {
         type: 'listReq',
         loading: true
       })
-
+      let _productList = yield select(select => select.gatherGoods.productList)
+      let isEnd, page;
       let productList = yield call(() => {
-        return fetchPosts("/stuff/ju/hotSearch.do", {
-          page: 1,
+        page = action.page || 1
+        return fetchPosts("/stuff/ju/stuffList.do", {
+          page: page,
           size: 4
         }, "GET")
-          .then(data => data.data)
+          .then(data => {
+            isEnd = data.data.length < 4 ? true : false;
+            return page == 1 ? data.data : _productList.concat(data.data)
+          })
           .catch(err => ([]))
-      }, action.productList)
+      })
 
       yield put({
         type: 'listRes',
         loading: false,
-        productList
+        productList,
+        page, page        
+      })
+    },
+    * getBannerList(action, {
+      put,
+      call
+    }) {
+      yield put({
+        type: 'bannerReq',
+        loading: true
+      })
+
+      let bannerList = yield call(() => {
+        return fetchPosts("/stuff/ad/banner.do", {
+          locationId: action.id || 24
+        }, "GET")
+          .then(data => data.data)
+          .catch(err => ([]))
+      })
+
+      yield put({
+        type: 'bannerRes',
+        loading: false,
+        bannerList
       })
     }
   },
@@ -68,6 +106,18 @@ export default {
     },
     listRes(state, payload) {
       return { ...state,
+        ...payload
+      }
+    },
+    bannerReq(state, payload) {
+      return {
+        ...state,
+        ...payload
+      }
+    },
+    bannerRes(state, payload) {
+      return {
+        ...state,
         ...payload
       }
     }

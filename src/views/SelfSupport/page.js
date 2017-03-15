@@ -10,7 +10,7 @@ import SwiperPagination from './SwiperPagination';
 import GoodsIscroll from "components/swipe/GoodsIscroll";
 import GoodsTab from "components/swipe/GoodsTab";
 import ReactSwipe from 'react-swipe';
-import { ProductListHots } from 'ui';
+import { ProductList } from 'ui';
 import Swipe from "components/swipe/swipe";
 
 class SelfSupport extends Component {
@@ -31,7 +31,7 @@ class SelfSupport extends Component {
     this.touchMove = this.touchMove.bind(this);
   }
   componentDidMount() {
-    this.getData(1);
+    // this.getData(1);
   }
 
   componentDidUpdate() {
@@ -41,8 +41,12 @@ class SelfSupport extends Component {
     this.props.setSwiperActive(active);
   }
   tabCallback  = (active) => {
+    if(this.props.tabActive === active){
+      return;
+    }
     this.props.setTabActive(active);
-    // this.props.getHotSearchList(this.props.tabs[active].id, 4);
+    // this.props.getHotSearchList(this.props.goodsTabs[active].id, 1);
+
     this.getData(1, {
       page:1,
       cId: this.props.tabs[active].id
@@ -60,8 +64,7 @@ class SelfSupport extends Component {
   getData(num , searchParam){
       let {page,items,active,isLoading,isEnd} = this.state;
 
-      console.log("isLoading.....", this.state, ".............", searchParam)
-      if(isLoading || isEnd){
+      if(isLoading){
           return;
       }
       this.setState({
@@ -71,27 +74,26 @@ class SelfSupport extends Component {
       let param = Object.assign({},{cId: active, page: page,size: 8},searchParam);
       page = param.page;
       return fetchPosts("stuff/qbzy/goodsList.do",param,"GET").then((data)=>{
-              console.log(data);
+              // console.log("data.data.lenght" , data.data.length);
               if(data.responseCode===1000){
-                  page += num;
-                  if(searchParam){
+
+                  if(page===1){
                     _this.setState({
                         isLoading:false,
-                        page,
+                        page: page + num,
                         active: param.cId,
-                        isEnd:data.data.length < 8 ?true:false,
+                        isEnd: data.data.length < 8 ?true:false,
                         items:data.data
                     });
                   }else{
                     _this.setState({
                         isLoading:false,
-                        page,
+                        page: page + num,
                         active: param.cId,
                         isEnd:data.data.length < 8 ?true:false,
                         items:items.concat(data.data)
                     });
                   }
-
               }else{
                    _this.setState({
                       isLoading:false});
@@ -139,7 +141,7 @@ class SelfSupport extends Component {
             <SwiperPagination active={this.props.swiperActive} swipers={this.props.swipers}></SwiperPagination>
           </div>
           {goodsTab}
-          <ProductListHots listConfig={{temp: 'similar'}} listData={this.state.items}/>
+          <ProductList listConfig={{temp: 'score'}} listData={this.state.items}/>
         </div>
         {this.state.isLoading===true&&(<div className="no-up">--加载中--</div>)}
         {this.state.page>=1&&this.state.isEnd===true&&(<div className="no-up">--{noDataTip}--</div>)}

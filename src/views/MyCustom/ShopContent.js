@@ -75,9 +75,12 @@ class ShopContent extends Component {
             this.props.shopLabels.map(
               (item, i) =>
                 <div key={i} onTouchStart={this.labelClickHandler.bind(this, item, i)} className={item.check ? 'shop-item selected' : 'shop-item'}>
-                  <div className="img-mask"></div>
+                  <div className="img-mask">
+                    <img src={item.icon}/>
+                    <div className="mask"></div>
+                    <div className="border"></div>
+                  </div>
                   <div className="icon-selected"></div>
-                  <img src={item.icon}/>
                   <span className="label">{item.name}</span>
                 </div>
             )

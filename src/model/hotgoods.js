@@ -6,7 +6,7 @@ export default {
     loading: true,
     loadingInit: false,
     swiperActive: 0,
-    tabActive: 0,
+    tabActive: -1,
     page: 1,
     goodsStuffs: [
       {
