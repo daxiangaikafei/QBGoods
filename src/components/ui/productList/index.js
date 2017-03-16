@@ -17,7 +17,8 @@ class ProductList extends Component {
                 'mi':  require('static/imgs/thirdSource/mi.png'),
                 'taobao':  require('static/imgs/thirdSource/taobao.png'),
                 'yhd':  require('static/imgs/thirdSource/yhd.png'),
-                'yougou':  require('static/imgs/thirdSource/tmall.png'),
+                'yougou': require('static/imgs/thirdSource/yougou.png'),
+                'qbao':  require('static/imgs/thirdSource/qbao.png'),
         }
     constructor(props) {
         super(props)
@@ -43,7 +44,7 @@ class ProductList extends Component {
                                     <div styleName="bottom">
                                         <span styleName="return">{item.rebateValue}</span>
                                         {item.orderNum != null ? <p styleName="sales">销量 <span>{item.orderNum}</span></p> : ''}
-                                        <span styleName="similar">找相似</span>
+                                        <a href={`newTab://goodstuff.qbao.com/similar?pid=${item.id}`}><span styleName="similar">找相似</span></a>
                                     </div>
                                 </div>
                             )
