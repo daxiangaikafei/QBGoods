@@ -71,8 +71,8 @@ class GoodsIscroll extends Component {
                     <a href={item.url} ><img src={item.imgUrl} alt="" className="hots-public-item-img" /></a>
                     <a href={item.url} ><h3>{item.name}</h3></a>
                     <div className="price">￥{item.finalPrice}<div className="icon"><i className={item.source}></i></div></div>
-                    <div className="bottom">
-                        <span className="return">返{item.rebateValue}宝券</span>
+                    <div className="bottom public-rebateValue">
+                        <span className="return">{item.rebateValue}</span>
                     </div>
                 </div>)
               })
