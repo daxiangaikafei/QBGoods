@@ -94,9 +94,9 @@ require.ensure([],
             //document.addEventListener('DOMContentLoaded', function () {debugger;
             //    FastClick.attach(document.body);
             //}, false);
-            window.addEventListener( "load", function() {
-                FastClick.attach( document.body );
-            }, false );
+            //window.addEventListener( "load", function() {
+            //    FastClick.attach( document.body );
+            //}, false );
         }
 
     }
