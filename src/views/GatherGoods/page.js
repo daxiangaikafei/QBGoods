@@ -51,7 +51,7 @@ class GatherGoods extends Component {
 
   touchMove = (that, args) => {
     console.log(that, args);
-    if (that.min - args[0] > -500) {
+    if (that.min - args[0] > -300) {
       this.getData();
     }
   }
