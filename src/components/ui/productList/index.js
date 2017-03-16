@@ -4,7 +4,7 @@ import CSSModules from 'react-css-modules'
 import styles from './index.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
-import { priceFormat } from 'libs/util'
+import { priceFormat,baoquanFormat } from 'libs/util'
 
 class ProductList extends Component {
     icons  =  {
@@ -53,7 +53,7 @@ class ProductList extends Component {
                             <div styleName="item" key={index}>
                                 <a styleName="img" href={item.haohuoUrl} ><img src={item.imgUrl} alt="" /></a>
                                 <a href={item.haohuoUrl} ><h3>{item.name}</h3></a>
-                                <div styleName="price">￥{priceFormat(item.viewPrice)}
+                                <div styleName="price">{baoquanFormat(item.viewPrice)}宝券
                                     <span styleName="icon"><img src={this.icons[item.source]} alt=""/></span>
                                 </div>
                                 <div styleName="bottom score">
@@ -87,7 +87,7 @@ class ProductList extends Component {
                                   <a styleName="img" href={item.linkUrl} ><img src={item.imgUrl} alt="" /></a>
                                   <a href={item.linkUrl} ><h3>{item.name}</h3></a>
                                   <div styleName="price">￥{priceFormat(item.finalPrice)}
-                                      <span styleName="icon"></span>
+                                      <span styleName="icon"><img src={this.icons[item.source]} alt=""/></span>
                                   </div>
                                   <div styleName="bottom">
                                       <span styleName="return">{item.rebateValue}</span>
