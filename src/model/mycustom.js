@@ -15,7 +15,7 @@ export default {
     selfTipShow: false,
     selfTipNum: 0,
     selfLabels:[
-      
+
     ],
     shopLabelsDefault:[
       {
@@ -43,21 +43,48 @@ export default {
       let shopLabels = yield call(() => {
         return fetchPosts("/stuff/custom/getUserTags.do",{ userId: 10001, typeId: 1 },"GET")
           .then(data => data.data.items)
-          .catch(err => ([ ]))
+          .catch(err => ([
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"}
+           ]))
       })
 
       let selfLabels = yield call(() => {
         return fetchPosts("/stuff/custom/getUserTags.do",{ userId: 10001, typeId: 2 },"GET")
           .then(data => data.data.items)
-          .catch(err => ([]))
+          .catch(err => ([
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"}
+          ]))
       })
+
+      let shopTotal = 0;
+      shopLabels.map(function(n,i){
+        if(n.check){
+          shopTotal += n.count;
+        }
+      });
+
+      let selfTotal = 0;
+      selfLabels.map(function(n,i){
+        if(n.check){
+          selfTotal += n.count;
+        }
+      });
+
       yield put({
         type: 'getShopLabelsRes',
         loading: false,
         shopLabels: shopLabels,
         shopLabelsDefault: deepCopy(shopLabels),
+        shopTipShow: !!shopTotal,
+        shopTipNum: shopTotal,
         selfLabels: selfLabels,
-        selfLabelsDefault: deepCopy(selfLabels)
+        selfLabelsDefault: deepCopy(selfLabels),
+        selfTipShow: !!selfTotal,
+        selfTipNum: selfTotal,
       });
     },
     *saveLabels (action, {put, call}){
@@ -97,7 +124,7 @@ export default {
       });
       return {
         ...state,
-        shopTipShow: true,
+        shopTipShow: !!shopTotal,
         shopLabels: newShopLabels,
         shopTipNum: shopTotal
       }
@@ -126,7 +153,7 @@ export default {
 
       return {
         ...state,
-        selfTipShow: true,
+        selfTipShow: !!shopTotal,
         selfTipNum: shopTotal,
         selfLabels: newSelfLabels
       }
