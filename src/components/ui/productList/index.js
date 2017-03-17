@@ -53,7 +53,7 @@ class ProductList extends Component {
                             <div styleName="item" key={index}>
                                 <a styleName="img" href={item.haohuoUrl} ><img src={item.imgUrl} alt="" /></a>
                                 <a href={item.haohuoUrl} ><h3>{item.name}</h3></a>
-                                <div styleName="price">{baoquanFormat(item.viewPrice)}宝券
+                                <div styleName="price">{baoquanFormat(item.viewPrice)}
                                     <span styleName="icon"><img src={this.icons[item.source]} alt=""/></span>
                                 </div>
                                 <div styleName="bottom score">

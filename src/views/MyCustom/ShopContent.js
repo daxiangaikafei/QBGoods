@@ -79,7 +79,7 @@ class ShopContent extends Component {
                 <div key={i} onTouchStart={this.labelClickHandler.bind(this, item, i)} className={item.check ? 'shop-item selected' : 'shop-item'}>
                   <div className="img-mask">
 
-                    {item.icon == "http://" || item.icon == "" || !tem.icon ? <img src={noimg}/>: <img src={item.icon}/>}
+                    {item.icon == "http://" || item.icon == "" ? <img src={noimg}/>: <img src={item.icon}/>}
                     <div className="mask"></div>
                     <div className="border"></div>
                   </div>

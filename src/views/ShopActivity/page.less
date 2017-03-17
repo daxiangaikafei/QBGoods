@@ -69,18 +69,122 @@ html, body {
 }
 
 main{
+  .shop-container{
+    background-color: #f6f6f6;
+  }
   .shop-header{
     position: relative;
+    color: #fff;
     .shop-header-bg{
       width: 100%;
-      min-height: 100px;
+      height: 100px;
       display: block;
+      background-color: #000;
     }
     .shop-header-warpper{
-      div{
+      position: absolute;
+      width: 100%;
+      height: 70px;
+      top: 15px ;
+      left: 15px;
+      // overflow: hidden;
+      .shop-icon{
         display: inline-block;
+        height: 70px;
+        vertical-align: top;
+        img{
+          width: 70px;
+          height: 70px;
+          border-radius: 5px;
+        }
+      }
+      .shop-info{
+        display: inline-block;
+        overflow: hidden;
+        height: 70px;
+        vertical-align: top;
+        margin-left: 10px;
+        .shop-name{
+          font-size:16px;
+          margin-top: 10px;
+          // line-height: 30px;
+        }
+        .shop-sale{
+          font-size: 12px;
+          margin-top: 10px;
+          span:nth-child(1){
+            padding-right: 20px;
+          }
+        }
       }
     }
+  }
+
+  .shop-sale-content{
+    background: #fff;
+    .shop-sale-tab{
+      margin-top: 10px;
+      height: 48px;
+      overflow: hidden;
+      background: url('static/imgs/ShopActivity/shopsale.png') no-repeat center center;
+      background-size: 100% auto;
+      width: 100%;
+    }
+    .shop-sale-list{
+      background-color: #fff;
+      // padding: 5px 0 5px 5px;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-lines: multiple;
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      .shop-sale-item{
+        color: #35353f;
+        background-color: #fff;
+        width: 30%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        margin: 0 auto 10px;
+        .shop-sale-warpper{
+          display: block;
+          height: 0;
+          padding-bottom: 100%;
+          // background-color: #e0e0e0;
+          overflow: hidden;
+        }
+
+      }
+      .shop-sale-item:nth-child(1){
+        background-color: #fff0e2;
+      }
+      .shop-sale-item:nth-child(2){
+        background-color: #ffe4e7;
+      }
+      .shop-sale-item:nth-child(3){
+        background-color: #ddecff;
+      }
+      .shop-sale-item:nth-child(4){
+        background-color: #fffae5;
+      }
+      .shop-sale-item:nth-child(5){
+        background-color: #e2f6e2;
+      }
+      .shop-sale-item:nth-child(6){
+        background-color: #ffecfc;
+      }
+    }
+  }
+  .shop-foryou-tab{
+    margin-top: 10px;
+    height: 51px;
+    overflow: hidden;
+    background: url('static/imgs/ShopActivity/foryou.png') no-repeat center center;
+    background-size: 100% auto;
+    width: 100%;
   }
   .shop-swiper{
     position: relative;

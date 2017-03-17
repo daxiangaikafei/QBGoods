@@ -54,22 +54,22 @@ export default {
               {
                 "id": 1001,
                 "name": "御泥坊玫瑰滋养矿物洁面乳2只装",
-                "img_url": "http://127.0.0.1:8888/images/src/static/imgs/gatherGoods/banner.png",
-                "link_url": "http://linkurl",
-                "price": "65.00",
-                "rebate_value": "100",
+                "imgUrl": "http://127.0.0.1:8888/images/src/static/imgs/gatherGoods/banner.png",
+                "linkUrl": "http://linkurl",
+                "viewPrice": "65.00",
+                "rebateValue": "100",
                 "source": "tmall",
-                "sale_count": ""
+                "saleCount": ""
               },
               {
                 "id": 1002,
                 "name": "好奇纸尿裤金装",
-                "img_url": "http://imgurl",
-                "link_url": "http://linkurl",
-                "price": "119",
-                "rebate_value": "500",
+                "imgUrl": "http://imgurl",
+                "linkUrl": "http://linkurl",
+                "viewPrice": "119",
+                "rebateValue": "500",
                 "source": "taobao",
-                "sale_count": ""
+                "saleCount": ""
               }
             ]))
         }, action.productList)
