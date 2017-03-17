@@ -173,10 +173,10 @@ class OrderList extends React.Component {
     render() {
 
         let {items,isLoading,page,isEnd} = this.state;
-        let i =0,j=items.length,$lis = [],totalPrice=0,totalSb=0;
+        let i =0,j=items.length,$lis = [];
         while(i<j){
             console.log("----");
-            let item = items[i];
+            let item = items[i],totalPrice=0,totalSb=0;
             i+=1;
 
             let l=0,m=item.item.length,$subItem=[];
