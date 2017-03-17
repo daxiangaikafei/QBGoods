@@ -19,7 +19,7 @@ class NoOrder extends React.Component {
             <div className="container-no-order">
                 <div></div>
                 <p>亲，购物才会返宝券哟</p>
-                <button>立即前去</button>
+                <a href="newTab://goodstuff.qbao.com/search">立即前去</a>
             </div>
         )
     }
