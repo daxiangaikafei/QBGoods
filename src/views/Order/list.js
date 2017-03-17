@@ -185,7 +185,7 @@ class OrderList extends React.Component {
                 l+=1;
 
                 totalPrice = (totalPrice*100+subItem.finalPrice*subItem.stuffNum*100)/100;
-                totalSb = (totalSb*100+subItem.stuffNum*Number(subItem.rebateValue)*100)/100
+                totalSb = (totalSb*100+Number(subItem.rebateValue)*100)/100
 
                 //totalPrice += subItem.price*subItem.stuffNum;
                 $subItem.push(
@@ -205,7 +205,7 @@ class OrderList extends React.Component {
                     <a href={item.clickUrl} target="_blank">
                         <p className="order-item-top">{RebateStatus[rebateStatus]}</p>
                         {$subItem}
-                        <p className="order-item-info">共一件商品，合计:<em><i>￥</i>{totalPrice}</em>
+                        <p className="order-item-info">共{item.stuffNum}件商品，合计:<em><i>￥</i>{totalPrice}</em>
                         {rebateStatus<2&&short}
                         {rebateStatus<2&&(<span>{totalSb}宝券</span>)}
                         </p>

@@ -59,7 +59,7 @@ class Order extends React.Component {
            let searchParam = {
            };
            //status:sb<0?undefined:sb
-           if(sb>0){
+           if(sb>=0){
                 searchParam.status =  sb;
            }
            $lis.push(<List upData={this.upData} key={i} searchParam={searchParam}/>);
