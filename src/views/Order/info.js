@@ -28,7 +28,7 @@ class Info extends React.Component {
                         <p><label>商城：</label>{data.source||""}</p>
                         <p><label>下单时间：</label>{data.orderTime||""}</p>
                         <p><label>订单金额：</label>{data.amount||""}</p>
-                        <p><label>订单编号：</label>{data.orderId||""}</p>
+                        <p><label>订单编号：</label>{data.orderNo||""}</p>
                         <p><label>返还宝券：</label>{data.rebateValue||""}</p>
                     </div>
                 </div>

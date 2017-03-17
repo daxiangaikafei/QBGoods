@@ -68,8 +68,8 @@ class OrderHead extends React.Component {
 OrderHead.defaultProps = {
     items:[
         {id:0,title:"全部"},
-        {id:1,title:"已返宝券"},
-        {id:2,title:"待返宝券"}
+        {id:2,title:"已返宝券"},
+        {id:1,title:"待返宝券"}
     ]
 }
 

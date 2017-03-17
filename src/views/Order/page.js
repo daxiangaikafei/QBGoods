@@ -53,10 +53,14 @@ class Order extends React.Component {
         let i = 0,j=3,$lis=[];
         
        while(i<j){
-           i+=1;
+           
            let sb = Number(i-1);
+           i+=1;
            let searchParam = {
-               status:sb<0?undefined:sb
+           };
+           //status:sb<0?undefined:sb
+           if(sb>0){
+                searchParam.status =  sb;
            }
            $lis.push(<List upData={this.upData} key={i} searchParam={searchParam}/>);
        }
