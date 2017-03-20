@@ -173,10 +173,10 @@ class OrderList extends React.Component {
     render() {
 
         let {items,isLoading,page,isEnd} = this.state;
-        let i =0,j=items.length,$lis = [],totalPrice=0,totalSb=0;
+        let i =0,j=items.length,$lis = [];
         while(i<j){
             console.log("----");
-            let item = items[i];
+            let item = items[i],totalPrice=0,totalSb=0;
             i+=1;
 
             let l=0,m=item.item.length,$subItem=[];
@@ -184,8 +184,8 @@ class OrderList extends React.Component {
                 let subItem = item.item[l];
                 l+=1;
 
-                totalPrice = (totalPrice*100+subItem.price*subItem.stuffNum*100)/100;
-                totalSb = (totalSb*100+subItem.price*subItem.rebateValue*100)/100
+                totalPrice = (totalPrice*100+subItem.finalPrice*subItem.stuffNum*100)/100;
+                totalSb = (totalSb*100+Number(subItem.rebateValue)*100)/100
 
                 //totalPrice += subItem.price*subItem.stuffNum;
                 $subItem.push(
@@ -194,7 +194,7 @@ class OrderList extends React.Component {
                             <img src={subItem.imgUrl}/>
                         </div>
                         <p>{subItem.name}</p>
-                        <span>￥{subItem.price}</span>
+                        <span>￥{subItem.finalPrice}</span>
                     </div>
                 )
             }
@@ -205,7 +205,7 @@ class OrderList extends React.Component {
                     <a href={item.clickUrl} target="_blank">
                         <p className="order-item-top">{RebateStatus[rebateStatus]}</p>
                         {$subItem}
-                        <p className="order-item-info">共一件商品，合计:<em><i>￥</i>{totalPrice}</em>
+                        <p className="order-item-info">共{item.stuffNum}件商品，合计:<em><i>￥</i>{totalPrice}</em>
                         {rebateStatus<2&&short}
                         {rebateStatus<2&&(<span>{totalSb}宝券</span>)}
                         </p>

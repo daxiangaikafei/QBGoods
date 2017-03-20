@@ -59,6 +59,16 @@
                     }
                 }
             },
+            Util:{
+                getDevice:function(){
+                    if(navigator.userAgent.match(/Android/i)) 
+                    return 'Android'
+                        else if(navigator.userAgent.match(/iPhone|iPad|iPod/i))
+                    return 'iPhone'
+                    else 
+                        return navigator.userAgent.toString()
+                }
+            },
             EventLog:{
                 BASE_DOMAIN:'dig.qbao.com',
                 BASE_PATH:'/v40/banner/',
@@ -68,7 +78,7 @@
                     // if('cnv' == recording.getGlobalVal('_type')){
                     //     this.BASE_IMG = 'cnv.jpg';
                     // }
-                    i.src = '//' + this.BASE_DOMAIN + this.BASE_PATH + this.BASE_IMG + this.formatParams(Object.assign({},params,{loadTime:new Date().getTime()}));
+                    i.src = '//' + this.BASE_DOMAIN + this.BASE_PATH + this.BASE_IMG + this.formatParams(Object.assign({},QBFK.EventLog.baseParams(params),{ts:new Date().getTime()}));
                 },
                 formatParams:function(params){
                     var s = "";
@@ -79,14 +89,17 @@
                 },
                 baseParams:function(params){
                     var ret = { }
-                    ret.spuId = params.spuId || 0 //产品ID
-                    ret.shopId = params.shopId || 0 //店铺ID
+                    
                     ret.userId = params.userId || '' //用户ID
-                    ret.advId = params.advId || 0 //广告ID
-                    ret.stuffMoudId = params.stuffMoudId || 0 //好货模块ID
-                    ret.stuffMoudName = params.stuffMoudName || 0 //好货模块名称
-                    ret.directoryId = params.directoryId || 0 //类目ID
-                    ret.spuSource = params.spuSource || 0 //商品来源 1 代表站内 0
+                    ret.stuffMoudId = params.stuffMoudId || 1 //1:聚好货, 2: 热卖好货, 3:钱宝自营,4:发现好店,5:首页推荐,6:搜索,7:搜索推荐,8:找相似,9:拍立购
+                    ret.type = params.type || 'shop' //类型 shop,stuff,ju,ad,bannner, search,rec
+                    ret.id = params.id || 0 //商品Id
+                    ret.locationId = params.locationId || 0 //点击的位置
+                    ret.source = params.source || 0 //商品来源tabao,tmall,jd,qbao
+                    ret.deviceId = params.deviceId || navigator.userAgent //设备号
+                    ret.device = QBFK.Util.getDevice() //设备
+                    ret.platform = 'qbao_stuff' //(平台名称: qbao_stuff)
+
                     return ret
                 }
             }
