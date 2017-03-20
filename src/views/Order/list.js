@@ -210,7 +210,7 @@ class OrderList extends React.Component {
                         {rebateStatus<2&&(<span>{totalSb}宝券</span>)}
                         </p>
                     </a>
-                    <div className="order-item-todo" ><button data-id={item.id} className="js_del">删除</button><button data-id={item.id} className="js_info">返券详情</button></div>
+                    <div className="order-item-todo" ><button data-id={item.id} className="js_info">返券详情</button></div>
                 </li>
             )
         }
@@ -248,3 +248,4 @@ OrderList.defaultProps = {
 }
 
 module.exports = OrderList;
+//<button data-id={item.id} className="js_del">删除</button>
