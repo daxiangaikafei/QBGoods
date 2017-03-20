@@ -78,11 +78,11 @@ export default {
         type: 'getShopLabelsRes',
         loading: false,
         shopLabels: shopLabels,
-        shopLabelsDefault: deepCopy(shopLabels),
+        // shopLabelsDefault: deepCopy(shopLabels),
         shopTipShow: !!shopTotal,
         shopTipNum: shopTotal,
         selfLabels: selfLabels,
-        selfLabelsDefault: deepCopy(selfLabels),
+        // selfLabelsDefault: deepCopy(selfLabels),
         selfTipShow: !!selfTotal,
         selfTipNum: selfTotal,
       });

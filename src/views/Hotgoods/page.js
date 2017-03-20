@@ -130,6 +130,7 @@ class Hotgoods extends Component {
   }
   render() {
     let reactSwipe = null, goodsIscroll = null, goodsTab = null;
+    // auto: true, speed: 1000,
     if(this.props.loadingInit){
       reactSwipe = <ReactSwipe  ref="swiper" className="carousel" swipeOptions={{continuous: false, callback: this.swiperCallback}}>
                     {

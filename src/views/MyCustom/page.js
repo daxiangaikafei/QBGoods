@@ -36,19 +36,24 @@ class MyCustom extends Component {
 
     let tagDetailIds = [];
     let shopLabels = this.props.shopLabels;
-    this.props.shopLabelsDefault.map((item,i) => {
-      if(shopLabels[i].check !== item.check){
+    shopLabels.map((item,i) => {
+      if(item.check){
         tagDetailIds.push(item.tagDetailId);
       }
     });
 
     let tagSelfDetailIds = [];
     let selfLabels = this.props.selfLabels;
-    this.props.selfLabelsDefault.map((item,i) => {
-      if(selfLabels[i].check !== item.check){
+    selfLabels.map((item,i) => {
+      if(item.check){
         tagSelfDetailIds.push(item.tagDetailId);
       }
     });
+    // this.props.selfLabelsDefault.map((item,i) => {
+    //   if(selfLabels[i].check !== item.check){
+    //     tagSelfDetailIds.push(item.tagDetailId);
+    //   }
+    // });
     // this.props.saveLabels(tagDetailIds.join(","), tagSelfDetailIds.join(",") );
     //{ typeId: 1 ,tagDetailIds: action.tagDetailIds }
     let that = this;
@@ -76,9 +81,9 @@ class MyCustom extends Component {
               Modal.alert("提示", _this.props.tabActive === "shop" ? "个人标签保存成功" : "购物标签保存成功" );
 
               if(_this.props.tabActive === "shop"){
-                _this.props.setDefaultShopDatas();
+                // _this.props.setDefaultShopDatas();
               }else{
-                _this.props.setDefaultSelfDatas();
+                // _this.props.setDefaultSelfDatas();
               }
               _this.setState({
                  isLoading:false});
@@ -105,8 +110,8 @@ class MyCustom extends Component {
     return (
       <div className="mycustom-container">
         <div className="mycustom-tab">
-          <div className={this.props.tabActive === "shop" ? 'mycustom-active' : ''} onTouchStart={this.tabClickHandler.bind(this,'shop')}>个人标签</div>
-          <div className={this.props.tabActive === "self" ? 'mycustom-active' : ''} onTouchStart={this.tabClickHandler.bind(this,'self')}>购物标签</div>
+          <div className={this.props.tabActive === "shop" ? 'mycustom-active' : ''} onTouchStart={this.tabClickHandler.bind(this,'shop')}>购物标签</div>
+          <div className={this.props.tabActive === "self" ? 'mycustom-active' : ''} onTouchStart={this.tabClickHandler.bind(this,'self')}>个人标签</div>
         </div>
         {customcontent}
         <div className="mycustom-btns">
