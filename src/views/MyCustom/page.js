@@ -81,9 +81,9 @@ class MyCustom extends Component {
               Modal.alert("提示", _this.props.tabActive === "shop" ? "个人标签保存成功" : "购物标签保存成功" );
 
               if(_this.props.tabActive === "shop"){
-                // _this.props.setDefaultShopDatas();
+                _this.props.setDefaultShopDatas();
               }else{
-                // _this.props.setDefaultSelfDatas();
+                _this.props.setDefaultSelfDatas();
               }
               _this.setState({
                  isLoading:false});
@@ -98,7 +98,29 @@ class MyCustom extends Component {
      });
   }
   changeHandler(){
-    this.context.router.goBack();
+    // this.context.router.goBack();
+    let tagDetailIds = [];
+    let shopLabels = this.props.shopLabelsDefault;
+    shopLabels.map((item,i) => {
+      if(item.check){
+        tagDetailIds.push(item.tagDetailId);
+      }
+    });
+
+    let tagSelfDetailIds = [];
+    let selfLabels = this.props.selfLabelsDefault;
+    selfLabels.map((item,i) => {
+      if(item.check){
+        tagSelfDetailIds.push(item.tagDetailId);
+      }
+    });
+
+    if(this.props.tabActive === "shop"){
+      this.props.setNowShopDatas();
+    }else{
+      this.props.setNowSelfDatas();
+    }
+    return;
   }
   render() {
     let customcontent;
@@ -131,6 +153,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+      setNowShopDatas: function(){
+        dispatch({type: 'mycustom/setNowShopDatas' });
+      },
+      setNowSelfDatas: function(){
+        dispatch({type: 'mycustom/setNowSelfDatas' });
+      },
       setDefaultShopDatas: function(){
         dispatch({type: 'mycustom/setDefaultShopDatas' });
       },

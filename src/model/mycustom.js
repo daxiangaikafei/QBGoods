@@ -78,11 +78,11 @@ export default {
         type: 'getShopLabelsRes',
         loading: false,
         shopLabels: shopLabels,
-        // shopLabelsDefault: deepCopy(shopLabels),
+        shopLabelsDefault: deepCopy(shopLabels),
         shopTipShow: !!shopTotal,
         shopTipNum: shopTotal,
         selfLabels: selfLabels,
-        // selfLabelsDefault: deepCopy(selfLabels),
+        selfLabelsDefault: deepCopy(selfLabels),
         selfTipShow: !!selfTotal,
         selfTipNum: selfTotal,
       });
@@ -166,6 +166,15 @@ export default {
     setDefaultSelfDatas (state, payload) {
       let selfLabelsDefault = deepCopy(state.selfLabels);
       return {...state, selfLabelsDefault: selfLabelsDefault}
+    },
+
+    setNowShopDatas (state, payload) {
+      let shopLabelsNow = deepCopy(state.shopLabelsDefault);
+      return {...state, shopLabels: shopLabelsNow }
+    },
+    setNowSelfDatas (state, payload) {
+      let selfLabelsNow = deepCopy(state.selfLabelsDefault);
+      return {...state, selfLabels: selfLabelsNow}
     },
   }
 }
