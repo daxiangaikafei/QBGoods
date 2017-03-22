@@ -135,7 +135,7 @@ class Hotgoods extends Component {
       reactSwipe = <ReactSwipe  ref="swiper" className="carousel" swipeOptions={{continuous: false, callback: this.swiperCallback}}>
                     {
                       this.props.goodsSwipers.map(function(item,i){
-                        return (<div key={i}><a href={item.linkUrl}><img src={item.imgUrl}/></a></div>)
+                        return (<div key={i}><a data-event="point" data-event-stuffMoudId="热卖好货" data-event-type="ad" data-event-id={item.id} data-event-locationId="23" data-event-source={item.source} href={item.linkUrl}><img src={item.imgUrl}/></a></div>)
                       })
                     }
                   </ReactSwipe>;
