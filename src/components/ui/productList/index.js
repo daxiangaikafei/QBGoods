@@ -59,7 +59,7 @@ class ProductList extends Component {
                                 <div styleName="bottom score">
                                     <p styleName="sales">销量 <span>{item.saleCount}</span></p>
                                     <div styleName="tip">
-                                        <a href={item.haohuoUrl} ><div styleName="haohuoScore">{item.haohuoScore}</div></a>
+                                        <a {...this.eventFun(item,index,3)} href={item.haohuoUrl} ><div styleName="haohuoScore">{item.haohuoScore}</div></a>
                                     </div>
                                 </div>
                             </div>

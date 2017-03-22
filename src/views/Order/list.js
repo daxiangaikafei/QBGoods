@@ -201,8 +201,8 @@ class OrderList extends React.Component {
             let rebateStatus = item.rebateStatus;
             let short = RebateStatusShort[rebateStatus];
             $lis.push(
-                <li key={item.id} className="order-item"  >
-                    <a href={item.clickUrl} target="_blank">
+                <li key={item.id} className="order-item"   >
+                    <a href={item.clickUrl} target="_blank" >
                         <p className="order-item-top">{RebateStatus[rebateStatus]}</p>
                         {$subItem}
                         <p className="order-item-info">共{item.stuffNum}件商品，合计:<em><i>￥</i>{totalPrice}</em>

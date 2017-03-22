@@ -122,7 +122,7 @@ class SelfSupport extends Component {
       reactSwipe = <ReactSwipe ref="swiper" className="carousel" swipeOptions={{continuous: false, callback: this.swiperCallback}}>
                     {
                       this.props.swipers.map(function(item,i){
-                        return (<div key={i}><a href={item.linkUrl}><img src={item.imgUrl}/></a></div>)
+                        return (<div key={i}><a data-event="point" data-event-stuffMoudId="3" data-event-type="shop" data-event-id={item.id} data-event-locationId={item.locationId} data-event-source={item.source} href={item.linkUrl}><img src={item.imgUrl}/></a></div>)
                       })
                     }
                   </ReactSwipe>;
