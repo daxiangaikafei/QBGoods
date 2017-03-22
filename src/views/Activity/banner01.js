@@ -45,7 +45,7 @@ class Activity extends React.Component {
             let price = item.finalPrice.toString().split(".");
             $lis.push(
                 <li key={item.id} className="activity_normal-item">
-                    <a href={item.linkUrl}>
+                    <a href={item.linkUrl} event-stuffMoudId={5} event-type={"bannner"} event-id={item.id} event-locationId={i} event-source={"taobao"} event={"point"} >
                         <div className="activity_normal-item-left">
                             <img src={item.imgUrl} />
                         </div>
