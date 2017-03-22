@@ -48,13 +48,13 @@
                     //android login
                     if(navigator.userAgent.match(/Android/i)) {
                         if (typeof QBaoJSBridge != 'undefined') {
-                            QBaoJSBridge.login("mqbii.qbao.com", String());
+                            QBaoJSBridge.login("goodstuff.qbao.com", String());
                         }
                     }
                     //ios login
                     else if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
                         if (typeof ioswebview != 'undefined') {
-                            ioswebview.showLoginViewAnd("mqbii.qbao.com", String());
+                            ioswebview.showLoginViewAnd("goodstuff.qbao.com", String());
                         }
                     }
                 }
@@ -71,13 +71,10 @@
             },
             EventLog:{
                 BASE_DOMAIN:'dig.qbao.com',
-                BASE_PATH:'/v40/banner/',
-                BASE_IMG:'event.jpg',
+                BASE_PATH:'/wap-site/images/',
+                BASE_IMG:'goods_stuff.jpg',
                 sendMsg:function(params){
-                    var i = new Image();		
-                    // if('cnv' == recording.getGlobalVal('_type')){
-                    //     this.BASE_IMG = 'cnv.jpg';
-                    // }
+                    var i = new Image();
                     i.src = '//' + this.BASE_DOMAIN + this.BASE_PATH + this.BASE_IMG + this.formatParams(Object.assign({},QBFK.EventLog.baseParams(params),{ts:new Date().getTime()}));
                 },
                 formatParams:function(params){
@@ -96,7 +93,7 @@
                     ret.id = params.id || 0 //商品Id
                     ret.locationId = params.locationId || 0 //点击的位置
                     ret.source = params.source || 0 //商品来源tabao,tmall,jd,qbao
-                    ret.deviceId = params.deviceId || navigator.userAgent //设备号
+                    ret.deviceId = params.deviceId || (QBFK.Util.getDevice() === 'Android' ? (QBaoJSBridge && QBaoJSBridge.getDeviceId()) : (ioswebview && ioswebview.getDeviceId())) //设备号
                     ret.device = QBFK.Util.getDevice() //设备
                     ret.platform = 'qbao_stuff' //(平台名称: qbao_stuff)
 
