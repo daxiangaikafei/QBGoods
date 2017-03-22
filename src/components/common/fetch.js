@@ -40,11 +40,11 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
             // console.log('收到data', data);
             //dispatch(fetchSuccess(key, data));
             //debugger;
-            // if (data && (data.returnCode === -100 || data.returnCode === "-100")&&fetchNum<30) {
-                // QBFK.Business.login();
-                // return fetchSetTimeout().then(()=> {
-                //     return fetchPosts(url, param, type, headers, repType, fetchNum + 1);
-                // })
+            if (data && (data.returnCode === 100001 || data.returnCode === "100001")&&fetchNum<30) {
+                QBFK.Business.login();
+                return fetchSetTimeout().then(()=> {
+                    return fetchPosts(url, param, type, headers, repType, fetchNum + 1);
+                })
 
 
                 //dispatch(errorClear("common,login"));
@@ -55,7 +55,7 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
             //     if (data && (data.code === "200" || data.code === 200 || data.resultCode == "200" || data.resultCode == 200)) {
             //         //dispatch(errorSave("login", data));
             //     }
-            // }
+            }
             return data;
         })
 

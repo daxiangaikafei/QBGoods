@@ -2,6 +2,8 @@ import React,{ Component } from 'react'
 import * as ReactDOM from 'react-dom';
 import classNames from 'classnames'
 import { connect } from 'dva'
+import Tappable from 'react-tappable';
+import Swipe from "components/swipe/swipe";
 
 let noimg = require('static/imgs/hotgoods/noimg.png');
 
@@ -67,32 +69,41 @@ class ShopContent extends Component {
     // }
     this.props.editLabelSelected(index , !item.check);
 
-    console.log(this.props.shopLabels, this.props.shopLabelsDefault );
+    // console.log(this.props.shopLabels, this.props.shopLabelsDefault );
   }
   render() {
+    let swipeProps = {
+        property:"translateY",
+        className:"scroll-shop-warpper",
+        tag:"ul",
+        min:"auto",
+        stopPro:false,
+        vertical:true,
+        // touchMove:this.touchMove
+        //step:200
+    }
     return (
-      <div className="shop-content" ref="touch">
-        <div className="shop-list" ref="swipe">
-          {
-            this.props.shopLabels.map(
-              (item, i) =>
-                <div key={i} onTouchStart={this.labelClickHandler.bind(this, item, i)} className={item.check ? 'shop-item selected' : 'shop-item'}>
-                  <div className="img-mask">
+      <Swipe  {...swipeProps} >
+        <div className="shop-content" ref="touch">
+          <div className="shop-list" ref="swipe">
+            {
+              this.props.shopLabels.map(
+                (item, i) =>
+                  <Tappable key={i}  onTap={this.labelClickHandler.bind(this, item, i)} className={item.check ? 'shop-item selected' : 'shop-item'}>
+                    <div className="img-mask">
 
-                    {item.icon == "http://" || item.icon == "" ? <img src={noimg}/>: <img src={item.icon}/>}
-                    <div className="mask"></div>
-                    <div className="border"></div>
-                  </div>
-                  <div className="icon-selected"></div>
-                  <div className="shop-name">{item.name}</div>
-                </div>
-            )
-          }
+                      {item.icon == "http://" || item.icon == "" ? <img src={noimg}/>: <img src={item.icon}/>}
+                      <div className="mask"></div>
+                      <div className="border"></div>
+                    </div>
+                    <div className="icon-selected"></div>
+                    <div className="shop-name">{item.name}</div>
+                  </Tappable>
+              )
+            }
+          </div>
         </div>
-        <p className={this.props.shopTipShow ? 'shop-tip shop-tip-show' : 'shop-tip'}>
-          与你购物喜好相似的人有<span>{this.props.shopTipNum}</span>人
-        </p>
-      </div>
+      </Swipe>
     )
   }
 };
