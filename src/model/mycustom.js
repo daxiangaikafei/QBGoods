@@ -46,6 +46,46 @@ export default {
           .catch(err => ([
             {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
             {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
             {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"}
            ]))
       })
@@ -55,6 +95,64 @@ export default {
           .then(data => data.data.items)
           .catch(err => ([
             {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: false, tagDetailId: 1, icon: "http://", count: 10000, name: "白富美"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
+            {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
+            {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"},
             {check: true, tagDetailId: 2, icon: "http://", count: 32423, name: "高富帅"},
             {check: true, tagDetailId: 3, icon: "http://", count: 46543, name: "屌丝"}
           ]))
@@ -78,11 +176,11 @@ export default {
         type: 'getShopLabelsRes',
         loading: false,
         shopLabels: shopLabels,
-        // shopLabelsDefault: deepCopy(shopLabels),
+        shopLabelsDefault: deepCopy(shopLabels),
         shopTipShow: !!shopTotal,
         shopTipNum: shopTotal,
         selfLabels: selfLabels,
-        // selfLabelsDefault: deepCopy(selfLabels),
+        selfLabelsDefault: deepCopy(selfLabels),
         selfTipShow: !!selfTotal,
         selfTipNum: selfTotal,
       });
@@ -107,7 +205,11 @@ export default {
   },
   reducers: {
     tabAct(state, { active }) {
-      return { ...state, tabActive: active };
+      return { ...state,
+         tabActive: active,
+         shopTipShow: (active === "shop"),
+         selfTipShow: (active === "self")
+      };
     },
     editTipShow(state, { label, num }) {
       return { ...state, shopTipShow: true, shopTipLabel: label, shopTipNum: num };
@@ -166,6 +268,31 @@ export default {
     setDefaultSelfDatas (state, payload) {
       let selfLabelsDefault = deepCopy(state.selfLabels);
       return {...state, selfLabelsDefault: selfLabelsDefault}
+    },
+
+    setNowShopDatas (state, payload) {
+      let shopLabelsNow = deepCopy(state.shopLabelsDefault);
+      let shopTotal = 0;
+      shopLabelsNow.map(function(n,i){
+        if(n.check){
+          shopTotal += n.count;
+        }
+      });
+      return {...state, shopLabels: shopLabelsNow,
+          shopTipNum: shopTotal
+       }
+    },
+    setNowSelfDatas (state, payload) {
+      let selfLabelsNow = deepCopy(state.selfLabelsDefault);
+      let shopTotal = 0;
+      selfLabelsNow.map(function(n,i){
+        if(n.check){
+          shopTotal += n.count;
+        }
+      });
+      return {...state, selfLabels: selfLabelsNow,
+          selfTipNum: shopTotal
+      }
     },
   }
 }

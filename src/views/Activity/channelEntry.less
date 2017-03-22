@@ -1,0 +1,202 @@
+@txtColor: #35353f;
+@assetTitleColor: #90909b;
+@bdColor: #F2F2F7;
+@bodyBGColor: #f1f1f6;
+@increaseTxtColor: #fd472b;
+@listBdColor: #e5e5e5;
+@subTxtColor: #acacac;
+@priceTxtColor: #fd472b;
+@import '~libs/layout/layout-mixin.less';
+main {
+    color: @txtColor;
+    .home-container {
+        background: @bodyBGColor;
+    }
+    .banner-container {
+        width: 100%;
+        height: 150px;
+        position: relative;
+        margin: 0 auto;
+        a {
+            display: block;
+        }
+        img {
+            width: 100%;
+            height: 150px;
+        }
+    }
+    .middle-title {
+        height: 50px;
+        background: #fff url('static/imgs/activity/title-bg.png') no-repeat center;
+        -webkit-background-size: 45%;
+        background-size: 45%;
+        color: @priceTxtColor;
+        font-size: 16px;
+        .flex;
+        .flex-center;
+        .flex-align-center;
+    }
+    .middle-container {
+        overflow: auto;
+        background-color: #fff;
+        .list {
+            width: 210%;
+            overflow: scroll;
+            background-color: #fff;
+            padding: 0 0 5px 5px;
+            .flex;
+            .item {
+                width: 130px;
+                color: @txtColor;
+                background-color: #fff;
+                border-right: 5px solid #fff;
+                margin-bottom: 5px;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                .flex-item-auto;
+                .img {
+                    display: block;
+                    height: 0;
+                    padding-bottom: 100%;
+                    background-color: #fff;
+                    overflow: hidden;
+                }
+                h3 {
+                    font-size: 13px;
+                    padding-left: 5px;
+                    margin-top: 15px;
+                    font-weight: normal;
+                    .text-line-feed(1);
+                }
+                .price {
+                    color: @priceTxtColor;
+                    font-size: 15px;
+                    padding-left: 5px;
+                    margin-top: 3px;
+                }
+                .icon {
+                    display: inline-block;
+                    width: 12px;
+                    height: 12px;
+                    margin-left: 5px;
+                    img {
+                        margin-top: -4px;
+                    }
+                }
+                .bottom {
+                    padding: 0 5px;
+                    font-size: 12px;
+                    .flex;
+                    .flex-justify;
+                    .return {
+                        color: @priceTxtColor;
+                        border-radius: 5px;
+                        padding: 2px 2px;
+                    }
+                    .sales {
+                        color: @assetTitleColor;
+                        font-size: 12px;
+                        padding: 3px 5px;
+                    }
+                }
+            }
+        }
+    }
+    .list-container {
+        .flex;
+        .flex-wrap;
+        .item {
+            width: 110px;
+            color: @txtColor;
+            background-color: #fff;
+            width: 100%;
+            border-right: 5px solid #fff;
+            padding-bottom: 5px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            &:last-child {
+                padding-bottom: 0;
+                .right{ border-bottom: none;}
+            }
+            .flex;
+            .img {
+                width: 130px;
+                // height: 150px;
+                display: block;
+                background-color: #fff;
+                overflow: hidden;
+                margin: 0 5px;
+                padding-bottom: 5px;
+                .flex-item-auto;
+            }
+            .right {
+                border-bottom: 1px solid @bdColor;
+                padding-bottom: 5px;
+                .flex;
+                .flex-vertical;
+                .flex-justify;
+                h3 {
+                    font-size: 12px;
+                    padding-left: 5px;
+                    margin-top: 5px;
+                    font-weight: normal;
+                    height: 40px;
+                    .text-line-feed;
+                }
+                .bottom {
+                    padding: 5px;
+                    font-size: 12px;
+                    position: relative;
+                    .flex;
+                    .flex-vertical;
+                    .flex-justify;
+                    .price {
+                        color: @priceTxtColor;
+                        font-size: 14px;
+                        margin-top: 3px;
+                    }
+                    .icon {
+                        display: inline-block;
+                        width: 12px;
+                        height: 12px;
+                        margin-left: 5px;
+                        img {
+                            margin-top: -4px;
+                        }
+                    }
+                    .return {
+                        margin-top: 5px;
+                        color: @priceTxtColor;
+                        border-radius: 5px;
+                    }
+                    .sales {
+                        display: inline-block;
+                        margin-left: 10px;
+                        color: @assetTitleColor;
+                        font-size: 12px;
+                    }
+                    .btn-buy {
+                        padding: 4px 10px;
+                        background-color: @priceTxtColor;
+                        color: #fff;
+                        font-size: 12px;
+                        position: absolute;
+                        right: 5px;
+                        bottom: 5px;
+                    }
+                }
+            }
+        }
+        &.nomore:after {
+            content: '-- 已经到底了 --';
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            color: @assetTitleColor;
+            line-height: 30px;
+        }
+    }
+}
