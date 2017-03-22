@@ -2,7 +2,8 @@ import React,{ Component } from 'react'
 import * as ReactDOM from 'react-dom';
 import classNames from 'classnames'
 import { connect } from 'dva'
-
+import Tappable from 'react-tappable';
+import Swipe from "components/swipe/swipe";
 class SelfContent extends Component {
 
   constructor(props) {
@@ -21,23 +22,32 @@ class SelfContent extends Component {
   }
   render() {
     var props = this.props;
+    let swipeProps = {
+        property:"translateY",
+        className:"scroll-self-warpper",
+        tag:"ul",
+        min:"auto",
+        stopPro:false,
+        vertical:true,
+        // touchMove:this.touchMove
+        //step:200
+    }
     return (
-      <div className="self-content">
-        <div className="self-list">
-          {
-            this.props.selfLabels.map(
-              (item, i) =>
-                <div key={i} onTouchStart={this.labelClickHandler.bind(this, item, i)} className={item.check ? 'self-item selected' : 'self-item'}>
-                  <span className="label"><i className="icon-selected"></i>{item.name}</span>
-                  <div className="bg"></div>
-                </div>
-            )
-          }
+      <Swipe  {...swipeProps} >
+        <div className="self-content">
+          <div className="self-list">
+            {
+              this.props.selfLabels.map(
+                (item, i) =>
+                  <Tappable key={i}  onTap={this.labelClickHandler.bind(this, item, i)} className={item.check ? 'self-item selected' : 'self-item'}>
+                    <span className="label"><i className="icon-selected"></i>{item.name}</span>
+                    <div className="bg"></div>
+                  </Tappable>
+              )
+            }
+          </div>
         </div>
-        <p className={this.props.selfTipShow ? 'self-tip self-tip-show' : 'self-tip'}>
-          与您个性相匹配的人<span>{this.props.selfTipNum}</span>人
-        </p>
-      </div>
+      </Swipe>
     )
   }
 };

@@ -45,7 +45,7 @@ class Swipe extends Component {
             let length = -(target.clientHeight-dom.clientHeight);
             this.alloyTouch.min = length>0?0:length;
          }
-
+         //dom.children[0].style.transform="translateY(0px)";
     }
     componentDidMount(){
         let _this = this;
