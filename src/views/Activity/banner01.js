@@ -20,7 +20,7 @@ class Activity extends React.Component {
         super(props);
         this.state = {
             items:[],
-            page:0,
+            page:1,
             isLoading:true,
             isEnd:false,
         }
@@ -82,7 +82,7 @@ class Activity extends React.Component {
      getData(num){
         let {pageSize,url,searchParam,upData} = this.props;
         let {page,items,isLoading,isEnd} = this.state;
-        if((page!==0&&isLoading===true)||(isEnd)){
+        if((page!==1&&isLoading===true)||(isEnd)){
             return;
         }
         this.setState({
@@ -117,8 +117,8 @@ class Activity extends React.Component {
 
 Activity.defaultProps = {
     pageSize:20,
-    url:"/stuff/hot/goodsList.do",
-    searchParam:{cId:23,userId:0},
+    url:"/stuff/ju/catPromotion.do",
+    searchParam:{catId:110103102108},
     option:{
         property:"translateY",
         className:"my-order-list",
