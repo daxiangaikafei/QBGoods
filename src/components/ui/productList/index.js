@@ -51,15 +51,15 @@ class ProductList extends Component {
                     : this.props.listConfig.temp == 'score' ?
                         this.props.listData.map((item, index) =>
                             <div styleName="item" key={index}>
-                                <a data-event="point" data-event-stuffMoudId="钱宝自营" data-event-type="shop" data-event-id={item.id} data-event-source={item.source} styleName="img" href={item.haohuoUrl} ><img src={item.imgUrl} alt="" /></a>
-                                <a data-event="point" data-event-stuffMoudId="钱宝自营" data-event-type="shop" data-event-id={item.id} data-event-source={item.source} href={item.haohuoUrl} ><h3>{item.name}</h3></a>
+                                <a data-event="point" data-event-stuffMoudId="钱宝自营" data-event-type="shop" data-event-id={item.id} data-event-locationId={item.locationId? item.locationId : index+1} data-event-source={item.source} styleName="img" href={item.haohuoUrl} ><img src={item.imgUrl} alt="" /></a>
+                                <a data-event="point" data-event-stuffMoudId="钱宝自营" data-event-type="shop" data-event-id={item.id} data-event-locationId={item.locationId? item.locationId : index+1} data-event-source={item.source} href={item.haohuoUrl} ><h3>{item.name}</h3></a>
                                 <div styleName="price">￥{baoquanFormat(item.viewPrice)}
                                     <span styleName="icon"><img src={this.icons[item.source]} alt=""/></span>
                                 </div>
                                 <div styleName="bottom score">
                                     <p styleName="sales">销量 <span>{item.saleCount}</span></p>
                                     <div styleName="tip">
-                                        <a data-event="point" data-event-stuffMoudId="钱宝自营" data-event-type="shop" data-event-id={item.id} data-event-source={item.source} href={item.haohuoUrl} ><div styleName="haohuoScore">{item.haohuoScore}</div></a>
+                                        <a data-event="point" data-event-stuffMoudId="钱宝自营" data-event-type="shop" data-event-id={item.id} data-event-locationId={item.locationId? item.locationId : index+1} data-event-source={item.source} href={item.haohuoUrl} ><div styleName="haohuoScore">{item.haohuoScore}</div></a>
                                     </div>
                                 </div>
                             </div>
@@ -84,8 +84,8 @@ class ProductList extends Component {
                     : this.props.listConfig.temp == 'hots' ?
                             this.props.listData.map((item, index) =>
                               <div styleName="item" key={index}>
-                                  <a data-event="point" data-event-stuffMoudId="热卖好货" data-event-type="shop" data-event-id={item.id} data-event-source={item.source} styleName="img" href={item.linkUrl} ><img src={item.imgUrl} alt="" /></a>
-                                  <a data-event="point" data-event-stuffMoudId="热卖好货" data-event-type="shop" data-event-id={item.id} data-event-source={item.source} href={item.linkUrl} ><h3>{item.name}</h3></a>
+                                  <a data-event="point" data-event-stuffMoudId="热卖好货" data-event-type="shop" data-event-id={item.id} data-event-locationId={item.locationId? item.locationId : index+1} data-event-source={item.source} styleName="img" href={item.linkUrl} ><img src={item.imgUrl} alt="" /></a>
+                                  <a data-event="point" data-event-stuffMoudId="热卖好货" data-event-type="shop" data-event-id={item.id} data-event-locationId={item.locationId? item.locationId : index+1} data-event-source={item.source} href={item.linkUrl} ><h3>{item.name}</h3></a>
                                   <div styleName="price">￥{priceFormat(item.finalPrice)}
                                       <span styleName="icon"><img src={this.icons[item.source]} alt=""/></span>
                                   </div>
