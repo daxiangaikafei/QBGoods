@@ -36,7 +36,7 @@ class GatherStore extends Component {
                   <h3>{shop.name}</h3>
                   <p>
                     {/*<span><i></i>10赞</span>*/}
-                    <a styleName="goin" href={shop.url}>进店 <i>></i></a>
+                    <a {...this.eventFun(shop, index)} styleName="goin" href={shop.url}>进店 <i>></i></a>
                   </p>
                 </div>
               </div>
@@ -56,8 +56,17 @@ class GatherStore extends Component {
       </div>
     )
   }
-
-};
+  eventFun(item, index) {
+    return {
+      'data-event-stuffMoudId': 4,
+      'data-event-type': 'shop',
+      'data-event-id': item.id,
+      'data-event-locationId': item.locationId || (index + 1),
+      'data-event-source': item.source,
+      'data-event': 'point'
+    }
+  }
+}
 
 function mapStateToProps(state) {
   return state.gatherStore;
