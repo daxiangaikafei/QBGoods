@@ -20,7 +20,10 @@ class GatherStore extends Component {
   render() {
     return (
       <div styleName="home-container">
-        <Banner bannerList={this.props.bannerList} />
+        <Banner bannerList={this.props.bannerList} 
+          eventConfig={{
+            stuffMoudId: 4
+        }}/>
 
         <div styleName="title">精选好店</div>
         <div styleName="list-container">

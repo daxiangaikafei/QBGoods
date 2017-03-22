@@ -45,8 +45,6 @@ class BannerEntry extends Component {
   }
   
   render() {
-    
-
     return (
         <div styleName="home-container">
           <ReactSwipe styleName="banner-container" swipeOptions={{ continuous: false }}>
@@ -54,12 +52,18 @@ class BannerEntry extends Component {
             <div><a href=''><img src={require('static/imgs/activity/banner3.jpg')} /></a></div>
           </ReactSwipe>
           <Tabs tabsConfig={this.tabsConfig} />
-          <ProductList listConfig={{ 
-            temp: this.tabsConfig.names[this.props.tabActive]['temp'], 
-            isNoMore: true
-          }} listData={this.props.productList}/>
+          <ProductList 
+            listConfig={{ 
+              temp: this.tabsConfig.names[this.props.tabActive]['temp'], 
+              isNoMore: true
+            }} 
+            listData={this.props.productList}
+            eventConfig={{
+              stuffMoudId: 1,
+              type: 'stuff'
+            }}
+          />
         </div>
-
     )
   }
 
