@@ -81,10 +81,17 @@ class GatherGoods extends Component {
         <div styleName="home-container">
           <Banner bannerList={this.props.bannerList} />
           <Tabs tabsConfig={this.tabsConfig} />
-          <ProductList listConfig={{ 
-            temp: this.tabsConfig.names[this.props.tabActive]['temp'], 
-            isNoMore: isEnd
-          }} listData={this.props.productList}/>
+          <ProductList 
+            listConfig={{ 
+              temp: this.tabsConfig.names[this.props.tabActive]['temp'], 
+              isNoMore: isEnd
+            }} 
+            listData={this.props.productList}
+            eventConfig={{
+              stuffMoudId:1,
+              type:'stuff'
+            }}
+          />
         </div>
       </Swipe>
 
