@@ -156,8 +156,8 @@ class MyCustom extends Component {
           与你购物喜好相似的人有<span>{this.props.shopTipNum}</span>人
         </p>
         <div className="mycustom-btns">
-          <button className="btn-change" onTouchStart={this.changeHandler.bind(this)}>取消</button>
-          <button className="btn-enter" onTouchStart={this.enterHandler.bind(this)}>确定</button>
+          <div className="btn-change" onTouchStart={this.changeHandler.bind(this)}>取消</div>
+          <div className="btn-enter" onTouchStart={this.enterHandler.bind(this)}>确定</div>
         </div>
       </div>
     )
