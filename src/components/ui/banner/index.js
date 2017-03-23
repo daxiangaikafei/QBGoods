@@ -22,7 +22,7 @@ class Banner extends Component {
           <ReactSwipe styleName="banner-container" swipeOptions={{ continuous: false }}>
           {
             this.props.bannerList.map((item, index) =>
-              <div key={index}><a href={item.linkUrl}><img src={item.imgUrl} /></a></div>
+              <div key={index}><a {...this.eventFun(item, index)} href={item.linkUrl}><img src={item.imgUrl} /></a></div>
             )
           }
           </ReactSwipe>
@@ -30,7 +30,17 @@ class Banner extends Component {
       }
       </div>
   }
-};
+
+  eventFun(item, index, stuffMoudId) {
+    return {
+      'data-event-stuffMoudId': stuffMoudId || this.props.eventConfig.stuffMoudId,
+      'data-event-type': 'banner',
+      'data-event-id': item.id,
+      'data-event-locationId': item.locationId || (index + 1),
+      'data-event': 'point'
+    }
+  }
+}
 
 function mapStateToProps(state) {
   return state;
