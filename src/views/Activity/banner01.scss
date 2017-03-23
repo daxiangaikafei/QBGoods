@@ -32,6 +32,13 @@ $mainColor:#FD472B;
 
 
 .container_activity_normal{
+    position: absolute;
+    left:0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
     border-top: 1px solid #f1f1f6;
     a{
         display: flex;

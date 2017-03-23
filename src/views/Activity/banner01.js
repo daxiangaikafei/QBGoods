@@ -1,49 +1,22 @@
-'use strict'
-import * as React from 'react';
 
-//import * as _ from "lodash";
+import React, { Component, PropTypes } from 'react';
 
-// import Swipe from "components/swipe/swipe";
 
+import Scroll from "components/swipe/scroll"
 import "./banner01.scss";
 
- import {fetchPosts} from "components/common/fetch";
 
-// import Modal from "components/modal/index";
-// import PopUp from "components/popup/index";
-
-
-
-
-class Activity extends React.Component {
+class Activity extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            items:[],
-            page:1,
-            isLoading:true,
-            isEnd:false,
-        }
-
-        //this.getData = this.getData.bind(this);
-        //this.touchMove = this.touchMove.bind(this);
-
     }
-    componentWillMount() {
-
-        this.getData(1);
+    componentWillMount(){
+       
     }
+    renderItem(item,i){
 
-    render() {
-
-        let {items,isLoading,page,isEnd} = this.state;
-        let i =0,j=items.length,$lis = [],totalPrice=0,totalSb=0;
-        while(i<j){
-            console.log("----");
-            let item = items[i];
-            i+=1;
             let price = item.finalPrice.toString().split(".");
-            $lis.push(
+            return(
                 <li key={item.id} className="activity_normal-item">
                     <a href={item.url} data-event-stuffMoudId={10} data-event-type={"bannner"} data-event-id={item.id} data-event-locationId={i} data-event-source={item.source} data-event={"point"} >
                         <div className="activity_normal-item-left">
@@ -63,76 +36,45 @@ class Activity extends React.Component {
                     </a>
                 </li>
             )
-            
+    }
+    analysis_data(data){
+        if(data.responseCode===1000){
+            return data.data;
         }
-
-        let {option} = this.props;
+        return false;
+    }
+    renderEnd(){
+        return(
+            <div className="container-scroll scroll-end">
+                — —已经到底了— —
+            </div>
+        )
+        
+    }
+    
+    render() {
+        let {scrollOptions} = this.props;
+        let props = Object.assign({},scrollOptions,{
+                analysis_data:this.analysis_data,
+                renderItem:this.renderItem,
+                totalProps:{
+                    className:"container_activity_normal"
+                }
+        })
         return (
-                <div className="container_activity_normal">
-                    <ul>
-                        {$lis}
-                    </ul>
-                    <div className="container-scroll scroll-end">
-                        — —已经到底了— —
-                    </div>
-                </div>
+                    <Scroll {...props}/>
         )
     }
-
-     getData(num){
-        let {pageSize,url,searchParam,upData} = this.props;
-        let {page,items,isLoading,isEnd} = this.state;
-        if((page!==1&&isLoading===true)||(isEnd)){
-            return;
-        }
-        this.setState({
-            isLoading:true
-        })
-        let _this = this;
-        let param = Object.assign({},searchParam,{page,size:pageSize})
-        page += num;
-        return fetchPosts(url,param,"GET").then((data)=>{
-                console.log(data);
-                if(data.responseCode===1000){
-                    _this.setState({
-                        isLoading:false,
-                        page,
-                        isEnd:data.data.length<pageSize?true:false,
-                        items:items.concat(data.data)
-                    });
-                    upData(data);
-                }else{
-                     _this.setState({
-                        isLoading:false,});
-                }
-
-
-
-         }).catch(function(){
-                    _this.setState({
-                        isLoading:false,});
-         });
-    }
-};
+    
+}
 
 Activity.defaultProps = {
-    pageSize:20,
-    url:"/stuff/ju/catPromotion.do",
-    searchParam:{catId:110103102108},
-    option:{
-        property:"translateY",
-        className:"my-order-list",
-        tag:"ul",
-        min:"auto",
-        stopPro:false,
-        vertical:true,
+    scrollOptions:{
+        url:"/stuff/ju/catPromotion.do",
+          pageName:"page",
+          pageSizeName:"size",
+          searchParam:{catId:110103102108}
     }
 }
 
-  /*<Swipe {...option} onClick={this.handClick}>
-                    {$lis}
-                    {isLoading===true&&(<div className="no-up">Loading</div>)}
-                    {page>1&&isEnd===true&&(<div className="no-up">已经没有更新了</div>)}
-                </Swipe>*/
-
-module.exports = Activity;
+export default Activity;
