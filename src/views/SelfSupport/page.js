@@ -130,7 +130,7 @@ class SelfSupport extends Component {
     }
     let noDataTip = "--已经到底了--";
     if(this.state.items.length===0){
-      noDataTip = "--无数据--"
+      noDataTip = "--敬请期待--"
     }
     let noTip = null;
     if(this.state.isLoading){
