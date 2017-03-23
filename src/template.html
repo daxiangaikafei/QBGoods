@@ -57,6 +57,10 @@
                             ioswebview.showLoginViewAnd("goodstuff.qbao.com", String());
                         }
                     }
+                },
+                getName:function(pathname,array){
+                    var _result = array.filter(item => item.path.toLowerCase() == pathname.toLowerCase() || pathname.toLowerCase().match(item.path.toLowerCase().replace(':projectid', '\\\d+')))
+                    return _result.length ? _result[0].name : '有好货'   
                 }
             },
             Util:{
@@ -86,15 +90,18 @@
                 },
                 baseParams:function(params){
                     var ret = { }
-                    var deviceId = params.deviceId 
+                    var deviceId = params.deviceId || ''
+                    var userId = params.userId || ''
                     if(QBFK.Util.getDevice() === 'Android' && typeof QBaoJSBridge != 'undefined'){
                         deviceId = QBaoJSBridge.getDeviceId()
+                        userId = QBaoJSBridge.getUserId()
                     }
                     else if(QBFK.Util.getDevice() === 'iPhone' && typeof ioswebview != 'undefined'){
                         deviceId = ioswebview.getDeviceId()
+                        userId = ioswebview.getUserId()
                     }
                     
-                    ret.userId = params.userId || '' //用户ID
+                    ret.userId =  userId//用户ID
                     ret.stuffMoudId = params.stuffMoudId || 1 //1:聚好货, 2: 热卖好货, 3:钱宝自营,4:发现好店,5:首页推荐,6:搜索,7:搜索推荐,8:找相似,9:拍立购
                     ret.type = params.type || 'shop' //类型 shop,stuff,ju,ad,bannner, search,rec
                     ret.id = params.id || 0 //商品Id
@@ -103,6 +110,7 @@
                     ret.deviceId = deviceId //设备号
                     ret.device = QBFK.Util.getDevice() //设备
                     ret.platform = 'qbao_stuff' //(平台名称: qbao_stuff)
+
                     return ret
                 }
             }

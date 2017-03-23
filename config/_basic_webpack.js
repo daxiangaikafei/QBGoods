@@ -33,11 +33,31 @@ const webpackConfig = {
 // Entry Points
 // ------------------------------------
 const APP_ENTRY_PATH = paths.base(config.dir_client) + '/vendor.js'
+const APP_ENTRY_PATHGatherGoods = paths.base(config.dir_client) + '/vendorGatherGoods.js'
+const APP_ENTRY_PATHHotGoods = paths.base(config.dir_client) + '/vendorHotGoods.js'
+const APP_ENTRY_PATHSelfSupport = paths.base(config.dir_client) + '/vendorSelfSupport.js'
+const APP_ENTRY_PATHGatherStore = paths.base(config.dir_client) + '/vendorGatherStore.js'
+const APP_ENTRY_PATHMyCustom = paths.base(config.dir_client) + '/vendorMyCustom.js'
 
 webpackConfig.entry = {
-    app: __DEV__
+    index: __DEV__
         ? [APP_ENTRY_PATH, 'webpack-hot-middleware/client?path=/__webpack_hmr']
-        : [APP_ENTRY_PATH]
+        : [APP_ENTRY_PATH],
+    indexGatherGoods: __DEV__
+        ? [APP_ENTRY_PATHGatherGoods, 'webpack-hot-middleware/client?path=/__webpack_hmr']
+        : [APP_ENTRY_PATHGatherGoods],
+    indexHotGoods: __DEV__
+        ? [APP_ENTRY_PATHHotGoods, 'webpack-hot-middleware/client?path=/__webpack_hmr']
+        : [APP_ENTRY_PATHHotGoods],
+    indexSelfSupport: __DEV__
+        ? [APP_ENTRY_PATHSelfSupport, 'webpack-hot-middleware/client?path=/__webpack_hmr']
+        : [APP_ENTRY_PATHSelfSupport],
+    indexGatherStore: __DEV__
+        ? [APP_ENTRY_PATHGatherStore, 'webpack-hot-middleware/client?path=/__webpack_hmr']
+        : [APP_ENTRY_PATHGatherStore],
+    indexMyCustom: __DEV__
+        ? [APP_ENTRY_PATHMyCustom, 'webpack-hot-middleware/client?path=/__webpack_hmr']
+        : [APP_ENTRY_PATHMyCustom]
 }
 
 // ------------------------------------
@@ -54,18 +74,30 @@ webpackConfig.output = {
 webpackConfig.plugins = [
     new webpack.DefinePlugin(config.globals),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
-    new HtmlWebpackPlugin({
-        template: paths.client('index.html'),
+    new webpack.optimize.DedupePlugin()
+]
+
+Object.keys(webpackConfig.entry).forEach(function(name) {
+
+    // 每个页面生成一个html
+    var plugin = new HtmlWebpackPlugin({
+        // 每个html的模版，这里多个页面使用同一个模版
+        template: paths.client('template.html'),
         hash: false,
-        //favicon: paths.client('static/favicon.ico'),
-        filename: 'index.html',
+        // 生成出来的html文件名
+        filename: name + '.html',
+        // 自动将引用插入html
         inject: 'html',
         minify: {
             collapseWhitespace: true
-        }
-    })
-]
+        },
+        // 每个html引用的js模块，也可以在这里加上vendor等公用模块
+        chunks: [name]
+    });
+    webpackConfig.plugins.push(plugin);
+})
+
+
 
 if (__DEV__) {
     debug('Enable plugins for live development (HMR, NoErrors).')
