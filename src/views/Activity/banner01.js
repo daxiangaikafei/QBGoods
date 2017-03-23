@@ -48,7 +48,7 @@ class Activity extends Component {
                                 <b><i>{item.rebateValue}</i>销量 {item.orderNum}</b>
                             </div>
                             <div className="item-good">
-                                <span styleName="good-other-side"><img src={Icons[item.source]} alt=""/></span>
+                                <span><img src={Icons[item.source]} alt=""/></span>
                             </div>
                         </div>
                     </a>
