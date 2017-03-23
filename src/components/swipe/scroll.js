@@ -76,7 +76,7 @@ class Scroll extends React.Component {
     render() {
 
         let {items,isLoading,page,isEnd} = this.state;
-        let {renderItem,totalProps,nullRender,renderEnd} = this.props;
+        let {renderItem,totalProps,nullRender,renderEnd,stopPro} = this.props;
         let i =0,j=items.length,$lis = [],totalPrice=0,totalSb=0;
         while(i<j){
             console.log("----");
@@ -90,7 +90,7 @@ class Scroll extends React.Component {
             className:totalProps.className,
             tag:"ul",
             min:"auto",
-            stopPro:false,
+            stopPro,
             vertical:true,
             touchMove:this.touchMove
         }
@@ -113,6 +113,7 @@ class Scroll extends React.Component {
 Scroll.defaultProps = {
     pageSize:20,
     pageName:"page",
+    stopPro:false,
     pageSizeName:"pageSize",
     url:"/stuff/order/list.do",
     type:"GET",
