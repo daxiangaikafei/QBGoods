@@ -9,9 +9,14 @@ import "./banner01.scss";
 class Activity extends Component {
     constructor(props) {
         super(props);
+        this.state={
+
+        }
     }
-    componentWillMount(){
+    componentWillMount(props){
+       //searchParam:{catId:110103102108}
        
+
     }
     renderItem(item,i){
 
@@ -53,9 +58,11 @@ class Activity extends Component {
     }
     
     render() {
-        let {scrollOptions} = this.props;
+        let {scrollOptions,params} = this.props;
+        debugger;
         let props = Object.assign({},scrollOptions,{
                 analysis_data:this.analysis_data,
+                searchParam:{catId:params.id},
                 renderItem:this.renderItem,
                 totalProps:{
                     className:"container_activity_normal"
@@ -73,7 +80,7 @@ Activity.defaultProps = {
         url:"/stuff/ju/catPromotion.do",
           pageName:"page",
           pageSizeName:"size",
-          searchParam:{catId:110103102108}
+          
     }
 }
 

@@ -26,7 +26,7 @@ export default function (ref) {
         <Route path='/GatherStore' component={GatherStore} name="聚好店"/>
         <Route path='/Order' component={Order} name="我的好货"/>
         <Route path='/BannerEntry' component={BannerEntry} name="活动页面"/>
-        <Route path='/Banner01' component={Banner01} name="活动页面"/>
+        <Route path='/Ju/:id' component={Banner01} name="聚好货页面"/>
         <Route path='/ChannelEntry/1' component={ChannelEntry} name="女神学穿搭" />
         <Route path='/ChannelEntry/2' component={ChannelEntry} name="个护化妆" />
         <Route path='/ChannelEntry/3' component={ChannelEntry} name="运动户外" />
