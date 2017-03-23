@@ -13,7 +13,7 @@ function CoreLayout ({ children, location,route }) {
     //location.pathname.test()
     // QBFK.EventLog.sendMsg({});
     // debugger;
-    // console.log()
+    // console.log(QBFK.Business.getName(location.pathname,route.childRoutes))
     document.title = QBFK.Business.getName(location.pathname,route.childRoutes)
   return (
     <div>

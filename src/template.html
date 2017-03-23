@@ -59,7 +59,15 @@
                     }
                 },
                 getName:function(pathname,array){
-                    var _result = array.filter(item => item.path.toLowerCase() == pathname.toLowerCase() || pathname.toLowerCase().match(item.path.toLowerCase().replace(':projectid', '\\\d+')))
+                    var _result = [];
+                    array.forEach(function(item){
+                        if(item.path.toLowerCase() == pathname.toLowerCase()){
+                            _result.push(item)
+                        }
+                        else if(pathname.toLowerCase().match(item.path.toLowerCase().replace(':projectid', '\\\d+'))){
+                            result.push(item)
+                        }
+                    })
                     return _result.length ? _result[0].name : '有好货'   
                 }
             },

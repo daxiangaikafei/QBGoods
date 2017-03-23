@@ -112,9 +112,9 @@ $mainColor:#FD472B;
            display: flex;
            font-weight: 500;
             font-size: 18px;
-            line-height: 20px;
+            //line-height: 20px;
             align-items: baseline;
-             @include remCalc(padding-bottom, 2px);
+             @include remCalc(padding-bottom, 5px);
         }
         em{
             font-size: 12px;
@@ -124,39 +124,55 @@ $mainColor:#FD472B;
         b{
             color: #90909b;
             font-weight: 300;
+            display: flex;
+            align-items: flex-end;
             @include remCalc(padding,2px,0,0,0);
+        }
+        i{
+            font-size: 12px;
+            line-height: 14px;
+            font-weight: 300;
+            @include remCalc(padding,2px, 5px);
+            //padding: 0 5px;
+            color: $mainColor;
+            border: 1px solid $mainColor;
+            border-radius: 3px;
+            margin-right: 10px;
         }
     }
     .item-good{
-        border: 1px solid $mainColor;
-        border-radius: 4px;
+        // border: 1px solid $mainColor;
+        // border-radius: 4px;
         position: absolute;
 
-        @include remCalc(right, 15px);
+        @include remCalc(right, 30px);
         @include remCalc(bottom, 15px);
         span{
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
-            background-color: white;
-            font-size: 12px;
-            line-height: 12px;
             display: flex;
-            justify-content: center;
-            padding: 3px 7px;
-            align-items: flex-end;
-            color:$mainColor;
-            &:last-child{
-                color:white;
-                background-color: $mainColor;
-                font-size: 13px;
-                border-top-left-radius: 0;
-                border-top-right-radius: 0;
-                border-bottom-left-radius: 4px;
-                border-bottom-right-radius: 4px;
-            }
-            i{
-                margin-left: 5px;
-            }
+            @include remCalc(width,30px);
+            @include remCalc(height,30px);
+            // border-top-left-radius: 4px;
+            // border-top-right-radius: 4px;
+            // background-color: white;
+            // font-size: 12px;
+            // line-height: 12px;
+            // display: flex;
+            // justify-content: center;
+            // padding: 3px 7px;
+            // align-items: flex-end;
+            // color:$mainColor;
+            // &:last-child{
+            //     color:white;
+            //     background-color: $mainColor;
+            //     font-size: 13px;
+            //     border-top-left-radius: 0;
+            //     border-top-right-radius: 0;
+            //     border-bottom-left-radius: 4px;
+            //     border-bottom-right-radius: 4px;
+            // }
+            // i{
+            //     margin-left: 5px;
+            // }
         }
     }
     .good-index{
