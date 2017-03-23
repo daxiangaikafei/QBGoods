@@ -64,6 +64,7 @@ class Activity extends Component {
                 analysis_data:this.analysis_data,
                 searchParam:{catId:params.id},
                 renderItem:this.renderItem,
+                renderEnd:this.renderEnd,
                 totalProps:{
                     className:"container_activity_normal"
                 }
