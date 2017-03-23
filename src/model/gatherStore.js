@@ -20,7 +20,7 @@ export default {
 
       let storeList = yield call(() => {
         return fetchPosts("/stuff/shop/getShop.do", {
-            shopSize : 2,
+            shopSize : 10,
             stuffSize : 3
           }, "GET")
           .then(data => data.data)
