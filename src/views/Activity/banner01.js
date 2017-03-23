@@ -6,6 +6,20 @@ import Scroll from "components/swipe/scroll"
 import "./banner01.scss";
 
 
+const Icons  =  {
+        'tmall':  require('static/imgs/thirdSource/tmall.png'),
+        'dangdang':  require('static/imgs/thirdSource/dangdang.png'),
+        'gome':  require('static/imgs/thirdSource/gome.png'),
+        'jd':  require('static/imgs/thirdSource/jd.png'),
+        'jumei':  require('static/imgs/thirdSource/jumei.png'),
+        'kaola':  require('static/imgs/thirdSource/kaola.png'),
+        'mi':  require('static/imgs/thirdSource/mi.png'),
+        'taobao':  require('static/imgs/thirdSource/taobao.png'),
+        'yhd':  require('static/imgs/thirdSource/yhd.png'),
+        'yougou': require('static/imgs/thirdSource/yougou.png'),
+        'qbao':  require('static/imgs/thirdSource/qbao.png'),
+    }
+
 class Activity extends Component {
     constructor(props) {
         super(props);
@@ -23,20 +37,19 @@ class Activity extends Component {
             let price = item.finalPrice.toString().split(".");
             return(
                 <li key={item.id} className="activity_normal-item">
-                    <a href={item.url} data-event-stuffMoudId={10} data-event-type={"bannner"} data-event-id={item.id} data-event-locationId={i} data-event-source={item.source} data-event={"point"} >
+                    <a href={item.linkUrl} data-event-stuffMoudId={10} data-event-type={"bannner"} data-event-id={item.id} data-event-locationId={i} data-event-source={item.source} data-event={"point"} >
                         <div className="activity_normal-item-left">
                             <img src={item.imgUrl} />
                         </div>
                         <div className="activity_normal-item-right">
                             <h3>{item.name}</h3>
                             <div className="item-left-info">
-                                <span>￥{price[0]}<em>.{price[1]}</em></span>
-                                <b>销量 {item.orderNum}</b>
+                                <span>￥{price[0]}<em>.{price[1]||"0"}</em></span>
+                                <b><i>{item.rebateValue}</i>销量 {item.orderNum}</b>
                             </div>
-                            {/*<div className="item-good">
-                                <span><i className="good-index"></i>好货指数</span>
-                                <span>{12}<i className="good-arror-right"></i></span>
-                            </div>*/}
+                            <div className="item-good">
+                                <span><img src={Icons[item.source]} alt=""/></span>
+                            </div>
                         </div>
                     </a>
                 </li>
@@ -81,8 +94,14 @@ Activity.defaultProps = {
         url:"/stuff/ju/catPromotion.do",
           pageName:"page",
           pageSizeName:"size",
+          stopPro:true
           
     }
 }
 
 export default Activity;
+
+{/*<div className="item-good">
+                                <span><i className="good-index"></i>好指数</span>
+                                <span>{12}<i className="good-arror-right"></i></span>
+                            </div>*/}
