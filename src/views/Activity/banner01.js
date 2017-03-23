@@ -59,7 +59,7 @@ class Activity extends Component {
     
     render() {
         let {scrollOptions,params} = this.props;
-        debugger;
+        //debugger;
         let props = Object.assign({},scrollOptions,{
                 analysis_data:this.analysis_data,
                 searchParam:{catId:params.id},
