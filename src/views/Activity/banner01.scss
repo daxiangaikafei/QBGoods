@@ -107,6 +107,7 @@ $mainColor:#FD472B;
         font-weight: 300;
          position: absolute;
         left: 0;
+        @include remCalc(right, 15px);
         @include remCalc(bottom, 15px);
         span{
            display: flex;
@@ -115,6 +116,11 @@ $mainColor:#FD472B;
             //line-height: 20px;
             align-items: baseline;
              @include remCalc(padding-bottom, 5px);
+        }
+        img{
+            @include remCalc(width,20px);
+            @include remCalc(height,20px);
+            @include remCalc(padding-left,8px);
         }
         em{
             font-size: 12px;
@@ -126,6 +132,7 @@ $mainColor:#FD472B;
             font-weight: 300;
             display: flex;
             align-items: flex-end;
+            justify-content: space-between;
             @include remCalc(padding,2px,0,0,0);
         }
         i{
@@ -135,7 +142,7 @@ $mainColor:#FD472B;
             @include remCalc(padding,2px, 5px);
             //padding: 0 5px;
             color: $mainColor;
-            border: 1px solid $mainColor;
+            //border: 1px solid $mainColor;
             border-radius: 3px;
             margin-right: 10px;
         }

@@ -44,12 +44,12 @@ class Activity extends Component {
                         <div className="activity_normal-item-right">
                             <h3>{item.name}</h3>
                             <div className="item-left-info">
-                                <span>￥{price[0]}<em>.{price[1]||"0"}</em></span>
-                                <b><i>{item.rebateValue}</i>销量 {item.orderNum}</b>
+                                <span>￥{price[0]}<em>.{price[1]||"0"}</em><img src={Icons[item.source]} alt=""/></span>
+                                <b><i>{item.rebateValue}</i><small>销量 {item.orderNum}</small> </b>
                             </div>
-                            <div className="item-good">
+                            {/*<div className="item-good">
                                 <span><img src={Icons[item.source]} alt=""/></span>
-                            </div>
+                            </div>*/}
                         </div>
                     </a>
                 </li>
