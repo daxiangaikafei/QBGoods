@@ -80,7 +80,7 @@ class MyCustom extends Component {
     return fetchPosts("/stuff/custom/updateUserTags.do",param,"GET").then((data)=>{
             if(data.responseCode===1000){
 
-              Modal.alert("提示", _this.props.tabActive === "shop" ? "个人标签保存成功" : "购物标签保存成功" );
+              Modal.alert("提示", _this.props.tabActive === "shop" ? "购物标签保存成功" : "个人标签保存成功" );
 
               if(_this.props.tabActive === "shop"){
                 _this.props.setDefaultShopDatas();
@@ -94,7 +94,7 @@ class MyCustom extends Component {
                     isLoading:false});
             }
      }).catch(function(){
-            Modal.alert("提示", _this.props.tabActive === "shop" ? "个人标签保存失败" : "购物标签保存失败" );
+            Modal.alert("提示", _this.props.tabActive === "shop" ? "购物标签保存失败" : "个人标签保存失败" );
                 _this.setState({
                     isLoading:false,});
      });
