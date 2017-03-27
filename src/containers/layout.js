@@ -8,13 +8,9 @@ var cx = require('classnames');
 function CoreLayout ({ children, location,route }) {
   var viewHeight = window.innerHeight - 0 ;
   var styles = Object.assign({}, {opacity:0}) // child.props.style contains an int (e.g 34)
-    //debugger;
-    //console.info('1111111',QBFK);
-    //location.pathname.test()
-    // QBFK.EventLog.sendMsg({});
-    // debugger;
-    // console.log(QBFK.Business.getName(location.pathname,route.childRoutes))
+    
     document.title = QBFK.Business.getName(location.pathname,route.childRoutes)
+    
   return (
     <div>
         {/*<NavBar {...arguments[0]}/>*/}
