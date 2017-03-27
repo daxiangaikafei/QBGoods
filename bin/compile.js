@@ -23,7 +23,7 @@ compiler.run(function (err, stats) {
 
     debug('Webpack compile completed.')
 
-    var cat = ''
+    var cat = '/Users/sean/work/stuff-app/com.qbao.aisr.app.web/src/main/webapp'
     var sourcePath = path.join(__dirname,'../dist')
     var fileName = '/stuff'
     fs.stat(cat + fileName, function(err, stat) {
