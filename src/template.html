@@ -112,12 +112,17 @@
                     ret.userId =  userId//用户ID
                     ret.stuffMoudId = params.stuffMoudId || 1 //1:聚好货, 2: 热卖好货, 3:钱宝自营,4:发现好店,5:首页推荐,6:搜索,7:搜索推荐,8:找相似,9:拍立购
                     ret.type = params.type || 'shop' //类型 shop,stuff,ju,ad,bannner, search,rec
+                    
+
+                    
+
                     ret.id = params.id || 0 //商品Id
-                    ret.locationId = params.locationId || 0 //点击的位置
-                    ret.source = params.source || 0 //商品来源tabao,tmall,jd,qbao
                     ret.deviceId = deviceId //设备号
                     ret.device = QBFK.Util.getDevice() //设备
                     ret.platform = 'qbao_stuff' //(平台名称: qbao_stuff)
+
+                    ret.locationId = params.locationId || 0 //［2.0后废除］点击的位置
+                    ret.source = params.source || 0         //［2.0后废除］商品来源tabao,tmall,jd,qbao
 
                     return ret
                 }
