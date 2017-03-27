@@ -94,7 +94,7 @@ Activity.defaultProps = {
         url:"/stuff/ju/catPromotion.do",
           pageName:"page",
           pageSizeName:"size",
-          stopPro:true
+          stopPro:false
           
     }
 }
