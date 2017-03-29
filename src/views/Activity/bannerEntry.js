@@ -13,6 +13,7 @@ import { Tabs } from 'ui'
 import { ProductList } from 'ui'
 
 class BannerEntry extends Component {
+  pageName = '107'
   //Tabs and List component config
   tabsConfig = {
     names : [
@@ -51,7 +52,12 @@ class BannerEntry extends Component {
             <div><a href=''><img src={require('static/imgs/activity/banner2.jpg')} /></a></div>
             <div><a href=''><img src={require('static/imgs/activity/banner3.jpg')} /></a></div>
           </ReactSwipe>
-          <Tabs tabsConfig={this.tabsConfig} />
+          <Tabs 
+            tabsConfig={this.tabsConfig} 
+            eventConfig={{
+              pageName: this.pageName,
+              model: 'banner_entry_tab'
+            }}/>
           <ProductList 
             listConfig={{ 
               temp: this.tabsConfig.names[this.props.tabActive]['temp'], 
@@ -59,8 +65,8 @@ class BannerEntry extends Component {
             }} 
             listData={this.props.productList}
             eventConfig={{
-              stuffMoudId: 1,
-              type: 'stuff'
+              pageName: this.pageName,
+              model: 'banner_entry_products'
             }}
           />
         </div>
