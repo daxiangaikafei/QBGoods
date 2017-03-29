@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { connect } from 'dva'
 import Tappable from 'react-tappable';
 import Swipe from "components/swipe/swipe";
+import { eventFun } from 'libs/util';
 
 let noimg = require('static/imgs/hotgoods/noimg.png');
 
@@ -89,7 +90,7 @@ class ShopContent extends Component {
             {
               this.props.shopLabels.map(
                 (item, i) =>
-                  <Tappable key={i}  onTap={this.labelClickHandler.bind(this, item, i)} className={item.check ? 'shop-item selected' : 'shop-item'}>
+                  <Tappable {...eventFun("105", 'my_custom_tag', item.tagDetailId)} key={i}  onTap={this.labelClickHandler.bind(this, item, i)} className={item.check ? 'shop-item selected' : 'shop-item'}>
                     <div className="img-mask">
 
                       {item.icon == "http://" || item.icon == "" ? <img src={noimg}/>: <img src={item.icon}/>}

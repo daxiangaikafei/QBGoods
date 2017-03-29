@@ -140,7 +140,7 @@ class Hotgoods extends Component {
                     }
                   </ReactSwipe>;
       goodsIscroll = <GoodsIscroll ref="stuff" goods={this.props.goodsStuffs}></GoodsIscroll>;
-      goodsTab = <GoodsTab  ref="tap" tabCallback={this.tabCallback} active={this.props.tabActive} tabs={this.props.goodsTabs}></GoodsTab>;
+      goodsTab = <GoodsTab  ref="tap" tabCallback={this.tabCallback} active={this.props.tabActive} tabs={this.props.goodsTabs} eventConfig={{pageName:this.pageName,model:"hot_goods_tab"}}></GoodsTab>;
     }
     let noDataTip = "--已经到底了--";
     if(this.state.items.length===0){

@@ -5,7 +5,7 @@ import CSSModules from 'react-css-modules'
 import styles from './page.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
-import { getCookie, setCookie, priceFormat } from 'libs/util'
+import { getCookie, setCookie, priceFormat, eventFun } from 'libs/util'
 import { fetchPosts } from "components/common/fetch"
 import SwiperPagination from './SwiperPagination';
 import GoodsIscroll from "components/swipe/GoodsIscroll";
@@ -122,11 +122,11 @@ class SelfSupport extends Component {
       reactSwipe = <ReactSwipe ref="swiper" className="carousel" swipeOptions={{continuous: false, callback: this.swiperCallback}}>
                     {
                       this.props.swipers.map(function(item,i){
-                        return (<div key={i}><a data-event="point" data-event-stuffMoudId="3" data-event-type="bannner" data-event-id={item.id} data-event-locationId={item.locationId} data-event-source={item.source} href={item.linkUrl}><img src={item.imgUrl}/></a></div>)
+                        return (<div key={i}><a {...eventFun("103", 'self_support_banner', item.id)} href={item.linkUrl}><img src={item.imgUrl}/></a></div>)
                       })
                     }
                   </ReactSwipe>;
-      goodsTab = <GoodsTab ref="tap" tabCallback={this.tabCallback} active={this.props.tabActive} tabs={this.props.tabs}></GoodsTab>;
+      goodsTab = <GoodsTab ref="tap" tabCallback={this.tabCallback} active={this.props.tabActive} tabs={this.props.tabs}  eventConfig={{pageName:"103",model:"self_support_tab"}}></GoodsTab>;
     }
     let noDataTip = "--已经到底了--";
     if(this.state.items.length===0){
@@ -158,7 +158,7 @@ class SelfSupport extends Component {
             <SwiperPagination active={this.props.swiperActive} swipers={this.props.swipers}></SwiperPagination>
           </div>
           {goodsTab}
-          <ProductList listConfig={{temp: 'score'}} listData={this.state.items} eventConfig={{stuffMoudId:"3", type:"shop"}}/>
+          <ProductList listConfig={{temp: 'score'}} listData={this.state.items} eventConfig={{pageName:"103",model:`self_support_products_${this.state.active}`}}/>
         </div>
         { noTip }
       </Swipe>

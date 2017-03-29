@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import CSSModules from 'react-css-modules'
 import { Link } from 'react-router'
 import classNames from 'classnames'
-import { priceFormat } from 'libs/util'
+import { priceFormat,eventFun } from 'libs/util'
 
 class GoodsIscroll extends Component {
 
@@ -68,8 +68,8 @@ class GoodsIscroll extends Component {
             {
               props.goods.map(function(item,index){
                 return (<div className="hots-public-item" key={index}>
-                    <a data-event="point" data-event-stuffMoudId="2" data-event-type="stuff" data-event-id={item.id} data-event-locationId={item.locationId} data-event-source={item.source} href={item.url} ><img src={item.imgUrl} alt="" className="hots-public-item-img" /></a>
-                    <a data-event="point" data-event-stuffMoudId="2" data-event-type="stuff" data-event-id={item.id} data-event-locationId={item.locationId} data-event-source={item.source} href={item.url} ><h3>{item.name}</h3></a>
+                    <a {...eventFun("102", "hot_goods_koubei_products", item.id)}  href={item.url} ><img src={item.imgUrl} alt="" className="hots-public-item-img" /></a>
+                    <a {...eventFun("102", "hot_goods_koubei_products", item.id)}  href={item.url} ><h3>{item.name}</h3></a>
                     <div className="price">￥{item.finalPrice}<div className="icon"><i className={item.source}></i></div></div>
                     <div className="bottom public-rebateValue">
                         <span className="return">{item.rebateValue}</span>

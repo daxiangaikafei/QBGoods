@@ -10,6 +10,7 @@ import SelfContent from "./SelfContent";
 import Modal from "components/modal/index";
 import PopUp from "components/popup/index";
 import Swipe from "components/swipe/swipe";
+import { eventFun } from 'libs/util';
 
 class MyCustom extends Component {
 
@@ -144,8 +145,8 @@ class MyCustom extends Component {
     return (
       <div className="mycustom-container">
         <div className="mycustom-tab">
-          <div className={this.props.tabActive === "shop" ? 'mycustom-active' : ''} onTouchStart={this.tabClickHandler.bind(this,'shop')}>购物标签</div>
-          <div className={this.props.tabActive === "self" ? 'mycustom-active' : ''} onTouchStart={this.tabClickHandler.bind(this,'self')}>个人标签</div>
+          <div {...eventFun("105", 'my_custom_tab', "1")} className={this.props.tabActive === "shop" ? 'mycustom-active' : ''} onTouchStart={this.tabClickHandler.bind(this,'shop')}>购物标签</div>
+          <div {...eventFun("105", 'my_custom_tab', "2")} className={this.props.tabActive === "self" ? 'mycustom-active' : ''} onTouchStart={this.tabClickHandler.bind(this,'self')}>个人标签</div>
         </div>
 
             {customcontent}

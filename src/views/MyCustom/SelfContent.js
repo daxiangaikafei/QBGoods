@@ -4,6 +4,8 @@ import classNames from 'classnames'
 import { connect } from 'dva'
 import Tappable from 'react-tappable';
 import Swipe from "components/swipe/swipe";
+import { eventFun } from 'libs/util';
+
 class SelfContent extends Component {
 
   constructor(props) {
@@ -39,7 +41,7 @@ class SelfContent extends Component {
             {
               this.props.selfLabels.map(
                 (item, i) =>
-                  <Tappable key={i}  onTap={this.labelClickHandler.bind(this, item, i)} className={item.check ? 'self-item selected' : 'self-item'}>
+                  <Tappable {...eventFun("105", 'my_custom_tag', item.tagDetailId)} key={i}  onTap={this.labelClickHandler.bind(this, item, i)} className={item.check ? 'self-item selected' : 'self-item'}>
                     <span className="label"><i className="icon-selected"></i>{item.name}</span>
                     <div className="bg"></div>
                   </Tappable>

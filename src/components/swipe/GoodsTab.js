@@ -2,6 +2,7 @@ import React,{ Component } from 'react'
 import * as ReactDOM from 'react-dom';
 import Tappable from 'react-tappable';
 import styles from './tabs.less'
+import { eventFun } from 'libs/util';
 
 let isInit =true;
 class GoodsTab extends Component {
@@ -76,12 +77,13 @@ class GoodsTab extends Component {
     this.props.tabCallback(active);
   }
   render() {
+    let { pageName, model } = this.props.eventConfig;
     return (
       <div className="hots-tabs-container" ref="touch">
         <div className="hots-tabs-content">
           <div className="hots-tabs-warpper" ref="swipe">
             {
-              this.props.tabs.map((item, i) => <Tappable onTap={this.tabsClickHandler.bind(this,i)} key={i} className={this.props.active == i ? 'tabs-item tabs-item-active' : 'tabs-item'}><span>{item.dirName}</span></Tappable>)
+              this.props.tabs.map((item, i) => <Tappable {...eventFun(pageName, model, item.id)}  onTap={this.tabsClickHandler.bind(this,i)} key={i} className={this.props.active == i ? 'tabs-item tabs-item-active' : 'tabs-item'}><span>{item.dirName}</span></Tappable>)
             }
           </div>
         </div>
