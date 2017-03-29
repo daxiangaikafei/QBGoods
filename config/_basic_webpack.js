@@ -83,6 +83,7 @@ Object.keys(webpackConfig.entry).forEach(function(name) {
     var plugin = new HtmlWebpackPlugin({
         // 每个html的模版，这里多个页面使用同一个模版
         template: paths.client('template.html'),
+        favicon: paths.client('static/favicon.ico'),
         hash: false,
         // 生成出来的html文件名
         filename: name + '.html',
