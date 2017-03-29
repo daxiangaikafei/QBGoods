@@ -109,20 +109,19 @@
                         userId = ioswebview.getUserId()
                     }
                     
-                    ret.userId =  userId//用户ID
-                    ret.stuffMoudId = params.stuffMoudId || 1 //1:聚好货, 2: 热卖好货, 3:钱宝自营,4:发现好店,5:首页推荐,6:搜索,7:搜索推荐,8:找相似,9:拍立购
-                    ret.type = params.type || 'shop' //类型 shop,stuff,ju,ad,bannner, search,rec
-                    
-
-                    
+                    ret.userId =  userId //用户ID
+                    ret.pageName = params.pageName || 101 //页面名称 101:聚好货、102: 热卖好货、103:钱宝自营、104:聚好店、105:我的定制、106聚好货活动页、107Banner活动页、108频道活动页、109我的好货、110店铺活动页
+                    ret.model = ret.model || 'gather_goods_cloud' //模块名称
+                    ret.type = params.type || 'click' //类型 page, click
 
                     ret.id = params.id || 0 //商品Id
                     ret.deviceId = deviceId //设备号
                     ret.device = QBFK.Util.getDevice() //设备
                     ret.platform = 'qbao_stuff' //(平台名称: qbao_stuff)
 
-                    ret.locationId = params.locationId || 0 //［2.0后废除］点击的位置
-                    ret.source = params.source || 0         //［2.0后废除］商品来源tabao,tmall,jd,qbao
+                    // ret.stuffMoudId = params.stuffMoudId || 1 //[2.0后废除] 1:聚好货, 2: 热卖好货, 3:钱宝自营,4:发现好店,5:首页推荐,6:搜索,7:搜索推荐,8:找相似,9:拍立购
+                    // ret.locationId = params.locationId || 0 //［2.0后废除］点击的位置
+                    // ret.source = params.source || 0         //［2.0后废除］商品来源tabao,tmall,jd,qbao
 
                     return ret
                 }

@@ -13,6 +13,7 @@ import { Tabs } from 'ui'
 import { ProductList } from 'ui'
 
 class GatherGoods extends Component {
+  pageName = '101'
   //Tabs and List component config
   tabsConfig = {
     names : [
@@ -82,9 +83,15 @@ class GatherGoods extends Component {
           <Banner 
             bannerList={this.props.bannerList} 
             eventConfig={{
-              stuffMoudId: 1
+              pageName: this.pageName,
+              model: 'gather_banner'
             }}/>
-          <Tabs tabsConfig={this.tabsConfig} />
+          <Tabs 
+            tabsConfig={this.tabsConfig} 
+            eventConfig={{
+              pageName: this.pageName,
+              model: 'gather_goods_tab'
+            }}/>
           <ProductList 
             listConfig={{ 
               temp: this.tabsConfig.names[this.props.tabActive]['temp'], 
@@ -92,8 +99,8 @@ class GatherGoods extends Component {
             }} 
             listData={this.props.productList}
             eventConfig={{
-              stuffMoudId:1,
-              type:'stuff'
+              pageName: this.pageName,
+              model: ['gather_goods_cloud_products', 'gather_goods_search_products'][this.props.tabActive]
             }}
           />
         </div>

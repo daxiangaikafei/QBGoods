@@ -5,11 +5,10 @@ import styles from './channelEntry.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
 import ReactSwipe from 'react-swipe';
-import { priceFormat } from 'libs/util'
-
-import { Banner } from 'ui'
+import { priceFormat, eventFun } from 'libs/util'
 
 class ChannelEntry extends Component {
+  pageName = '108'
   icons = {
     'tmall': require('static/imgs/thirdSource/tmall.png'),
     'dangdang': require('static/imgs/thirdSource/dangdang.png'),
@@ -65,8 +64,8 @@ class ChannelEntry extends Component {
           <div styleName="list" >
             {data.middleList.map((item, index) =>
               <div styleName="item" key={index}>
-                <a {...this.eventFun(item,index,'ad')} styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
-                <a {...this.eventFun(item,index,'ad')} href={item.url} ><h3>{item.name}</h3></a>
+                <a {...eventFun(this.pageName,'channel_entry_ad_products',item.id)} styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
+                <a {...eventFun(this.pageName,'channel_entry_ad_products',item.id)} href={item.url} ><h3>{item.name}</h3></a>
                 <div styleName="price">￥{priceFormat(item.finalPrice)}
                   <span styleName="icon"><img src={this.icons[item.source]} alt=""/></span>
                 </div>
@@ -81,9 +80,9 @@ class ChannelEntry extends Component {
         <div styleName="list-container nomore">
           {data.list.map((item, index) =>
             <div styleName="item" key={index}>
-              <a {...this.eventFun(item,index,'stuff')} styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
+              <a {...eventFun(this.pageName,'channel_entry_list_products',item.id)} styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
               <div styleName="right">
-                <a {...this.eventFun(item,index,'stuff')} href={item.url} ><h3>{item.name}</h3></a>
+                <a {...eventFun(this.pageName,'channel_entry_list_products',item.id)} href={item.url} ><h3>{item.name}</h3></a>
                 <div styleName="bottom">
                   <div styleName="price">￥{priceFormat(item.finalPrice)}
                     <span styleName="icon"><img src={this.icons[item.source]} alt="" /></span>
@@ -92,7 +91,7 @@ class ChannelEntry extends Component {
                     返600宝券
                     {item.orderNum != null ? <p styleName="sales">销量 <span>{item.orderNum}</span></p> : ''}
                   </span>
-                  <a {...this.eventFun(item,index)} styleName="btn-buy" href={item.url}>马上购买</a>
+                  <a {...eventFun(this.pageName,'channel_entry_list_products',item.id,)} styleName="btn-buy" href={item.url}>马上购买</a>
                 </div>
               </div>
             </div>
@@ -100,16 +99,6 @@ class ChannelEntry extends Component {
         </div>
       </div>
     )
-  }
-  eventFun(item, index, type) {
-    return {
-      'data-event-stuffMoudId': 1,
-      'data-event-type': type,
-      'data-event-id': item.id,
-      'data-event-locationId': item.locationId || (index + 1),
-      'data-event-source': item.source,
-      'data-event': 'point'
-    }
   }
 }
 

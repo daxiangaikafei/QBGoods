@@ -5,7 +5,7 @@ import CSSModules from 'react-css-modules'
 import styles from './page.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
-import { getCookie, setCookie, priceFormat } from 'libs/util'
+import { getCookie, setCookie, priceFormat, eventFun } from 'libs/util'
 import { fetchPosts } from "components/common/fetch"
 import SwiperPagination from './SwiperPagination';
 import GoodsIscroll from "components/swipe/GoodsIscroll";
@@ -15,7 +15,7 @@ import { ProductList } from 'ui';
 import Swipe from "components/swipe/swipe";
 
 class Hotgoods extends Component {
-
+  pageName = '102'
   constructor(props) {
     super(props)
     props.getGoodsInitData();
@@ -135,7 +135,7 @@ class Hotgoods extends Component {
       reactSwipe = <ReactSwipe  ref="swiper" className="carousel" swipeOptions={{continuous: false, callback: this.swiperCallback}}>
                     {
                       this.props.goodsSwipers.map(function(item,i){
-                        return (<div key={i}><a data-event="point" data-event-stuffMoudId="2" data-event-type="bannner" data-event-id={item.id} data-event-locationId={item.locationId} data-event-source={item.source} href={item.linkUrl}><img src={item.imgUrl}/></a></div>)
+                        return (<div key={i}><a {...eventFun(this.pageName, 'hot_goods_banner', item.id)} href={item.linkUrl}><img src={item.imgUrl}/></a></div>)
                       })
                     }
                   </ReactSwipe>;
@@ -174,7 +174,7 @@ class Hotgoods extends Component {
           <div className="hots-public-title"><div></div></div>
           {  goodsIscroll }
           { goodsTab }
-          <ProductList listConfig={{temp: 'hots'}} listData={this.state.items} eventConfig={{stuffMoudId:"2", type:"shop"}}/>
+          <ProductList listConfig={{temp: 'hots'}} listData={this.state.items} eventConfig={{pageName:this.pageName,model:`hot_goods_products_${this.state.active}`}}/>
         </div>
 
         { noTip }

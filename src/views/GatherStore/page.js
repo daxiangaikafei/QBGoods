@@ -6,9 +6,10 @@ import { Link } from 'react-router'
 import classNames from 'classnames'
 import ReactSwipe from 'react-swipe';
 import { Banner } from 'ui'
+import { eventFun } from 'libs/util'
 
 class GatherStore extends Component {
-  
+  pageName = '104'
   constructor(props) {
     super(props)
     this.state = {
@@ -36,14 +37,14 @@ class GatherStore extends Component {
                   <h3>{shop.name}</h3>
                   <p>
                     {/*<span><i></i>10赞</span>*/}
-                    <a {...this.eventFun(shop, index)} styleName="goin" href={shop.url}>进店 <i>></i></a>
+                    <a {...this.eventFun(pageName, 'gather_shop_shop', shop.id)} styleName="goin" href={shop.url}>进店 <i>></i></a>
                   </p>
                 </div>
               </div>
               <div styleName="bottom">
               {
                 shop.list.map((stuff, index) => 
-                  <a key={index} href={stuff.url}>
+                      <a key={index} href={stuff.url} {...this.eventFun(pageName, 'gather_shop_products', stuff.id)}>
                     <img src={stuff.imgUrl} alt="" />
                   </a>
                 ) 
@@ -56,16 +57,14 @@ class GatherStore extends Component {
       </div>
     )
   }
-  eventFun(item, index) {
-    return {
-      'data-event-stuffMoudId': 4,
-      'data-event-type': 'shop',
-      'data-event-id': item.id,
-      'data-event-locationId': item.locationId || (index + 1),
-      'data-event-source': item.source,
-      'data-event': 'point'
-    }
-  }
+  // eventFun(model, id, index) {
+  //   return {
+  //     'data-event-model': model,
+  //     'data-event-type': 'page',
+  //     'data-event-id': id || (index + 1),
+  //     'data-event-pageName': 101,
+  //   }
+  // }
 }
 
 function mapStateToProps(state) {

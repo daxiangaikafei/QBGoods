@@ -5,6 +5,7 @@ import styles from './index.less'
 import {Link} from 'react-router'
 import classNames from 'classnames'
 import ReactSwipe from 'react-swipe';
+import { eventFun } from 'libs/util'
 
 class Banner extends Component {
 
@@ -22,23 +23,13 @@ class Banner extends Component {
           <ReactSwipe styleName="banner-container" swipeOptions={{ continuous: false }}>
           {
             this.props.bannerList.map((item, index) =>
-              <div key={index}><a {...this.eventFun(item, index)} href={item.linkUrl}><img src={item.imgUrl} /></a></div>
+              <div key={index}><a {...eventFun(pageName, model, item.id)} href={item.linkUrl}><img src={item.imgUrl} /></a></div>
             )
           }
           </ReactSwipe>
         : ''
       }
       </div>
-  }
-
-  eventFun(item, index, stuffMoudId) {
-    return {
-      'data-event-stuffMoudId': stuffMoudId || this.props.eventConfig.stuffMoudId,
-      'data-event-type': 'banner',
-      'data-event-id': item.id,
-      'data-event-locationId': item.locationId || (index + 1),
-      'data-event': 'point'
-    }
   }
 }
 

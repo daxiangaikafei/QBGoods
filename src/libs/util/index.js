@@ -128,3 +128,11 @@ export function deepCopy(o) {
         return o;
     }
 }
+
+export function eventFun(pageName,model, id) {
+  return {
+    'data-event-pageName': pageName,
+    'data-event-model': model,
+    'data-event-id': id,
+  }
+}

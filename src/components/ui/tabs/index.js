@@ -4,6 +4,7 @@ import CSSModules from 'react-css-modules'
 import styles from './index.less'
 import {Link} from 'react-router'
 import classNames from 'classnames'
+import { eventFun } from 'libs/util'
 
 class Tabs extends Component {
 
@@ -33,11 +34,12 @@ class Tabs extends Component {
     componentDidUpdate() {}
 
     render() {
+        let { pageName, model } = this.props.eventConfig
         return (
             <div styleName="tabs">
                 {
                     this.props.tabsConfig.names.map((item, index) =>
-                        <label key={index}>
+                        <label key={index} {...eventFun(pageName, model, index+1) }>
                             <span
                                 styleName={classNames({
                                     'tab-item': true,
