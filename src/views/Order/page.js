@@ -8,10 +8,12 @@ import "./page.less";
 
 import List from "./list";
 import OrderHead from "./head";
+import { eventFun } from 'libs/util'
 
 import {fetchPosts} from "components/common/fetch";
 
 class Order extends React.Component {
+    pageName = '109'
     constructor(props) {
         super(props);
         this.state = {

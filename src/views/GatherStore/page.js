@@ -37,14 +37,14 @@ class GatherStore extends Component {
                   <h3>{shop.name}</h3>
                   <p>
                     {/*<span><i></i>10赞</span>*/}
-                    <a {...this.eventFun(pageName, 'gather_shop_shop', shop.id)} styleName="goin" href={shop.url}>进店 <i>></i></a>
+                    <a {...eventFun(this.pageName, 'gather_shop_shop', shop.id)} styleName="goin" href={shop.url}>进店 <i>></i></a>
                   </p>
                 </div>
               </div>
               <div styleName="bottom">
               {
                 shop.list.map((stuff, index) => 
-                      <a key={index} href={stuff.url} {...this.eventFun(pageName, 'gather_shop_products', stuff.id)}>
+                      <a key={index} href={stuff.url} {...eventFun(this.pageName, 'gather_shop_products', stuff.id)}>
                     <img src={stuff.imgUrl} alt="" />
                   </a>
                 ) 

@@ -10,6 +10,7 @@ import "./list.less";
 import {fetchPosts} from "components/common/fetch";
 import NoOrder from "./noOrder";
 import Info from "./info";
+import { eventFun } from 'libs/util'
 
 import Modal from "components/modal/index";
 import PopUp from "components/popup/index";
@@ -202,7 +203,7 @@ class OrderList extends React.Component {
             let short = RebateStatusShort[rebateStatus];
             $lis.push(
                 <li key={item.id} className="order-item"   >
-                    <a href={item.clickUrl} target="_blank" >
+                    <a href={item.clickUrl} target="_blank" {...eventFun('109', 'order_products', item.stuffId)}>
                         <p className="order-item-top">{RebateStatus[rebateStatus]}</p>
                         {$subItem}
                         <p className="order-item-info">共{item.stuffNum}件商品，合计:<em><i>￥</i>{totalPrice}</em>
@@ -211,8 +212,8 @@ class OrderList extends React.Component {
                         </p>
                     </a>
                     <div className="order-item-todo" >
-                        {rebateStatus>0&&(<button data-id={item.id} className="js_del">删除</button>)}
-                        <button data-id={item.id} className="js_info">返券详情</button>
+                        {rebateStatus>0&&(<button data-id={item.id} {...eventFun('109', 'order_remove', item.id)} className="js_del">删除</button>)}
+                        <button data-id={item.id} {...eventFun('109', 'order_rebate', item.id)} className="js_info">返券详情</button>
                     </div>
                 </li>
             )

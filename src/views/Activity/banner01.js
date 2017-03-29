@@ -1,5 +1,6 @@
 
 import React, { Component, PropTypes } from 'react';
+import { eventFun } from 'libs/util'
 
 
 import Scroll from "components/swipe/scroll"
@@ -21,6 +22,7 @@ const Icons  =  {
     }
 
 class Activity extends Component {
+    pageName = '106'
     constructor(props) {
         super(props);
         this.state={
@@ -37,7 +39,7 @@ class Activity extends Component {
             let price = item.finalPrice.toString().split(".");
             return(
                 <li key={item.id} className="activity_normal-item">
-                    <a href={item.linkUrl} data-event-stuffMoudId={10} data-event-type={"bannner"} data-event-id={item.id} data-event-locationId={i} data-event-source={item.source} data-event={"point"} >
+                    <a href={item.linkUrl} {...eventFun(this.pageName, 'ju_products', item.id)} >
                         <div className="activity_normal-item-left">
                             <img src={item.imgUrl} />
                         </div>

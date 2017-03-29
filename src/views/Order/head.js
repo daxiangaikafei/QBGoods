@@ -1,5 +1,6 @@
 'use strict'
 import * as React from 'react';
+import { eventFun } from 'libs/util'
 
 //import * as _ from "lodash";
 
@@ -40,10 +41,9 @@ class OrderHead extends React.Component {
             let props = {
                 onClick:this.handleTrigger,
                 key:item.id,
-                className:status==item.id?"tab-select":"",
-                "data-id":item.id
+                className:status==item.id?"tab-select":""
             }
-            $lis.push(<li {...props} ><span>{item.title}</span></li>)
+            $lis.push(<li {...props} {...eventFun('109','order_tab', i)} ><span>{item.title}</span></li>)
         } 
         return (
             <header className="order-head">
