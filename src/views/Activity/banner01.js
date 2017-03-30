@@ -39,7 +39,7 @@ class Activity extends Component {
             let price = item.finalPrice.toString().split(".");
             return(
                 <li key={item.id} className="activity_normal-item">
-                    <a href={item.linkUrl} {...eventFun(this.pageName, 'ju_products', item.id)} >
+                    <a href={item.linkUrl} {...eventFun(106, 'ju_products', item.id)} >
                         <div className="activity_normal-item-left">
                             <img src={item.imgUrl} />
                         </div>

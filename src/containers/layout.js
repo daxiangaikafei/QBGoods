@@ -8,8 +8,13 @@ var cx = require('classnames');
 function CoreLayout ({ children, location,route }) {
   var viewHeight = window.innerHeight - 0 ;
   var styles = Object.assign({}, {opacity:0}) // child.props.style contains an int (e.g 34)
-    
-    document.title = QBFK.Business.getName(location.pathname,route.childRoutes)
+    var nameObj = QBFK.Business.getName(location.pathname, route.childRoutes)
+    document.title = nameObj.title
+    QBFK.EventLog.sendMsg({
+      pageName: nameObj.pageName,
+      type: 'page'
+    })
+
     
   return (
     <div>

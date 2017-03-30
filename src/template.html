@@ -60,6 +60,19 @@
                 },
                 getName:function(pathname,array){
                     var _result = [];
+                    var pageNames = {
+                        '/GatherGoods': 101,
+                        '/HotGoods':    102,
+                        '/SelfSupport': 103,
+                        '/GatherStore': 104,
+                        '/MyCustom':    105,
+                        '/Ju':          106,
+                        '/BannerEntry': 107,
+                        '/ChannelEntry':108,
+                        '/Order':       109
+                    }
+                    var _pathname = pathname.startsWith('/Ju') ? '/Ju' : pathname
+                    
                     array.forEach(function(item){
                         if(item.path.toLowerCase() == pathname.toLowerCase()){
                             _result.push(item)
@@ -68,7 +81,10 @@
                             result.push(item)
                         }
                     })
-                    return _result.length ? _result[0].name : '有好货'   
+                    return {
+                        title: _result.length ? _result[0].name : '有好货',
+                        pageName: pageNames[_pathname]
+                    }   
                 }
             },
             Util:{
@@ -111,7 +127,7 @@
                     
                     ret.userId =  userId //用户ID
                     ret.pageName = params.pageName || 101 //页面名称 101:聚好货、102: 热卖好货、103:钱宝自营、104:聚好店、105:我的定制、106聚好货活动页、107Banner活动页、108频道活动页、109我的好货、110店铺活动页
-                    ret.model = ret.model || 'gather_goods_cloud' //模块名称
+                    ret.model = params.model || 'default' //模块名称
                     ret.type = params.type || 'click' //类型 page, click
 
                     ret.id = params.id || 0 //商品Id
