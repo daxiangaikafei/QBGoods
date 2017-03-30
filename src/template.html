@@ -90,9 +90,9 @@
             Util:{
                 getDevice:function(){
                     if(navigator.userAgent.match(/Android/i)) 
-                    return 'Android'
+                    return 'android'
                         else if(navigator.userAgent.match(/iPhone|iPad|iPod/i))
-                    return 'iPhone'
+                    return 'ios'
                     else 
                         return navigator.userAgent.toString()
                 }
@@ -116,11 +116,11 @@
                     var ret = { }
                     var deviceId = params.deviceId || ''
                     var userId = params.userId || ''
-                    if(QBFK.Util.getDevice() === 'Android' && typeof QBaoJSBridge != 'undefined'){
+                    if(QBFK.Util.getDevice() === 'android' && typeof QBaoJSBridge != 'undefined'){
                         deviceId = QBaoJSBridge.getDeviceId()
                         userId = QBaoJSBridge.getUserId()
                     }
-                    else if(QBFK.Util.getDevice() === 'iPhone' && typeof ioswebview != 'undefined'){
+                    else if(QBFK.Util.getDevice() === 'ios' && typeof ioswebview != 'undefined'){
                         deviceId = ioswebview.getDeviceId()
                         userId = ioswebview.getUserId()
                     }
