@@ -134,5 +134,6 @@ export function eventFun(pageName,model, id) {
     'data-event-pageName': pageName,
     'data-event-model': model,
     'data-event-id': id,
+    'data-event': 'point'
   }
 }

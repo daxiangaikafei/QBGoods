@@ -39,12 +39,13 @@ class Tabs extends Component {
             <div styleName="tabs">
                 {
                     this.props.tabsConfig.names.map((item, index) =>
-                        <label key={index} {...eventFun(pageName, model, index+1) }>
+                        <label key={index} >
                             <span
                                 styleName={classNames({
                                     'tab-item': true,
                                     'active': this.state.tabActive == index
                                 })}
+                                {...eventFun(pageName, model, index + 1) }
                                 data-active={index}
                                 onClick={this.toggleTabHandler}>
                                 <i>{item.key}</i>
