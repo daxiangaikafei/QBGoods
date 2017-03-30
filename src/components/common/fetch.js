@@ -8,6 +8,7 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
 
     //debugger;
     //param.userId = 30000654;
+    param = Object.assign(param, { device: QBFK.Util.getDevice() });
     if (type.toLocaleUpperCase() === "GET" && size(param) > 0 && url.indexOf("?")<0) {
         url += "?" + toExcString(param)
     }
@@ -18,7 +19,7 @@ export function fetchPosts( url, param, type = "POST", headers = {}, repType = "
         "Response-Content-Type":'application/json'
     });
    // debugger;
-
+   
     return fetch(url, {
             method: type.toLocaleUpperCase(),
             headers: headers,
