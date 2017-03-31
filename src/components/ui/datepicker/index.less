@@ -1,0 +1,119 @@
+@defaultColor: #35352f;
+
+.datepicker-modal {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.6);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.datepicker {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    height: 266px;
+    font-size: 16px;
+    text-align: center;
+    font-family: arial,verdana,sans-serif;
+    box-sizing: content-box;
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+
+    .datepicker-header {
+        padding: 0 .5em;
+        min-height: 2em;
+        line-height: 2em;
+        font-size: 1.125em;
+        display: none;
+    }
+
+    .datepicker-navbar {
+        padding: 0 .5em .5em .5em;
+        overflow: hidden;
+    }
+
+    .datepicker-navbar-btn {
+        height: 2.5em;
+        line-height: 2.5em;
+        float: right;
+        padding: 0 1em;
+        cursor: pointer;
+    }
+
+    .datepicker-content {
+        display: flex;
+        padding: .5em .25em;
+    }
+
+    .datepicker-col-1 {
+        flex: 1;
+        margin: 0 .25em;
+    }
+
+    .datepicker-viewport {
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+        &::after {
+            content: '';
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            pointer-events: none;
+        }
+    }
+
+    .datepicker-wheel {
+        position: absolute;
+        height: 40px;
+        top: 50%;
+        margin-top: -20px;
+        width: 100%;
+    }
+
+
+    .datepicker-scroll {
+        list-style-type: none;
+        &>li {
+            height: 40px;
+            line-height: 40px;
+            font-size: 1.375em;
+            cursor: pointer;
+        }
+    }
+}
+
+.datepicker {
+
+    /* default */
+    &.default {
+        background-color: #fff;
+        .datepicker-wheel {
+            border-top: 1px solid @defaultColor;
+            border-bottom: 1px solid @defaultColor;
+        }
+        .datepicker-scroll {
+            li {
+                color: #000;
+            }
+
+            li.disabled {
+                color: #9e9e9e;
+            }
+        }
+        .datepicker-navbar-btn {
+            color: #000;
+        }
+    }
+}
