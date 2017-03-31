@@ -12,6 +12,7 @@ import Order from "views/Order/page"
 import BannerEntry from "views/Activity/bannerEntry"
 import Banner01 from "views/Activity/banner01"
 import ChannelEntry from "views/Activity/channelEntry"
+import IconDoc from "views/IconDoc/page"
 
 export default function (ref) {
   return (
@@ -33,6 +34,7 @@ export default function (ref) {
         <Route path='/ChannelEntry/4' component={ChannelEntry} name="创意电器" />
         <Route path='/ChannelEntry/5' component={ChannelEntry} name="母婴联合馆" />
         <Route path='/ChannelEntry/6' component={ChannelEntry} name="焕然居家" />
+        <Route path='/IconDoc' component={IconDoc} name="Icon Document" />
         
       </Route>
     </Router>
