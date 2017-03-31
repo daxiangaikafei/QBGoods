@@ -74,7 +74,7 @@ webpackConfig.output = {
 webpackConfig.plugins = [
     new webpack.DefinePlugin(config.globals),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin()
+    // new webpack.optimize.DedupePlugin()
 ]
 
 Object.keys(webpackConfig.entry).forEach(function(name) {
