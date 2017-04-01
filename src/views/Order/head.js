@@ -43,7 +43,7 @@ class OrderHead extends React.Component {
                 key:item.id,
                 className:status==item.id?"tab-select":""
             }
-            $lis.push(<li {...props} {...eventFun('109','order_tab', i)} ><span>{item.title}</span></li>)
+            $lis.push(<li {...props} {...eventFun('109','order_tab', i)} data-id={item.id} ><span>{item.title}</span></li>)
         } 
         return (
             <header className="order-head">
