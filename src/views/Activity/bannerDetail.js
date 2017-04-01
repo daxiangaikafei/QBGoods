@@ -49,8 +49,15 @@ class bannerDetail extends Component {
       )
       return;
     }
-    let level0s = data.details[0];
-    let level1s = data.details[1];
+    let level0s  = { title:"", stuffs:[]} ,level1s = level0s;
+    data.details.map(function(n,i){
+      if(n.level===1){
+        level0s = n;
+      }
+      if(n.level===2){
+        level1s = n;
+      }
+    });
 
     return (
       <div styleName="home-container">
