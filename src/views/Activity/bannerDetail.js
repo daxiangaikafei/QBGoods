@@ -32,7 +32,7 @@ class bannerDetail extends Component {
 
   componentWillMount() {
     var state = this.state;
-    fetchPosts("/stuff/ad/banner/detail.do",{ id: state.bannerId },"GET")
+    fetchPosts("/stuff/ad/banner/detail.do",{ bannerId : state.bannerId },"GET")
       .then(data => {
         document.title = data.data.name;
         this.setState({
