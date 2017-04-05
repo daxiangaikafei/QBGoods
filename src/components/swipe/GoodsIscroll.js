@@ -9,27 +9,27 @@ class GoodsIscroll extends Component {
 
   constructor(props) {
     super(props);
-    this.scrollInit = this.scrollInit.bind(this);
+    // this.scrollInit = this.scrollInit.bind(this);
   }
   componentWillMount() {
-    let _this = this;
-    _this.AlloyTouch = false;
-    require.ensure([], () => {
-       _this.AlloyTouch = require("./alloyTouch.js");
-       //_this.$ = require("./zepto.js");
-    })
+    // let _this = this;
+    // _this.AlloyTouch = false;
+    // require.ensure([], () => {
+    //    _this.AlloyTouch = require("./alloyTouch.js");
+    //    //_this.$ = require("./zepto.js");
+    // })
   }
   componentDidMount(){
-      let _this = this;
-      if(_this.AlloyTouch){
-          _this.scrollInit()
-      }else{
-          require.ensure([], () => {
-             _this.AlloyTouch = require("./alloyTouch.js");
-             //_this.$ = require("./zepto");
-             _this.scrollInit();
-          })
-      }
+      // let _this = this;
+      // if(_this.AlloyTouch){
+      //     _this.scrollInit()
+      // }else{
+      //     require.ensure([], () => {
+      //        _this.AlloyTouch = require("./alloyTouch.js");
+      //        //_this.$ = require("./zepto");
+      //        _this.scrollInit();
+      //     })
+      // }
   }
   componentWillUnmount(){
       this.alloyTouch&&this.alloyTouch.destory();
@@ -64,7 +64,7 @@ class GoodsIscroll extends Component {
     return (
       <div className="hots-public-container" ref="touch">
         <div className="hots-public-content">
-          <div className="hots-public-warpper" ref="swipe">
+          <div className="hots-public-warpper" ref="swipe" style={{ width: `${110 * props.goods.length}px`}}>
             {
               props.goods.map(function(item,index){
                 return (<div className="hots-public-item" key={index}>
