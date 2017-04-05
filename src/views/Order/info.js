@@ -1,6 +1,6 @@
 'use strict'
 import * as React from 'react';
-
+import { Icon } from 'ui';
 //import * as _ from "lodash";
 
 
@@ -22,9 +22,9 @@ class Info extends React.Component {
                         <li>下单</li>
                         <li className={data.rebateStatus==-1?"info-select":""}>记录订单</li>
                         <li className={data.rebateStatus==0?"info-select":""}>待返宝券</li>
-                        <li className={data.rebateStatus>=1?"info-select":""}>返还宝券</li>
-                        <li className={data.rebateStatus>=2?"info-select":""}>返券被收回</li>
-                        <li className={data.rebateStatus>=3?"info-select":""}>返券失败</li>
+                        <li className={data.rebateStatus==1?"info-select":""}>返还宝券</li>
+                        <li className={data.rebateStatus==2?"info-select":""}>返券被收回</li>
+                        <li className={data.rebateStatus==3?"info-select":""}>返券失败</li>
                     </ol>
                     <div className="order-info-content">
                         <p><label>商城：</label>{data.source||""}</p>
@@ -32,6 +32,9 @@ class Info extends React.Component {
                         <p><label>订单金额：</label>{data.amount||""}</p>
                         <p><label>订单编号：</label>{data.orderNo||""}</p>
                         <p><label>返还宝券：</label>{data.rebateValue||""}</p>
+                    </div>
+                    <div className="order-info-close">
+                      <Icon name="cross" color="#35353f" size="18" styleName="cross" />
                     </div>
                 </div>
         )

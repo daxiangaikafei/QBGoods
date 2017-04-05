@@ -19,18 +19,18 @@ class PopUp extends React.Component {
     //     debugger
     //     let {onMaskClose} = this.props;
     //     onMaskClose&&onMaskClose();
-        
+
     // }
     render() {
         let {show,maskClosable,showClose,onMaskClose,children,animationType} = this.props;
         return (
-          
+
                 <div className={"virtual-popup virtual-popup-slide-" + (animationType==="slide-down"?"down":"up")}>
                         <div className="am-popup-content">
                             <div className="am-popup-body">{children}</div>
                         </div>
                 </div>
-           
+
         )
     }
 };
@@ -45,12 +45,10 @@ PopUp.defaultProps = {
     show:false,
     maskClosable:false,
     showClose:false,
-    animationType:"slide-down",
+    animationType:"slide-up",
     onMaskClose:function(){}
 }
 PopUp.contextTypes = {
- 
+
 };
 module.exports = PopUp;
-
-
