@@ -10,19 +10,21 @@ import "./info.less";
 class Info extends React.Component {
     constructor(props) {
         super(props);
-        
+
     }
-    
+
     render() {
         let {data,onClick} = this.props;
         return (
             <div onClick={onClick} className="container-my-order-info">
-                    
+
                     <ol>
                         <li>下单</li>
                         <li className={data.rebateStatus==-1?"info-select":""}>记录订单</li>
                         <li className={data.rebateStatus==0?"info-select":""}>待返宝券</li>
                         <li className={data.rebateStatus>=1?"info-select":""}>返还宝券</li>
+                        <li className={data.rebateStatus>=2?"info-select":""}>返券被收回</li>
+                        <li className={data.rebateStatus>=3?"info-select":""}>返券失败</li>
                     </ol>
                     <div className="order-info-content">
                         <p><label>商城：</label>{data.source||""}</p>
@@ -42,4 +44,3 @@ Info.defaultProps = {
 
 module.exports = Info;
 //<div className="vi-nav-bar"><span className="left-icon"></span>返券详情</div>
-
