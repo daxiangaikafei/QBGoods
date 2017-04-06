@@ -1,92 +1,95 @@
-
 $browser-default-font-size:16px!default;
-
 $mainColor:#FD472B;
-
-@function strip-units($number){ 
-    @return $number / ($number * 0 + 1); 
-} 
-@mixin remCalc($property, $values...) {
-		$max: length($values); //返回$values列表的长度值 
-		$pxValues: ''; 
-		$remValues: ''; 
-			@for $i from 1 through $max { 
-				$value: strip-units(nth($values, $i));//返回$values列表中的第$i个值，并将单位值去掉 
-				$browser-default-font-size: strip-units($browser-default-font-size); 
-                $pxValues: #{$pxValues + $value / $browser-default-font-size }rem;
-				@if $i < $max { 
-					$pxValues: #{$pxValues + " "}; 
-				} 
-			} 
-			@for $i from 1 through $max { 
-				$value: strip-units(nth($values, $i)); 
-				$remValues: #{$remValues + $value}px;
-
-				@if $i < $max { 
-					$remValues: #{$remValues + " "}; 
-				} 
-			} 
-		#{$property}: $pxValues; 
+@function strip-units($number) {
+    @return $number / ($number * 0 + 1);
 }
 
+@mixin remCalc($property, $values...) {
+    $max: length($values); //返回$values列表的长度值 
+    $pxValues: '';
+    $remValues: '';
+    @for $i from 1 through $max {
+        $value: strip-units(nth($values, $i)); //返回$values列表中的第$i个值，并将单位值去掉 
+        $browser-default-font-size: strip-units($browser-default-font-size);
+        $pxValues: #{$pxValues + $value / $browser-default-font-size }rem;
+        @if $i < $max {
+            $pxValues: #{$pxValues + " "};
+        }
+    }
+    @for $i from 1 through $max {
+        $value: strip-units(nth($values, $i));
+        $remValues: #{$remValues + $value}px;
+        @if $i < $max {
+            $remValues: #{$remValues + " "};
+        }
+    }
+    #{$property}: $pxValues;
+}
 
-
-.container_activity_normal{
+.container_activity_normal {
     position: absolute;
-    left:0;
+    left: 0;
     top: 0;
     height: 100%;
     width: 100%;
     overflow: hidden;
     box-sizing: border-box;
     border-top: 1px solid #f1f1f6;
-    a{
+    a {
         display: flex;
         width: 100%;
         box-sizing: border-box;
     }
 }
-.activity_normal-item{
+
+.activity_normal-item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
     width: 100%;
     background-color: white;
-    
-    display: flex;
     box-sizing: border-box;
-
-    &:last-child{
-        .activity_normal-item-right{
+    &:last-child {
+        .activity_normal-item-right {
             border-width: 0;
         }
     }
-    
-    .activity_normal-item-left{
+    .activity_normal-item-left {
         @include remCalc(width, 140px);
         @include remCalc(height, 140px);
-       @include remCalc(padding,15px,15px,15px,15px);
-        flex-shrink: 0;
-         flex-grow: 0;
-            
-        img{
+        @include remCalc(padding, 15px, 15px, 15px, 15px);
+        -webkit-box-flex: none;
+        -webkit-flex: none;
+        -ms-flex: none;
+        flex: none;
+        img {
             width: 100%;
             height: 100%;
         }
-        
     }
-    .activity_normal-item-right{
+    .activity_normal-item-right {
         flex-grow: 1;
         //min-width: calc(100% - 140px);
         // width: 100%;
         // @include remCalc(padding-left, 155px);
         position: relative;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
         justify-content: space-between;
+        -webkit-box-lines: multiple;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-        @include remCalc(padding,15px,15px,15px,0);
+        @include remCalc(padding, 15px, 15px, 15px, 0);
         border-bottom: 1px solid #f1f1f6;
-
     }
-    h3{
+    h3 {
         font-size: 16px;
         font-weight: 300;
         display: block;
@@ -98,48 +101,66 @@ $mainColor:#FD472B;
         //min-height: 36px;
         @include remCalc(padding-bottom, 56px);
     }
-    .item-left-info{
+    .item-left-info {
         color: $mainColor;
         font-size: 12px;
         line-height: 14px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
         flex-direction: column;
         font-weight: 300;
-         position: absolute;
+        position: absolute;
         left: 0;
         @include remCalc(right, 15px);
         @include remCalc(bottom, 15px);
-        span{
-           display: flex;
-           font-weight: 500;
+        span {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            font-weight: 500;
             font-size: 18px;
             //line-height: 20px;
+            -webkit-box-align: baseline;
+            -webkit-align-items: baseline;
+            -ms-flex-align: baseline;
             align-items: baseline;
-             @include remCalc(padding-bottom, 5px);
+            @include remCalc(padding-bottom, 5px);
         }
-        img{
-            @include remCalc(width,20px);
-            @include remCalc(height,20px);
-            @include remCalc(padding-left,8px);
+        img {
+            @include remCalc(width, 20px);
+            @include remCalc(height, 20px);
+            @include remCalc(padding-left, 8px);
         }
-        em{
+        em {
             font-size: 12px;
             line-height: 14px;
             font-weight: 300;
         }
-        b{
+        b {
             color: #90909b;
             font-weight: 300;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
             display: flex;
             align-items: flex-end;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
             justify-content: space-between;
-            @include remCalc(padding,2px,0,0,0);
+            @include remCalc(padding, 2px, 0, 0, 0);
         }
-        i{
+        i {
             font-size: 12px;
             line-height: 14px;
             font-weight: 300;
-            @include remCalc(padding,2px, 5px);
+            @include remCalc(padding, 2px, 5px);
             //padding: 0 5px;
             color: $mainColor;
             //border: 1px solid $mainColor;
@@ -147,17 +168,16 @@ $mainColor:#FD472B;
             margin-right: 10px;
         }
     }
-    .item-good{
+    .item-good {
         // border: 1px solid $mainColor;
         // border-radius: 4px;
         position: absolute;
-
         @include remCalc(right, 30px);
         @include remCalc(bottom, 15px);
-        span{
+        span {
             display: flex;
-            @include remCalc(width,30px);
-            @include remCalc(height,30px);
+            @include remCalc(width, 30px);
+            @include remCalc(height, 30px);
             // border-top-left-radius: 4px;
             // border-top-right-radius: 4px;
             // background-color: white;
@@ -182,28 +202,31 @@ $mainColor:#FD472B;
             // }
         }
     }
-    .good-index{
-        background:url("static/imgs/activity/index.png") no-repeat;
-        @include remCalc(width, 15px);
-        @include remCalc(height, 15px);
+    .good-index {
+        background: url("static/imgs/activity/index.png") no-repeat;
+        @include remCalc(width,
+        15px);
+        @include remCalc(height,
+        15px);
         //display: block;
         background-size: cover;
     }
-    .good-arror-right{
-        background:url("static/imgs/activity/arror.png") no-repeat;
-        @include remCalc(width, 12px);
-        @include remCalc(height, 12px);
-       // display: block;
+    .good-arror-right {
+        background: url("static/imgs/activity/arror.png") no-repeat;
+        @include remCalc(width,
+        12px);
+        @include remCalc(height,
+        12px);
+        // display: block;
         background-size: cover;
     }
-
 }
 
-.container-scroll{
+.container-scroll {
     width: 100%;
-    
 }
-.scroll-end{
+
+.scroll-end {
     font-size: 14px;
     text-align: center;
     line-height: 35px;
