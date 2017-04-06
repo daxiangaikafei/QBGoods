@@ -71,7 +71,7 @@
                         '/ChannelEntry':108,
                         '/Order':       109
                     }
-                    var _pathname = pathname.startsWith('/Ju') ? '/Ju' : pathname
+                    var _pathname = pathname.indexOf('/Ju') == 0 ? '/Ju' : pathname
                     
                     array.forEach(function(item){
                         if(item.path.toLowerCase() == pathname.toLowerCase()){
