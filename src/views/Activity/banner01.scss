@@ -36,6 +36,9 @@ $mainColor:#FD472B;
     box-sizing: border-box;
     border-top: 1px solid #f1f1f6;
     a {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
         display: flex;
         width: 100%;
         box-sizing: border-box;
