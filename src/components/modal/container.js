@@ -21,12 +21,12 @@ class HelpModal extends React.Component {
         this.close = this.close.bind(this);
     }
     alert(title,message){
-        
+
         return this.show(title,message,false);
     }
-    
+
     confirm(title,message){
-        
+
         console.log("-----------")
         return this.show(title,message,true);
     }
@@ -37,7 +37,7 @@ class HelpModal extends React.Component {
 
 
     close(){
-       
+
         let self = this;
         return new Promise(function(resolve, reject){
             self.setState({
@@ -51,10 +51,10 @@ class HelpModal extends React.Component {
                 })
                 resolve();
             },300)
-        }) 
+        })
     }
     show(title,message,isConfirm){
-        
+
         let self = this;
         return new Promise(function(resolve, reject){
             let modal = Object.assign({},{
@@ -68,9 +68,9 @@ class HelpModal extends React.Component {
                         resolve(data);
                     });
                     //setTimeout({
-                        
+
                     //})
-                    
+
                 }
             })
             self.setState({

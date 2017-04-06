@@ -12,7 +12,7 @@ class WinMark extends React.Component {
     render() {
         let {children,show,onClick} = this.props;
         return (
-            <div onClick={onClick} className={"virtual-mark "+(show===true?"":" vi-hide")} >
+            <div onClick={onClick} className={"virtual-mark "+(show===true?"vi-show":" vi-hide")} >
                 {children}
             </div>
         )
@@ -24,8 +24,6 @@ WinMark.defaultProps = {
     onClick:()=>{}
 }
 WinMark.contextTypes = {
-    
+
 };
 module.exports = WinMark;
-
-
