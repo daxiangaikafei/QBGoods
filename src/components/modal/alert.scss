@@ -1,34 +1,34 @@
 
 $browser-default-font-size:16px!default;
 
-@function strip-units($number){ 
-    @return $number / ($number * 0 + 1); 
-} 
+@function strip-units($number){
+    @return $number / ($number * 0 + 1);
+}
 @mixin remCalc($property, $values...) {
-		$max: length($values); //返回$values列表的长度值 
-		$pxValues: ''; 
-		$remValues: ''; 
-			@for $i from 1 through $max { 
-				$value: strip-units(nth($values, $i));//返回$values列表中的第$i个值，并将单位值去掉 
-				$browser-default-font-size: strip-units($browser-default-font-size); 
+		$max: length($values); //返回$values列表的长度值
+		$pxValues: '';
+		$remValues: '';
+			@for $i from 1 through $max {
+				$value: strip-units(nth($values, $i));//返回$values列表中的第$i个值，并将单位值去掉
+				$browser-default-font-size: strip-units($browser-default-font-size);
 				//$pxValues: #{$pxValues + $value * $browser-default-font-size}px;
                 $pxValues: #{$pxValues + $value / $browser-default-font-size }rem;
                 //$px / $browser-default-font-size * 1rem;
                 //$pxValues:#{$value};
-				@if $i < $max { 
-					$pxValues: #{$pxValues + " "}; 
-				} 
-			} 
-			@for $i from 1 through $max { 
-				$value: strip-units(nth($values, $i)); 
+				@if $i < $max {
+					$pxValues: #{$pxValues + " "};
+				}
+			}
+			@for $i from 1 through $max {
+				$value: strip-units(nth($values, $i));
 				$remValues: #{$remValues + $value}px;
 
-				@if $i < $max { 
-					$remValues: #{$remValues + " "}; 
-				} 
-			} 
-		#{$property}: $pxValues; 
-		//#{$property}: $remValues; 
+				@if $i < $max {
+					$remValues: #{$remValues + " "};
+				}
+			}
+		#{$property}: $pxValues;
+		//#{$property}: $remValues;
 }
 
 
@@ -49,12 +49,12 @@ $browser-default-font-size:16px!default;
 
     outline: 0;
 
-    display: flex;
+    display: -webkit-flex;
 
-    
 
-    justify-content: center;
-    align-items: center;
+
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
 }
 
 
@@ -71,8 +71,8 @@ $browser-default-font-size:16px!default;
 
     @include remCalc(padding-top,18);
 
-    display: flex;
-    flex-direction: column;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
 }
 
 .virtual-modal-close{
@@ -129,7 +129,7 @@ $browser-default-font-size:16px!default;
 }
 
 .virtual-modal-button-group-h{
-    display: flex;
+    display: -webkit-flex;
     //flex-direction: row;
     margin: 0;
     padding: 0;
@@ -157,7 +157,7 @@ $browser-default-font-size:16px!default;
     @include remCalc(font-size, 16px);
     @include remCalc(height, 50px);
     @include remCalc(line-height, 50px);
-    
+
 
 
     width: auto;
