@@ -174,7 +174,7 @@ class Hotgoods extends Component {
           <div className="hots-public-title"><div></div></div>
           {  goodsIscroll }
           { goodsTab }
-          <ProductList listConfig={{temp: 'hots'}} listData={this.state.items} eventConfig={{pageName:this.pageName,model:`hot_goods_products_${this.state.active}`}}/>
+          <ProductList listConfig={{temp: 'hots'}} listData={this.state.items} eventConfig={{pageName:this.pageName,model:`hot_goods_${this.state.active}_products`}}/>
         </div>
 
         { noTip }

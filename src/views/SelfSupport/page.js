@@ -158,7 +158,7 @@ class SelfSupport extends Component {
             <SwiperPagination active={this.props.swiperActive} swipers={this.props.swipers}></SwiperPagination>
           </div>
           {goodsTab}
-          <ProductList listConfig={{temp: 'score'}} listData={this.state.items} eventConfig={{pageName:"103",model:`self_support_products_${this.state.active}`}}/>
+          <ProductList listConfig={{temp: 'score'}} listData={this.state.items} eventConfig={{pageName:"103",model:`self_support_${this.state.active}_products`}}/>
         </div>
         { noTip }
       </Swipe>
