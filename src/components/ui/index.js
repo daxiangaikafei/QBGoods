@@ -10,6 +10,7 @@
 export { default as NavBar } from './navbar'
 export { default as Dialog } from './dialog'
 export { default as Banner } from './banner'
+export { default as TabsBase } from './tabsBase'
 export { default as Tabs } from './tabs'
 export { default as ProductList } from './productList'
 export { default as ProductListHots } from './productListHots'

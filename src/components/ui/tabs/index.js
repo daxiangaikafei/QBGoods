@@ -1,10 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'dva'
-import CSSModules from 'react-css-modules'
-import styles from './index.less'
-import {Link} from 'react-router'
-import classNames from 'classnames'
 import { eventFun } from 'libs/util'
+import { TabsBase } from 'ui'
 
 class Tabs extends Component {
 
@@ -12,23 +9,23 @@ class Tabs extends Component {
         super(props)
 
         this.state = {
-            tabActive: props.tabsConfig.active || 0
         }
         props.tabsConfig.model ? props[props.tabsConfig.model][props.tabsConfig.statusKey ? props.tabsConfig.statusKey : 'tabActive'] = props.tabsConfig.active || 0 : void 0
         props.action(`${props.tabsConfig.model}/${props.tabsConfig.names[props.tabsConfig.active || 0].action}`)
     }
 
-    toggleTabHandler = (e) => {
-        let index = e.currentTarget.getAttribute('data-active')
-        this.setState({
-            tabActive: index
-        })
+    toggleTabHandler = index => {
         let props = this.props
         props.tabsConfig.model ? props[props.tabsConfig.model][props.tabsConfig.statusKey ? props.tabsConfig.statusKey : 'tabActive'] = index : void 0
         props[props.tabsConfig.model]['page'] == 1
         props.action(`${props.tabsConfig.model}/${props.tabsConfig.names[index].action}`)
     }
 
+    eventLog = (pageName, model) => {
+        return index => {
+            return eventFun(pageName, model, index)
+        }
+    }
     componentDidMount() {}
 
     componentDidUpdate() {}
@@ -36,24 +33,15 @@ class Tabs extends Component {
     render() {
         let { pageName, model } = this.props.eventConfig
         return (
-            <div styleName="tabs">
-                {
-                    this.props.tabsConfig.names.map((item, index) =>
-                        <label key={index} >
-                            <span
-                                styleName={classNames({
-                                    'tab-item': true,
-                                    'active': this.state.tabActive == index
-                                })}
-                                {...eventFun(pageName, model, index + 1) }
-                                data-active={index}
-                                onClick={this.toggleTabHandler}>
-                                <i>{item.key}</i>
-                            </span>
-                        </label>
-                    )
-                }
-            </div>
+            <TabsBase
+                tabsConfig={
+                    Object.assign(this.props.tabsConfig, {
+                        toggleTabHandler: this.toggleTabHandler
+                })}
+                eventConfig={{
+                    eventLog: this.eventLog(pageName, model)
+                }}
+            />
         )
     }
 };
@@ -70,4 +58,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(Tabs, styles, {allowMultiple: true}));
+export default connect(mapStateToProps, mapDispatchToProps)(Tabs);
