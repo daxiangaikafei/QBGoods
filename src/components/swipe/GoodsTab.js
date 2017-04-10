@@ -74,16 +74,18 @@ class GoodsTab extends Component {
   }
   tabsClickHandler(active){
     // console.log(active);
-    this.props.tabCallback(active);
+    this.props.tabCallback && this.props.tabCallback(active);
   }
   render() {
+    let tabs = this.props.tabs || [];
+    let active = this.props.active || 0;
     let { pageName, model } = this.props.eventConfig;
     return (
       <div className="hots-tabs-container" ref="touch">
         <div className="hots-tabs-content">
           <div className="hots-tabs-warpper" ref="swipe">
             {
-              this.props.tabs.map((item, i) => <Tappable {...eventFun(pageName, model, item.id)}  onTap={this.tabsClickHandler.bind(this,i)} key={i} className={this.props.active == i ? 'tabs-item tabs-item-active' : 'tabs-item'}><span>{item.dirName}</span></Tappable>)
+              this.props.tabs.map((item, i) => <Tappable {...eventFun(pageName, model, item.id)}  onTap={this.tabsClickHandler.bind(this,i)} key={i} className={active == i ? 'tabs-item tabs-item-active' : 'tabs-item'}><span>{item.dirName}</span></Tappable>)
             }
           </div>
         </div>

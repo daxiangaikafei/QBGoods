@@ -7,6 +7,8 @@ import {Router} from 'dva/router';
 import { fetchPosts } from "components/common/fetch"
 import ShopContent from "./ShopContent";
 import SelfContent from "./SelfContent";
+import MycustomTap from "./MycustomTap";
+import MycustomBtns from "./MycustomBtns";
 import Modal from "components/modal/index";
 import PopUp from "components/popup/index";
 import Swipe from "components/swipe/swipe";
@@ -22,6 +24,9 @@ class MyCustom extends Component {
         isLoading: false
     }
     this.sendData = this.sendData.bind(this);
+    this.tabCallback = this.tabCallback.bind(this);
+    this.changeCallback = this.changeCallback.bind(this);
+    this.enterCallback = this.enterCallback.bind(this);
   }
   componentDidMount() {
 
@@ -30,10 +35,10 @@ class MyCustom extends Component {
   componentDidUpdate() {
 
   }
-  tabClickHandler(active){
+  tabCallback(active){
     this.props.setTabActive(active);
   }
-  enterHandler(){
+  enterCallback(){
 
 
     let tagDetailIds = [];
@@ -100,7 +105,7 @@ class MyCustom extends Component {
                     isLoading:false,});
      });
   }
-  changeHandler(){
+  changeCallback(){
     // this.context.router.goBack();
     let tagDetailIds = [];
     let shopLabels = this.props.shopLabelsDefault;
@@ -144,22 +149,15 @@ class MyCustom extends Component {
     }
     return (
       <div className="mycustom-container">
-        <div className="mycustom-tab">
-          <div {...eventFun("105", 'my_custom_tab', "1")} className={this.props.tabActive === "shop" ? 'mycustom-active' : ''} onTouchStart={this.tabClickHandler.bind(this,'shop')}>购物标签</div>
-          <div {...eventFun("105", 'my_custom_tab', "2")} className={this.props.tabActive === "self" ? 'mycustom-active' : ''} onTouchStart={this.tabClickHandler.bind(this,'self')}>个人标签</div>
-        </div>
-
-            {customcontent}
+        <MycustomTap tabActive={this.props.tabActive} tabCallback={this.tabCallback}/>
+        {customcontent}
         <p className={this.props.selfTipShow ? 'self-tip self-tip-show' : 'self-tip'}>
           与您个性相匹配的人<span>{this.props.selfTipNum}</span>人
         </p>
         <p className={this.props.shopTipShow ? 'shop-tip shop-tip-show' : 'shop-tip'}>
           与你购物喜好相似的人有<span>{this.props.shopTipNum}</span>人
         </p>
-        <div className="mycustom-btns">
-          <div className="btn-change" onTouchStart={this.changeHandler.bind(this)}>取消</div>
-          <div className="btn-enter" onTouchStart={this.enterHandler.bind(this)}>确定</div>
-        </div>
+        <MycustomBtns changeCallback={this.changeCallback} enterCallback={this.enterCallback}/>
       </div>
     )
   }
