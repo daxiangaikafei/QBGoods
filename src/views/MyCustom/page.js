@@ -9,6 +9,7 @@ import ShopContent from "./ShopContent";
 import SelfContent from "./SelfContent";
 import MycustomTap from "./MycustomTap";
 import MycustomBtns from "./MycustomBtns";
+import MycustomTip from "./MycustomTip";
 import Modal from "components/modal/index";
 import PopUp from "components/popup/index";
 import Swipe from "components/swipe/swipe";
@@ -131,12 +132,6 @@ class MyCustom extends Component {
     return;
   }
   render() {
-    let customcontent;
-    if (this.props.tabActive === "shop") {
-      customcontent = <ShopContent/>;
-    } else {
-      customcontent = <SelfContent  />;
-    }
     let props = {
         property:"translateY",
         className:"scroll-warpper",
@@ -147,16 +142,19 @@ class MyCustom extends Component {
         // touchMove:this.touchMove
         //step:200
     }
+    let tipProps = {
+      selfTipShow: this.props.selfTipShow ,
+      selfTipNum: this.props.selfTipNum ,
+      shopTipShow: this.props.shopTipShow ,
+      shopTipNum: this.props.shopTipNum
+    }
     return (
       <div className="mycustom-container">
         <MycustomTap tabActive={this.props.tabActive} tabCallback={this.tabCallback}/>
-        {customcontent}
-        <p className={this.props.selfTipShow ? 'self-tip self-tip-show' : 'self-tip'}>
-          与您个性相匹配的人<span>{this.props.selfTipNum}</span>人
-        </p>
-        <p className={this.props.shopTipShow ? 'shop-tip shop-tip-show' : 'shop-tip'}>
-          与你购物喜好相似的人有<span>{this.props.shopTipNum}</span>人
-        </p>
+        {
+          this.props.tabActive === "shop" ? <ShopContent/> : <SelfContent  />
+        }
+        <MycustomTip {...tipProps}/>
         <MycustomBtns changeCallback={this.changeCallback} enterCallback={this.enterCallback}/>
       </div>
     )
