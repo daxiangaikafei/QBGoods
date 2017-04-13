@@ -74,8 +74,7 @@ webpackConfig.output = {
 // ------------------------------------
 webpackConfig.plugins = [
     new webpack.DefinePlugin(config.globals),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new BundleAnalyzerPlugin()
+    new webpack.optimize.OccurrenceOrderPlugin()
     // new webpack.optimize.DedupePlugin()
 ]
 
@@ -278,7 +277,9 @@ if (!__DEV__) {
     webpackConfig.plugins.push(
         new ExtractTextPlugin('[name].[contenthash].css', {
             allChunks: true
-        })
+        }),
+        new BundleAnalyzerPlugin()
+
     )
 }
 
