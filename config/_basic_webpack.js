@@ -11,6 +11,7 @@ const debug  = require('debug')('app:config:_basic_webpack')
 const config = require('./index')
 const paths = config.utils_paths
 const {__DEV__, __PROD__, __TEST__} = config.globals
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 debug('create configuration.')
 debug(`apply webpack config for NODE_ENV "${config.env}"`)
@@ -73,7 +74,7 @@ webpackConfig.output = {
 // ------------------------------------
 webpackConfig.plugins = [
     new webpack.DefinePlugin(config.globals),
-    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin()
     // new webpack.optimize.DedupePlugin()
 ]
 
@@ -276,7 +277,9 @@ if (!__DEV__) {
     webpackConfig.plugins.push(
         new ExtractTextPlugin('[name].[contenthash].css', {
             allChunks: true
-        })
+        }),
+        new BundleAnalyzerPlugin()
+
     )
 }
 

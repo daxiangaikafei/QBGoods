@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "better-npm-run dev",
     "dev:nw": "npm run dev -- --nw",
-    "clear" :"rm -rf dist/",
+    "clear": "rm -rf dist/",
     "compile": "npm run clear && better-npm-run deploy"
   },
   "betterScripts": {
@@ -87,6 +87,7 @@
     "history": "^2.0.0-rc2",
     "html-webpack-plugin": "^2.24.1",
     "json-loader": "^0.5.4",
+    "koa-proxy": "^0.8.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "node-sass": "^4.5.0",
@@ -95,11 +96,11 @@
     "react-addons-css-transition-group": "^15.4.1",
     "react-css-modules": "^4.1.0",
     "react-dom": "^15.4.1",
-    "recharts": "^0.20.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.14.0",
+    "webpack-bundle-analyzer": "^2.3.1",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.2"
   }

@@ -5,7 +5,6 @@
 require('babel-register')
 require('es6-promise').polyfill();
 
-const dateFormat = require('dateformat');
 const config     = require('../config')
 const debug      = require('debug')('app:bin:compile')
 const fs         = require('fs-extra')

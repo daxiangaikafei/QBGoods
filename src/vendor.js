@@ -15,7 +15,6 @@ require.ensure([],
         require('redux-simple-router')
         require('dva')
         require('fastclick')
-        require('recharts')
 
         require('./')
 
