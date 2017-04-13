@@ -39,13 +39,6 @@ class ChannelEntry extends Component {
   }
 
   componentWillMount() {
-    require.ensure([], () => {
-      let channelData = require('./channelData.js').channelData
-      let data = channelData[this.state.channel]
-      this.setState({
-        data
-      })
-    })
   }
 
   render() {
