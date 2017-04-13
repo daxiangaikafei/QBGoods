@@ -11,7 +11,8 @@
     "dev": "better-npm-run dev",
     "dev:nw": "npm run dev -- --nw",
     "clear": "rm -rf dist/",
-    "compile": "npm run clear && better-npm-run deploy"
+    "compile": "npm run clear && better-npm-run deploy",
+    "compile:ba": "npm run compile -- --ba"
   },
   "betterScripts": {
     "dev": {

@@ -8,6 +8,7 @@ const debug = require('debug')('app:config')
 
 debug('create configuration.')
 debug(`apply enviroment overrides for NODE_ENV "${config.env}"`)
+debug(`analyzer run: "${config.globals.__ANALYZER__}"`)
 
 //check env config exit
 const ovFileName = `/env/_${config.env}`

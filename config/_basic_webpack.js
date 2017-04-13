@@ -10,7 +10,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 const debug  = require('debug')('app:config:_basic_webpack')
 const config = require('./index')
 const paths = config.utils_paths
-const {__DEV__, __PROD__, __TEST__} = config.globals
+const { __DEV__, __PROD__, __TEST__, __ANALYZER__ } = config.globals
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 debug('create configuration.')
@@ -277,10 +277,13 @@ if (!__DEV__) {
     webpackConfig.plugins.push(
         new ExtractTextPlugin('[name].[contenthash].css', {
             allChunks: true
-        }),
-        new BundleAnalyzerPlugin()
-
+        })
     )
+    if (__ANALYZER__) {
+        webpackConfig.plugins.push(
+            new BundleAnalyzerPlugin()
+        )
+    }
 }
 
 
