@@ -7,25 +7,30 @@
 @subTxtColor: #acacac;
 @priceTxtColor: #fd472b;
 @import '~libs/layout/layout-mixin.less';
+//Mixin
+.lazyImgBG {
+    background: url("static/imgs/qb-grey-70X60.png") no-repeat center;
+    -webkit-background-size: 60%;
+    background-size: 60%;
+}
+
 main {
     color: @txtColor;
-    .home-no-data{
-      text-align: center;
+    .home-no-data {
+        text-align: center;
     }
     .home-container {
         background: @bodyBGColor;
     }
     .banner-container {
-        width: 100%;
-        // height: 150px;
+        width: 100%; // height: 150px;
         position: relative;
         margin: 0 auto;
         a {
             display: block;
         }
         img {
-            width: 100%;
-            // height: 150px;
+            width: 100%; // height: 150px;
         }
     }
     .middle-title {
@@ -64,6 +69,7 @@ main {
                     padding-bottom: 100%;
                     background-color: #fff;
                     overflow: hidden;
+                    .lazyImgBG;
                 }
                 h3 {
                     font-size: 13px;
@@ -121,17 +127,19 @@ main {
             box-sizing: border-box;
             &:last-child {
                 padding-bottom: 0;
-                .right{ border-bottom: none;}
+                .right {
+                    border-bottom: none;
+                }
             }
             .flex;
             .img {
-                width: 130px;
-                // height: 150px;
+                width: 130px; // height: 150px;
                 display: block;
                 background-color: #fff;
                 overflow: hidden;
                 margin: 0 5px;
                 padding-bottom: 5px;
+                .lazyImgBG;
                 .flex-item-auto;
             }
             .right {

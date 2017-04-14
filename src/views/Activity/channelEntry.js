@@ -6,6 +6,7 @@ import { Link } from 'react-router'
 import classNames from 'classnames'
 import ReactSwipe from 'react-swipe';
 import { priceFormat, eventFun } from 'libs/util'
+import { LazyLoader } from 'ui'
 
 class ChannelEntry extends Component {
   pageName = '108'
@@ -39,6 +40,13 @@ class ChannelEntry extends Component {
   }
 
   componentWillMount() {
+    // require.ensure([], () => {
+    //   let channelData = require('./channelData.js').channelData
+    //   let data = channelData[this.state.channel]
+    //   this.setState({
+    //     data
+    //   })
+    // })
   }
 
   render() {
@@ -57,7 +65,7 @@ class ChannelEntry extends Component {
           <div styleName="list" >
             {data.middleList.map((item, index) =>
               <div styleName="item" key={index}>
-                <a {...eventFun(this.pageName,'channel_entry_ad_products',item.id)} styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
+                <a {...eventFun(this.pageName,'channel_entry_ad_products',item.id)} styleName="img" href={item.url} ><img data-src={item.imgUrl} alt="" /></a>
                 <a {...eventFun(this.pageName,'channel_entry_ad_products',item.id)} href={item.url} ><h3>{item.name}</h3></a>
                 <div styleName="price">￥{priceFormat(item.finalPrice)}
                   <span styleName="icon"><img src={this.icons[item.source]} alt=""/></span>
@@ -65,6 +73,12 @@ class ChannelEntry extends Component {
                 <div styleName="bottom">
                   <span styleName="return">返600宝券</span>
                 </div>
+                <LazyLoader
+                  lazyConfig={{
+                    offset: 100,
+                    throttle: 100
+                  }}
+                />
               </div>
             )}
           </div>
@@ -73,7 +87,7 @@ class ChannelEntry extends Component {
         <div styleName="list-container nomore">
           {data.list.map((item, index) =>
             <div styleName="item" key={index}>
-              <a {...eventFun(this.pageName,'channel_entry_list_products',item.id)} styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
+              <a {...eventFun(this.pageName,'channel_entry_list_products',item.id)} styleName="img" href={item.url} ><img data-src={item.imgUrl} alt="" /></a>
               <div styleName="right">
                 <a {...eventFun(this.pageName,'channel_entry_list_products',item.id)} href={item.url} ><h3>{item.name}</h3></a>
                 <div styleName="bottom">
@@ -89,6 +103,12 @@ class ChannelEntry extends Component {
               </div>
             </div>
           )}
+          <LazyLoader 
+            lazyConfig={{
+              offset: 100,
+              throttle: 100
+            }}
+          />
         </div>
       </div>
     )
