@@ -73,12 +73,7 @@ class ChannelEntry extends Component {
                 <div styleName="bottom">
                   <span styleName="return">返600宝券</span>
                 </div>
-                <LazyLoader
-                  lazyConfig={{
-                    offset: 100,
-                    throttle: 100
-                  }}
-                />
+                <LazyLoader/>
               </div>
             )}
           </div>
