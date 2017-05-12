@@ -4,7 +4,7 @@ import CSSModules from 'react-css-modules'
 import styles from './page.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
-import Flex from "components/ui/flex";
+import { Flex, Gird } from "ui";
 
 class FlexLayout extends Component {
 
