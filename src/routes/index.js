@@ -14,12 +14,14 @@ import Banner01 from "views/Activity/banner01"
 import ChannelEntry from "views/Activity/channelEntry"
 import bannerDetail from "views/Activity/bannerDetail"
 import IconDoc from "views/IconDoc/page"
+import FlexLayout from "views/FlexLayout/page"
 
 export default function (ref) {
   return (
     <Router history={ref.history}>
       <Route path='/' component={CoreLayout} name="有好货">
         <IndexRoute component={GatherGoods} name="聚好货"/>
+        <Route path='/FlexLayout' component={FlexLayout} name="布局" />
         <Route path='/HotGoods' component={HotGoods} name="热卖好货" />
         <Route path='/MyCustom' component={MyCustom} name="我的定制" />
         <Route path='/SelfSupport' component={SelfSupport} name="钱宝自营" />

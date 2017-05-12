@@ -7,6 +7,8 @@ import classNames from 'classnames'
 import ReactSwipe from 'react-swipe';
 import { priceFormat, eventFun } from 'libs/util'
 import { fetchPosts } from "components/common/fetch"
+import MiddleContainer from "./MiddleContainer";
+import ListContainer from "./ListContainer";
 
 class bannerDetail extends Component {
   pageName = '108'
@@ -64,45 +66,8 @@ class bannerDetail extends Component {
         <ReactSwipe styleName="banner-container" swipeOptions={{ continuous: false }}>
           <div><img src={ data.imgURL } /></div>
         </ReactSwipe>
-        <div styleName="middle-title">{level0s.title}</div>
-        <div styleName="middle-container">
-          {/*style={{ width: `${140 * level0s.stuffs.length}px`}}*/}
-          <div styleName="list" style={{ width: `${140 * level0s.stuffs.length}px`}}>
-            {level0s.stuffs.map((item, index) =>
-              <div styleName="item" key={index}>
-                <a {...eventFun(this.pageName,'channel_entry_ad_products',item.id)} styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
-                <a {...eventFun(this.pageName,'channel_entry_ad_products',item.id)} href={item.url} ><h3>{item.name}</h3></a>
-                <div styleName="price">￥{priceFormat(item.finalPrice)}
-                  <span styleName="icon"><img src={this.icons[item.source]} alt=""/></span>
-                </div>
-                <div styleName="bottom">
-                  <span styleName="return">{item.rebateValue}</span>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-        <div styleName="middle-title" style={{marginTop:'10px'}}>{level1s.title}</div>
-        <div styleName="list-container nomore">
-          {level1s.stuffs.map((item, index) =>
-            <div styleName="item" key={index}>
-              <a {...eventFun(this.pageName,'channel_entry_list_products',item.id)} styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
-              <div styleName="right">
-                <a {...eventFun(this.pageName,'channel_entry_list_products',item.id)} href={item.url} ><h3>{item.name}</h3></a>
-                <div styleName="bottom">
-                  <div styleName="price">￥{priceFormat(item.finalPrice)}
-                    <span styleName="icon"><img src={this.icons[item.source]} alt="" /></span>
-                  </div>
-                  <span styleName="return">
-                    {item.rebateValue}
-                    {item.orderNum != null ? <p styleName="sales">销量 <span>{item.orderNum}</span></p> : ''}
-                  </span>
-                  <a {...eventFun(this.pageName,'channel_entry_list_products',item.id,)} styleName="btn-buy" href={item.url}>马上购买</a>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
+        <MiddleContainer levelData={level0s}/>
+        <ListContainer levelData={level1s}/>
       </div>
     )
   }
