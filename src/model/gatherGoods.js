@@ -26,7 +26,7 @@ export default {
         page = action.page || 1
         return fetchPosts("/stuff/ju/cloud.do", {
             page: page,
-            size : 4
+            size : 20
           }, "GET")
           .then(data => { 
             isEnd = data.data.length < 4 ? true : false;
@@ -58,7 +58,7 @@ export default {
         page = action.page || 1
         return fetchPosts("/stuff/ju/stuffList.do", {
           page: page,
-          size: 4
+          size: 20
         }, "GET")
           .then(data => {
             isEnd = data.data.length < 4 ? true : false;
