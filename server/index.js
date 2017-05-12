@@ -28,10 +28,10 @@ app.use(proxy({
 //   host: 'http://192.168.14.38/',
 //   match: /^\/custom\//
 // }));
-// app.use(proxy({
-//   host: 'http://127.0.0.1:80',
-//   match: /^\/api\//
-// }));
+app.use(proxy({
+  host: 'http://127.0.0.1:80',
+  match: /^\/api\//
+}));
 
 
 // ------------------------------------

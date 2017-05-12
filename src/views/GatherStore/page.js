@@ -7,6 +7,7 @@ import classNames from 'classnames'
 import ReactSwipe from 'react-swipe';
 import { Banner } from 'ui'
 import { eventFun } from 'libs/util'
+import ListContainer from "./ListContainer";
 
 class GatherStore extends Component {
   pageName = '104'
@@ -21,39 +22,12 @@ class GatherStore extends Component {
   render() {
     return (
       <div styleName="home-container">
-        <Banner bannerList={this.props.bannerList} 
+        <Banner bannerList={this.props.bannerList}
           eventConfig={{
             stuffMoudId: 4
         }}/>
 
-        <div styleName="title">精选好店</div>
-        <div styleName="list-container">
-        {
-          this.props.storeList.map((shop, index) => 
-            <div styleName="item" key={index}>
-              <div styleName="header">
-                <img src={shop.coverUrl} alt=""/>
-                <div styleName="info">
-                  <h3>{shop.name}</h3>
-                  <p>
-                    {/*<span><i></i>10赞</span>*/}
-                    <a {...eventFun(this.pageName, 'gather_shop_shop', shop.id)} styleName="goin" href={shop.url}>进店 <i>></i></a>
-                  </p>
-                </div>
-              </div>
-              <div styleName="bottom">
-              {
-                shop.list.map((stuff, index) => 
-                      <a key={index} href={stuff.url} {...eventFun(this.pageName, 'gather_shop_products', stuff.id)}>
-                    <img src={stuff.imgUrl} alt="" />
-                  </a>
-                ) 
-              }
-              </div>
-            </div>
-          )
-        }
-        </div>
+        <ListContainer storeList={this.props.storeList}/>
       </div>
     )
   }
