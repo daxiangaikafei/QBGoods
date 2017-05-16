@@ -14,7 +14,7 @@ const Icon = props => {
         fill: color,
         ...style
       }} 
-      className={classNames({icon:1,[className]:1})}>
+      className={classNames('icon', { className })}>
       {<use xlinkHref={`${url}#${name}`}></use>}
     </svg>
   )
