@@ -65,7 +65,7 @@ class Swipe extends Component {
     scrollInit(){
         let dom = ReactDOM.findDOMNode(this.refs.touch); //offsetTop
          let target = ReactDOM.findDOMNode(this.refs.swipe);
-        let {intervals,stopPro,property,width,min,max,step,findScroller,vertical,findDis,touchMove} = this.props;
+        let {intervals,stopPro,property,width,min,max,step,findScroller,vertical,findDis,touchMove,inertia} = this.props;
         let prevTarget = false;
         //let $ = this.$;
 
