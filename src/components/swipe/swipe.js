@@ -84,7 +84,6 @@ class Swipe extends Component {
         }
         this.alloyTouch = new this.AlloyTouch({
             touch: dom,//反馈触摸的dom
-            target:target,
             vertical: vertical,//不必需，默认是true代表监听竖直方向touch
             target: target, //运动的对象
             property: property,  //被运动的属性
@@ -94,7 +93,7 @@ class Swipe extends Component {
             max: max, //不必需,滚动属性的最大值
             step: step,
             spring: true, //不必需,是否有回弹效果。默认是true
-            inertia: false, //不必需,是否有惯性。默认是true
+            inertia: inertia, //不必需,是否有惯性。默认是true
             intelligentCorrection: true,
             stopPro:stopPro,
             touchStart: function (value,target) {
@@ -131,6 +130,7 @@ Swipe.defaultProps={
     className:"",
     findDis:false,
     stopPro:true,
+    inertia: true,
     intervals:300,//间隔时间
     touchMove:function(x){
         //console.error("sssssss",this,x)
