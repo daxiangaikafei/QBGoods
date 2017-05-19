@@ -13,6 +13,7 @@ import BannerEntry from "views/Activity/bannerEntry"
 import Banner01 from "views/Activity/banner01"
 import ChannelEntry from "views/Activity/channelEntry"
 import bannerDetail from "views/Activity/bannerDetail"
+import SignIn from "views/Activity/signIn"
 import IconDoc from "views/IconDoc/page"
 import FlexLayout from "views/FlexLayout/page"
 
@@ -32,6 +33,7 @@ export default function (ref) {
         <Route path='/BannerEntry' component={BannerEntry} name="活动页面"/>
         <Route path='/Ju/:id' component={Banner01} name="聚好货页面"/>
         <Route path='/bannerDetail/:id' component={bannerDetail} name="Banner详细页面" />
+        <Route path='/SignIn' component={SignIn} name="今日清单" />
         <Route path='/ChannelEntry/1' component={ChannelEntry} name="女神学穿搭" />
         <Route path='/ChannelEntry/2' component={ChannelEntry} name="个护化妆" />
         <Route path='/ChannelEntry/3' component={ChannelEntry} name="运动户外" />
