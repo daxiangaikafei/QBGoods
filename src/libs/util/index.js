@@ -138,7 +138,7 @@ export function eventFun(pageName,model, id) {
   }
 }
 
-const icons = {
+export const icons = {
   'tmall': require('static/imgs/thirdSource/tmall.png'),
   'dangdang': require('static/imgs/thirdSource/dangdang.png'),
   'gome': require('static/imgs/thirdSource/gome.png'),
@@ -151,4 +151,3 @@ const icons = {
   'yougou': require('static/imgs/thirdSource/yougou.png'),
   'qbao': require('static/imgs/thirdSource/qbao.png'),
 }
-export { icons }
