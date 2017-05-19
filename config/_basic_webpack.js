@@ -39,6 +39,7 @@ const APP_ENTRY_PATHHotGoods = paths.base(config.dir_client) + '/vendorHotGoods.
 const APP_ENTRY_PATHSelfSupport = paths.base(config.dir_client) + '/vendorSelfSupport.js'
 const APP_ENTRY_PATHGatherStore = paths.base(config.dir_client) + '/vendorGatherStore.js'
 const APP_ENTRY_PATHMyCustom = paths.base(config.dir_client) + '/vendorMyCustom.js'
+const APP_ENTRY_PATHMySignIn = paths.base(config.dir_client) + '/vendorSignIn.js'
 
 webpackConfig.entry = {
     index: __DEV__
@@ -58,7 +59,10 @@ webpackConfig.entry = {
         : [APP_ENTRY_PATHGatherStore],
     indexMyCustom: __DEV__
         ? [APP_ENTRY_PATHMyCustom, 'webpack-hot-middleware/client?path=/__webpack_hmr']
-        : [APP_ENTRY_PATHMyCustom]
+        : [APP_ENTRY_PATHMyCustom],
+    indexSignIn: __DEV__
+        ? [APP_ENTRY_PATHMySignIn, 'webpack-hot-middleware/client?path=/__webpack_hmr']
+        : [APP_ENTRY_PATHMySignIn]
 }
 
 // ------------------------------------
