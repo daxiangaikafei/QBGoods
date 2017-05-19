@@ -49,7 +49,6 @@ class bannerDetail extends Component {
       return (
         <div styleName="home-no-data">--正在加载--</div>
       )
-      return;
     }
     let level0s  = { title:"", stuffs:[]} ,level1s = level0s;
     data.details.map(function(n,i){
@@ -66,8 +65,8 @@ class bannerDetail extends Component {
         <ReactSwipe styleName="banner-container" swipeOptions={{ continuous: false }}>
           <div><img src={ data.imgURL } /></div>
         </ReactSwipe>
-        <MiddleContainer levelData={level0s}/>
-        <ListContainer levelData={level1s}/>
+        <MiddleContainer levelData={level0s} pageName={this.pageName} modelName="channel_entry_ad_products"/>
+        <ListContainer levelData={level1s} pageName={this.pageName} modelName="channel_entry_list_products"/>
       </div>
     )
   }
