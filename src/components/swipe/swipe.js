@@ -98,7 +98,7 @@ class Swipe extends Component {
             intelligentCorrection: true,
             stopPro:stopPro,
             touchStart: function (value,target) {
-                console.log("heheda ",value)
+                // console.log("heheda ",value)
             },
             touchMove:_.throttle(function(){
                 touchMove(this,arguments);
