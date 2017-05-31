@@ -13,7 +13,9 @@
     -webkit-background-size: 60%;
     background-size: 60%;
 }
-
+html,body {
+    height: 100%;
+}
 main {
     color: @txtColor;
     .home-no-data {
@@ -43,10 +45,30 @@ main {
         .flex;
         .flex-center;
         .flex-align-center;
+        &.today {
+            background: #fff;
+            color: @txtColor;
+            font-size: 14px;
+            .title-bg {
+                width: 34px;
+                height: 100%;
+                margin-right: 10px;
+                background: #fff url('static/imgs/activity/today-title-bg-icon.png') no-repeat center;
+                -webkit-background-size: contain;
+                background-size: contain;
+                // &.left {}
+                &.right {
+                    margin-left: 10px;
+                    -webkit-transform: rotateZ(180deg);
+                    transform: rotateZ(180deg)
+                }
+            }
+        }
     }
     .middle-container {
         overflow: auto;
         background-color: #fff;
+        margin-bottom: 10px;
         .list {
             width: 210%;
             overflow: scroll;

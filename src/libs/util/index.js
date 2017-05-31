@@ -137,3 +137,17 @@ export function eventFun(pageName,model, id) {
     'data-event': 'point'
   }
 }
+
+export const icons = {
+  'tmall': require('static/imgs/thirdSource/tmall.png'),
+  'dangdang': require('static/imgs/thirdSource/dangdang.png'),
+  'gome': require('static/imgs/thirdSource/gome.png'),
+  'jd': require('static/imgs/thirdSource/jd.png'),
+  'jumei': require('static/imgs/thirdSource/jumei.png'),
+  'kaola': require('static/imgs/thirdSource/kaola.png'),
+  'mi': require('static/imgs/thirdSource/mi.png'),
+  'taobao': require('static/imgs/thirdSource/taobao.png'),
+  'yhd': require('static/imgs/thirdSource/yhd.png'),
+  'yougou': require('static/imgs/thirdSource/yougou.png'),
+  'qbao': require('static/imgs/thirdSource/qbao.png'),
+}

@@ -10,21 +10,20 @@ import { fetchPosts } from "components/common/fetch"
 import MiddleContainer from "./MiddleContainer";
 import ListContainer from "./ListContainer";
 
-class bannerDetail extends Component {
-  pageName = '108'
+class signIn extends Component {
+  pageName = '111'
 
   constructor(props) {
     super(props)
     this.state = {
-      bannerId: props.params.id
+      
     }
   }
 
   componentWillMount() {
-    var state = this.state;
-    fetchPosts("/stuff/ad/banner/detail.do",{ bannerId : state.bannerId },"GET")
+
+    fetchPosts("/stuff/todaylist.do",{},"GET")
       .then(data => {
-        document.title = data.data.name;
         this.setState({
             data: data.data
           })
@@ -38,23 +37,23 @@ class bannerDetail extends Component {
         <div styleName="home-no-data">--正在加载--</div>
       )
     }
-    let level0s  = { title:"", stuffs:[]} ,level1s = level0s;
-    data.details.map(function(n,i){
+    let level0s, level1s, level2s
+    data.map(function(n,i){
       if(n.level===1){
         level0s = n;
       }
       if(n.level===2){
         level1s = n;
       }
+      if(n.level===3){
+        level2s = n;
+      }
     });
-
     return (
       <div styleName="home-container">
-        <ReactSwipe styleName="banner-container" swipeOptions={{ continuous: false }}>
-          <div><img src={ data.imgURL } /></div>
-        </ReactSwipe>
-        <MiddleContainer levelData={level0s} pageName={this.pageName} modelName="channel_entry_ad_products"/>
-        <ListContainer levelData={level1s} pageName={this.pageName} modelName="channel_entry_list_products"/>
+        <MiddleContainer levelData={level0s} pageName={this.pageName} today modelName="sign_in_buy_products"/>
+        <MiddleContainer levelData={level1s} pageName={this.pageName} today modelName="sign_in_view_products"/>
+        <ListContainer levelData={level2s} pageName={this.pageName} today modelName="sign_in_list_products"/>
       </div>
     )
   }
@@ -69,15 +68,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-bannerDetail.PropTypes = {
-  enterAnimation: {
-    duration: 2000,
-    animation: 'slideDown'
-  },
-  leaveAnimation: {
-    duration: 2000,
-    animation: 'slideUp'
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(bannerDetail, styles, {allowMultiple: true}));
+export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(signIn, styles, {allowMultiple: true}));
