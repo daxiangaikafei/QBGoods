@@ -1,0 +1,230 @@
+@import '~libs/layout/layout-mixin.less';
+
+body{
+  background-color: #f1f1f6;
+}
+.appeal-container{
+  .form-warpper{
+    background-color: #fff;
+    padding: 20px 0 5px;
+  }
+  .fn-mi2{
+    margin-top: 15px;
+  }
+  .form-item{
+    margin: 0 15px 15px;
+    height: 45px;
+    border: 1px solid #d2d2d2;
+    border-radius: 5px;
+    .flex;
+    .flex-vertical-row;
+    position: relative;
+  }
+  label{
+    width: 20%;
+    height: auto;
+    display: block;
+    line-height: 45px;
+    text-align: center;
+    border-right: 1px solid #d2d2d2;
+    color: #000;
+    font-size: 14px;
+  }
+  .error-input{
+    border: 1px solid #ff0000;
+    label{
+      border-right: 1px solid #ff0000;
+    }
+  }
+  input,select{
+    color: #000;
+  	outline: none;
+    border: none;
+  	font-size: 14px;
+  	text-align: left;
+  	background-color: #fff;
+  	-webkit-user-select: auto;
+  	background-color: transparent;
+    padding: 0 2%;
+    width: 70%;
+    height: 45px;
+    display: block;
+  }
+  select{
+    width: 80%;
+  }
+  textarea::-webkit-input-placeholder,input::-webkit-input-placeholder {
+  	color: #979797 !important;
+  }
+  .form-item-info{
+    margin: 0 15px 15px;
+    p{
+      margin-bottom: 10px;
+    }
+  }
+  textarea{
+    border: 1px solid #d2d2d2;
+    border-radius: 5px;
+    width: 96%;
+    height: 100px;
+    padding: 2%;
+    font-size: 14px;
+  }
+  .error-input{
+    textarea{
+      border: 1px solid #ff0000;
+    }
+  }
+  .icon-select-arrow{
+    position: absolute;
+    right: 14px;
+    top: 12px;
+  }
+  .form-item-camera{
+    margin: 0 15px 15px;
+    .flex;
+    .flex-vertical-row;
+    .flex-justify-flex-start;
+    // .flex-justify-space-between;
+    .upload-button{
+      background-color: #c6c6c6;
+      width: 50px;
+      height: 50px;
+      // padding: 10px 10px;
+      text-align: center;
+      position: relative;
+      #choose{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 0;
+        left: 0;
+        // visibility: hidden;
+        opacity: 0;
+        z-index: 11;
+      }
+      .mask-upload{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+      svg{
+        line-height: 50px;
+        text-align: center;
+        margin-top: 10px;
+      }
+    }
+    .camera-tip{
+      margin-top: 5px;
+      margin-left: 10px;
+    }
+    .cameraC{
+      margin-left: 10px;
+    }
+  }
+  .cameras-container{
+    // margin-right: 10px;
+    .flex;
+    .flex-vertical-row;
+    .flex-justify-flex-start;
+    .flex-wrap;
+    .img-item{
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      background-color: #c6c6c6;
+      text-align: center;
+      line-height: 50px;
+      img{
+        width: 50px;
+      }
+    }
+
+  }
+  .form-contact-title{
+    margin: 0 15px 15px;
+  }
+  .form-contact-item{
+    margin: 0 15px 15px;
+    height: 35px;
+    .flex;
+    .flex-vertical-row;
+    .flex-justify-space-between;
+    label{
+      width: 25%;
+      height: auto;
+      display: block;
+      line-height: 35px;
+      text-align: right;
+      border-right: none;
+      color: #000;
+      font-size: 14px;
+    }
+
+    input{
+      color: #000;
+    	outline: none;
+      border: none;
+    	font-size: 14px;
+    	text-align: left;
+    	background-color: #fff;
+    	-webkit-user-select: auto;
+    	background-color: transparent;
+      padding: 0 2%;
+      width: 75%;
+      height: 35px;
+      display: block;
+      border: 1px solid #d2d2d2;
+      border-radius: 5px;
+    }
+    .error-input{
+      border: 1px solid #ff0000;
+    }
+  }
+  .appeal-submit{
+    background-color: #ff5a00;
+    width: 204px;
+    margin: 0 auto;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+  }
+}
+.am-popup-content,.am-popup-body,.showCamera-container{
+  height: 100%;
+}
+.virtual-popup{
+  // background-color: rgba(0,0,0,0.3);
+}
+.showCamera-container{
+  .flex;
+  .flex-justify-center;
+  .flex-align-center;
+  text-align: center;
+  img{
+    max-width: 100%;
+  }
+}
+#IponeOtherText{
+  color: #000;
+  outline: none;
+  font-size: 14px;
+  text-align: left;
+  background-color: #fff;
+  -webkit-user-select: auto;
+  background-color: transparent;
+  padding: 0 2%;
+  width: 80%;
+  height: 45px;
+  display: block;
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+  margin: 0 auto;
+}

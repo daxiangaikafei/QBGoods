@@ -48,11 +48,11 @@ class Alert extends React.Component {
           callBack&&callBack(data);
     }
     close(){
-        
+
     }
     render() {
         let {message,show,title,children,isConfirm,closable} = this.props;
-       
+
        let {anBefore,anAfter} = this.state;
        //+(show===true?"":"hide")
         return (
@@ -64,12 +64,12 @@ class Alert extends React.Component {
                             <p>{title}</p>
                         </div>
                         <div className="virtual-modal-body">
-                            <p>{message}</p>
+                            <div className="vmb-p">{message}</div>
                         </div>
                         <div className="virtual-modal-footer">
                             {this.renderBtns()}
                         </div>
-                    </div> 
+                    </div>
                 </div>
            </VelocityComponent>
         )
@@ -110,5 +110,3 @@ Alert.defaultProps = {
 //   callBack:React.PropTypes.func.isRequired,
 // };
 module.exports = Alert;
-
-

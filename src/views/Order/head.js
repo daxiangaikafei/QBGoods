@@ -13,22 +13,22 @@ class OrderHead extends React.Component {
         super(props);
         this.handleTrigger = this.handleTrigger.bind(this);
     }
-    componentWillMount() {   
-        
+    componentWillMount() {
+
     }
     componentWillReceiveProps (nextProps) {
-        
+
     }
     handleTrigger(event) {
        let {click} = this.props;
 
        let id = event.currentTarget.dataset.id;
-       
+
        click&&click(id);
        //debugger;
 
     }
-    
+
     render() {
         //total_rebate_value:data.total_rebate_value,
            //     un_rebate_value:data.un_rebate_value
@@ -44,7 +44,7 @@ class OrderHead extends React.Component {
                 className:status==item.id?"tab-select":""
             }
             $lis.push(<li {...props} {...eventFun('109','order_tab', i)} data-id={item.id} ><span>{item.title}</span></li>)
-        } 
+        }
         return (
             <header className="order-head">
                 <ul className='head-top'>
@@ -68,11 +68,10 @@ class OrderHead extends React.Component {
 OrderHead.defaultProps = {
     items:[
         {id:0,title:"全部"},
-        {id:2,title:"已返宝券"},
-        {id:1,title:"待返宝券"}
+        {id:2,title:"已返"},
+        {id:1,title:"待返"},
+        {id:3,title:"申述/售后"}
     ]
 }
 
 module.exports = OrderHead;
-
-

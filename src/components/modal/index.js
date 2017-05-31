@@ -10,7 +10,7 @@ import * as ReactDOM from 'react-dom';
 import HelpModal from "./container.js";
 
 
-  
+
 var div = document.createElement("div");
 div.className = "virtual-help";
 document.body.appendChild(div)

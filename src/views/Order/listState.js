@@ -1,6 +1,6 @@
 'use strict'
 import * as React from 'react';
-
+import { Link } from 'react-router'
 //import * as _ from "lodash";
 
 import Swipe from "components/swipe/swipe";
@@ -9,7 +9,7 @@ import "./list.less";
 
 import {fetchPosts} from "components/common/fetch";
 import NoOrder from "./noOrder";
-import Info from "./info";
+import InfoState from "./infoState";
 import { eventFun } from 'libs/util'
 
 import Modal from "components/modal/index";
@@ -99,37 +99,37 @@ class OrderList extends React.Component {
     doDel(id){
         let _this = this;
         let newId= Number(id);
-        Modal.confirm("删除","确认删除吗？").then((data)=>{
-            console.log(data);
+
+        Modal.confirm("提示","亲，您真的确定要取消申诉吗？").then((data)=>{
             if(data!=="Ok"){
                 return;
             }
-            fetchPosts("/stuff/order/delOrder.do",{"id":id},"GET").then((data)=>{
+            fetchPosts("/stuff/appeal/cancel.do",{"appealId":id},"GET").then((data)=>{
                     if(data.responseCode===1000){
-                    let {items} = _this.state;
-                    let i = 0,j = items.length,$lis=[];
-                    //debugger
-                    while(i<j){
-                        console.error(items[i])
-                        if(items[i].id===newId){
-                            items.splice(i,1);
-                            break;
-                        }
-                        i+=1;
-                    }
-                    Modal.alert("删除","成功");
-                    _this.setState({
-                        items
-                    })
+                      let {items} = _this.state;
+                      let i = 0,j = items.length,$lis=[];
+                      //debugger
+                      while(i<j){
+                          console.error(items[i])
+                          if(items[i].appealId===newId){
+                              items.splice(i,1);
+                              break;
+                          }
+                          i+=1;
+                      }
+                      Modal.alert("取消","成功");
+                      _this.setState({
+                          items
+                      })
                     }else{
-                            Modal.alert("删除","失败");
+                            Modal.alert("取消","失败");
 
                     }
 
 
 
             }).catch(function(error){
-                    Modal.alert("删除","失败");
+                    Modal.alert("取消","失败");
             });
         });
 
@@ -137,25 +137,49 @@ class OrderList extends React.Component {
     infoClose(){
         PopUp.hide();
     }
-    toInfo(id){
+    toInfo(appealId){
+      var appData ={ rebateStatus: 0 };
+      var _this = this;
+      fetchPosts("/stuff/appeal/detail.do", {"appealId": appealId},"GET").then((data)=>{
 
+          if(data.responseCode===1000){
+            console.log("appealdata", data);
+            data.data.appealStatus = 3;
+            PopUp.show(
+                (<InfoState data={data.data} onClick={_this.infoClose} />),{maskClosable:true}
+            );
+          }else{
+            Modal.alert("查看详情","失败");
+          }
+       }).catch(function(){
+         Modal.alert("查看详情","失败");
+       });
+    }
+    doApply(id){
+      ///stuff/appeal/right.do
+      console.log("doApply");
+      fetchPosts("/stuff/appeal/right.do",{},"GET").then((data)=>{
 
-            return fetchPosts("/stuff/order/userOrder.do",{id},"GET").then((data)=>{
-                    if(data.responseCode===1000){
-                    PopUp.show(
-                            (<Info data={data.data} onClick={this.infoClose} />),{maskClosable:true}
-                    );
-                    }else{
-                            Modal.alert("查看详情","失败");
-                    }
+          if(data.success){
+            this.context.router.push({"pathname": "Appeal", state: { appealId: id }});
+          }else{
+              Modal.alert("申请","今日不能提交申诉");
+          }
+      }).catch(function(error){
+          Modal.alert("申请","失败");
+      });
+    }
+    doToAppeal(id){
+      fetchPosts("/api/stuff/appealDetail.json", {"appealId": id},"GET").then((data)=>{
+          console.log("appealdata", data);
+          if(data.responseCode===1000){
+            this.context.router.push({"pathname": "Appeal", state: { appealData: data.data }});
+          }else{
 
-            }).catch(function(){
-                    Modal.alert("查看详情","失败");
-            });
+          }
+       }).catch(function(){
 
-       // debugger;
-
-       //PopUp.show(
+       });
     }
     handClick(event){
 
@@ -165,9 +189,14 @@ class OrderList extends React.Component {
         //debugger
         if(className==='js_del'){
             this.doDel(id);
-        }else if(className==='js_info'){
-
+        }else if(className==="btn-begin"){
+            this.doApply();
+        }else if(className==='js_angin'){
+          Modal.alert("提示","欢迎加入有好货官方群：566261195");
+        }else if(className.indexOf('js_info') > -1){
             this.toInfo(id);
+        }else if(className==="js_appeal"){
+          this.doApply(id);
         }
     }
 
@@ -185,7 +214,7 @@ class OrderList extends React.Component {
                 let subItem = item.item[l];
                 l+=1;
 
-                totalPrice = (totalPrice*100+subItem.finalPrice*subItem.stuffNum*100)/100;
+                totalPrice = (totalPrice*100+subItem.price*subItem.stuffNum*100)/100;
                 totalSb = (totalSb*100+Number(subItem.rebateValue)*100)/100
 
                 //totalPrice += subItem.price*subItem.stuffNum;
@@ -195,25 +224,29 @@ class OrderList extends React.Component {
                             <img src={subItem.imgUrl}/>
                         </div>
                         <p>{subItem.name}</p>
-                        <span>￥{subItem.finalPrice}</span>
+                        <span>￥{subItem.price}</span>
                     </div>
                 )
             }
-            let rebateStatus = item.rebateStatus;
+            let rebateStatus = item.appealStatus;
             let short = RebateStatusShort[rebateStatus];
             $lis.push(
                 <li key={item.id} className="order-item"   >
-                    <a href={item.clickUrl} target="_blank" {...eventFun('109', 'order_products', item.item.stuffId)}>
-                        <p className="order-item-top">{RebateStatus[rebateStatus]}</p>
+                    <a href={item.clickUrl} target="_blank" >
+                        <p className="order-item-top">
+                          <p>{ item.orderId }</p>
+                          <p>{ item.appeaTime }</p>
+                        </p>
                         {$subItem}
                         <p className="order-item-info">共{item.stuffNum}件商品，合计:<em><i>￥</i>{totalPrice}</em>
-                        {rebateStatus<2&&short}
-                        {rebateStatus<2&&(<span>{totalSb}宝券</span>)}
+                        {totalSb && '已返'}
+                        {totalSb &&(<span>{totalSb}宝券</span>)}
                         </p>
                     </a>
                     <div className="order-item-todo" >
-                        {rebateStatus>0&&(<button data-id={item.id} {...eventFun('109', 'order_remove', item.id)} className="js_del">删除</button>)}
-                        <button data-id={item.id} {...eventFun('109', 'order_rebate', item.id)} className="js_info">返券详情</button>
+                        {rebateStatus===0&&(<button data-id={item.appealId} className="js_del">取消申述</button>)}
+                        {rebateStatus===3&&(<button data-id={item.appealId} className="js_angin">再次申述</button>)}
+                        <button data-id={item.appealId} className={rebateStatus!==3 ? 'js_info info_red' : 'js_info'}>申诉详情</button>
                     </div>
                 </li>
             )
@@ -221,7 +254,7 @@ class OrderList extends React.Component {
 
         let props = {
             property:"translateY",
-            className:"my-order-list",
+            className:"my-order-list list-state",
             tag:"ul",
             min:"auto",
             stopPro:false,
@@ -230,13 +263,14 @@ class OrderList extends React.Component {
             //step:200
         }
         if(j===0&&isLoading===false){
-            return(<div className="my-order-list"><NoOrder /></div>)
+            return(<div className="my-order-list my-order-list-state" onClick={this.handClick}><div className="btns"><div className="btn-begin">立即申诉</div></div><NoOrder tipText={'<p>亲，购物后有问题，可以立即申诉哟～</p><p>快去购物吧。</p>'}/></div>)
         }else if(j===0&&page===0){
             return (<div></div>)
         }
         //return ({})
         return (
                 <Swipe {...props} onClick={this.handClick}>
+                    <div className="btns"><div className="btn-begin">立即申诉</div></div>
                     {$lis}
                     {isLoading===true&&(<div className="no-up">Loading</div>)}
                     {page>1&&isEnd===true&&(<div className="no-up">已经没有更新了</div>)}
@@ -244,12 +278,14 @@ class OrderList extends React.Component {
         )
     }
 };
-
+OrderList.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 OrderList.defaultProps = {
     pageSize:20,
-    url:"/stuff/order/list.do",
+    url:"/stuff/appeal/list.do",
+    // url:"/api/stuff/appeal.json",
     searchParam:{}
 }
 
 module.exports = OrderList;
-//<button data-id={item.id} className="js_del">删除</button>

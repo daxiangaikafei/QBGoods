@@ -64,8 +64,9 @@ class HelpModal extends React.Component {
                 isConfirm,
                 closable:!isConfirm,
                 callBack:function(data){
+                    resolve(data);
                     self.close().then(function(){
-                        resolve(data);
+
                     });
                     //setTimeout({
 
