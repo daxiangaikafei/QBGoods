@@ -264,8 +264,8 @@ class Appeal extends Component {
           </div>
           <div className="form-warpper fn-mi2">
             <div className="form-item-info">
-              <p>详细问题描述(限150汉字)</p>
-              <textarea ref="contentC" maxLength="300" value={appealData.content} placeholder="亲，您可以留下更详细的问题，我们会尽快联系您的噢～"  onChange={(event)=>this.changeUpdate(event,"content")}>
+              <p>详细问题描述(限150字内)</p>
+              <textarea ref="contentC" maxLength="150" value={appealData.content} placeholder="亲，您可以留下更详细的问题，我们会尽快联系您的噢～"  onChange={(event)=>this.changeUpdate(event,"content")}>
 
               </textarea>
             </div>
