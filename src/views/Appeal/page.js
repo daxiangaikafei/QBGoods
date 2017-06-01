@@ -107,10 +107,10 @@ class Appeal extends Component {
       //   _this.inputError("contentC");
       //   _isError = true;
       // }
-      if(!param.phoneType || param.phoneType === ""){
-        _this.inputError("phoneTypeC");
-        _isError = true;
-      }
+      // if(!param.phoneType || param.phoneType === ""){
+      //   _this.inputError("phoneTypeC");
+      //   _isError = true;
+      // }
       if(!param.qq || param.qq === ""){
         _this.inputError("qqC");
         _isError = true;
@@ -264,8 +264,8 @@ class Appeal extends Component {
           </div>
           <div className="form-warpper fn-mi2">
             <div className="form-item-info">
-              <p>详细问题描述(限150字内)</p>
-              <textarea ref="contentC" maxLength="150" value={appealData.content} placeholder="亲，您可以留下更详细的问题，我们会尽快联系您的噢～"  onChange={(event)=>this.changeUpdate(event,"content")}>
+              <p>详细问题描述(限500字内)</p>
+              <textarea ref="contentC" maxLength="500" value={appealData.content} placeholder="亲，您可以留下更详细的问题，我们会尽快联系您的噢～"  onChange={(event)=>this.changeUpdate(event,"content")}>
 
               </textarea>
             </div>
