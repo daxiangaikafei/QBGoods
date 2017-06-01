@@ -103,10 +103,10 @@ class Appeal extends Component {
         _this.inputError("orderIdC");
         _isError = true;
       }
-      if(!param["content"] || param["content"] === ""){
-        _this.inputError("contentC");
-        _isError = true;
-      }
+      // if(!param["content"] || param["content"] === ""){
+      //   _this.inputError("contentC");
+      //   _isError = true;
+      // }
       if(!param.phoneType || param.phoneType === ""){
         _this.inputError("phoneTypeC");
         _isError = true;
@@ -208,13 +208,23 @@ class Appeal extends Component {
         //step:200
     }
     let appealData = this.state.appealData;
+    // <div className="form-item-camera">
+    //   {
+    //     appealData.cameraImgs.length > 0 ? <Cameras cameraImgs={appealData.cameraImgs}/> : ''
+    //   }
+    //   <div>
+    //     <Uploads cameraImgs={appealData.cameraImgs} uploadComplete={this.uploadComplete} />
+    //   </div>
+    //   {
+    //     appealData.cameraImgs.length > 0 ? '' : <p className="cameraC">为了更好的帮助解决问题，请上传照片。最多5张，支持jpg,bmp,png</p>
+    //   }
+    // </div>
     return (
-      <Swipe  {...props} >
-        <div className="appeal-container">
+      <div className="appeal-container">
           <div className="form-warpper">
               <div className="form-item" ref="orderIdC">
                 <label>订单号</label>
-                <input type="text" placeholder="输入订单号" value={appealData.orderId} onChange={(event)=>this.changeUpdate(event,"orderId")}/>
+                <input type="tel" placeholder="输入订单号" value={appealData.orderId} onChange={(event)=>this.changeUpdate(event,"orderId")}/>
               </div>
               <div className="form-item">
                 <label>订单来源</label>
@@ -254,22 +264,12 @@ class Appeal extends Component {
           </div>
           <div className="form-warpper fn-mi2">
             <div className="form-item-info">
-              <p >详细问题描述</p>
-              <textarea ref="contentC" value={appealData.content} placeholder="亲，您可以留下更详细的问题，我们会尽快联系您的噢～"  onChange={(event)=>this.changeUpdate(event,"content")}>
+              <p>详细问题描述(限150汉字)</p>
+              <textarea ref="contentC" maxLength="300" value={appealData.content} placeholder="亲，您可以留下更详细的问题，我们会尽快联系您的噢～"  onChange={(event)=>this.changeUpdate(event,"content")}>
 
               </textarea>
             </div>
-            <div className="form-item-camera">
-              {
-                appealData.cameraImgs.length > 0 ? <Cameras cameraImgs={appealData.cameraImgs}/> : ''
-              }
-              <div>
-                <Uploads cameraImgs={appealData.cameraImgs} uploadComplete={this.uploadComplete} />
-              </div>
-              {
-                appealData.cameraImgs.length > 0 ? '' : <p className="cameraC">为了更好的帮助解决问题，请上传照片。最多5张，支持jpg,bmp,png</p>
-              }
-            </div>
+
           </div>
           <div className="form-warpper fn-mi2">
               <p className="form-contact-title">
@@ -277,7 +277,7 @@ class Appeal extends Component {
               </p>
               <div className="form-contact-item">
                 <label>QQ：</label>
-                <input ref="qqC" type="tel" value={appealData.qq}  onChange={(event)=>this.changeUpdate(event,"qq")}/>
+                <input ref="qqC" type="tel" maxLength="12" value={appealData.qq}  onChange={(event)=>this.changeUpdate(event,"qq")}/>
               </div>
               <div className="form-contact-item">
                 <label>手机号：</label>
@@ -288,7 +288,6 @@ class Appeal extends Component {
               </div>
           </div>
         </div>
-      </Swipe>
     )
   }
 };

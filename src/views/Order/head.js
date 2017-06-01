@@ -70,7 +70,7 @@ OrderHead.defaultProps = {
         {id:0,title:"全部"},
         {id:2,title:"已返"},
         {id:1,title:"待返"},
-        {id:3,title:"申述/售后"}
+        {id:3,title:"申述"}
     ]
 }
 
