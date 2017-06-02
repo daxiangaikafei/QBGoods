@@ -234,11 +234,17 @@ class OrderList extends React.Component {
                 <li key={item.id} className="order-item"   >
                     {
                       item.item.length <= 0 ?
-                        <p className="order-item-tip">亲，您好，我们会在24小时内处理尽快处理的，处理完毕后，我们会在我的消息及时通知您噢,  欢迎加入有好货官方群咨询，群1：566261195，群2： 641361648</p>
-                        :<a href={item.clickUrl} target="_blank" >
+                        <a href={item.clickUrl} target="_blank" >
+                          <p className="order-item-top">
+                            <p>{ item.orderId }</p>
+                            <p>{ item.appealTime }</p>
+                          </p>
+                          <p className="order-item-tip">亲，您好，我们会在24小时内处理尽快处理的，处理完毕后，我们会在我的消息及时通知您噢,  欢迎加入有好货官方群咨询，群1：566261195，群2： 641361648</p>
+                        </a>
+                      :<a href={item.clickUrl} target="_blank" >
                             <p className="order-item-top">
                               <p>{ item.orderId }</p>
-                              <p>{ item.appeaTime }</p>
+                              <p>{ item.appealTime }</p>
                             </p>
                             {$subItem}
                             <p className="order-item-info">共{item.stuffNum}件商品，合计:<em><i>￥</i>{totalPrice}</em>
@@ -249,8 +255,8 @@ class OrderList extends React.Component {
                       }
 
                     <div className="order-item-todo" >
-                        {rebateStatus===10&&(<button data-id={item.appealId} className="js_del">取消申述</button>)}
-                        {rebateStatus===13&&(<button data-id={item.appealId} className="js_angin">再次申述</button>)}
+                        {(rebateStatus < 3 && item.item.length != 0) &&(<button data-id={item.appealId} className="js_del">取消申诉</button>)}
+                        {rebateStatus===13&&(<button data-id={item.appealId} className="js_angin">再次申诉</button>)}
                         <button data-id={item.appealId} className={rebateStatus!==3 ? 'js_info info_red' : 'js_info'}>申诉详情</button>
                     </div>
                 </li>

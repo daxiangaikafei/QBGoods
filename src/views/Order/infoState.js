@@ -22,13 +22,13 @@ class infoState extends React.Component {
            statusBack = <li className="info-select"><h4>取消申诉</h4><p>您已取消申诉。</p></li>;
            break;
           case 0:
-            statusBack = <li className="info-select"><h4>平台审核</h4><p>您的审核已提交平台审核。</p></li>;
+            statusBack = <li className="info-select"><h4>申诉审核</h4><p>您的审核已提交平台审核。</p></li>;
             break;
           case -1:
-            statusBack = <li className="info-select"><h4>提交申诉</h4><p>您的申诉已通过审核。</p></li>;
+            statusBack = <li className="info-select"><h4>申诉提交</h4><p>您的申诉已通过审核。</p></li>;
             break;
           case 1:
-            statusBack = <li className="info-select"><h4>受理申诉</h4><p>您的申诉已处理完毕。</p></li>;
+            statusBack = <li className="info-select"><h4>申诉受理</h4><p>您的申诉已处理完毕。</p></li>;
             break;
           case 3:
             statusBack = <li className="info-select"><h4>申诉反馈</h4><p>您的申诉处理结果是成功。</p></li>;
@@ -49,9 +49,9 @@ class infoState extends React.Component {
                           <p className="ly-flex-column"><label>申诉原因：</label><p>{data.reason}</p></p>
                           {data.appealStatus === 3 &&(<p className="ly-flex-column"><label>申诉反馈：</label><p>{data.comment}</p></p>)}
                         </li>
-                        {data.appealStatus === 1 &&(<li><h4>提交申诉</h4><p>您的申诉已通过审核。</p></li>)}
-                        {data.appealStatus === 3 &&(<li><h4>提交申诉</h4><p>您的申诉已通过审核。</p></li>)}
-                        {data.appealStatus === 3 &&(<li><h4>受理申诉</h4><p>您的申诉已处理完毕。</p></li>)}
+                        {data.appealStatus === 1 &&(<li><h4>申诉提交</h4><p>您的申诉已通过审核。</p></li>)}
+                        {data.appealStatus === 3 &&(<li><h4>申诉提交</h4><p>您的申诉已通过审核。</p></li>)}
+                        {data.appealStatus === 3 &&(<li><h4>申诉受理</h4><p>您的申诉已处理完毕。</p></li>)}
                         { statusBack }
                     </ol>
                     <div className="order-info-close">

@@ -123,6 +123,11 @@ class Appeal extends Component {
         Modal.alert("提示","请填写完全！");
         return;
       }
+      if(!(/^((\+?86)|(\(\+86\)))?1\d{10}$/.test(param.phone))){
+        _this.inputError("phoneC");
+        Modal.alert("提示","手机号码填写错误！");
+        return;
+      }
       console.log(param);
       param.imgUrl = param.cameraImgs.join(",");
       delete param.cameraImgs;
@@ -264,9 +269,9 @@ class Appeal extends Component {
           </div>
           <div className="form-warpper fn-mi2">
             <div className="form-item-info">
-              <p>详细问题描述(限500字内)</p>
-              <textarea ref="contentC" maxLength="500" value={appealData.content} placeholder="亲，您可以留下更详细的问题，我们会尽快联系您的噢～"  onChange={(event)=>this.changeUpdate(event,"content")}>
-
+              <p>详细问题描述(限250字内)</p>
+              <textarea ref="contentC" maxLength="250" value={appealData.content} placeholder="亲，您可以留下更详细的问题，我们会尽快联系您的噢～"  onChange={(event)=>this.changeUpdate(event,"content")}>
+                
               </textarea>
             </div>
 
