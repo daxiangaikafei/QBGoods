@@ -144,7 +144,6 @@ class OrderList extends React.Component {
 
           if(data.responseCode===1000){
             console.log("appealdata", data);
-            data.data.appealStatus = 3;
             PopUp.show(
                 (<InfoState data={data.data} onClick={_this.infoClose} />),{maskClosable:true}
             );
