@@ -135,7 +135,7 @@ class Hotgoods extends Component {
       reactSwipe = <ReactSwipe  ref="swiper" className="carousel" swipeOptions={{continuous: false, callback: this.swiperCallback}}>
                     {
                       this.props.goodsSwipers.map(function(item,i){
-                        return (<div key={i}><a {...eventFun(this.pageName, 'hot_goods_banner', item.id)} href={item.linkUrl}><img src={item.imgUrl}/></a></div>)
+                        return (<div key={i}><a {...eventFun(this.pageName, 'hot_goods_banner', item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.linkUrl}><img src={item.imgUrl}/></a></div>)
                       })
                     }
                   </ReactSwipe>;

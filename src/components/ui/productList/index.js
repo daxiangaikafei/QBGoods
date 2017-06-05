@@ -7,7 +7,7 @@ import classNames from 'classnames'
 import { priceFormat, baoquanFormat, eventFun, icons } from 'libs/util'
 
 class ProductList extends Component {
-    
+
     constructor(props) {
         super(props)
 
@@ -25,8 +25,8 @@ class ProductList extends Component {
                         this.props.listConfig.temp == 'similar' ?
                             this.props.listData.map((item, index) =>
                                 <div styleName="item" key={index}>
-                                    <a {...eventFun(pageName, model, item.id)} styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
-                                    <a {...eventFun(pageName, model, item.id)} href={item.url} ><h3>{item.name}</h3></a>
+                                    <a {...eventFun(pageName, model, item.id)} styleName="img" href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><img src={item.imgUrl} alt="" /></a>
+                                    <a {...eventFun(pageName, model, item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><h3>{item.name}</h3></a>
                                     <div styleName="price">￥{priceFormat(item.finalPrice)}
                                         <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                                     </div>
@@ -40,15 +40,15 @@ class ProductList extends Component {
                     : this.props.listConfig.temp == 'score' ?
                         this.props.listData.map((item, index) =>
                             <div styleName="item" key={index}>
-                                <a {...eventFun(pageName, model, item.id)} styleName="img" href={item.haohuoUrl} ><img src={item.imgUrl} alt="" /></a>
-                                <a {...eventFun(pageName, model, item.id)} href={item.haohuoUrl} ><h3>{item.name}</h3></a>
+                                <a {...eventFun(pageName, model, item.id)} styleName="img" href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><img src={item.imgUrl} alt="" /></a>
+                                <a {...eventFun(pageName, model, item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><h3>{item.name}</h3></a>
                                 <div styleName="price">￥{baoquanFormat(item.viewPrice)}
                                     <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                                 </div>
                                 <div styleName="bottom score">
                                     <p styleName="sales">销量 <span>{item.saleCount}</span></p>
                                     <div styleName="tip">
-                                        <a {...eventFun(pageName, 'self_support_score', item.id)} href={item.haohuoUrl} ><div styleName="haohuoScore">{item.haohuoScore}</div></a>
+                                        <a {...eventFun(pageName, 'self_support_score', item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><div styleName="haohuoScore">{item.haohuoScore}</div></a>
                                     </div>
                                 </div>
                             </div>
@@ -56,15 +56,15 @@ class ProductList extends Component {
                     : this.props.listConfig.temp == 'activity' ?
                         this.props.listData.map((item, index) =>
                             <div styleName="item" key={index}>
-                                <a {...eventFun(pageName, model, item.id)} styleName="img" href={item.haohuoUrl} ><img src={item.imgUrl} alt="" /></a>
-                                <a {...eventFun(pageName, model, item.id)} href={item.haohuoUrl} ><h3>{item.name}</h3></a>
+                                <a {...eventFun(pageName, model, item.id)} styleName="img" href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><img src={item.imgUrl} alt="" /></a>
+                                <a {...eventFun(pageName, model, item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><h3>{item.name}</h3></a>
                                 <div styleName="price">￥{priceFormat(item.viewPrice)}
                                     <span styleName="icon"><img  src={icons[item.source]}  alt="" /></span>
                                 </div>
                                 <div styleName="bottom score">
                                     <p styleName="sales">销量 <span>{item.saleCount}</span></p>
                                     <div styleName="tip">
-                                        <a {...eventFun(pageName, 'self_support_score', item.id)} href={item.haohuoUrl} ><div styleName="haohuoScore">{item.haohuoScore}</div></a>
+                                        <a {...eventFun(pageName, 'self_support_score', item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><div styleName="haohuoScore">{item.haohuoScore}</div></a>
                                     </div>
                                 </div>
                             </div>
@@ -73,8 +73,8 @@ class ProductList extends Component {
                     : this.props.listConfig.temp == 'hots' ?
                             this.props.listData.map((item, index) =>
                               <div styleName="item" key={index}>
-                                  <a {...eventFun(pageName, model, item.id)} styleName="img" href={item.linkUrl} ><img src={item.imgUrl} alt="" /></a>
-                                  <a {...eventFun(pageName, model, item.id)} href={item.linkUrl} ><h3>{item.name}</h3></a>
+                                  <a {...eventFun(pageName, model, item.id)} styleName="img" href={'newtab://goodstuff.qbao.com/goods?url=' + item.linkUrl} ><img src={item.imgUrl} alt="" /></a>
+                                  <a {...eventFun(pageName, model, item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.linkUrl} ><h3>{item.name}</h3></a>
                                   <div styleName="price">￥{priceFormat(item.finalPrice)}
                                       <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                                   </div>
@@ -86,8 +86,8 @@ class ProductList extends Component {
                             )
                     : this.props.listData.map((item, index) =>
                             <div styleName="item" key={index}>
-                                <a {...eventFun(pageName, model, item.id)} styleName="img" href={item.url} ><img src={item.imgUrl} alt="" /></a>
-                                <a {...eventFun(pageName, model, item.id)} href={item.url} ><h3>{item.name}</h3></a>
+                                <a {...eventFun(pageName, model, item.id)} styleName="img" href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><img src={item.imgUrl} alt="" /></a>
+                                <a {...eventFun(pageName, model, item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><h3>{item.name}</h3></a>
                                 <div styleName="price">￥{priceFormat(item.finalPrice)}
                                     <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                                 </div>
@@ -114,8 +114,8 @@ class ProductList extends Component {
     // }
 }
 {/*<div styleName="item" key={index}>
-    <a href={item.linkUrl} ><img src={item.imgUrl} alt="" /></a>
-    <a href={item.linkUrl} ><h3>{item.name}</h3></a>
+    <a href={'newtab://goodstuff.qbao.com/goods?url=' + item.linkUrl} ><img src={item.imgUrl} alt="" /></a>
+    <a href={'newtab://goodstuff.qbao.com/goods?url=' + item.linkUrl} ><h3>{item.name}</h3></a>
     <div styleName="price">￥{item.price}</div>
     <p styleName="sales">销量 <span>{item.saleCount}</span></p>
 </div>*/}
