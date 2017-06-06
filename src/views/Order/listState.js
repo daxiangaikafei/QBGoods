@@ -156,7 +156,7 @@ class OrderList extends React.Component {
       console.log("doApply");
       fetchPosts("/stuff/appeal/right.do",{},"GET").then((data)=>{
 
-          if(data.success){
+          if(data.data){
             this.context.router.push({"pathname": "Appeal", state: { appealId: id }});
           }else{
               Modal.alert("申请","今日不能提交申诉");
