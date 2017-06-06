@@ -31,7 +31,7 @@ class infoState extends React.Component {
             statusBack = <li className="info-select"><h4>申诉受理</h4><p>您的申诉已处理完毕。</p></li>;
             break;
           case 3:
-            statusBack = <li className="info-select"><h4>申诉反馈</h4><p>您的申诉处理结果是成功。</p></li>;
+            statusBack = <li className="info-select"><h4>申诉反馈</h4><p>{data.comment}</p></li>;
             break;
           default:
             statusBack = <li className="info-select"><h4>取消申诉</h4><p>您已取消申诉。</p></li>;

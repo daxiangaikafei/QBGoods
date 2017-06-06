@@ -137,6 +137,7 @@ class OrderList extends React.Component {
     toInfo(appealId){
       var appData ={ rebateStatus: 0 };
       var _this = this;
+      //"/stuff/appeal/detail.do"
       fetchPosts("/stuff/appeal/detail.do", {"appealId": appealId},"GET").then((data)=>{
 
           if(data.responseCode===1000){
