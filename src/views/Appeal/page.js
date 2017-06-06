@@ -131,10 +131,13 @@ class Appeal extends Component {
       console.log(param);
       param.imgUrl = param.cameraImgs.join(",");
       delete param.cameraImgs;
+      ///stuff/appeal/submit.do
       fetchPosts("/stuff/appeal/submit.do",param,"GET").then((data)=>{
           if(data.responseCode===1000){
             Modal.alert("提示","提交成功").then(function(){
-              _this.context.router.push({"pathname": "order", state: { status: 3 }});
+              history.back(-1);
+              //.push({"pathname": "order", state: { status: 3 }});
+              // window.location.href = ""
             });
           }else{
             Modal.alert("提示",data.message);
@@ -271,7 +274,7 @@ class Appeal extends Component {
             <div className="form-item-info">
               <p>详细问题描述(限250字内)</p>
               <textarea ref="contentC" maxLength="250" value={appealData.content} placeholder="亲，您可以留下更详细的问题，我们会尽快联系您的噢～"  onChange={(event)=>this.changeUpdate(event,"content")}>
-                
+
               </textarea>
             </div>
 
