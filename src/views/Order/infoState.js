@@ -41,7 +41,7 @@ class infoState extends React.Component {
 
                     <ol>
                         <li>
-                          <h4>提交申诉</h4>
+                          <h4>申诉提交</h4>
                           <p><label>订单编号：</label>{data.orderId}</p>
                           <p><label>申诉时间：</label>{data.appeaTime}</p>
                           <p><label>手机型号：</label>{data.phoneType}</p>

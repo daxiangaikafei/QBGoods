@@ -230,14 +230,14 @@ class OrderList extends React.Component {
                 <li key={item.id} className="order-item"   >
                     {
                       item.item.length <= 0 ?
-                        <a href={'newtab://goodstuff.qbao.com/goods?url=' + item.clickUrl} target="_blank" >
+                        <a href={item.clickUrl} target="_blank" >
                           <p className="order-item-top">
                             <p>{ item.orderId }</p>
                             <p>{ item.appealTime }</p>
                           </p>
                           <p className="order-item-tip">亲，您好，我们会在24小时内处理尽快处理的，处理完毕后，我们会在我的消息及时通知您噢,  欢迎加入有好货官方群咨询，群1：566261195，群2： 641361648</p>
                         </a>
-                      :<a href={'newtab://goodstuff.qbao.com/goods?url=' + item.clickUrl} target="_blank" >
+                      :<a href={item.clickUrl} target="_blank" >
                             <p className="order-item-top">
                               <p>{ item.orderId }</p>
                               <p>{ item.appealTime }</p>
