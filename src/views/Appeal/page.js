@@ -128,16 +128,13 @@ class Appeal extends Component {
         Modal.alert("提示","手机号码填写错误！");
         return;
       }
-      console.log(param);
       param.imgUrl = param.cameraImgs.join(",");
       delete param.cameraImgs;
       ///stuff/appeal/submit.do
       fetchPosts("/stuff/appeal/submit.do",param,"GET").then((data)=>{
           if(data.responseCode===1000){
             Modal.alert("提示","提交成功").then(function(){
-              history.back(-1);
-              //.push({"pathname": "order", state: { status: 3 }});
-              // window.location.href = ""
+              _this.context.router.goBack();//({"pathname": "order", state: { status: 3 }});
             });
           }else{
             Modal.alert("提示",data.message);

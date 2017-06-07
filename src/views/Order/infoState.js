@@ -43,7 +43,7 @@ class infoState extends React.Component {
                         <li>
                           <h4>申诉提交</h4>
                           <p><label>订单编号：</label>{data.orderId}</p>
-                          <p><label>申诉时间：</label>{data.appeaTime}</p>
+                          <p><label>申诉时间：</label>{data.appealTime}</p>
                           <p><label>手机型号：</label>{data.phoneType}</p>
                           <p><label>商品来源：</label>{data.source}</p>
                           <p className="ly-flex-column"><label>申诉原因：</label><p>{data.reason}</p></p>

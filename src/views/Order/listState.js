@@ -153,8 +153,8 @@ class OrderList extends React.Component {
        });
     }
     doApply(id){
+      // this.context.router.push({"pathname": "Appeal", state: { appealId: id }});
       ///stuff/appeal/right.do
-      console.log("doApply");
       fetchPosts("/stuff/appeal/right.do",{},"GET").then((data)=>{
 
           if(data.data){
@@ -198,7 +198,7 @@ class OrderList extends React.Component {
     }
 
     render() {
-
+        console.log(this.context.router);
         let {items,isLoading,page,isEnd} = this.state;
         let i =0,j=items.length,$lis = [];
         while(i<j){
@@ -244,9 +244,9 @@ class OrderList extends React.Component {
                               <p>{ item.appealTime }</p>
                             </p>
                             {$subItem}
-                            <p className="order-item-info">共{item.stuffNum}件商品，合计:<em><i>￥</i>{totalPrice}</em>
-                            {totalSb && '已返'}
-                            {totalSb &&(<span>{totalSb}宝券</span>)}
+                            <p className="order-item-info">共{item.stuffNum}件商品，合计:<em><i>￥</i>{item.amount}</em>
+                            {item.rebateValue && '已返'}
+                            {item.rebateValue &&(<span>{item.rebateValue}宝券</span>)}
                             </p>
                         </a>
                       }
