@@ -64,7 +64,7 @@ class OrderList extends React.Component {
             isLoading:true
         })
         let _this = this;
-        let param = Object.assign({},searchParam,{page,size:pageSize})
+        let param = Object.assign({},{page,size:pageSize})
         page += num;
         return fetchPosts(url,param,"GET").then((data)=>{
                 console.log(data);
@@ -211,17 +211,17 @@ class OrderList extends React.Component {
                 let subItem = item.item[l];
                 l+=1;
 
-                totalPrice = (totalPrice*100+subItem.price*subItem.stuffNum*100)/100;
+                totalPrice = (totalPrice*100+subItem.finalPrice*subItem.stuffNum*100)/100;
                 totalSb = (totalSb*100+Number(subItem.rebateValue)*100)/100
 
-                //totalPrice += subItem.price*subItem.stuffNum;
+                //totalPrice += subItem.finalPrice*subItem.stuffNum;
                 $subItem.push(
                     <div key={l} className="order-item-body">
                         <div className="item-image">
                             <img src={subItem.imgUrl}/>
                         </div>
                         <p>{subItem.name}</p>
-                        <span>￥{subItem.price}</span>
+                        <span>￥{subItem.finalPrice}</span>
                     </div>
                 )
             }
@@ -244,10 +244,7 @@ class OrderList extends React.Component {
                               <p>{ item.appealTime }</p>
                             </p>
                             {$subItem}
-                            <p className="order-item-info">共{item.stuffNum}件商品，合计:<em><i>￥</i>{item.amount}</em>
-                            {item.rebateValue && '已返'}
-                            {item.rebateValue &&(<span>{item.rebateValue}宝券</span>)}
-                            </p>
+
                         </a>
                       }
 
@@ -259,7 +256,10 @@ class OrderList extends React.Component {
                 </li>
             )
         }
-
+        // <p className="order-item-info">共{item.stuffNum}件商品，合计:<em><i>￥</i>{item.amount}</em>
+        // {item.rebateValue && '已返'}
+        // {item.rebateValue &&(<span>{item.rebateValue}宝券</span>)}
+        // </p>
         let props = {
             property:"translateY",
             className:"my-order-list list-state",
