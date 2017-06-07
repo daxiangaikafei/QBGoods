@@ -214,14 +214,14 @@ class OrderList extends React.Component {
                 totalPrice = (totalPrice*100+subItem.finalPrice*subItem.stuffNum*100)/100;
                 totalSb = (totalSb*100+Number(subItem.rebateValue)*100)/100
 
-                //totalPrice += subItem.finalPrice*subItem.stuffNum;
+                //totalPrice += subItem.finalPrice*subItem.stuffNum; <span>￥{subItem.finalPrice}</span>
                 $subItem.push(
                     <div key={l} className="order-item-body">
                         <div className="item-image">
                             <img src={subItem.imgUrl}/>
                         </div>
                         <p>{subItem.name}</p>
-                        <span>￥{subItem.finalPrice}</span>
+
                     </div>
                 )
             }

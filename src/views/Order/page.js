@@ -44,6 +44,7 @@ class Order extends React.Component {
 
     }
     upData(data){
+      if(!this.state.headInfo.totalRebateValue && !this.state.headInfo.totalRebateValue){
         //debugger
         this.setState({
             headInfo:{
@@ -51,6 +52,7 @@ class Order extends React.Component {
                 unRebateValue:data.unRebateValue
             }
         });
+      }
     }
     render() {
         let {searchParam,headInfo,status} =  this.state;
