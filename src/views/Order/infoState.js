@@ -22,7 +22,7 @@ class infoState extends React.Component {
            statusBack = <li className="info-select"><h4>取消申诉</h4><p>您已取消申诉。</p></li>;
            break;
           case 0:
-            statusBack = <li className="info-select"><h4>申诉审核</h4><p>您的审核已提交平台审核。</p></li>;
+            statusBack = <li className="info-select"><h4>申诉审核</h4><p></p></li>;
             break;
           case -1:
             statusBack = <li className="info-select"><h4>申诉提交</h4><p></p></li>;
