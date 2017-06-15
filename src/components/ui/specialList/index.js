@@ -25,7 +25,7 @@ class SpecialList extends Component {
               (<SpecialToTip source={source}  />),{maskClosable:true, isBgAlpha: true}
       );
       setTimeout(function(){
-        window.location.href = url;
+        window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + url;
       },1000);
       e.preventDefault();
     }
@@ -67,8 +67,9 @@ class SpecialList extends Component {
                         </div>
                         <div styleName="bottom">
                             <div styleName="price">
-                              ￥{priceFormat(item.finalPrice)}
-                              <p styleName="sales">销量 <span>{item.orderNum}</span></p>
+                                <p styleName="salestip">券后</p>
+                                ￥{priceFormat(item.finalPrice)}
+                                <p styleName="sales">销量 <span>{item.orderNum}</span></p>
                             </div>
                         </div>
                       </div>

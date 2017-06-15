@@ -28,7 +28,7 @@ class MultiSwipe extends Component {
               (<SpecialToTip source={source}  />),{maskClosable:true, isBgAlpha: true}
       );
       setTimeout(function(){
-        window.location.href = url;
+        window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + url;
       },1000);
       e.preventDefault();
     }
