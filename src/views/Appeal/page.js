@@ -81,9 +81,12 @@ class Appeal extends Component {
   }
   inputOk(input){
     var _errorInput = ReactDOM.findDOMNode(this.refs[input]);
-    if(_errorInput.className.indexOf("error-input") > -1){
-      _errorInput.className = _errorInput.className.replace("error-input","");
+    if(_errorInput){
+      if(_errorInput.className.indexOf("error-input") > -1){
+        _errorInput.className = _errorInput.className.replace("error-input","");
+      }
     }
+
   }
   submitData(){
 
@@ -143,7 +146,7 @@ class Appeal extends Component {
               });
           }
        }).catch(function(){
-         Modal.alert("提示","提交失败");
+         Modal.alert("提示","网络异常，请重新提交!");
           _this.setState({
               isLoading:false
             });

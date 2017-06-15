@@ -1,0 +1,73 @@
+@txtColor: #35353f;
+@assetTitleColor: #90909b;
+@bdColor: #F2F2F7;
+@bodyBGColor: #f1f1f6;
+@increaseTxtColor: #fd472b;
+@listBdColor: #e5e5e5;
+@subTxtColor: #acacac;
+@priceTxtColor: #fd472b;
+@import '~libs/layout/layout-mixin.less';
+main{
+  .scroll-warpper{
+    overflow: hidden;
+    height: 100%;
+    -webkit-transform:translate3d(0,0,0);
+  }
+
+  .goodsClass-container{
+
+    .goodsClass-list-container{
+      .goodsClass-title{
+        height: 30px;
+        margin: 10px auto;
+        text-align: center;
+        p{
+          line-height: 30px;
+          color: #313036;
+          background-color: #f1f1f6;
+          padding: 0 10px;
+          display: inline-block;
+          z-index: 111;
+          position: relative;
+        }
+        i{
+          position: relative;
+          width: 70%;
+          border-bottom: 1px solid #78777c;
+          margin: 0 auto;
+          top: -48%;
+          display: block;
+        }
+      }
+      .goodsClass-list{
+        width: 100%;
+        // margin: 0 auto;
+        .flex;
+        .flex-vertical-row;
+        .flex-wrap;
+        .goodsClass-item{
+          width: 22.5%;
+          margin-left: 2%;
+          margin-bottom: 6px;
+          background-color: #fff;
+          .goodsClass-item-img{
+            width: 90%;
+            margin: 5px auto 0;
+            border-radius: 50%;
+            overflow: hidden;
+            img{
+              width: 100%;
+              // padding-bottom: 100%;
+              display: block;
+            }
+          }
+          .goodsClass-item-name{
+            text-align: center;
+            margin: 5px 0 5px 0;
+            color: #313036;
+          }
+        }
+      }
+    }
+  }
+}

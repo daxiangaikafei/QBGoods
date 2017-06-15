@@ -44,6 +44,7 @@ class GoodsTab extends Component {
   scrollInit(){
       let dom = ReactDOM.findDOMNode(this.refs.touch); //offsetTop
       let target = ReactDOM.findDOMNode(this.refs.swipe);
+      let targetparent = ReactDOM.findDOMNode(this.refs.swipeparent);
       let {property,width,min,max,step,findScroller,vertical,findDis} = this.props;
       let prevTarget = false;
       //let $ = this.$;
@@ -54,6 +55,7 @@ class GoodsTab extends Component {
       for(let i = 0; i < childrensT.length; i++){
         touchMin += childrensT[i].clientWidth;
       }
+      // console.log(innerWidth, "dom", ReactDOM.findDOMNode(this.refs.swipeparent).clientWidth);
       // childrensT.map(function(n,i){
       //   console.log(n.clientWidth);
       // });
@@ -63,7 +65,7 @@ class GoodsTab extends Component {
           vertical: false,//不必需，默认是true代表监听竖直方向touch
           target: target, //运动的对象
           property: "translateX",
-          min: touchMin <= innerWidth ? 0 : (touchMin - innerWidth) * -1,
+          min: touchMin <= innerWidth ? 0 : (touchMin - targetparent.clientWidth) * -1,
           max: 0,
           touchStart: function (value,target) {
 
@@ -82,7 +84,7 @@ class GoodsTab extends Component {
     let { pageName, model } = this.props.eventConfig;
     return (
       <div className="hots-tabs-container" ref="touch">
-        <div className="hots-tabs-content">
+        <div className="hots-tabs-content" ref="swipeparent">
           <div className="hots-tabs-warpper" ref="swipe">
             {
               this.props.tabs.map((item, i) => <Tappable {...eventFun(pageName, model, item.id)}  onTap={this.tabsClickHandler.bind(this,i)} key={i} className={active == i ? 'tabs-item tabs-item-active' : 'tabs-item'}><span>{item.dirName}</span></Tappable>)

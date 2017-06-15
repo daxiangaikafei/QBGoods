@@ -1,0 +1,43 @@
+@txtColor: #35353f;
+@assetTitleColor: #90909b;
+@bdColor: #F2F2F7;
+@bodyBGColor: #f1f1f6;
+@increaseTxtColor: #fd472b;
+@listBdColor: #e5e5e5;
+@subTxtColor: #acacac;
+@priceTxtColor: #fd472b;
+@import '~libs/layout/layout-mixin.less';
+main{
+  >div{
+    overflow-y: hidden;
+    -webkit-transform:translate3d(0,0,0);
+  }
+  .no-up{
+    background-color: white;
+    padding: 12px 0;
+    width: 100%;
+    text-align: center;
+  }
+  .man-swiper{
+    position: relative;
+  }
+  .scroll-warpper{
+    overflow: hidden;
+    height: 100%;
+  }
+  .scroll-warpper{
+    -webkit-transform:translate3d(0,0,0);
+  }
+  .special-container{
+    overflow: hidden;
+    // min-height: 1060px;
+  }
+  .special-swiper{
+    background: #fff;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    z-index: 1;
+  }
+}

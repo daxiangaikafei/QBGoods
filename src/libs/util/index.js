@@ -151,3 +151,9 @@ export const icons = {
   'yougou': require('static/imgs/thirdSource/yougou.png'),
   'qbao': require('static/imgs/thirdSource/qbao.png'),
 }
+
+export function showSourceTip(url,source,PopUp,e){
+  console.log(this,PopUp.show);
+  
+  e.preventDefault();
+}

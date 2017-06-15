@@ -33,10 +33,8 @@ class HelpModal extends React.Component {
     }
     show(content,options){
         let self = this;
-        
-        return new Promise(function(resolve, reject){
 
-            console.log("lllll")
+        return new Promise(function(resolve, reject){
             let popUp = Object.assign({},options,{
                 show:true,
                 children:content,
@@ -45,7 +43,7 @@ class HelpModal extends React.Component {
                         self.hide().then(function(){
                             resolve("Ok");
                         });
-                        
+
                     };
                 }
             })

@@ -1,0 +1,41 @@
+@import '~libs/layout/layout-mixin.less';
+
+.bgalpha{
+  background-color: inherit!important;
+}
+.tosource-tip{
+  width: 100%;
+  height: 100%;
+  color: #60606e;
+  .flex;
+  .flex-justify-center;
+  .flex-align-center;
+  .tip-content{
+    width: 80%;
+    background-color: #fff;
+    border-radius: 5px;
+    img{
+      display: block;
+      width: 100%;
+    }
+    .source-icon{
+      width: 40px;
+      margin: 10px auto;
+    }
+    p{
+      text-align: center;
+      margin: 20px auto 0;
+    }
+    ol{
+      margin: 0 10px 10px 20px;
+      border-top: 1px dashed #f1f1f6;
+      padding: 10px 10px;
+      text-align: left;
+    }
+    li{
+      list-style: inherit;
+      line-height: 20px;
+      margin-bottom: 3px;
+    }
+  }
+}

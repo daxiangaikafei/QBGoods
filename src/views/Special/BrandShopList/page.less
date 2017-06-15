@@ -1,0 +1,64 @@
+@import '~libs/layout/layout-mixin.less';
+main{
+  >div{
+    overflow-y: hidden;
+    -webkit-transform:translate3d(0,0,0);
+  }
+  .no-up{
+    background-color: white;
+    padding: 12px 0;
+    width: 100%;
+    text-align: center;
+  }
+  .man-swiper{
+    position: relative;
+  }
+  .scroll-warpper{
+    overflow: hidden;
+    height: 100%;
+  }
+  .scroll-warpper{
+    -webkit-transform:translate3d(0,0,0);
+  }
+  .special-container{
+    overflow: hidden;
+    .bsl-item{
+      margin-bottom: 10px;
+    }
+    .bsl-item-img{
+      font-size: 50px;
+      img{
+        width: 100%;
+        height: 3.08em;
+      }
+    }
+    .bsl-item-info{
+      .flex;
+      .flex-vertical-row;
+      padding: 10px 10px;
+      background-color: #fff;
+      p{
+        margin-right: 10px;
+      }
+      .bsl-offSale{
+        color: #fd472b;
+      }
+    }
+  }
+  @media screen and (min-width: 320px) {.special-container .bsl-item-img{font-size:50px;}}
+  @media screen and (min-width: 360px) {.special-container .bsl-item-img{font-size:56.25px;}}
+  @media screen and (min-width: 375px) {.special-container .bsl-item-img{font-size:58.59375px;}}
+  @media screen and (min-width: 400px) {.special-container .bsl-item-img{font-size:62.5px;}}
+  @media screen and (min-width: 414px) {.special-container .bsl-item-img{font-size:64.6875px;}}
+  @media screen and (min-width: 440px) {.special-container .bsl-item-img{font-size:68.75px;}}
+  @media screen and (min-width: 480px) {.special-container .bsl-item-img{font-size:75px;}}
+  @media screen and (min-width: 520px) {.special-container .bsl-item-img{font-size:81.25px;}}
+  @media screen and (min-width: 560px) {.special-container .bsl-item-img{font-size:87.5px;}}
+  @media screen and (min-width: 600px) {.special-container .bsl-item-img{font-size:93.75px;}}
+  @media screen and (min-width: 640px) {.special-container .bsl-item-img{font-size:100px;}}
+  @media screen and (min-width: 680px) {.special-container .bsl-item-img{font-size:106.25px;}}
+  @media screen and (min-width: 720px) {.special-container .bsl-item-img{font-size:112.5px;}}
+  @media screen and (min-width: 760px) {.special-container .bsl-item-img{font-size:118.75px;}}
+  @media screen and (min-width: 800px) {.special-container .bsl-item-img{font-size:125px;}}
+  @media screen and (min-width: 960px) {.special-container .bsl-item-img{font-size:150px;}}
+}

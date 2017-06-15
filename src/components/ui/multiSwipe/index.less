@@ -1,0 +1,95 @@
+@import '~libs/layout/layout-mixin.less';
+@txtColor: #35352f;
+@assetTitleColor: #90909b;
+@bdColor: #c0c0c0;
+@bodyBGColor: #f1f1f6;
+@priceTxtColor: #fd472b;
+@similarTxtColor: #66666f;
+.swipe-wrapper{
+  // position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  z-index: 1;
+  .swiper-pagination{
+    position: static;
+  }
+  .react-swipe-container{
+    .swipe-img{
+      display: block;
+
+    }
+  }
+  .swipe-title{
+    background: url('static/imgs/special/tbg.png') no-repeat center center;
+    background-size: 100% auto;
+    -webkit-background-size: 100% auto;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    margin: 5px 0 0;
+  }
+  .swipe-slide{
+    .flex;
+    .flex-wrap;
+    // margin-bottom: 15px;
+    .swipe-item{
+      background-color: #fff;
+      width: 30%;
+      margin-left: 2%;
+      min-height: 100px;
+      margin-top: 10px;
+      .imga{
+        display: block;
+        height: 0;
+        padding-bottom: 100%;
+        background-color: #000;
+        overflow: hidden;
+      }
+      img{
+        display: block;
+        width: 100%;
+      }
+      h3 {
+          font-size: 14px;
+          padding:0 5px;
+          margin-top: 5px;
+          font-weight: normal;
+          height: 40px;
+          .text-line-feed;
+      }
+      .price {
+          color: @priceTxtColor;
+          font-size: 16px;
+          padding-left: 5px;
+          margin-top: 3px;
+          margin-bottom: 5px;
+      }
+
+      .source {
+          font-size: 12px;
+          line-height: 16px;
+          .return {
+              color: @priceTxtColor;
+              border-radius: 5px;
+              padding: 2px 2px;
+          }
+          .icon {
+              display: inline-block;
+              width: 12px;
+              height: 12px;
+              margin-left: 5px;
+              padding-left: 5px;
+          }
+      }
+    }
+    .swipe-item:nth-child(1){
+      margin-left: 3%;
+    }
+    .swipe-item:nth-child(4n){
+      margin-left: 3%;
+    }
+  }
+}

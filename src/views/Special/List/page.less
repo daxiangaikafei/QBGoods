@@ -1,0 +1,117 @@
+@txtColor: #35353f;
+@assetTitleColor: #90909b;
+@bdColor: #F2F2F7;
+@bodyBGColor: #f1f1f6;
+@increaseTxtColor: #fd472b;
+@listBdColor: #e5e5e5;
+@subTxtColor: #acacac;
+@priceTxtColor: #fd472b;
+@import '~libs/layout/layout-mixin.less';
+main{
+  >div{
+    overflow-y: hidden;
+    -webkit-transform:translate3d(0,0,0);
+  }
+  .no-up{
+    background-color: white;
+    padding: 12px 0;
+    width: 100%;
+    text-align: center;
+  }
+  .scroll-warpper{
+    overflow: hidden;
+    height: 100%;
+  }
+  .scroll-warpper{
+    -webkit-transform:translate3d(0,0,0);
+  }
+  .nine-container{
+    overflow: hidden;
+    // min-height: 1060px;
+  }
+  .nine-swiper{
+    background: #fff;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    z-index: 1;
+    .react-swipe-container{
+      a{
+        display: block;
+        img{
+          width: 100%;
+          height: 150px;
+        }
+      }
+    }
+    .swiper-pagination {
+      position: absolute;
+      text-align: center;
+      -webkit-transition: .3s;
+      -moz-transition: .3s;
+      -o-transition: .3s;
+      transition: .3s;
+      -webkit-transform: translate3d(0,0,0);
+      -ms-transform: translate3d(0,0,0);
+      -o-transform: translate3d(0,0,0);
+      transform: translate3d(0,0,0);
+      z-index: 10;
+      bottom: 8px;
+      left: 0;
+      width: 100%;
+    }
+    .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+      display: inline-block;
+      border-radius: 100%;
+      background: #000;
+      opacity: .5;
+      margin: 0 5px;
+      background-color: #fff;
+    }
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
+  }
+  .nine-public-title,.nine-public-title2 {
+      height: 50px;
+      background: #fff url('static/imgs/activity/title-bg.png') no-repeat center;
+      -webkit-background-size: 45%;
+      background-size: 45%;
+      color: @priceTxtColor;
+      font-size: 16px;
+      margin: 5px auto;
+      .flex;
+      .flex-center;
+      .flex-align-center;
+  }
+  .nine-public-title2 {
+      background: #fff url('static/imgs/activity/title-bg2.png') no-repeat center;
+      -webkit-background-size: 65%;
+      background-size: 65%;
+      color: #9a30fc;
+      margin-bottom: 0;
+  }
+  .hots-public-container{
+    display: block;
+    background: #fff;
+    overflow: hidden;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    // padding-top: 5px;
+    .nine-public-content{
+      margin: 0 auto;
+      overflow: auto;
+      position: relative;
+    }
+    .nine-public-warpper{
+      position: relative;
+      font-size: 0;
+      white-space: nowrap;
+      padding-right: 10px;
+    }
+
+  }
+}

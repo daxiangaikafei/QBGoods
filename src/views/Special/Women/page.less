@@ -1,0 +1,73 @@
+@txtColor: #35353f;
+@assetTitleColor: #90909b;
+@bdColor: #F2F2F7;
+@bodyBGColor: #f1f1f6;
+@increaseTxtColor: #fd472b;
+@listBdColor: #e5e5e5;
+@subTxtColor: #acacac;
+@priceTxtColor: #fd472b;
+@import '~libs/layout/layout-mixin.less';
+
+main{
+  >div{
+    overflow-y: hidden;
+    -webkit-transform:translate3d(0,0,0);
+  }
+  .special-women-container{
+    background-color: #3d066b;
+    padding-bottom: 20px;
+    .no-up{
+      background-color: initial;
+      padding: 12px 0;
+      width: 100%;
+      text-align: center;
+      color: #9642d8;
+    }
+  }
+  .scroll-warpper{
+    overflow: hidden;
+    height: 100%;
+
+  }
+  .scroll-warpper{
+    -webkit-transform:translate3d(0,0,0);
+  }
+  .special-container{
+    overflow: hidden;
+    // min-height: 1060px;
+  }
+  .time-limit-tabs{
+    width: 100%;
+    height: 40px;
+    background-color: #17b5ff;
+    color: #fff;
+    .hots-tabs-container .hots-tabs-warpper{
+      margin-top: 0;
+    }
+    .hots-tabs-container,.hots-tabs-container .hots-tabs-content,.hots-tabs-container .tabs-item span{
+      background-color: initial;
+      color: #fff;
+    }
+    .hots-tabs-container .tabs-item span{
+      line-height: 42px;
+    }
+    .hots-tabs-container .tabs-item-active span{
+      color: #fd472b;
+    }
+  }
+  .time-limit-tabs-left{
+    width: 80px;
+    float: left;
+    line-height: 38px;
+    text-align: center;
+    font-size: 16px;
+    vertical-align: middle;
+    label{
+      vertical-align: middle;
+    }
+  }
+  .time-limit-tabs-right{
+    width: auto;
+    margin-left: 80px;
+  }
+}

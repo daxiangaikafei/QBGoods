@@ -22,10 +22,10 @@ class PopUp extends React.Component {
 
     // }
     render() {
-        let {show,maskClosable,showClose,onMaskClose,children,animationType} = this.props;
+        let {show,maskClosable,showClose,onMaskClose,children,animationType,isBgAlpha} = this.props;
         return (
 
-                <div className={"virtual-popup virtual-popup-slide-" + (animationType==="slide-down"?"down":"up")}>
+                <div className={"virtual-popup virtual-popup-slide-" + (animationType==="slide-down"?"down":"up") + (isBgAlpha && " bgalpha")}>
                         <div className="am-popup-content">
                             <div className="am-popup-body">{children}</div>
                         </div>

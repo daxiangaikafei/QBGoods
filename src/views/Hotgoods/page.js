@@ -34,7 +34,8 @@ class Hotgoods extends Component {
   componentDidMount() {
     // this.getData(1);
     // console.log("this.props.goodsTabs....",this.props.goodsTabs)
-
+    // this.state = {"s":"ssss"}
+    console.log(this.state);
   }
   componentDidUpdate() {
     console.log("this.props.goodsTabs.length", this.props.goodsTabs.length);

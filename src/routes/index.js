@@ -18,6 +18,17 @@ import SignIn from "views/Activity/signIn"
 import IconDoc from "views/IconDoc/page"
 import FlexLayout from "views/FlexLayout/page"
 
+import Nine from "views/Special/Nine/page"
+import List from "views/Special/List/page"
+import GoodsClass from "views/Special/GoodsClass/page"
+import Coupon from "views/Special/Coupon/page"
+import Man from "views/Special/Man/page"
+import Women from "views/Special/Women/page"
+import BrandShop from "views/Special/BrandShop/page"
+import BrandShopList from "views/Special/BrandShopList/page"
+// import BrandGroup from "views/Special/BrandGroup/page"
+//<Route path='/BrandGroup' component={BrandGroup} name="品牌团" />
+
 export default function (ref) {
   return (
     <Router history={ref.history}>
@@ -44,6 +55,14 @@ export default function (ref) {
         <Route path='/ChannelEntry/6' component={ChannelEntry} name="焕然居家" />
         <Route path='/IconDoc' component={IconDoc} name="Icon Document" />
 
+        <Route path='/Nine/:id' component={Nine} name="9.9专场" />
+        <Route path='/GoodsClass' component={GoodsClass} name="商品分类" />
+        <Route path='/List/:id' component={List} name="专场" />
+        <Route path='/Coupon' component={Coupon} name="好券直播" />
+        <Route path='/Man/:id' component={Man} name="男士专场" />
+        <Route path='/BrandShopList' component={BrandShopList} name="品牌店铺列表" />
+        <Route path='/BrandShop/:id' component={BrandShop} name="品牌店铺" />
+        <Route path='/Women/:id' component={Women} name="女士专场" />
       </Route>
     </Router>
   )
