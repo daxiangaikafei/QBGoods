@@ -87,7 +87,7 @@ class specialTab extends Component {
         <div className="hots-tabs-content" ref="swipeparent">
           <div className="hots-tabs-warpper" ref="swipe">
             {
-              this.props.tabs.map((item, i) => <Tappable {...eventFun(pageName, model, item.id)}  onTap={this.tabsClickHandler.bind(this,i)} key={i} className={active == i ? 'tabs-item tabs-item-active' : 'tabs-item'}><span><Icon className="tab-hot-icon" name="location" color={active == i ? '#fd472b' : '#ffffff'} size="18"/>{item.name}</span></Tappable>)
+              this.props.tabs.map((item, i) => <div {...eventFun(pageName, model, item.id)}  onClick={this.tabsClickHandler.bind(this,i)} key={i} className={active == i ? 'tabs-item tabs-item-active' : 'tabs-item'}><span><Icon className="tab-hot-icon" name="location" color={active == i ? '#fd472b' : '#ffffff'} size="18"/>{item.name}</span></div>)
             }
           </div>
         </div>

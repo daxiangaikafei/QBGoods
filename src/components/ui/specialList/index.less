@@ -66,8 +66,25 @@ a {
                 margin-top: -4px;
             }
         }
+        .source{
+          margin-left: 10px;
+          margin-top: 5px;
+          .icon {
+              display: inline-block;
+              width: 12px;
+              height: 12px;
+              img {
+                  margin-top: 0px;
+              }
+          }
+          .estimate{
+            color: @priceTxtColor;
+            font-size: 12px;
+            padding-left: 5px;
+          }
+        }
         .bottom {
-            padding: 5px 10px 15px;
+            padding: 5px 10px 15px 13px;
             font-size: 12px;
             .flex;
             .flex-justify;
@@ -92,9 +109,10 @@ a {
             .sales {
                 color: @assetTitleColor;
                 font-size: 12px;
-                padding: 3px 5px;
+                padding: 0px 0px;
             }
         }
+
         .score {
             .sales {
                 color: @assetTitleColor;

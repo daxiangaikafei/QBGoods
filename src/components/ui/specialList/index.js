@@ -87,9 +87,11 @@ class SpecialList extends Component {
                     {item.isNew && <i styleName="new-icon">NEW</i>}
                     <a styleName="img"  onClick={this.clickLinkSource.bind(this,item.url,item.source)}><img src={item.imgUrl} alt="" /></a>
                     <a href={item.url}  onClick={this.clickLinkSource.bind(this,item.url,item.source)}><h3>{item.name}</h3></a>
-                    <div styleName="price">￥{priceFormat(item.finalPrice)}
+                    <div styleName="source">
                         <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
+                        <span className='estimate'>{item.rebateValue}</span>
                     </div>
+                    <div styleName="price">￥{priceFormat(item.finalPrice)}</div>
                     <div styleName="bottom">
                         {item.orderNum != null ? <p styleName="sales">销量 <span>{item.orderNum}</span></p> : ''}
                         <a href={item.url}><span styleName="grab">马上抢</span></a>
