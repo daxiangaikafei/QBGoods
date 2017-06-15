@@ -8,7 +8,7 @@ import classNames from 'classnames'
 import { getCookie, setCookie, priceFormat, eventFun } from 'libs/util';
 import GoodsIscroll from "components/swipe/GoodsIscroll";
 import GoodsTab from "components/swipe/GoodsTab";
-import {SpecialList} from 'ui';
+import {SpecialList,Icon} from 'ui';
 import Swipe from "components/swipe/swipe";
 import { fetchPosts } from "components/common/fetch";
 
@@ -17,9 +17,12 @@ class BrandShop extends Component {
   bannerpic = require('static/imgs/gatherGoods/banner.png');
   constructor(props) {
     super(props)
+    let infoDatas = this.props.location && this.props.location.state.infos;
 
+    console.log("infoDatas....", this.props.location.state);
     this.state = {
-        specialId: props.params.id,
+        infoDatas: Object.assign(this.props.infoDatas,infoDatas),
+        brandId: props.params.id,
         items:[],
         page: 1,
         isLoading: false,
@@ -44,7 +47,7 @@ class BrandShop extends Component {
   }
   getData(num){
       let {pageSize,listUrl} = this.props;
-      let {page,items,specialId,isLoading,isEnd} = this.state;
+      let {page,items,brandId,isLoading,isEnd} = this.state;
 
       if(isLoading){
           return;
@@ -53,7 +56,7 @@ class BrandShop extends Component {
           isLoading:true
       })
       let _this = this;
-      let param = Object.assign({},{page: page, cId: specialId,size: pageSize});
+      let param = Object.assign({},{page: page, brandId: brandId,size: pageSize});
       page = param.page;
       return fetchPosts(listUrl ,param,"GET").then((data)=>{
           if(data.responseCode===1000){
@@ -111,18 +114,18 @@ class BrandShop extends Component {
       <Swipe  {...props} >
         <div className=" special-container">
           <div className="special-swiper">
-            <img src={this.state.bannerpic}/>
+            <img src={this.state.infoDatas.imgUrl}/>
             <div className="mask">
               <div className="shop-headimg">
                 <img src={this.headimg}/>
               </div>
               <div className="shop-info">
-                <p>ddddddd</p><p>dddddddd</p>
+                <p>{this.state.infoDatas.brandName}</p><p>{this.state.infoDatas.offSale}</p>
               </div>
             </div>
           </div>
           <div className="special-end-time">
-            结束时间：{this.state.overTime}
+            <Icon name="clock" color="#35353f" size="18"/> 结束时间：{this.state.overTime}
           </div>
           <SpecialList listConfig={{temp: 'nina'}} listData={this.state.items} eventConfig={{pageName:this.pageName,model:`hot_goods_${this.state.active}_products`}}/>
         </div>
@@ -132,6 +135,11 @@ class BrandShop extends Component {
   }
 };
 BrandShop.defaultProps = {
+  infoDatas:{
+    brandName:"",
+    offSale:"",
+    imgUrl:""
+  },
   listUrl: "/stuff/brand/detail.do",
   pageSize: 8
 }

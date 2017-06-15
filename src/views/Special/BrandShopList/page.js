@@ -82,11 +82,21 @@ class BrandShopList extends Component {
   }
   shopClick(event){
     let className = event.target.className;
-    let id = event.target.dataset.brandId;
-    console.log("className:",className,"id",id);
+    let id = event.target.dataset.brandid;
+
+
+    let infos = {
+      imgUrl: event.target.dataset.imgurl,
+      offSale: event.target.dataset.offsale,
+      brandName: event.target.dataset.brandname
+    };
+    console.log("className:",className,"id",id , event.target.dataset , infos);
     //debugger
     if(className==='bsl-img'){
-      this.context.router.push( {"pathname": "BrandShop/" + id });
+      this.context.router.push( {"pathname": "BrandShop/" + id , state: {
+          infos: { ...infos }
+        }
+      });
     }
   }
   render() {
@@ -119,7 +129,7 @@ class BrandShopList extends Component {
               this.state.items.map(function(item,index){
                   return (<div className="bsl-item" key={index} data-brandid={item.brandId}>
                       <div className="bsl-item-img">
-                        <img src={item.imgUrl } alt="" className="bsl-img" data-brandid={item.brandId}/>
+                        <img src={item.imgUrl } data-imgUrl={item.imgUrl} data-offSale={item.offSale} data-brandName={item.brandName} alt="" className="bsl-img" data-brandid={item.brandId}/>
                       </div>
                       <div className="bsl-item-info">
                         <p className="bsl-offSale">{item.offSale}</p><p className="bsl-name">{item.brandName}</p>

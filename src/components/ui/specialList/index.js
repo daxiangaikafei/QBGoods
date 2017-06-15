@@ -18,7 +18,7 @@ class SpecialList extends Component {
         }
     }
     componentWillMount(){
-      
+
     }
     clickLinkSource(url,source,e){
       PopUp.show(
@@ -84,7 +84,7 @@ class SpecialList extends Component {
           default:
             listTpl = this.props.listData.map((item, index) =>
                 <div styleName="item" key={index}>
-                    <i styleName="new-icon">NEW</i>
+                    {item.isNew && <i styleName="new-icon">NEW</i>}
                     <a styleName="img"  onClick={this.clickLinkSource.bind(this,item.url,item.source)}><img src={item.imgUrl} alt="" /></a>
                     <a href={item.url}  onClick={this.clickLinkSource.bind(this,item.url,item.source)}><h3>{item.name}</h3></a>
                     <div styleName="price">￥{priceFormat(item.finalPrice)}

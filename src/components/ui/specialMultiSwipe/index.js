@@ -7,6 +7,8 @@ import classNames from 'classnames'
 import { priceFormat, baoquanFormat, eventFun, icons } from 'libs/util'
 import ReactSwipe from 'react-swipe';
 import SwiperPagination from '../swiperPagination';
+import SpecialToTip from '../specialToTip';
+import PopUp from "components/popup/index";
 
 class MultiSwipe extends Component {
     constructor(props) {
@@ -15,6 +17,20 @@ class MultiSwipe extends Component {
         this.state = {
           swiperActive:0
         }
+        // this.clickLink = this.clickLink(this);
+    }
+
+    componentWillMount(){
+
+    }
+    clickLink(url,source,e){
+      PopUp.show(
+              (<SpecialToTip source={source}  />),{maskClosable:true, isBgAlpha: true}
+      );
+      setTimeout(function(){
+        window.location.href = url;
+      },1000);
+      e.preventDefault();
     }
 
     swiperCallback  = (active) => {
@@ -23,8 +39,9 @@ class MultiSwipe extends Component {
       });
     }
 
-    render() {
 
+    render() {
+        let _this = this;
         let listTpl = "";
         let pageSize = this.props.pageSize || 6;
         let pageswipe = [],
@@ -48,8 +65,8 @@ class MultiSwipe extends Component {
                   <div className="swipe-slide">{
                     pages.map(function(item,i){
                       return (<div className="swipe-item" key={i}>
-                            <a href={item.linkUrl} className="imga"><img src={item.imgUrl}/></a>
-                            <a href={item.url} ><h3>{item.name}</h3></a>
+                            <a href={item.linkUrl} className="imga" onClick={_this.clickLink.bind(this,item.url,item.source)}><img src={item.imgUrl}/></a>
+                            <a href={item.url} onClick={_this.clickLink.bind(this,item.url,item.source)}><h3>{item.name}</h3></a>
                             <div styleName="source">
                                 <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                                 <span styleName="return">预估返{item.orderNum}%</span>
@@ -67,7 +84,7 @@ class MultiSwipe extends Component {
         }
 
         return (
-          <div className="swipe-wrapper">
+          <div className="swipe-wrapper" id={`stuffs${this.props.level}`}>
             <div className="swipe-title">{this.props.title || ""}</div>
             {swipeDom}
             {

@@ -6,10 +6,9 @@ import styles from './page.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
 import { getCookie, setCookie, priceFormat, eventFun } from 'libs/util';
-import GoodsTab from "components/swipe/GoodsTab";
 import Swipe from "components/swipe/swipe";
 import { fetchPosts } from "components/common/fetch";
-import { Icon,MultiSwipe } from 'ui'
+import { Icon,MultiSwipe,SpecialTab } from 'ui'
 
 class Women extends Component {
   bannerpic = require('static/imgs/gatherGoods/banner.png');
@@ -19,7 +18,7 @@ class Women extends Component {
     this.state = {
         bannerId: props.params.id || "",
         items:[],
-        active: 2222,
+        active: 0,
         activeId: 0,
         isLoading: false
     }
@@ -62,7 +61,7 @@ class Women extends Component {
             }
             _this.setState({
                 isLoading:false,
-                bannerpic: data.data.imgURL||_this.bannerpic,
+                bannerpic: data.data.imgUrl||_this.bannerpic,
                 items:data.data.details
             });
           }else{
@@ -75,18 +74,7 @@ class Women extends Component {
        });
   }
   render() {
-    let noTip = <div className="no-up">-- 已经到底了 --</div>;;
-    let goodsTab = '';
-    // if(this.state.goodsTabs.length > 0 ){
-    //   goodsTab = <div className="time-limit-tabs">
-    //         <div className="time-limit-tabs-left">
-    //           <Icon name="location" color="#ffffff" size="18" /> <label> 限时抢</label>
-    //         </div>
-    //         <div className="time-limit-tabs-Right">
-    //           <GoodsTab  ref="tap" tabCallback={this.tabCallback} active={this.state.active} tabs={this.state.goodsTabs} eventConfig={{pageName:this.pageName,model:"hot_goods_tab"}}></GoodsTab>;
-    //         </div>
-    //     </div>
-    // }
+    let noTip = <div className="no-up">-- 已经到底了 --</div>;
     let props = {
         property:"translateY",
         className:"scroll-warpper",
@@ -96,7 +84,17 @@ class Women extends Component {
         vertical:true,
         touchMove:this.touchMove
     }
-    console.log("this.state.items", this.state.items);
+
+    let tabs = [],tabsdom = null;
+    this.state.items.map(function(item,index){
+      tabs.push({
+        id: item.level,
+        name: item.title
+      });
+    });
+    if(tabs.length>0){
+      tabsdom = <SpecialTab  ref="tap" tabCallback={this.tabCallback} active={this.state.active} tabs={tabs} eventConfig={{pageName:this.pageName,model:"hot_goods_tab"}}></SpecialTab>;
+    }
     // <Swipe  {...props} ></Swipe>
     return (
 
@@ -104,10 +102,12 @@ class Women extends Component {
           <div className="women-banner">
             <img src={this.state.bannerpic} />
           </div>
-          {goodsTab}
+          <div className="time-limit-tabs">
+            {tabsdom}
+          </div>
           {
             this.state.items.map(function(item, index){
-              return (<MultiSwipe title={ item.title } swipes={item.stuffs} />)
+              return (<MultiSwipe key={index} level={ index } title={ item.title } swipes={item.stuffs} />)
             })
           }
           { noTip }
