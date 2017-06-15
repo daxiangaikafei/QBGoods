@@ -16,6 +16,7 @@ class Coupon extends Component {
     super(props)
 
     this.state = {
+        specialId: props.params.id || "",
         imgURL: '',
         items:[],
         page: 1,
@@ -57,7 +58,7 @@ class Coupon extends Component {
   getClassTabs(){
     let _this = this;
     let {tabUrl} = this.props;
-    fetchPosts(tabUrl ,{ },"GET").then((data)=>{
+    fetchPosts(tabUrl ,{ specialId: this.state.specialId },"GET").then((data)=>{
         if(data.responseCode=='1000'){
           _this.setState({
               isLoading:false,

@@ -55,10 +55,11 @@ export default function (ref) {
         <Route path='/ChannelEntry/6' component={ChannelEntry} name="焕然居家" />
         <Route path='/IconDoc' component={IconDoc} name="Icon Document" />
 
-        <Route path='/Nine/:id' component={Nine} name="9.9专场" />
         <Route path='/GoodsClass' component={GoodsClass} name="商品分类" />
         <Route path='/List/:id' component={List} name="专场" />
-        <Route path='/Coupon' component={Coupon} name="好券直播" />
+
+        <Route path='/Nine/:id' component={Nine} name="9.9专场" />
+        <Route path='/Coupon/:id' component={Coupon} name="好券直播" />
         <Route path='/Man/:id' component={Man} name="男士专场" />
         <Route path='/BrandShopList' component={BrandShopList} name="品牌店铺列表" />
         <Route path='/BrandShop/:id' component={BrandShop} name="品牌店铺" />
