@@ -58,9 +58,9 @@ class SpecialList extends Component {
             case "coupon":
               listTpl = this.props.listData.map((item, index) =>
                   <div styleName="couponitem" key={index}>
-                      <a styleName="img" href={ item.url}  onClick={this.clickLinkSource.bind(this,item.url,item.source)}><img src={item.imgUrl} alt="" /></a>
+                      <a styleName="img" href={'newtab://goodstuff.qbao.com/goods?url=' + item.coupon.link}><img src={item.imgUrl} alt="" /></a>
                       <div styleName="info">
-                        <a href={item.url}  onClick={this.clickLinkSource.bind(this,item.url,item.source)}><h3>{item.name}</h3></a>
+                        <a href={'newtab://goodstuff.qbao.com/goods?url=' + item.coupon.link}><h3>{item.name}</h3></a>
                         <div styleName="source">
                             <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                             <span className='estimate'>{item.rebateValue}</span>
@@ -73,7 +73,7 @@ class SpecialList extends Component {
                             </div>
                         </div>
                       </div>
-                      <a href={item.coupon.link} >
+                      <a href={'newtab://goodstuff.qbao.com/goods?url=' + item.coupon.link} >
                         <div className="coupon">
                           <p>领{item.coupon.type}</p>
                           <p>{item.coupon.value}</p>
