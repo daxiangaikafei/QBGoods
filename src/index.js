@@ -23,6 +23,7 @@ require.ensure([],
         var selfsupport = require('./model/selfsupport')
         var shopActivity = require('./model/ShopActivity')
         var activity = require('./model/activity')
+        var specialNine = require('./model/specialNine')
         var model  = require('./model')
 
         // ------------------------------------
@@ -31,6 +32,8 @@ require.ensure([],
         const html5ForStartApp = dva()
         function html5ForLogin(_app) {
             if (_app) {
+
+                _app.model(specialNine)
 
                 _app.model(business)
                 _app.model(gatherGoods)
@@ -48,6 +51,8 @@ require.ensure([],
 
             }
             else {
+                html5ForStartApp.model(specialNine)
+              
                 html5ForStartApp.model(business)
                 html5ForStartApp.model(gatherGoods)
                 html5ForStartApp.model(gatherStore)
