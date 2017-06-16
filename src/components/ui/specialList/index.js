@@ -26,6 +26,9 @@ class SpecialList extends Component {
       );
       setTimeout(function(){
         window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + url;
+        PopUp.hide(
+            (<SpecialToTip source={source} />), { maskClosable: false, isBgAlpha: false }
+        );
       },1000);
       e.preventDefault();
     }
