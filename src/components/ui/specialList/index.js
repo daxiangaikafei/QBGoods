@@ -24,8 +24,12 @@ class SpecialList extends Component {
       PopUp.show(
               (<SpecialToTip source={source}  />),{maskClosable:true, isBgAlpha: true}
       );
-      setTimeout(function(){
-        window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + url;
+        setTimeout(function(){
+            if (QBFK.Util.getDevice() === 'android' && source == 'jd') {
+                window.open(url);
+            } else {
+                window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + url;
+            }
         PopUp.hide(
             (<SpecialToTip source={source} />), { maskClosable: false, isBgAlpha: false }
         );
