@@ -20,13 +20,17 @@ class SpecialList extends Component {
     componentWillMount(){
 
     }
-    clickLinkSource(url,source,e){
-      PopUp.show(
-              (<SpecialToTip source={source}  />),{maskClosable:true, isBgAlpha: true}
-      );
-      setTimeout(function(){
-        window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + url;
-      },1000);
+    clickLinkSource(item,e){
+      // PopUp.show(
+      //         (<SpecialToTip source={item.source}  />),{maskClosable:true, isBgAlpha: true}
+      // );
+      // setTimeout(function(){
+      //   window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + item.url;
+      // },1000);
+      this.context.router.push( {"pathname": "FrontMatter/" + item.id , state: {
+          infos: item
+        }
+      });
       e.preventDefault();
     }
     render() {
@@ -37,9 +41,9 @@ class SpecialList extends Component {
           case "beauty":
             listTpl = this.props.listData.map((item, index) =>
                 <div styleName="singleitem" key={index}>
-                    <a styleName="img" href={ item.url} onClick={this.clickLinkSource.bind(this,item.url,item.source)}><img src={item.imgUrl} alt="" /></a>
+                    <a styleName="img" href={ item.url} onClick={this.clickLinkSource.bind(this,item)}><img src={item.imgUrl} alt="" /></a>
                     <div styleName="info">
-                      <a href={item.url} onClick={this.clickLinkSource.bind(this,item.url,item.source)}><h3>{item.name}</h3></a>
+                      <a href={item.url} onClick={this.clickLinkSource.bind(this,item)}><h3>{item.name}</h3></a>
                       <div styleName="source">
                           <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                           <span className='estimate'>预估返10%</span>
@@ -86,8 +90,8 @@ class SpecialList extends Component {
             listTpl = this.props.listData.map((item, index) =>
                 <div styleName="item" key={index}>
                     {item.isNew && <i styleName="new-icon">NEW</i>}
-                    <a styleName="img"  onClick={this.clickLinkSource.bind(this,item.url,item.source)}><img src={item.imgUrl} alt="" /></a>
-                    <a href={item.url}  onClick={this.clickLinkSource.bind(this,item.url,item.source)}><h3>{item.name}</h3></a>
+                    <a styleName="img"  onClick={this.clickLinkSource.bind(this,item)}><img src={item.imgUrl} alt="" /></a>
+                    <a href={item.url}  onClick={this.clickLinkSource.bind(this,item)}><h3>{item.name}</h3></a>
                     <div styleName="source">
                         <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                         <span className='estimate'>{item.rebateValue}</span>
@@ -110,4 +114,7 @@ class SpecialList extends Component {
         )
     }
 }
+SpecialList.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 export default CSSModules(SpecialList, styles, { allowMultiple: true });

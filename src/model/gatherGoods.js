@@ -28,7 +28,7 @@ export default {
             page: page,
             size : 20
           }, "GET")
-          .then(data => { 
+          .then(data => {
             isEnd = data.data.length < 4 ? true : false;
             return page == 1 ? data.data : _productList.concat(data.data)
           })
@@ -71,7 +71,7 @@ export default {
         type: 'listRes',
         loading: false,
         productList,
-        page, page        
+        page, page
       })
     },
     * getBannerList(action, {
@@ -95,6 +95,38 @@ export default {
         type: 'bannerRes',
         loading: false,
         bannerList
+      })
+    },
+    * getLikeList(action, {
+      put,
+      call,
+      select
+    }) {
+      yield put({
+        type: 'listReq',
+        loading: true
+      })
+      let _productList = yield select(select => select.gatherGoods.productList)
+      let isEnd, page, size = 8;
+      let productList = yield call(() => {
+        page = action.page || 1
+        return fetchPosts("/stuff/brand/detail.do", {
+          page: page,
+          size: size
+        }, "GET")
+          .then(data => {
+            isEnd = data.data.length < size ? true : false;
+            return page == 1 ? data.data : _productList.concat(data.data)
+          })
+          .catch(err => ([]))
+      })
+
+      yield put({
+        type: 'listRes',
+        loading: false,
+        isEnd: isEnd,
+        productList,
+        page, page
       })
     }
   },

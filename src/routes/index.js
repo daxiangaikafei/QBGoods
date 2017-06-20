@@ -26,8 +26,7 @@ import Man from "views/Special/Man/page"
 import Women from "views/Special/Women/page"
 import BrandShop from "views/Special/BrandShop/page"
 import BrandShopList from "views/Special/BrandShopList/page"
-// import BrandGroup from "views/Special/BrandGroup/page"
-//<Route path='/BrandGroup' component={BrandGroup} name="品牌团" />
+import FrontMatter from "views/Special/FrontMatter/page"
 
 export default function (ref) {
   return (
@@ -57,6 +56,7 @@ export default function (ref) {
 
         <Route path='/GoodsClass' component={GoodsClass} name="商品分类" />
         <Route path='/List/:id' component={List} name="专场" />
+        <Route path='/FrontMatter/:id' component={FrontMatter} name="有好货" />
 
         <Route path='/Nine/:id' component={Nine} name="9.9专场" />
         <Route path='/Coupon/:id' component={Coupon} name="好券直播" />

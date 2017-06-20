@@ -7,7 +7,7 @@ import assignIn from "lodash/assignIn";
 export function fetchPosts( url, param, type = "POST", headers = {}, repType = "json",fetchNum = 1) {
 
     //debugger;
-    //param.userId = 30000654;
+    // param.userId = 140001239;
     param = Object.assign(param, { device: QBFK.Util.getDevice()==="ios" ? 1:2 });
     if (type.toLocaleUpperCase() === "GET" && size(param) > 0 && url.indexOf("?")<0) {
         url += "?" + toExcString(param)
