@@ -75,7 +75,7 @@ class SpecialList extends Component {
                         <div styleName="bottom">
                             <div styleName="price">
                                 <p styleName="salestip">券后</p>
-                                ￥{priceFormat(item.finalPrice)}
+                                ￥{priceFormat((item.finalPrice - item.coupon.value) < -1 ? item.finalPrice : item.finalPrice - item.coupon.value)}
                                 <p styleName="sales">销量 <span>{item.orderNum}</span></p>
                             </div>
                         </div>

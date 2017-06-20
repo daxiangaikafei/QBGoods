@@ -21,10 +21,10 @@ app.use(convert(historyApiFallback({
 })))
 
 //moke http://192.168.132.44:8081/stuff/ad/banner/flashSaleDetail.do
-app.use(proxy({
-  host: 'http://192.168.132.44:8081',
-  match: /^\/stuff\//
-}));
+// app.use(proxy({
+//   host: 'http://192.168.132.44:8081',
+//   match: /^\/stuff\//
+// }));
 //测试服务器
 // app.use(proxy({
 //   host: 'http://192.168.14.38',
