@@ -22,13 +22,13 @@ compiler.run(function (err, stats) {
 
     debug('Webpack compile completed.')
 
-    var cat = '/Users/sean/work/stuff-app/com.qbao.aisr.app.web/src/main/webapp'
+    var cat = '/Users/projects/compile/stuff-app/com.qbao.aisr.app.web/src/main/webapp'
     var sourcePath = path.join(__dirname,'../dist')
     var fileName = '/stuff'
     fs.stat(cat + fileName, function(err, stat) {
         if(err == null) {
             if(stat.isDirectory()) {
-                
+
                 debug('copy file begin......');
                 fs.remove(cat+fileName, function (err) {
                     if (err) {
