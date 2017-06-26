@@ -18,10 +18,10 @@ import PopUp from "components/popup/index";
 
 const RebateStatus ={
     "-1":"记录订单",
-    0:"待返宝券",
-    1:"已返宝券",
-    2:"返宝券被收回",
-    3:"返宝券失败"
+    0:"待返返利",
+    1:"已返返利",
+    2:"返返利被收回",
+    3:"返返利失败"
 }
 const RebateStatusShort={
     "-1":"记录",
@@ -208,7 +208,7 @@ class OrderList extends React.Component {
                         {$subItem}
                         <p className="order-item-info">共{item.stuffNum}件商品，合计:<em><i>￥</i>{totalPrice}</em>
                           {rebateStatus<2&&short}
-                          <span>{item.rebateValue}宝券</span>
+                          <span>{item.rebateValue}返利</span>
                         </p>
                     </a>
                     <div className="order-item-todo" >

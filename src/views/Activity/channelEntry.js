@@ -71,7 +71,7 @@ class ChannelEntry extends Component {
                   <span styleName="icon"><img src={this.icons[item.source]} alt=""/></span>
                 </div>
                 <div styleName="bottom">
-                  <span styleName="return">返600宝券</span>
+                  <span styleName="return">返600返利</span>
                 </div>
                 <LazyLoader/>
               </div>
@@ -90,7 +90,7 @@ class ChannelEntry extends Component {
                     <span styleName="icon"><img src={this.icons[item.source]} alt="" /></span>
                   </div>
                   <span styleName="return">
-                    返600宝券
+                    返600返利
                     {item.orderNum != null ? <p styleName="sales">销量 <span>{item.orderNum}</span></p> : ''}
                   </span>
                   <a {...eventFun(this.pageName,'channel_entry_list_products',item.id,)} styleName="btn-buy" href={item.url}>马上购买</a>

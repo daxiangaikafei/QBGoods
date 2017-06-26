@@ -49,12 +49,12 @@ class OrderHead extends React.Component {
             <header className="order-head">
                 <ul className='head-top'>
                     <li className="head-top-tab">
-                            <em>{info.totalRebateValue}<i>宝券</i></em>
-                            <span>累计返宝券</span>
+                            <em>{info.totalRebateValue}<i>返利</i></em>
+                            <span>累计返利</span>
                     </li>
                     <li className="head-top-tab">
-                            <em>{info.unRebateValue}<i>宝券</i></em>
-                            <span>待返宝券数</span>
+                            <em>{info.unRebateValue}<i>返利</i></em>
+                            <span>待返返利</span>
                     </li>
                 </ul>
                 <ul className="head-tab">

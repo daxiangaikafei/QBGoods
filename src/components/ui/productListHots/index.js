@@ -47,7 +47,7 @@ class ProductList extends Component {
                                     <span styleName="icon"></span>
                                 </div>
                                 <div styleName="bottom">
-                                    <span styleName="return">返{item.rebateValue}宝券</span>
+                                    <span styleName="return">返{item.rebateValue}返利</span>
                                     {item.sale_count!=null ? <p styleName="sales">销量 <span>{item.saleCount}</span></p> : ''}
                                 </div>
                             </div>
