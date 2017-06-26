@@ -18,7 +18,7 @@ class Info extends React.Component {
         let statusBack = '';
         switch (data.rebateStatus) {
           case 1:
-            statusBack = <li className="info-select">返还宝券</li>;
+            statusBack = <li className="info-select">返还返利</li>;
             break;
           case 2:
             statusBack = <li className="info-select">返券被收回</li>;
@@ -27,7 +27,7 @@ class Info extends React.Component {
             statusBack = <li className="info-select">返券失败</li>;
             break;
           default:
-            statusBack = <li>返还宝券</li>;
+            statusBack = <li>返还返利</li>;
         }
         return (
             <div onClick={onClick} className="container-my-order-info">
@@ -35,7 +35,7 @@ class Info extends React.Component {
                     <ol>
                         <li>下单</li>
                         <li className={data.rebateStatus==-1?"info-select":""}>记录订单</li>
-                        <li className={data.rebateStatus==0?"info-select":""}>待返宝券</li>
+                        <li className={data.rebateStatus==0?"info-select":""}>待返返利</li>
                         { statusBack }
                     </ol>
                     <div className="order-info-content">
@@ -43,8 +43,8 @@ class Info extends React.Component {
                         <p><label>下单时间：</label>{data.orderTime||""}</p>
                         <p><label>订单金额：</label>{data.amount||""}</p>
                         <p><label>订单编号：</label>{data.orderNo||""}</p>
-                        <p><label>返还宝券：</label>{data.rebateValue||""}</p>
-                        {data.appealValue != 0 &&(<p><label>增返宝券：</label>{data.appealValue}</p>)}
+                        <p><label>返还返利：</label>{data.rebateValue||""}</p>
+                        {data.appealValue != 0 &&(<p><label>增返返利：</label>{data.appealValue}</p>)}
                     </div>
                     <div className="order-info-close">
                       <Icon name="cross" color="#35353f" size="18" styleName="cross" />
