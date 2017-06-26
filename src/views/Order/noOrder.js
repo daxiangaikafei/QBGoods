@@ -19,7 +19,7 @@ class NoOrder extends React.Component {
             <div className="container-no-order">
                 <div></div>
                 <p dangerouslySetInnerHTML={{__html: this.props.tipText || '亲，购物才会返返利哟'}}></p>
-                <a href="newTab://goodstuff.qbao.com/search">立即前去</a>
+                <a href="newTab://goodstuff.qbao.com/search">立即前去 </a>
             </div>
         )
     }
