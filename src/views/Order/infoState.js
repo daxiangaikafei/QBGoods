@@ -67,4 +67,4 @@ infoState.defaultProps = {
 }
 
 module.exports = infoState;
-//<div className="vi-nav-bar"><span className="left-icon"></span>返券详情</div>
+//<div className="vi-nav-bar"><span className="left-icon"></span>返利详情</div>

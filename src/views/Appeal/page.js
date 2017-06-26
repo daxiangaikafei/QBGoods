@@ -307,11 +307,11 @@ Appeal.defaultProps = {
     "phoneType":"",
     "orderId":"",
     "source": "tmall",
-    "reason": "什么时候返券",
+    "reason": "什么时候返利",
     "phoneBrand": "华为"
   },
   reasons:[
-    "什么时候返券","返券数目不对","购物之后，没有显示返券订单","返券订单在哪里查看","什么时候到货","其它"
+    "什么时候返利","返利数目不对","购物之后，没有显示返利订单","返利订单在哪里查看","什么时候到货","其它"
   ]
 }
 Appeal.contextTypes = {

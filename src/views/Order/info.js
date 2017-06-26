@@ -21,10 +21,10 @@ class Info extends React.Component {
             statusBack = <li className="info-select">返还返利</li>;
             break;
           case 2:
-            statusBack = <li className="info-select">返券被收回</li>;
+            statusBack = <li className="info-select">返利被收回</li>;
             break;
           case 3:
-            statusBack = <li className="info-select">返券失败</li>;
+            statusBack = <li className="info-select">返利失败</li>;
             break;
           default:
             statusBack = <li>返还返利</li>;
@@ -59,4 +59,4 @@ Info.defaultProps = {
 }
 
 module.exports = Info;
-//<div className="vi-nav-bar"><span className="left-icon"></span>返券详情</div>
+//<div className="vi-nav-bar"><span className="left-icon"></span>返利详情</div>
