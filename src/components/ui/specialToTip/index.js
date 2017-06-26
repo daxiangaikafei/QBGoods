@@ -30,7 +30,7 @@ class specialToTip extends Component {
               </div>
               <ol>
                 <li>使用您的{source === "jd" ? "京东账户" : "淘宝/天猫账号"}与密码登录</li>
-                <li>完成交易，在"我的订单"查看返券详情</li>
+                <li>完成交易，在"我的订单"查看返利详情</li>
                 <li>若有疑问可以及时申诉或查看规则</li>
               </ol>
             </div>

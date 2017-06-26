@@ -213,7 +213,7 @@ class OrderList extends React.Component {
                     </a>
                     <div className="order-item-todo" >
                         {rebateStatus>0&&(<button data-id={item.id} {...eventFun('109', 'order_remove', item.id)} className="js_del">删除</button>)}
-                        <button data-id={item.id} {...eventFun('109', 'order_rebate', item.id)} className="js_info">返券详情</button>
+                        <button data-id={item.id} {...eventFun('109', 'order_rebate', item.id)} className="js_info">返利详情</button>
                     </div>
                 </li>
             )
