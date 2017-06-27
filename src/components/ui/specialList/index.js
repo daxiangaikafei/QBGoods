@@ -100,7 +100,7 @@ class SpecialList extends Component {
                       </div>
                       <a href={'newtab://goodstuff.qbao.com/goods?url=' + item.coupon.link} >
                         <div className="coupon">
-                          <p>领{item.coupon.type}</p>
+                          <p>领优惠券</p>
                           <p>{item.coupon.value}</p>
                         </div>
                       </a>
