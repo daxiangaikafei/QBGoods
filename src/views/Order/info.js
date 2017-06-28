@@ -43,7 +43,7 @@ class Info extends React.Component {
                         <p><label>下单时间：</label>{data.orderTime||""}</p>
                         <p><label>订单金额：</label>{data.amount||""}</p>
                         <p><label>订单编号：</label>{data.orderNo||""}</p>
-                        <p><label>返还返利：</label>{data.rebateValue||""}</p>
+                        <p><label>返还返利：</label>{data.unit}{data.rebateValue||""}</p>
                         {data.appealValue != 0 &&(<p><label>增返返利：</label>{data.appealValue}</p>)}
                     </div>
                     <div className="order-info-close">
