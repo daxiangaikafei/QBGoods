@@ -208,7 +208,7 @@ class OrderList extends React.Component {
                         {$subItem}
                         <p className="order-item-info">共{item.stuffNum}件商品，合计:<em><i>￥</i>{totalPrice}</em>
                           {rebateStatus<2&&short}
-                          <span>{item.rebateValue}返利</span>
+                          <span>{item.unit}{item.rebateValue}返利</span>
                         </p>
                     </a>
                     <div className="order-item-todo" >
