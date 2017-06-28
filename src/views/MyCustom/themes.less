@@ -1,0 +1,468 @@
+html,body{ 
+  margin: 0;
+  width: 100%;height: 100%;
+}
+body{
+  background: #000;
+}
+@timeOutline:50s;
+@timeInline:30s;
+@size:50px;
+.skills-circle-wrap{ 
+    width: 300px;
+    height: 300px;  
+    position: absolute;
+    margin: 0 auto;
+    top: 10%;
+    left: 0;
+    right: 0;
+    pointer-events: fill; 
+    cursor: pointer; 
+  -webkit-transform: perspective(600px);
+  transform: perspective(600px);
+}
+.skills-top-circle{
+    position: absolute;  
+    top:0;left:0;right:0;bottom:0;
+    margin: auto;
+    width: 40px;
+    height: 40px; 
+    border-radius: 50%;  
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 12px;  
+    // background: #1C63E0; 
+    background: #1c63e0; /* Old browsers */
+    background: -moz-linear-gradient(top, #1c63e0 0%, #30bff2 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #1c63e0 0%,#30bff2 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #1c63e0 0%,#30bff2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c63e0', endColorstr='#30bff2',GradientType=0 ); /* IE6-9 */
+    box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.25);
+}
+.skills-circle{
+    width: 300px;
+    height: 300px;
+    position: absolute;  
+    top:0;left:0;right:0;bottom:0;
+    margin: auto;
+    border-radius: 50%; 
+    transition: 3s all;
+}  
+
+.skill-orbit{
+    border: 1px solid rgba(14, 190, 255, 0.39);
+    border-radius: 50%;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    position: absolute;  
+    top:0;left:0;right:0;bottom:0;
+    margin: auto;  
+  transition: 3s all;
+  transform: perspective(600px);
+}
+.skill-orbit:nth-child(1){
+    width: 100%; height: 100%;   
+}
+.skill-orbit:nth-child(2){
+    width: 50%; height: 50%;
+}
+.skill-orbit:nth-child(3){
+    width: 10%; height: 10%;
+}
+
+.skill-planet{
+    width: @size;
+    height: @size;
+    border-radius: 50%; 
+    position: absolute;
+    top: -@size / 2;
+    left:0;right:0;
+    margin: 0 auto; 
+    font-family: Arial;
+    font-weight: 100;
+    text-align: center; 
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    transition: 1s all;
+    font-size: 12px;
+    line-height: @size;
+  &:hover {
+    // animation: zoomOut .2s linear !important;
+    // transform-origin: center!important;
+    // opacity: 0;
+    // transform: scale(100);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(100);
+  }
+}
+.skill-planet span{
+    display: block;
+}
+
+.skill-orbit:nth-child(1) .skill-planet{
+    background: #FB6B97;
+    // border:2px solid #FFF9BF;
+    color:#fff;
+    // font-size: 16px;
+    // line-height: 26px;
+}
+.skill-orbit:nth-child(1) .skill-planet:nth-child(2) {
+  background: #47cf73;
+    color:#fff;
+}
+.skill-orbit:nth-child(1) .skill-planet:nth-child(3) {
+  background: #fcd000;
+    color:#fff;
+}
+.skill-orbit:nth-child(1) .skill-planet:nth-child(4) {
+  background: #0ebeff;
+    color:#fff;
+}
+.skill-orbit:nth-child(2) .skill-planet{
+    background: #fcd000;
+    // border:2px solid #A3B476;
+    color:#fff;
+    // font-size: 12px;
+    // line-height: 26px;
+}
+.skill-orbit:nth-child(2) .skill-planet:nth-child(2){
+    background: #b9f;
+    color:#fff;
+}
+.skill-orbit:nth-child(2) .skill-planet:nth-child(3){
+    background: #ff3c41;
+    color:#fff;
+}
+.skill-orbit:nth-child(2) .skill-planet:nth-child(4){
+    background: #F3985D;
+    color:#fff;
+}
+.skill-orbit:nth-child(1) .skill-planet {
+    -webkit-transform-origin: 50% 345%;
+    transform-origin: 50% 345%;
+}
+.skill-orbit:nth-child(2) .skill-planet {
+    -webkit-transform-origin: 50% 195%;
+    transform-origin: 50% 195%;
+}
+.skill-orbit:nth-child(1) .skill-planet:nth-child(1){
+    -webkit-animation: travelOrbit @timeOutline infinite linear;
+    animation: travelOrbit @timeOutline infinite linear;
+}
+.skill-orbit:nth-child(1) .skill-planet:nth-child(1) span{
+    -webkit-animation: unrotate @timeOutline infinite linear;
+    animation: unrotate @timeOutline infinite linear;
+}
+.skill-orbit:nth-child(1) .skill-planet:nth-child(2) {
+  -webkit-animation: travelOrbit1 @timeOutline infinite linear;
+    animation: travelOrbit1 @timeOutline infinite linear;
+}
+.skill-orbit:nth-child(1) .skill-planet:nth-child(2) span {
+    -webkit-animation: unrotate1 @timeOutline infinite linear;
+    animation: unrotate1 @timeOutline infinite linear;
+}
+.skill-orbit:nth-child(1) .skill-planet:nth-child(3)  {
+  -webkit-animation: travelOrbit2 @timeOutline infinite linear;
+    animation: travelOrbit2 @timeOutline infinite linear;
+}
+.skill-orbit:nth-child(1) .skill-planet:nth-child(3) span {
+    -webkit-animation: unrotate2 @timeOutline infinite linear;
+    animation: unrotate2 @timeOutline infinite linear;
+}
+.skill-orbit:nth-child(1) .skill-planet:nth-child(4)  {
+  -webkit-animation: travelOrbit3 @timeOutline infinite linear;
+    animation: travelOrbit3 @timeOutline infinite linear;
+}
+.skill-orbit:nth-child(1) .skill-planet:nth-child(4) span {
+    -webkit-animation: unrotate3 @timeOutline infinite linear;
+    animation: unrotate3 @timeOutline infinite linear;
+}
+.skill-orbit:nth-child(2) .skill-planet{
+    -webkit-animation: travelOrbit7 @timeInline infinite linear;
+    animation: travelOrbit7 @timeInline infinite linear;
+}
+.skill-orbit:nth-child(2) span{
+    -webkit-animation: unrotate7 @timeInline infinite linear; 
+    animation: unrotate7 @timeInline infinite linear; 
+}
+.skill-orbit:nth-child(2) .skill-planet:nth-child(2){
+    -webkit-animation: travelOrbit4 @timeInline infinite linear;
+    animation: travelOrbit4 @timeInline infinite linear;
+}
+.skill-orbit:nth-child(2) .skill-planet:nth-child(2) span{
+    -webkit-animation: unrotate4 @timeInline infinite linear; 
+    animation: unrotate4 @timeInline infinite linear; 
+}
+.skill-orbit:nth-child(2) .skill-planet:nth-child(3){
+    -webkit-animation: travelOrbit5 @timeInline infinite linear;
+    animation: travelOrbit5 @timeInline infinite linear;
+}
+.skill-orbit:nth-child(2) .skill-planet:nth-child(3) span{
+    -webkit-animation: unrotate5 @timeInline infinite linear; 
+    animation: unrotate5 @timeInline infinite linear; 
+}
+.skill-orbit:nth-child(2) .skill-planet:nth-child(4){
+    -webkit-animation: travelOrbit6 @timeInline infinite linear;
+    animation: travelOrbit6 @timeInline infinite linear;
+}
+.skill-orbit:nth-child(2) .skill-planet:nth-child(4) span{
+    -webkit-animation: unrotate6 @timeInline infinite linear; 
+    animation: unrotate6 @timeInline infinite linear; 
+}
+.skill-orbit:nth-child(3) .skill-planet{
+    -webkit-animation: travelOrbit 26s infinite linear;
+    animation: travelOrbit 26s infinite linear;
+    -webkit-transform-origin: 50% 480%;
+    transform-origin: 50% 480%;
+}
+.skill-orbit:nth-child(3) span{
+    -webkit-animation: unrotate 26s infinite linear; 
+    animation: unrotate 26s infinite linear; 
+}
+.skill-orbit:nth-child(4) .skill-planet{
+    -webkit-animation: travelOrbit 24s infinite linear;
+    animation: travelOrbit 24s infinite linear;
+    -webkit-transform-origin: 50% 363%;
+    transform-origin: 50% 363%;
+}
+.skill-orbit:nth-child(4) span{
+    -webkit-animation: unrotate 24s infinite linear; 
+    animation: unrotate 24s infinite linear; 
+}
+.skill-orbit:nth-child(5) .skill-planet{
+    -webkit-animation: travelOrbit 22s infinite linear;
+    animation: travelOrbit 22s infinite linear;
+    -webkit-transform-origin: 50% 243%;
+    transform-origin: 50% 243%;
+}
+.skill-orbit:nth-child(5) span{
+    -webkit-animation: unrotate 22s infinite linear; 
+    animation: unrotate 22s infinite linear; 
+} 
+@-webkit-keyframes travelOrbit { 
+    0% { -webkit-transform: rotate(0deg); } 
+    100% { -webkit-transform: rotate(360deg); } 
+} 
+@keyframes travelOrbit { 
+    0% { transform: rotate(0deg); } 
+    100% { transform: rotate(360deg); } 
+}
+
+@-webkit-keyframes unrotate { 
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(-360deg); } 
+}  
+@keyframes unrotate { 
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); } 
+} 
+.travelOrbitKeyFrames(1,90deg);
+.travelOrbitKeyFrames(2,180deg);
+.travelOrbitKeyFrames(3,270deg);
+
+.travelOrbitKeyFrames(4,60deg);
+.travelOrbitKeyFrames(5,150deg);
+.travelOrbitKeyFrames(6,240deg);
+.travelOrbitKeyFrames(7,330deg);
+
+
+.travelOrbitKeyFrames(@name:1;@deg:0deg) {
+  @-webkit-keyframes ~`"travelOrbit"+@{name}` { 
+    0% { -webkit-transform: rotate(0deg + @deg); } 
+    100% { -webkit-transform: rotate(360deg + @deg); } 
+  } 
+  @keyframes ~`"travelOrbit"+@{name}` { 
+      0% { transform: rotate(0deg + @deg); } 
+      100% { transform: rotate(360deg + @deg); } 
+  }
+  @-webkit-keyframes ~`"unrotate"+@{name}` { 
+    0% { -webkit-transform: rotate(0deg - @deg); }
+    100% { -webkit-transform: rotate(-360deg - @deg); } 
+  }  
+  @keyframes ~`"unrotate"+@{name}` { 
+      0% { transform: rotate(0deg - @deg); }
+      100% { transform: rotate(-360deg - @deg); } 
+  } 
+}
+.btn{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #000;
+  cursor: pointer;
+  position: absolute;
+  bottom: -150px;
+  left: 0;right: 0;
+  margin: 0 auto;
+  color:#aeaeae;
+  text-align: center;
+  line-height: 100px;
+}
+.btn:hover + .skills-circle{ 
+  -webkit-transform:rotate3d(60,35,0,360deg);
+  transform:rotate3d(60,35,0,360deg);
+}  
+
+  
+/* background */
+.night-background {
+  // background: linear-gradient(180deg, #000000, #000033);
+  background: rgb(40,41,101); /* Old browsers */
+  background: -moz-linear-gradient(45deg, rgba(40,41,101,1) 2%, rgba(52,37,88,1) 28%, rgba(97,45,146,1) 48%, rgba(97,45,146,1) 55%, rgba(52,37,88,1) 73%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, rgba(40,41,101,1) 2%,rgba(52,37,88,1) 28%,rgba(97,45,146,1) 48%,rgba(97,45,146,1) 55%,rgba(52,37,88,1) 73%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, rgba(40,41,101,1) 2%,rgba(52,37,88,1) 28%,rgba(97,45,146,1) 48%,rgba(97,45,146,1) 55%,rgba(52,37,88,1) 73%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#282965', endColorstr='#342558',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  position: fixed;
+  overflow: hidden;
+  height: 100%;
+  min-height: 410px;
+  width: 100%;
+}
+.planet {
+  position:absolute;
+  left:-20%;
+  bottom:0;
+  box-shadow: 0 0 15px rgba(255, 248, 219, 0.7) ,0 0 15px rgba(255, 248, 219, 0.5); //, inset -5px -5px 40px rgba(0,0,0,.5);
+  background-image: -webkit-linear-gradient(top,#FFF8DB -10% , #7BB7E8 20%, #2751D9 100%);
+  background-image: linear-gradient(to bottom, #FFF8DB -10% , #7BB7E8 20%, #2751D9 100% );
+  background-image: radial-gradient(to top, #2751D9 100%, #7BB7E8 50%, #FFF8DB 0%);  width:140%;
+  height:50px;
+  bottom:-40px;
+          border-radius: 100%;
+     -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+}
+.text {
+  font-family: 'Open Sans', Arial, sans-serif;
+  position: absolute;
+  bottom: 50px;
+  color: #ffffff;
+  left: 30px;
+  @media (max-width: 436px) {
+    width: 92%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+  h1 {
+  font-size:26px;
+  font-weight: 400;
+  opacity:.8;
+  @media (max-width: 399px) {
+    font-size: 20px;
+    }
+  }
+  h2 {
+    font-weight: 300;
+    opacity:.5;
+    font-size:17px;
+    margin-top:5px;
+  }
+}
+
+.make-random(@min, @max1, @max2, @max3, @max4, @max5) { 
+  @rnd1: floor(`Math.random() * @{max1} + @{min}`);
+  @rnd2: floor(`Math.random() * @{max2} + @{min}`);
+  @rnd3: floor(`Math.random() * @{max3} + @{min}`);
+  @rnd4: floor(`Math.random() * @{max4} + @{min}`);
+  @rnd5: floor(`Math.random() * @{max5} + @{min}`);
+}
+.make-random-int(@min, @max) { 
+  @rndInt1: floor(`Math.random() * @{max} + @{min}`);
+  @rndInt2: floor(`Math.random() * @{max} + @{min}`);
+}
+.star {
+  -webkit-animation-name: flicker;
+  -webkit-animation-timing-function: ease(in-out-circ);
+  -webkit-animation-direction: alternate;
+  -webkit-animation-iteration-count: infinite;
+  animation-name: flicker;
+  animation-timing-function: ease(in-out-circ);
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  background: #fff;
+  border-radius: 50%; 
+  position: absolute;
+  opacity: 1; 
+}
+.starLoop(@counter) when (@counter > 0) {
+  .make-random(1, 10, 9, 4, 3, 5);
+  .make-random-int(1, 100);
+  @size: @rnd5 * 0.02rem;
+  
+  .star:nth-child(@{counter}) {
+    animation-delay: @rnd1 / @rnd2 + 0s;
+    animation-duration: @rnd3 / @rnd4 + 0s;
+    -webkit-animation-delay: @rnd1 / @rnd2 + 0s;
+    -webkit-animation-duration: @rnd3 / @rnd4 + 0s;
+    left: @rndInt1 + 0vw;
+    top: @rndInt2 + 0vh;
+    height: @size;
+    width: @size;
+  }
+  .starLoop((@counter - 1));
+}
+@keyframes flicker {
+  to {opacity: 0.25;}
+}
+@-webkit-keyframes flicker {
+  0% {opacity: 1;}
+  50% {opacity: 0.25;}
+  100% {opacity: 1;}
+}
+.star-container {
+  height: 100vh;
+  width: 100vw;
+  perspective: 120rem;
+  position: absolute;
+  top: 0;
+  transform-style: preserve-3d;
+  width: 100%;
+}
+#container1 { // still stars
+  .star-container;
+  .starLoop(80);
+  transform: rotate(0deg);
+}
+#container4 { // still stars
+  .star-container;
+  .starLoop(80);
+  transform: rotate(90deg);
+}
+#container2 {
+  .star-container;
+  .starLoop(80);
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  animation: rotate 250s infinite linear;
+  -webkit-animation: rotate 250s infinite linear;
+}
+#container3 {
+  .star-container;
+  .starLoop(80);
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  animation: rotate 300s infinite linear;
+  -webkit-animation: rotate 300s infinite linear;
+}
+
+@keyframes rotate {
+    0% { transform:rotate(0deg); }
+    100%  { transform: rotate(360deg); }
+}
+@-webkit-keyframes rotate {
+    0% { -webkit-transform:rotate(0deg); }
+    100%  { -webkit-transform:rotate(360deg); }
+}
