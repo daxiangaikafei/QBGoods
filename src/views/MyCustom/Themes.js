@@ -1,22 +1,25 @@
 import React, { Component } from 'react'
-import * as ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import { connect } from 'dva'
-import { eventFun } from 'libs/util';
-import { fetchPosts } from "components/common/fetch";
+import { Link } from 'react-router'
+import { eventFun } from 'libs/util'
+import { fetchPosts } from "components/common/fetch"
 import "./themes.less"
 
 class Themes extends Component {
 
-  constructor(props) {
-    super(props);
-    
+  constructor(props, context) {
+    super(props, context)
+    this.state = {
+      inner: [],
+      outer: [],
+      isScale: false
+    }
   }
   
   componentWillMount() {
-    let planets = ['JS','CSS','Vue','NG','React','Redux','Dva']
-    // let planets = ['JS','CSS','Vue','NG','React','Redux','Dva','LESS']
-    this.handlePlanets(planets)
+
   }
   
   componentDidMount() {
@@ -30,23 +33,30 @@ class Themes extends Component {
 
       init: function() {
         starryNight.setStars();
-        starryNight.body.classList.add("show_website_nav");
+        starryNight.body.classList.add("show_website_nav")
       },
 
       setStars: function() {
         for (let i = 0; i < 40; i++) {
-          starryNight.container1.innerHTML += "<i class='star'></i>";
-          starryNight.container2.innerHTML += "<i class='star'></i>";
-          starryNight.container3.innerHTML += "<i class='star'></i>";
-          starryNight.containertest.innerHTML += "<i class='star'></i>";
+          starryNight.container1.innerHTML += "<i class='star'></i>"
+          starryNight.container2.innerHTML += "<i class='star'></i>"
+          starryNight.container3.innerHTML += "<i class='star'></i>"
+          starryNight.containertest.innerHTML += "<i class='star'></i>"
         }
       }
     }
     starryNight.init()
+
+    fetchPosts('/stuff/theme/getUserTheme.do',{},'GET').then(data => {
+      if (data.success) {
+        let planets = data.data
+        this.handlePlanets(planets)
+      }
+    })
   }
   componentDidUpdate() {
   }
-  handlePlanets = (planets) => {
+  handlePlanets = planets => {
     let inner = [], 
         outer = []
     // while (planets.length > 0) {
@@ -59,38 +69,51 @@ class Themes extends Component {
       let innerItem = planets.pop(),
           outerItem = planets.pop()
       if (!innerItem && i > 0 && i != 3) {
-        let temp = this.props.inner[i-1]
-        this.props.inner[i-1] = innerItem
-        this.props.inner[i] = temp
+        let temp = inner[i-1]
+        inner[i-1] = innerItem
+        inner[i] = temp
       } else {
-        this.props.inner[i] = innerItem
+        inner[i] = innerItem
       }
       
       if (!outerItem) {
-        let temp = this.props.outer[i-1]
-        this.props.outer[i-1] = outerItem
-        this.props.outer[i] = temp
+        let temp = outer[i-1]
+        outer[i-1] = outerItem
+        outer[i] = temp
       } else {
-        this.props.outer[i] = outerItem
+        outer[i] = outerItem
       }
     }
+    this.setState({
+      inner,
+      outer
+    })
     // console.log('inner', props.inner)
     // console.log('outer', props.outer)
   }
+  handlePlanetsClick = id => {
+    this.setState(
+      {
+        isScale: true
+      }
+    )
+    this.context.router.push({"pathname": "/", state: { id: id }})
+
+  }
   render() {
-    let { inner, outer } = this.props
+    let { inner, outer } = this.state
     let innerContent = inner.map((item, index) => {
       if(!item) {
-        return <div className="skill-planet" style={{'width':0,'height':0}} key={index}><span>{item}</span></div>
+        return <div className="skill-planet" style={{'width':0,'height':0}} key={index} onClick={()=>{this.handlePlanetsClick(item.id)}}><span>{item.name}</span></div>
       } else {
-        return <div className="skill-planet" key={index}><span>{item}</span></div>
+        return <div className="skill-planet" key={item.id} onClick={()=>{this.handlePlanetsClick(item.id)}}><span>{item.name}</span></div>
       }     
     })
     let outerContent = outer.map((item, index) => {
       if(!item) {
-        return <div className="skill-planet" style={{'width':0,'height':0}} key={index}><span>{item}</span></div>
+        return <div className="skill-planet" style={{'width':0,'height':0}} key={index} onClick={()=>{this.handlePlanetsClick(item.id)}}><span>{item.name}</span></div>
       } else {
-        return <div className="skill-planet" key={index}><span>{item}</span></div>
+        return <div className="skill-planet" key={item.id} onClick={()=>{this.handlePlanetsClick(item.id)}}><span>{item.name}</span></div>
       }  
     })
     return (
@@ -102,7 +125,7 @@ class Themes extends Component {
           <div id='container4'></div>
         </div>
         <div className="skills-circle-wrap">
-            <div className="skills-circle">
+            <div className={classNames("skills-circle", {scaleEffect: this.state.isScale})}>
                 <div className="skill-orbit">
                   { outerContent }
                 </div>
@@ -114,12 +137,12 @@ class Themes extends Component {
             </div>
             <div className="skills-top-circle panel">更多</div>
         </div>
+        <Link to="/" className="modify-btn">修改</Link>
       </div>
     )
   }
 }
-Themes.defaultProps = {
-  inner: [],
-  outer: []
+Themes.contextTypes = {
+  router: React.PropTypes.object.isRequired
 }
-export default Themes;
+export default Themes
