@@ -41,6 +41,24 @@ class SpecialList extends Component {
         let listTpl = "";
 
         switch (this.props.listConfig.temp) {
+          case "frontMatter":
+            listTpl = this.props.listData.map((item, index) =>
+                <div styleName="item" key={index}>
+                    {item.isNew && <i styleName="new-icon">NEW</i>}
+                    <a styleName="img"  onClick={this.clickLinkSource.bind(this,item.url,item.source)}><img src={item.imgUrl} alt="" /></a>
+                    <a href={item.url}  onClick={this.clickLinkSource.bind(this,item.url,item.source)}><h3>{item.name}</h3></a>
+                    <div styleName="source">
+                        <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
+                        <span className='estimate'>{item.rebateValue}</span>
+                    </div>
+                    {item.coupon ? <div styleName="price">券后￥{priceFormat(item.finalPrice - item.coupon.value)}</div> : <div styleName="price">￥{priceFormat(item.price)}</div>}
+                    <div styleName="bottom">
+                        {item.saleCount ? <p styleName="sales">销量 <span>{item.saleCount}</span></p> : ''}
+                        {item.coupon ? <a href={item.coupon.link} className="couponlink"><p className="couponvalue">{item.coupon.value}</p><p className="couponunit">优惠券</p></a> : <a href={item.url}><span styleName="grab">马上抢</span></a>}
+                    </div>
+                </div>
+            );
+            break;
           case "beauty":
             listTpl = this.props.listData.map((item, index) =>
                 <div styleName="singleitem" key={index}>
@@ -109,7 +127,7 @@ class SpecialList extends Component {
         }
 
         return (
-            <div styleName={classNames({"list":true ,"nine": this.props.listConfig.temp==="nine" ,"beauty": this.props.listConfig.temp==="beauty" })}>
+            <div styleName={classNames({"list":true ,"nine": this.props.listConfig.temp==="nine" ,"beauty": this.props.listConfig.temp==="beauty", "frontMatter":  this.props.listConfig.temp==="frontMatter"})}>
                 {
                     this.props.listData.length > 0 ? listTpl : ''
                 }

@@ -15,7 +15,7 @@ function CoreLayout ({ children, location,route }) {
       type: 'page'
     })
 
-    
+
   return (
     <div>
         {/*<NavBar {...arguments[0]}/>*/}

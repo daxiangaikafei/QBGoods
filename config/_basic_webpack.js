@@ -200,7 +200,7 @@ webpackConfig.module.loaders.push(
   {
     test: /\.(less|css)$/,
     include: /(src|src\/static\/style)/,
-    exclude: /(node_modules|src\/views\/Home\/|src\/views\/GatherGoods\/|src\/views\/GatherStore\/|src\/views\/Activity\/|src\/views\/IconDoc\/)/,
+    exclude: /(node_modules|src\/views\/Home\/|src\/views\/GatherGoods\/|src\/views\/GatherStore\/|src\/views\/Activity\/|src\/views\/IconDoc\/|src\/components\/swipe\/)/,
     loaders: [
         'style',
         cssLoader,
@@ -210,7 +210,7 @@ webpackConfig.module.loaders.push(
   },
   {
     test: /\.(less|css)$/,
-    include: /(src\/views\/Home\/|src\/views\/GatherGoods\/|src\/views\/GatherStore\/|src\/views\/Activity\/|src\/views\/IconDoc\/)/,
+    include: /(src\/views\/Home\/|src\/views\/GatherGoods\/|src\/views\/GatherStore\/|src\/views\/Activity\/|src\/views\/IconDoc\/|src\/components\/swipe\/)/,
     exclude: /node_modules/,
     loaders: [
         'style',

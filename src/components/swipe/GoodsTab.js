@@ -1,7 +1,9 @@
 import React,{ Component } from 'react'
 import * as ReactDOM from 'react-dom';
 import Tappable from 'react-tappable';
-import styles from './tabs.less'
+import styles from './tabs.less';
+import classNames from 'classnames'
+import CSSModules from 'react-css-modules'
 import { eventFun } from 'libs/util';
 
 let isInit =true;
@@ -81,13 +83,14 @@ class GoodsTab extends Component {
   render() {
     let tabs = this.props.tabs || [];
     let active = this.props.active || 0;
+    console.log("active.....",active);
     let { pageName, model } = this.props.eventConfig;
     return (
-      <div className="hots-tabs-container" ref="touch">
-        <div className="hots-tabs-content" ref="swipeparent">
-          <div className="hots-tabs-warpper" ref="swipe">
+      <div styleName="hots-tabs-container" ref="touch">
+        <div styleName="hots-tabs-content" ref="swipeparent">
+          <div styleName="hots-tabs-warpper" ref="swipe">
             {
-              this.props.tabs.map((item, i) => <div {...eventFun(pageName, model, item.id)}  onClick={this.tabsClickHandler.bind(this,i)} key={i} className={active == i ? 'tabs-item tabs-item-active' : 'tabs-item'}><span>{item.dirName}</span></div>)
+              this.props.tabs.map((item, i) => <div {...eventFun(pageName, model, item.id)}  onClick={this.tabsClickHandler.bind(this,i)} key={i} styleName={active == i ? 'tabs-item tabs-item-active' : 'tabs-item'}><span>{item.dirName || item.name}</span></div>)
             }
           </div>
         </div>
@@ -98,4 +101,4 @@ class GoodsTab extends Component {
 GoodsTab.defaultProps = {
     isInit: true
 }
-export default GoodsTab;
+export default CSSModules(GoodsTab, styles, { allowMultiple: true });

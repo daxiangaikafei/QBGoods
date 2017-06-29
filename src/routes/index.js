@@ -27,6 +27,8 @@ import Women from "views/Special/Women/page"
 import BrandShop from "views/Special/BrandShop/page"
 import BrandShopList from "views/Special/BrandShopList/page"
 import FrontMatter from "views/Special/FrontMatter/page"
+import MyLabels from "views/MyLabels/page"
+import MyLabelsTheme from "views/MyLabelsTheme/page"
 
 export default function (ref) {
   return (
@@ -57,6 +59,8 @@ export default function (ref) {
         <Route path='/GoodsClass' component={GoodsClass} name="商品分类" />
         <Route path='/List/:id' component={List} name="专场" />
         <Route path='/FrontMatter/:id' component={FrontMatter} name="有好货" />
+        <Route path='/MyLabels' component={MyLabels} name="修改" />
+        <Route path='/MyLabelsTheme' component={MyLabelsTheme} name="个性主题" />
 
         <Route path='/Nine/:id' component={Nine} name="9.9专场" />
         <Route path='/Coupon/:id' component={Coupon} name="好券直播" />

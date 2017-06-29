@@ -11,14 +11,14 @@ class Tabs extends Component {
         this.state = {
         }
         props.tabsConfig.model ? props[props.tabsConfig.model][props.tabsConfig.statusKey ? props.tabsConfig.statusKey : 'tabActive'] = props.tabsConfig.active || 0 : void 0
-        props.action(`${props.tabsConfig.model}/${props.tabsConfig.names[props.tabsConfig.active || 0].action}`)
+        props.action(`${props.tabsConfig.model}/${props.tabsConfig.names[props.tabsConfig.active || 0].action}`, props.tabsConfig.stuffId)
     }
 
     toggleTabHandler = index => {
         let props = this.props
         props.tabsConfig.model ? props[props.tabsConfig.model][props.tabsConfig.statusKey ? props.tabsConfig.statusKey : 'tabActive'] = index : void 0
         props[props.tabsConfig.model]['page'] == 1
-        props.action(`${props.tabsConfig.model}/${props.tabsConfig.names[index].action}`)
+        props.action(`${props.tabsConfig.model}/${props.tabsConfig.names[index].action}`, props.tabsConfig.stuffId)
     }
 
     eventLog = (pageName, model) => {
@@ -52,8 +52,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        action(type) {
-            dispatch({ type });
+        action(type, stuffId) {
+            dispatch({ type , stuffId});
         }
     }
 }

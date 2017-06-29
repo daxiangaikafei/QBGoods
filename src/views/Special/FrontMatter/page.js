@@ -23,7 +23,7 @@ class FrontMatter extends Component {
       },
       {
         key:'关联推荐',
-        action: 'getLikeList'
+        action: 'getRelatedList'
       }
 
     ], //required
@@ -32,21 +32,24 @@ class FrontMatter extends Component {
   }
   constructor(props) {
     super(props)
-    let infoDatas = this.props.location && this.props.location.state.infos;
+    let infoDatas ={};// this.props.location && this.props.location.state.infos;
     console.log(infoDatas);
+
+    this.tabsConfig.stuffId = props.params.id;
     this.state = {
         infoDatas: infoDatas,
-        brandId: props.params.id,
+        stuffId: props.params.id,
         items:[],
         page: 1,
         isLoading: false,
         isEnd:false
     }
+    // this.getInfo = this.getInfo.bind(this);
     this.getData = this.getData.bind(this);
     this.touchMove = this.touchMove.bind(this);
   }
   componentDidMount() {
-    // this.getData(1);
+    this.getInfo();
     // this.props.getLikeList(this.state.brandId);
   }
   componentDidUpdate() {
@@ -68,6 +71,41 @@ class FrontMatter extends Component {
       return;
     }
     this.props.action({type:`${model}/${action}`,page:++page})
+  }
+  getInfo = () => {
+    let {infoUrl} = this.props;
+    let {isLoading,stuffId} = this.state;
+
+    if(isLoading){
+        return;
+    }
+    this.setState({
+        isLoading:true
+    })
+    let _this = this;
+    let param = Object.assign({},{ stuffId: stuffId});
+    return fetchPosts(infoUrl ,param,"GET").then((data)=>{
+        if(data.responseCode===1000){
+          _this.setState({
+              isLoading:false,
+              infoDatas: data.data
+          });
+        }else{
+             _this.setState({
+                isLoading:false
+              });
+        }
+     }).catch(function(){
+                _this.setState({
+                    isLoading:false});
+     });
+  }
+  directbuyHandler = () => {
+    if(this.state.infoDatas.coupon){
+      window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + this.state.infoDatas.coupon.link;
+    }else{
+      window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + this.state.infoDatas.linkUrl;
+    }
   }
   render() {
     let noDataTip = "--已经到底了--";
@@ -91,40 +129,59 @@ class FrontMatter extends Component {
         vertical:true,
         touchMove:this.touchMove
     }
-    // console.log("this.props.productList", this.props.productList);
+    let infosale = null, footertext = null;
+    if(this.state.infoDatas.coupon){
+      infosale = <div className="info-sale">
+        <p className="info-price">券后 ￥{priceFormat(this.state.infoDatas.finalPrice - this.state.infoDatas.coupon.value)}</p>
+        <p className="info-orderNum">销量 {this.state.infoDatas.saleCount}</p>
+      </div>;
+      footertext = <div className="special-mrontmatter-footer-text">
+        <p className="footer-price">券后 ￥{priceFormat(this.state.infoDatas.finalPrice - this.state.infoDatas.coupon.value)}</p>
+        <p className="footer-rebateValue">{this.state.infoDatas.rebateValue}</p>
+      </div>;
+    }else{
+      infosale = <div className="info-sale">
+        <p className="info-price">￥{priceFormat(this.state.infoDatas.price)}</p>
+        <p className="info-orderNum">销量 {this.state.infoDatas.saleCount}</p>
+      </div>;
+      footertext = <div className="special-mrontmatter-footer-text">
+        <p className="footer-price">￥{priceFormat(this.state.infoDatas.price)}</p>
+        <p className="footer-rebateValue">{this.state.infoDatas.rebateValue}</p>
+      </div>;
+    }
     return (
       <div>
         <div className="special-mrontmatter-container">
-          <div>
-            <Swipe  {...props} >
-              <div className=" special-mrontmatter-warpper">
-                <div className="special-swiper">
-                  <img src={this.bannerpic}/>
-                  <div className="goods-text">
-                    <img src={this.headimg}/>
-                  </div>
+          <Swipe  {...props} >
+            <div className="special-mrontmatter-warpper">
+              <div className="special-swiper">
+                <img src={this.state.infoDatas.imgUrl}/>
+                <div className="goods-text">
+                  <img src={this.headimg}/>
                 </div>
-                <div className="special-infos">
-                  <p className="info-name">{this.state.infoDatas.name}</p>
-                  <div className="info-sale">
-                    <p className="info-price">券后 ￥{priceFormat(this.state.infoDatas.finalPrice)}</p>
-                    <p className="info-orderNum">销量 {this.state.infoDatas.orderNum}</p>
-                  </div>
-                </div>
-                <Tabs
-                  tabsConfig={this.tabsConfig}
-                  eventConfig={{
-                    pageName: '101',
-                    model: 'gather_goods_tab'
-                  }}/>
-                <SpecialList listConfig={{temp: 'nina'}} listData={this.props.productList} eventConfig={{pageName:this.pageName,model:`hot_goods_${this.state.active}_products`}}/>
-                { noTip }
               </div>
-            </Swipe>
-          </div>
-
+              <div className="special-infos">
+                <p className="info-name">{this.state.infoDatas.name}</p>
+                {infosale}
+                {this.state.infoDatas.copyWriter  ? <p className="info-copyWriter">{this.state.infoDatas.copyWriter}</p> : '' }
+              </div>
+              <Tabs
+                tabsConfig={this.tabsConfig}
+                eventConfig={{
+                  pageName: '101',
+                  model: 'gather_goods_tab'
+                }}/>
+              <SpecialList listConfig={{temp: 'frontMatter'}} listData={this.props.productList} eventConfig={{pageName:this.pageName,model:`hot_goods_${this.state.active}_products`}}/>
+              { noTip }
+            </div>
+          </Swipe>
         </div>
-        <div className="special-mrontmatter-footer"></div>
+        <div className="special-mrontmatter-footer">
+          {footertext}
+          <div className="special-mrontmatter-directbuy" onClick={this.directbuyHandler}>
+            {this.state.infoDatas.coupon  ? '领券购买' : '直接购买' }
+          </div>
+        </div>
       </div>
     )
   }
@@ -133,6 +190,7 @@ FrontMatter.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 FrontMatter.defaultProps = {
+  infoUrl: "/stuff/detail.do",
   infoDatas:{
     brandName:"",
     offSale:"",
