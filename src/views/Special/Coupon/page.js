@@ -89,6 +89,11 @@ class Coupon extends Component {
       let _this = this;
       let param = Object.assign({},{page: page, cId: activeId, size: pageSize}, searchParam);
       page = param.page;
+      if(param.cId === 0){
+        _this.setState({
+            isLoading:false});
+        return;
+      }
       return fetchPosts(listUrl ,param,"GET").then((data)=>{
           if(data.responseCode===1000){
               if(page===1){

@@ -91,7 +91,11 @@ class GoodsClass extends Component {
     })
     let _this = this;
     let param = Object.assign({},searchParam);
-
+    if(param.cId === 0){
+      _this.setState({
+          isLoading:false});
+      return;
+    }
     return fetchPosts(listUrl ,param,"GET").then((data)=>{
         if(data.responseCode===1000){
           _this.setState({

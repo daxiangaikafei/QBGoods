@@ -82,6 +82,11 @@ class SelfSupport extends Component {
       let _this = this;
       let param = Object.assign({},{cId: active, page: page,size: 8},searchParam);
       page = param.page;
+      if(param.cId === 0){
+        _this.setState({
+            isLoading:false});
+        return;
+      }
       return fetchPosts("/stuff/qbzy/goodsList.do",param,"GET").then((data)=>{
               // console.log("data.data.lenght" , data.data.length);
               if(data.responseCode===1000){
