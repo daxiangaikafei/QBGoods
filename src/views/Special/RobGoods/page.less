@@ -1,0 +1,171 @@
+@import '~libs/layout/layout-mixin.less';
+main{
+  >div{
+    overflow-y: hidden;
+    -webkit-transform:translate3d(0,0,0);
+  }
+  .no-up{
+    background-color: white;
+    padding: 12px 0;
+    width: 100%;
+    text-align: center;
+  }
+  .man-swiper{
+    position: relative;
+  }
+  .scroll-warpper{
+    overflow: hidden;
+    height: 100%;
+  }
+  .scroll-warpper{
+    -webkit-transform:translate3d(0,0,0);
+  }
+  .special-rob-container{
+    overflow: hidden;
+    .rob-item{
+      margin-bottom: 10px;
+    }
+    .rob-item-img{
+      font-size: 50px;
+      background-color: #fff;
+      div{
+        height: 0;
+        padding-bottom: 50%;
+        overflow: hidden;
+        img{
+          width: 100%;
+        }
+      }
+    }
+    .rob-item-name{
+      padding: 10px 10px;
+      background-color: #fff;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .rob-item-info{
+      .flex;
+      .flex-vertical-row;
+      .flex-justify-center;
+      .flex-justify-space-between;
+      padding: 0px 10px 10px;
+      background-color: #fff;
+      .rob-price{
+        color: #fd472b;
+        font-size: 16px;
+        .rob-i-coupon{
+          width: 27px;
+          height: 12px;
+          display: inline-block;
+          margin-left: 3px;
+          background: url('static/imgs/special/couponback.png') no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+      .icon {
+          display: inline-block;
+          width: 12px;
+          height: 12px;
+          margin-left: 5px;
+          img {
+              margin-top: -4px;
+          }
+      }
+      .rob-buybtns{
+        color: #fd472b;
+        .flex;
+        .flex-vertical-row;
+        .flex-justify-center;
+        .rob-coupon{
+          width: 48px;
+          height: 37px;
+          // display: inline-block;
+          font-size: 12px;
+          background: url('static/imgs/special/coupon2.png') no-repeat;
+          background-size: 100% 100%;
+          text-align: center;
+          p:nth-child(1){
+            margin-top: 5px;
+          }
+        }
+        .rob-btn{
+          background-color: #fd472b;
+          width: 80px;
+          height: 37px;
+          // display: inline-block;
+          line-height: 37px;
+          text-align: center;
+          color: #fff;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+.rob-tabs-warpper{
+  position: relative;
+  font-size: 0;
+  white-space: nowrap;
+  height: 50px;
+  margin-bottom: 5px;
+  background-color: #fff;
+  overflow: hidden;
+  .tabs-item{
+    // min-width: 60px;
+    width: 33%;
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
+    text-align: center;
+    // font-size: 0;
+    position: relative;
+    p{
+      width: 90%;
+      margin: 0 auto;
+      height: 20px;
+      line-height: 20px;
+      color: #66666e;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      text-overflow: ellipsis;
+      white-space: nowrap; //强制文本在一行内输出
+      overflow: hidden; //隐藏溢出部分
+    }
+    p:nth-child(1){
+      margin-top: 5px;
+    }
+  }
+  .tabs-item:nth-child(2){
+    position: relative;
+    :before{
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 50px;
+      width: 1px;
+      content: " ";
+      background: -webkit-linear-gradient(#ffffff, #dadada, #ffffff);
+      background: linear-gradient(#ffffff, #dadada, #ffffff);
+    }
+    :after{
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 50px;
+      width: 1px;
+      content: " ";
+      background: -webkit-linear-gradient(#ffffff, #dadada, #ffffff);
+      background: linear-gradient(#ffffff, #dadada, #ffffff);
+    }
+  }
+  .tabs-item-active{
+    p{
+      color: #fd472b;
+    }
+  }
+}

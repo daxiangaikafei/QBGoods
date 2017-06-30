@@ -30,6 +30,7 @@ import BrandShopList from "views/Special/BrandShopList/page"
 import FrontMatter from "views/Special/FrontMatter/page"
 import MyLabels from "views/MyLabels/page"
 import MyLabelsTheme from "views/MyLabelsTheme/page"
+import RobGoods from "views/Special/RobGoods/page"
 
 export default function (ref) {
   return (
@@ -63,6 +64,8 @@ export default function (ref) {
         <Route path='/FrontMatter/:id' component={FrontMatter} name="有好货" />
         <Route path='/MyLabels' component={MyLabels} name="修改" />
         <Route path='/MyLabelsTheme' component={MyLabelsTheme} name="个性主题" />
+
+        <Route path='/RobGoods' component={RobGoods} name="必抢爆款" />
 
         <Route path='/Nine/:id' component={Nine} name="9.9专场" />
         <Route path='/Coupon/:id' component={Coupon} name="好券直播" />
