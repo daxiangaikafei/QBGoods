@@ -8,7 +8,6 @@ import { eventFun } from 'libs/util';
 
 let isInit =true;
 class GoodsTab extends Component {
-  moveTarget = undefined
   constructor(props) {
     super(props);
     this.scrollInit = this.scrollInit.bind(this);
@@ -69,23 +68,24 @@ class GoodsTab extends Component {
           min: touchMin <= innerWidth ? 0 : (touchMin - targetparent.clientWidth) * -1,
           max: 0,
           touchStart: (value,target) => {
-            if(!this.moveTarget) {
-              this.moveTarget = target
-            }
+            // if(!this.moveTarget) {
+            //   this.moveTarget = target
+            // }
           },
           touchMove: () => {
             setTimeout(() =>  {
-              console.log(this.moveTarget)
-              this.moveTarget.style.transform = this.moveTarget.style.transform.replace(/500px/i, '0')
+              target.style.transform = target.style.transform.replace(/500px/i, '0')
             }, 300);
           },
           touchEnd: () => {
             setTimeout(() =>  {
-              console.log(this.moveTarget)
-              this.moveTarget.style.transform = this.moveTarget.style.transform.replace(/500px/i, '0')
+              target.style.transform = target.style.transform.replace(/500px/i, '0')
             }, 2000);
           }
       });
+      setTimeout(() =>  {
+        target.style.transform = target.style.transform.replace(/500px/i, '0')
+      }, 300);
 
 
   }
