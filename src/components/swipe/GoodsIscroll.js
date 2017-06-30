@@ -21,16 +21,16 @@ class GoodsIscroll extends Component {
     // })
   }
   componentDidMount(){
-      // let _this = this;
-      // if(_this.AlloyTouch){
-      //     _this.scrollInit()
-      // }else{
-      //     require.ensure([], () => {
-      //        _this.AlloyTouch = require("./alloyTouch.js");
-      //        //_this.$ = require("./zepto");
-      //        _this.scrollInit();
-      //     })
-      // }
+      let _this = this;
+      if(_this.AlloyTouch){
+          _this.scrollInit()
+      }else{
+          require.ensure([], () => {
+             _this.AlloyTouch = require("./alloyTouch.js");
+             //_this.$ = require("./zepto");
+             _this.scrollInit();
+          })
+      }
   }
   componentWillUnmount(){
       this.alloyTouch&&this.alloyTouch.destory();
@@ -44,7 +44,6 @@ class GoodsIscroll extends Component {
       let goodsNum = this.props.goods.length;
       this.alloyTouch = new this.AlloyTouch({
           touch: dom,//反馈触摸的dom
-          target:target,
           vertical: false,//不必需，默认是true代表监听竖直方向touch
           target: target, //运动的对象
           property: "translateX",
@@ -61,29 +60,29 @@ class GoodsIscroll extends Component {
     switch (props.type) {
       case "nine":
         itemTpl = props.goods.map(function(item,index){
-                  return (<div className="hots-public-item" key={index}>
-                      <a {...eventFun("102", "hot_goods_koubei_products", item.id)}  href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} className="hots-public-item-a-img" ><img src={item.imgUrl} alt="" className="hots-public-item-img" /></a>
+                  return (<div styleName="hots-public-item" key={index}>
+                      <a {...eventFun("102", "hot_goods_koubei_products", item.id)}  href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} styleName="hots-public-item-a-img" ><img src={item.imgUrl} alt="" styleName="hots-public-item-img" /></a>
                       <a {...eventFun("102", "hot_goods_koubei_products", item.id)}  href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><h3>{item.name}</h3></a>
-                      <div className="price">￥{item.finalPrice}<div className="icon"><i className={item.source}></i></div></div>
+                      <div styleName="price">￥{item.finalPrice}<div styleName="icon"><i styleName={item.source}></i></div></div>
                   </div>)
                 });
         break;
       default:
         itemTpl = props.goods.map(function(item,index){
-                    return (<div className="hots-public-item" key={index}>
-                        <a {...eventFun("102", "hot_goods_koubei_products", item.id)}  href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><img src={item.imgUrl} alt="" className="hots-public-item-img" /></a>
+                    return (<div styleName="hots-public-item" key={index}>
+                        <a {...eventFun("102", "hot_goods_koubei_products", item.id)}  href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><img src={item.imgUrl} alt="" styleName="hots-public-item-img" /></a>
                         <a {...eventFun("102", "hot_goods_koubei_products", item.id)}  href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><h3>{item.name}</h3></a>
-                        <div className="price">￥{item.finalPrice}<div className="icon"><i className={item.source}></i></div></div>
-                        <div className="bottom public-rebateValue">
-                            <span className="return">{item.rebateValue}</span>
+                        <div styleName="price">￥{item.finalPrice}<div styleName="icon"><i styleName={item.source}></i></div></div>
+                        <div styleName="bottom public-rebateValue">
+                            <span styleName="return">{item.rebateValue}</span>
                         </div>
                     </div>)
                   });
     }
     return (
       <div styleName={classNames({"hots-public-container":true,"type-nine": (this.props.type==="nine")  })} ref="touch">
-        <div className="hots-public-content">
-          <div className="hots-public-warpper" ref="swipe" style={{ width: `${110 * props.goods.length}px`}}>
+        <div styleName="hots-public-content">
+          <div styleName="hots-public-warpper" ref="swipe" style={{ width: `${110 * props.goods.length}px`}}>
             { itemTpl }
           </div>
         </div>
