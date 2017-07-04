@@ -32,10 +32,11 @@ class Tab extends Component {
   render() {
     let tabs = this.props.tabs || [];
     let active = this.props.active || 0;
+    let { pageName, model } = this.props.eventConfig;
     return (
       <div className="rob-tabs-warpper" >
         {
-          this.props.tabs.map((item, i) => <div onClick={this.tabsClickHandler.bind(this,i)} key={i} className={active == i ? 'tabs-item tabs-item-active' : 'tabs-item'}><p>{item.onTime}</p><p>{item.isStart ? "已经开始" : "即将开始"}</p></div>)
+          this.props.tabs.map((item, i) => <div onClick={this.tabsClickHandler.bind(this,i)} {...eventFun(pageName, model, item.id)} key={i} className={active == i ? 'tabs-item tabs-item-active' : 'tabs-item'}><p>{item.onTime}</p><p>{item.isStart ? "已经开始" : "即将开始"}</p></div>)
         }
       </div>
     )

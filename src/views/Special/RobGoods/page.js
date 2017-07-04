@@ -16,6 +16,7 @@ import Modal from "components/modal/index";
 import PopUp from "components/popup/index";
 
 class RobGoods extends Component {
+  pageName = '102'
   constructor(props) {
     super(props)
 
@@ -170,6 +171,7 @@ class RobGoods extends Component {
     });
   }
   render() {
+    let _this = this;
     let noDataTip = "--已经到底了--";
     if(this.state.items.length===0){
       noDataTip = "--敬请期待--"
@@ -194,17 +196,17 @@ class RobGoods extends Component {
     return (
       <Swipe  {...props} >
         <div className="special-rob-container">
-          <Tab tabs={this.state.tabs} active={this.state.active} tabCallback={this.tabCallback}/>
+          <Tab tabs={this.state.tabs} active={this.state.active} tabCallback={this.tabCallback} eventConfig={{pageName:this.pageName,model:"rob_tab"}}/>
           <div className="special-rob-list" onClick={this.linkClick}>
             {
               this.state.items.map(function(item,index){
                   return (<div className="rob-item" key={index} data-brandid={item.brandId}>
                       <div className="rob-item-img">
                         <div>
-                          <img src={item.imgUrl } data-link="link" data-index={index}  alt="" className="bsl-img" />
+                          <img src={item.imgUrl } data-link="link" data-index={index}  alt="" className="bsl-img"  {...eventFun(_this.pageName, 'rob_goods', item.id)}/>
                         </div>
                       </div>
-                      <p className="rob-item-name" data-link="link" data-index={index}>{item.name}</p>
+                      <p className="rob-item-name" data-link="link" data-index={index} {...eventFun(_this.pageName, 'rob_goods', item.id)}>{item.name}</p>
                       <div className="rob-item-info">
                         <div className="rob-price" >
                           <p>
@@ -217,7 +219,7 @@ class RobGoods extends Component {
                             item.rebateValue && <p className="rebateValue">{item.rebateValue}</p>
                           }
                         </div>
-                        {item.coupon ? <div className="rob-buybtns" ><div className="rob-coupon"><p>优惠券</p><p>{item.coupon.value}</p></div><div className="rob-btn" data-link="link" data-index={index}>领券必抢</div></div> : <div className="rob-buybtns"><div className="rob-btn" data-link="link" data-index={index}>立即抢购</div></div>}
+                        {item.coupon ? <div className="rob-buybtns" ><div className="rob-coupon"><p>优惠券</p><p>{item.coupon.value}</p></div><div className="rob-btn" data-link="link" data-index={index} {...eventFun(_this.pageName, 'rob_goods', item.id)}>领券必抢</div></div> : <div className="rob-buybtns"><div className="rob-btn" data-link="link" data-index={index}  {...eventFun(_this.pageName, 'rob_goods', item.id)}>立即抢购</div></div>}
                       </div>
                   </div>)
               })
