@@ -8,7 +8,6 @@ import { eventFun } from 'libs/util';
 
 let isInit =true;
 class GoodsTab extends Component {
-
   constructor(props) {
     super(props);
     this.scrollInit = this.scrollInit.bind(this);
@@ -63,16 +62,30 @@ class GoodsTab extends Component {
       // });
       this.alloyTouch = new this.AlloyTouch({
           touch: dom,//反馈触摸的dom
-          target:target,
           vertical: false,//不必需，默认是true代表监听竖直方向touch
           target: target, //运动的对象
           property: "translateX",
           min: touchMin <= innerWidth ? 0 : (touchMin - targetparent.clientWidth) * -1,
           max: 0,
-          touchStart: function (value,target) {
-
+          touchStart: (value,target) => {
+            // if(!this.moveTarget) {
+            //   this.moveTarget = target
+            // }
+          },
+          touchMove: () => {
+            setTimeout(() =>  {
+              target.style.transform = target.style.transform.replace(/500px/i, '0')
+            }, 300);
+          },
+          touchEnd: () => {
+            setTimeout(() =>  {
+              target.style.transform = target.style.transform.replace(/500px/i, '0')
+            }, 2000);
           }
       });
+      setTimeout(() =>  {
+        target.style.transform = target.style.transform.replace(/500px/i, '0')
+      }, 300);
 
 
   }
@@ -88,7 +101,7 @@ class GoodsTab extends Component {
     return (
       <div styleName="hots-tabs-container" ref="touch">
         <div styleName="hots-tabs-content" ref="swipeparent">
-          <div styleName="hots-tabs-warpper" ref="swipe">
+          <div styleName="hots-tabs-warpper" ref="swipe" >
             {
               this.props.tabs.map((item, i) => <div {...eventFun(pageName, model, item.id)}  onClick={this.tabsClickHandler.bind(this,i)} key={i} styleName={active == i ? 'tabs-item tabs-item-active' : 'tabs-item'}><span>{item.dirName || item.name}</span></div>)
             }
