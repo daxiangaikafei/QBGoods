@@ -16,7 +16,7 @@ import Modal from "components/modal/index";
 import PopUp from "components/popup/index";
 
 class RobGoods extends Component {
-  pageName = '102'
+  pageName = '114'
   constructor(props) {
     super(props)
 

@@ -15,6 +15,7 @@ import { fetchPosts } from "components/common/fetch";
 class BrandShop extends Component {
   headimg = require('static/imgs/class.png');
   bannerpic = require('static/imgs/gatherGoods/banner.png');
+  pageName = '120';
   constructor(props) {
     super(props)
     let infoDatas = this.props.location && this.props.location.state.infos;
@@ -127,7 +128,7 @@ class BrandShop extends Component {
           <div className="special-end-time">
             <Icon name="clock" color="#35353f" size="18"/> 结束时间：{this.state.overTime}
           </div>
-          <SpecialList listConfig={{temp: 'nina'}} listData={this.state.items} eventConfig={{pageName:this.pageName,model:`hot_goods_${this.state.active}_products`}}/>
+          <SpecialList listConfig={{temp: 'nina'}} listData={this.state.items} eventConfig={{pageName:this.pageName,model:`brand_shop_products`}}/>
         </div>
         { noTip }
       </Swipe>

@@ -12,6 +12,7 @@ import Swipe from "components/swipe/swipe";
 import { fetchPosts } from "components/common/fetch";
 
 class Coupon extends Component {
+  pageName = '116'
   constructor(props) {
     super(props)
 
@@ -138,9 +139,8 @@ class Coupon extends Component {
     }
     let goodsTab = '';
     if(this.state.goodsTabs.length > 0 ){
-      goodsTab = <GoodsTab  ref="tap" tabCallback={this.tabCallback} active={this.state.active} tabs={this.state.goodsTabs} eventConfig={{pageName:this.pageName,model:"hot_goods_tab"}}></GoodsTab>;
+      goodsTab = <GoodsTab  ref="tap" tabCallback={this.tabCallback} active={this.state.active} tabs={this.state.goodsTabs} eventConfig={{pageName:this.pageName,model:"coupon_tab"}}></GoodsTab>;
     }
-    console.log(this.state.goodsTabs, "this.state.goodsTabs.length");
     let props = {
         property:"translateY",
         className:"scroll-warpper",
@@ -157,7 +157,7 @@ class Coupon extends Component {
             {this.state.imgURL ? <img src={this.state.imgURL}/> : ""}
           </div>
           {goodsTab}
-          <SpecialList listConfig={{temp: 'coupon'}} listData={this.state.items} eventConfig={{pageName:this.pageName,model:`hot_goods_${this.state.active}_products`}}/>
+          <SpecialList listConfig={{temp: 'coupon'}} listData={this.state.items} eventConfig={{pageName:this.pageName,model:`coupon_${this.state.activeId}_products`}}/>
         </div>
         { noTip }
       </Swipe>

@@ -53,6 +53,7 @@ class MultiSwipe extends Component {
             page = total > 0 ? Math.ceil(total/pageSize) : 0;
 
         let swipeDom = null;
+        let { pageName, model } = this.props.eventConfig;
 
         if(total>0){
           let i = 0;
@@ -68,8 +69,8 @@ class MultiSwipe extends Component {
                   <div className="swipe-slide">{
                     pages.map(function(item,i){
                       return (<div className="swipe-item" key={i}>
-                            <a href={item.linkUrl} className="imga" onClick={_this.clickLink.bind(this,item.url,item.source)}><img src={item.imgUrl}/></a>
-                            <a href={item.url} onClick={_this.clickLink.bind(this,item.url,item.source)}><h3>{item.name}</h3></a>
+                            <a {...eventFun(pageName, model, item.id)} href={item.linkUrl} className="imga" onClick={_this.clickLink.bind(this,item.url,item.source)}><img src={item.imgUrl}/></a>
+                            <a {...eventFun(pageName, model, item.id)} href={item.url} onClick={_this.clickLink.bind(this,item.url,item.source)}><h3>{item.name}</h3></a>
                             <div styleName="source">
                                 <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                                 <span styleName="return">预估返{item.orderNum}%</span>

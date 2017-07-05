@@ -13,6 +13,7 @@ import { fetchPosts } from "components/common/fetch";
 import ReactSwipe from 'react-swipe';
 
 class Man extends Component {
+  pageName = '117'
   constructor(props) {
     super(props)
 
@@ -143,7 +144,7 @@ class Man extends Component {
     }
     let goodsTab ='';
     if(this.state.goodsTabs.length > 0 ){
-      goodsTab = <GoodsTab  ref="tap" tabCallback={this.tabCallback} active={this.state.active} tabs={this.state.goodsTabs} eventConfig={{pageName:this.pageName,model:"hot_goods_tab"}}></GoodsTab>;
+      goodsTab = <GoodsTab  ref="tap" tabCallback={this.tabCallback} active={this.state.active} tabs={this.state.goodsTabs} eventConfig={{pageName:this.pageName,model:"man_tab"}}></GoodsTab>;
     }
     let props = {
         property:"translateY",
@@ -161,7 +162,7 @@ class Man extends Component {
             {this.state.imgURL ? <img src={this.state.imgURL}/> : ""}
           </div>
           {goodsTab}
-          <SpecialList listConfig={{temp: 'nine'}} listData={this.state.items} eventConfig={{pageName:this.pageName,model:`hot_goods_${this.state.active}_products`}}/>
+          <SpecialList listConfig={{temp: 'nine'}} listData={this.state.items} eventConfig={{pageName:this.pageName,model:`man_${this.state.active}_products`}}/>
         </div>
         { noTip }
       </Swipe>

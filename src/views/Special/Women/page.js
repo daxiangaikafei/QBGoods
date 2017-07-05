@@ -12,6 +12,7 @@ import { Icon,MultiSwipe,SpecialTab } from 'ui'
 
 class Women extends Component {
   bannerpic = require('static/imgs/gatherGoods/banner.png');
+  pageName = '118'
   constructor(props) {
     super(props)
 
@@ -84,7 +85,7 @@ class Women extends Component {
         vertical:true,
         touchMove:this.touchMove
     }
-
+    let _this = this;
     let tabs = [],tabsdom = null;
     this.state.items.map(function(item,index){
       tabs.push({
@@ -93,7 +94,7 @@ class Women extends Component {
       });
     });
     if(tabs.length>0){
-      tabsdom = <SpecialTab  ref="tap" tabCallback={this.tabCallback} active={this.state.active} tabs={tabs} eventConfig={{pageName:this.pageName,model:"hot_goods_tab"}}></SpecialTab>;
+      tabsdom = <SpecialTab  ref="tap" tabCallback={this.tabCallback} active={this.state.active} tabs={tabs} eventConfig={{pageName:_this.pageName,model:"women_tab"}}></SpecialTab>;
     }
     // <Swipe  {...props} ></Swipe>
     return (
@@ -107,7 +108,7 @@ class Women extends Component {
           </div>
           {
             this.state.items.map(function(item, index){
-              return (<MultiSwipe key={index} level={ index } title={ item.title } swipes={item.stuffs} />)
+              return (<MultiSwipe eventConfig={{pageName:_this.pageName,model:`women_products`}} key={index} level={ index } title={ item.title } swipes={item.stuffs} />)
             })
           }
           { noTip }

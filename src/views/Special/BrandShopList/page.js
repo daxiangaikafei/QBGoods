@@ -13,6 +13,7 @@ import { fetchPosts } from "components/common/fetch";
 import ReactSwipe from 'react-swipe';
 
 class BrandShopList extends Component {
+  pageName = '119';
   constructor(props) {
     super(props)
 
@@ -121,15 +122,16 @@ class BrandShopList extends Component {
         vertical:true,
         touchMove:this.touchMove
     }
+    let _this =this;
     return (
       <Swipe  {...props} >
         <div className=" special-container">
           <div className="brand-shop-list" onClick={this.shopClick}>
             {
               this.state.items.map(function(item,index){
-                  return (<div className="bsl-item" key={index} data-brandid={item.brandId}>
+                  return (<div className="bsl-item" key={index} data-brandid={item.brandId} >
                       <div className="bsl-item-img">
-                        <img src={item.imgUrl } data-imgUrl={item.imgUrl} data-offSale={item.offSale} data-brandName={item.brandName} alt="" className="bsl-img" data-brandid={item.brandId}/>
+                        <img {...eventFun(_this.pageName, 'brand_shop', item.brandid)} src={item.imgUrl } data-imgUrl={item.imgUrl} data-offSale={item.offSale} data-brandName={item.brandName} alt="" className="bsl-img" data-brandid={item.brandId}/>
                       </div>
                       <div className="bsl-item-info">
                         <p className="bsl-offSale">{item.offSale}</p><p className="bsl-name">{item.brandName}</p>
