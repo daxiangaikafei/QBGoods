@@ -8,13 +8,17 @@ import classNames from 'classnames'
 import { getCookie, setCookie, priceFormat, eventFun } from 'libs/util';
 import GoodsIscroll from "components/swipe/GoodsIscroll";
 import GoodsTab from "components/swipe/GoodsTab";
-import {SpecialList,Icon,Tabs} from 'ui';
+import {SpecialList,Icon,Tabs,SpecialToTip} from 'ui';
 import Swipe from "components/swipe/swipe";
 import { fetchPosts } from "components/common/fetch";
+import PopUp from "components/popup/index";
+
+
 
 class FrontMatter extends Component {
   headimg = require('static/imgs/special/front.png');
   bannerpic = require('static/imgs/gatherGoods/banner.png');
+  pageName = '121';
   tabsConfig = {
     names : [
       {
@@ -70,7 +74,7 @@ class FrontMatter extends Component {
     if ((page !== 0 && loading === true) || (isEnd)) {
       return;
     }
-    this.props.action({type:`${model}/${action}`,page:++page})
+    this.props.action({type:`${model}/${action}`,page:++page,stuffId:this.state.stuffId})
   }
   getInfo = () => {
     let {infoUrl} = this.props;
@@ -101,10 +105,27 @@ class FrontMatter extends Component {
      });
   }
   directbuyHandler = () => {
+    let source = this.state.infoDatas.source;
+
+    PopUp.show(
+            (<SpecialToTip source={source}  />),{maskClosable:true, isBgAlpha: true}
+    );
+
+
     if(this.state.infoDatas.coupon){
       window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + this.state.infoDatas.coupon.link;
     }else{
-      window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + this.state.infoDatas.linkUrl;
+      // window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + this.state.infoDatas.linkUrl;
+      setTimeout(()=>{
+        if (QBFK.Util.getDevice() === 'android' && source == 'jd') {
+            window.open(this.state.infoDatas.linkUrl);
+        } else {
+            window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + this.state.infoDatas.linkUrl;
+        }
+        PopUp.hide(
+            (<SpecialToTip source={source} />), { maskClosable: false, isBgAlpha: false }
+        );
+      },1000);
     }
   }
   render() {
@@ -178,7 +199,7 @@ class FrontMatter extends Component {
         </div>
         <div className="special-mrontmatter-footer">
           {footertext}
-          <div className="special-mrontmatter-directbuy" onClick={this.directbuyHandler}>
+          <div className="special-mrontmatter-directbuy" onClick={this.directbuyHandler} {...eventFun(this.pageName, 'front_matter', this.state.infoDatas.id)} >
             {this.state.infoDatas.coupon  ? '领券购买' : '直接购买' }
           </div>
         </div>
@@ -206,9 +227,6 @@ function mapDispatchToProps(dispatch) {
   return {
     action(type) {
       dispatch(type);
-    },
-    getLikeList(id) {
-      dispatch({ type: 'gatherGoods/getLikeList', id });
     }
   }
 }

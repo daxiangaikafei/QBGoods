@@ -55,14 +55,19 @@ class GoodsIscroll extends Component {
       });
 
   }
+  tofrontClick(id){
+    if(id){
+      this.context.router.push( {"pathname": `frontMatter/${id}`, state: {} });
+    }
+  }
   render() {
     var props = this.props, itemTpl = '';
     switch (props.type) {
       case "nine":
         itemTpl = props.goods.map(function(item,index){
                   return (<div styleName="hots-public-item" key={index}>
-                      <a {...eventFun("102", "hot_goods_koubei_products", item.id)}  href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} styleName="hots-public-item-a-img" ><img src={item.imgUrl} alt="" styleName="hots-public-item-img" /></a>
-                      <a {...eventFun("102", "hot_goods_koubei_products", item.id)}  href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><h3>{item.name}</h3></a>
+                      <a  onClick={this.tofrontClick.bind(this, item.id)} {...eventFun("102", "hot_goods_koubei_products", item.id)}  href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} styleName="hots-public-item-a-img" ><img src={item.imgUrl} alt="" styleName="hots-public-item-img" /></a>
+                      <a  onClick={this.tofrontClick.bind(this, item.id)} {...eventFun("102", "hot_goods_koubei_products", item.id)}  href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><h3>{item.name}</h3></a>
                       <div styleName="price">￥{item.finalPrice}<div styleName="icon"><i styleName={item.source}></i></div></div>
                   </div>)
                 });
@@ -70,8 +75,8 @@ class GoodsIscroll extends Component {
       default:
         itemTpl = props.goods.map(function(item,index){
                     return (<div styleName="hots-public-item" key={index}>
-                        <a {...eventFun("102", "hot_goods_koubei_products", item.id)}  href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><img src={item.imgUrl} alt="" styleName="hots-public-item-img" /></a>
-                        <a {...eventFun("102", "hot_goods_koubei_products", item.id)}  href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><h3>{item.name}</h3></a>
+                        <a  onClick={this.tofrontClick.bind(this, item.id)} {...eventFun("102", "hot_goods_koubei_products", item.id)}  href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><img src={item.imgUrl} alt="" styleName="hots-public-item-img" /></a>
+                        <a  onClick={this.tofrontClick.bind(this, item.id)} {...eventFun("102", "hot_goods_koubei_products", item.id)}  href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><h3>{item.name}</h3></a>
                         <div styleName="price">￥{item.finalPrice}<div styleName="icon"><i styleName={item.source}></i></div></div>
                         <div styleName="bottom public-rebateValue">
                             <span styleName="return">{item.rebateValue}</span>
@@ -89,5 +94,8 @@ class GoodsIscroll extends Component {
       </div>
     )
   }
+};
+GoodsIscroll.contextTypes = {
+  router: React.PropTypes.object.isRequired
 };
 export default CSSModules(GoodsIscroll,styles,{allowMultiple:true});

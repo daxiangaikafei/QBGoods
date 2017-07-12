@@ -15,7 +15,13 @@ class ProductList extends Component {
 
         }
     }
-
+    tofrontClick(id){
+      if(id){
+        this.context.router.push( {"pathname": `frontMatter/${id}`, state: {} });
+      }
+      // event.preventDefault();
+      //<Link to={"frontMatter/"+item.id} styleName="img"><img src={item.imgUrl} alt="" {...eventFun(pageName, model, item.id)}/></Link>
+    }
     render() {
         let { pageName, tabId, model } = this.props.eventConfig
         return (
@@ -25,30 +31,30 @@ class ProductList extends Component {
                         this.props.listConfig.temp == 'similar' ?
                             this.props.listData.map((item, index) =>
                                 <div styleName="item" key={index}>
-                                    <a {...eventFun(pageName, model, item.id)} styleName="img" href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><img src={item.imgUrl} alt="" /></a>
-                                    <a {...eventFun(pageName, model, item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><h3>{item.name}</h3></a>
+                                    <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, model, item.id)} styleName="img" data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><img src={item.imgUrl} alt="" /></a>
+                                    <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, model, item.id)} data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><h3>{item.name}</h3></a>
                                     <div styleName="price">￥{priceFormat(item.finalPrice)}
                                         <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                                     </div>
                                     <div styleName="bottom">
                                         <span styleName="return">{item.rebateValue}</span>
                                         {item.orderNum != null ? <p styleName="sales">销量 <span>{item.orderNum}</span></p> : ''}
-                                        <a {...eventFun(pageName, 'gather_goods_similar', item.id)} href={`newTab://goodstuff.qbao.com/similar?pid=${item.id}`}><span styleName="similar">找相似</span></a>
+                                        <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, 'gather_goods_similar', item.id)} data-href={`newTab://goodstuff.qbao.com/similar?pid=${item.id}`}><span styleName="similar">找相似</span></a>
                                     </div>
                                 </div>
                             )
                     : this.props.listConfig.temp == 'score' ?
                         this.props.listData.map((item, index) =>
                             <div styleName="item" key={index}>
-                                <a {...eventFun(pageName, model, item.id)} styleName="img" href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><img src={item.imgUrl} alt="" /></a>
-                                <a {...eventFun(pageName, model, item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><h3>{item.name}</h3></a>
+                                <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, model, item.id)} styleName="img" data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><img src={item.imgUrl} alt="" /></a>
+                                <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, model, item.id)} data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><h3>{item.name}</h3></a>
                                 <div styleName="price">￥{baoquanFormat(item.viewPrice)}
                                     <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                                 </div>
                                 <div styleName="bottom score">
                                     <p styleName="sales">销量 <span>{item.saleCount}</span></p>
                                     <div styleName="tip">
-                                        <a {...eventFun(pageName, 'self_support_score', item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><div styleName="haohuoScore">{item.haohuoScore}</div></a>
+                                        <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, 'self_support_score', item.id)} data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><div styleName="haohuoScore">{item.haohuoScore}</div></a>
                                     </div>
                                 </div>
                             </div>
@@ -56,15 +62,15 @@ class ProductList extends Component {
                     : this.props.listConfig.temp == 'activity' ?
                         this.props.listData.map((item, index) =>
                             <div styleName="item" key={index}>
-                                <a {...eventFun(pageName, model, item.id)} styleName="img" href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><img src={item.imgUrl} alt="" /></a>
-                                <a {...eventFun(pageName, model, item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><h3>{item.name}</h3></a>
+                                <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, model, item.id)} styleName="img" data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><img src={item.imgUrl} alt="" /></a>
+                                <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, model, item.id)} data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><h3>{item.name}</h3></a>
                                 <div styleName="price">￥{priceFormat(item.viewPrice)}
                                     <span styleName="icon"><img  src={icons[item.source]}  alt="" /></span>
                                 </div>
                                 <div styleName="bottom score">
                                     <p styleName="sales">销量 <span>{item.saleCount}</span></p>
                                     <div styleName="tip">
-                                        <a {...eventFun(pageName, 'self_support_score', item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><div styleName="haohuoScore">{item.haohuoScore}</div></a>
+                                        <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, 'self_support_score', item.id)} data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><div styleName="haohuoScore">{item.haohuoScore}</div></a>
                                     </div>
                                 </div>
                             </div>
@@ -73,8 +79,8 @@ class ProductList extends Component {
                     : this.props.listConfig.temp == 'hots' ?
                             this.props.listData.map((item, index) =>
                               <div styleName="item" key={index}>
-                                  <a {...eventFun(pageName, model, item.id)} styleName="img" href={'newtab://goodstuff.qbao.com/goods?url=' + item.linkUrl} ><img src={item.imgUrl} alt="" /></a>
-                                  <a {...eventFun(pageName, model, item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.linkUrl} ><h3>{item.name}</h3></a>
+                                  <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, model, item.id)} styleName="img" data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.linkUrl} ><img src={item.imgUrl} alt="" /></a>
+                                  <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, model, item.id)} data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.linkUrl} ><h3>{item.name}</h3></a>
                                   <div styleName="price">￥{priceFormat(item.finalPrice)}
                                       <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                                   </div>
@@ -86,8 +92,8 @@ class ProductList extends Component {
                             )
                     : this.props.listData.map((item, index) =>
                             <div styleName="item" key={index}>
-                                <a {...eventFun(pageName, model, item.id)} styleName="img" href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><img src={item.imgUrl} alt="" /></a>
-                                <a {...eventFun(pageName, model, item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><h3>{item.name}</h3></a>
+                                <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, model, item.id)} styleName="img" data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><img src={item.imgUrl} alt="" /></a>
+                                <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, model, item.id)} data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} ><h3>{item.name}</h3></a>
                                 <div styleName="price">￥{priceFormat(item.finalPrice)}
                                     <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                                 </div>
@@ -114,11 +120,14 @@ class ProductList extends Component {
     // }
 }
 {/*<div styleName="item" key={index}>
-    <a href={'newtab://goodstuff.qbao.com/goods?url=' + item.linkUrl} ><img src={item.imgUrl} alt="" /></a>
-    <a href={'newtab://goodstuff.qbao.com/goods?url=' + item.linkUrl} ><h3>{item.name}</h3></a>
+    <a data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.linkUrl} ><img src={item.imgUrl} alt="" /></a>
+    <a data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.linkUrl} ><h3>{item.name}</h3></a>
     <div styleName="price">￥{item.price}</div>
     <p styleName="sales">销量 <span>{item.saleCount}</span></p>
 </div>*/}
+ProductList.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 function mapStateToProps(state) {
     return state;
 }

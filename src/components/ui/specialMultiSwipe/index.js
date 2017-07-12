@@ -23,17 +23,20 @@ class MultiSwipe extends Component {
     componentWillMount(){
 
     }
-    clickLink(url,source,e){
-      PopUp.show(
-              (<SpecialToTip source={source}  />),{maskClosable:true, isBgAlpha: true}
-      );
-      setTimeout(function(){
-        window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + url;
-        PopUp.hide(
-          (<SpecialToTip source={source} />), { maskClosable: false, isBgAlpha: false }
-        );
-      },1000);
+    clickLink(id,source,e){
+      console.log(this,"this........");
+      this.context.router.push( {"pathname": `frontMatter/${id}`,  state: {} });
       e.preventDefault();
+      // PopUp.show(
+      //         (<SpecialToTip source={source}  />),{maskClosable:true, isBgAlpha: true}
+      // );
+      // setTimeout(function(){
+      //   window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + url;
+      //   PopUp.hide(
+      //     (<SpecialToTip source={source} />), { maskClosable: false, isBgAlpha: false }
+      //   );
+      // },1000);
+      // e.preventDefault();
     }
 
     swiperCallback  = (active) => {
@@ -69,8 +72,8 @@ class MultiSwipe extends Component {
                   <div className="swipe-slide">{
                     pages.map(function(item,i){
                       return (<div className="swipe-item" key={i}>
-                            <a {...eventFun(pageName, model, item.id)} href={item.linkUrl} className="imga" onClick={_this.clickLink.bind(this,item.url,item.source)}><img src={item.imgUrl}/></a>
-                            <a {...eventFun(pageName, model, item.id)} href={item.url} onClick={_this.clickLink.bind(this,item.url,item.source)}><h3>{item.name}</h3></a>
+                            <a {...eventFun(pageName, model, item.id)} href={item.linkUrl} className="imga" onClick={_this.clickLink.bind(_this,item.id,item.source)}><img src={item.imgUrl}/></a>
+                            <a {...eventFun(pageName, model, item.id)} href={item.url} onClick={_this.clickLink.bind(_this,item.id,item.source)}><h3>{item.name}</h3></a>
                             <div styleName="source">
                                 <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                                 <span styleName="return">预估返{item.orderNum}%</span>
@@ -99,4 +102,7 @@ class MultiSwipe extends Component {
     }
 
 }
+MultiSwipe.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 export default CSSModules(MultiSwipe, styles, { allowMultiple: true });
