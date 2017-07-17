@@ -10,6 +10,7 @@ import List from "./list";
 import OrderHead from "./head";
 import { eventFun } from 'libs/util'
 import ListState from "./listState";
+import Declare from "./Declare";
 import {fetchPosts} from "components/common/fetch";
 
 class Order extends React.Component {
@@ -78,8 +79,8 @@ class Order extends React.Component {
 
         return (
             <div className="container-my-order">
-                    <OrderHead status={status} info={headInfo} click={this.handClick}/>
-                    {$lis[status]}
+                <OrderHead status={status} info={headInfo} click={this.handClick}/>
+                {$lis[status]}
             </div>
         )
     }

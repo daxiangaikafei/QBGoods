@@ -11,6 +11,7 @@ import {fetchPosts} from "components/common/fetch";
 import NoOrder from "./noOrder";
 import InfoState from "./infoState";
 import { eventFun } from 'libs/util'
+import Declare from "./Declare";
 
 import Modal from "components/modal/index";
 import PopUp from "components/popup/index";
@@ -40,6 +41,7 @@ class OrderList extends React.Component {
             isLoading:true,
             oneHeight:false,
             isEnd:false,
+            canAppeal: false
         }
 
         this.getData = this.getData.bind(this);
@@ -53,6 +55,7 @@ class OrderList extends React.Component {
     componentWillMount() {
 
         this.getData(1);
+        this.getSwitch()
     }
     getData(num){
         let {pageSize,url,searchParam,upData} = this.props;
@@ -89,6 +92,16 @@ class OrderList extends React.Component {
          });
     }
 
+    getSwitch(){
+        fetchPosts('/stuff/service/switch.do', {key: 'appeal_off'},"GET").then((data)=>{
+            if(data.responseCode===1000){
+                if (data.data && data.data.value !== undefined && data.data.value == 1)
+                this.setState({
+                    canAppeal:true,
+                });
+            }
+        })
+    }
     touchMove(that,args){
         console.log(that,args);
         let {items} = this.state;
@@ -271,13 +284,27 @@ class OrderList extends React.Component {
             //step:200
         }
         if(j===0&&isLoading===false){
-            return(<div className="my-order-list my-order-list-state" onClick={this.handClick}><div className="btns"><div className="btn-begin">立即申诉</div></div><NoOrder tipText={'<p>亲，购物后有问题，可以立即申诉哟～</p><p>快去购物吧。</p>'}/></div>)
+            let btn
+            if(this.state.canAppeal) {
+                btn = (
+                    <div className="btns">
+                        <div className="btn-begin">立即申诉</div>
+                    </div>
+                )
+            }
+            return(
+                <div className="my-order-list my-order-list-state" style={{"background": "#fff"}} onClick={this.handClick}>
+                    <Declare />
+                    {btn}                  
+                </div>
+            )
         }else if(j===0&&page===0){
             return (<div></div>)
         }
         //return ({})
         return (
                 <Swipe {...props} onClick={this.handClick}>
+                    <Declare />
                     <div className="btns"><div className="btn-begin">立即申诉</div></div>
                     {$lis}
                     {isLoading===true&&(<div className="no-up">Loading</div>)}

@@ -1,5 +1,6 @@
 'use strict'
 import * as React from 'react';
+import Declare from "./Declare";
 
 //import * as _ from "lodash";
 
@@ -17,7 +18,7 @@ class NoOrder extends React.Component {
 
         return (
             <div className="container-no-order">
-                <div></div>
+                <div className="cart"></div>
                 <p dangerouslySetInnerHTML={{__html: this.props.tipText || '亲，购物才会返利哟'}}></p>
                 <a href="newTab://goodstuff.qbao.com/search">立即前去</a>
             </div>
