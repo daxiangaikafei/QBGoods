@@ -105,28 +105,32 @@ class FrontMatter extends Component {
      });
   }
   directbuyHandler = () => {
-    let source = this.state.infoDatas.source;
+    let {source,linkUrl,coupon} = this.state.infoDatas;
 
     PopUp.show(
             (<SpecialToTip source={source}  />),{maskClosable:true, isBgAlpha: true}
     );
 
-
-    if(this.state.infoDatas.coupon){
-      window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + this.state.infoDatas.coupon.link;
-    }else{
+    // if(coupon){
+    //   window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + coupon.link;
+    //   setTimeout(() => {
+    //     PopUp.hide(
+    //         (<SpecialToTip source={source} />), { maskClosable: false, isBgAlpha: false }
+    //     );
+    //   },1000);
+    // }else{
       // window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + this.state.infoDatas.linkUrl;
-      setTimeout(()=>{
+      setTimeout(() => {
         if (QBFK.Util.getDevice() === 'android' && source == 'jd') {
-            window.open(this.state.infoDatas.linkUrl);
+            window.open(coupon?coupon.link:linkUrl);
         } else {
-            window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + this.state.infoDatas.linkUrl;
+            window.location.href = 'newtab://goodstuff.qbao.com/goods?url=' + (coupon?coupon.link:linkUrl);
         }
         PopUp.hide(
             (<SpecialToTip source={source} />), { maskClosable: false, isBgAlpha: false }
         );
       },1000);
-    }
+    // }
   }
   render() {
     let noDataTip = "--已经到底了--";
