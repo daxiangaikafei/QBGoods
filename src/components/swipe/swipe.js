@@ -37,12 +37,12 @@ class Swipe extends Component {
             this.scrollInit();
         }*/
 
-        let {stopPro,property,width,min,max,step,findScroller,vertical,findDis,touchMove} = this.props;
+        let {stopPro,property,width,min,max,step,findScroller,vertical,findDis,touchMove,touchHeight} = this.props;
         if(min==="auto"&&this.alloyTouch&&vertical===true&&property==="translateY"){
             // debugger;
               let target = ReactDOM.findDOMNode(this.refs.swipe);
             let dom = ReactDOM.findDOMNode(this.refs.touch); //offsetTop
-            let length = -(target.clientHeight-dom.clientHeight);
+            let length = -(target.clientHeight- (touchHeight === 0 ? dom.clientHeight:touchHeight));
             this.alloyTouch.min = length>0?0:length;
          }
          //dom.children[0].style.transform="translateY(0px)";
@@ -131,6 +131,7 @@ Swipe.defaultProps={
     findDis:false,
     stopPro:true,
     inertia: true,
+    touchHeight:0,
     intervals:300,//间隔时间
     touchMove:function(x){
         //console.error("sssssss",this,x)

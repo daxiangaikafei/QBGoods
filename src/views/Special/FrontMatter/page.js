@@ -152,7 +152,8 @@ class FrontMatter extends Component {
         min:"auto",
         stopPro:false,
         vertical:true,
-        touchMove:this.touchMove
+        touchMove:this.touchMove,
+        touchHeight: window.innerHeight
     }
     let infosale = null, footertext = null;
     if(this.state.infoDatas.coupon){
