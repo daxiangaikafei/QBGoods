@@ -27,7 +27,7 @@ _.throttle = function(func, wait, options) {
     result = func.apply(context, args);
     if (!timeout) context = args = null;
 
-    console.log("uuuuu",Date.now()-dd);
+    // console.log("uuuuu",Date.now()-dd);
   };
   return function() {
     var now = _.now();
@@ -36,7 +36,7 @@ _.throttle = function(func, wait, options) {
     // 延迟执行时间间隔
     var remaining = wait - (now - previous);
 
-    console.log("remaining",remaining)
+    // console.log("remaining",remaining)
     context = this;
     args = arguments;
     // 延迟时间间隔remaining小于等于0，表示上次执行至此所间隔时间已经超过一个时间窗口
@@ -51,7 +51,7 @@ _.throttle = function(func, wait, options) {
     } else if (!timeout && options.trailing !== false) {
     	
     	dd = Date.now();
-    	console.info('=====',dd);
+    	// console.info('=====',dd);
       timeout = setTimeout(later, remaining);
     }
     return result;

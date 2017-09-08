@@ -128,6 +128,13 @@ AlloyTouch.prototype = {
         removeBind(window, "touchmove", this.move);
         removeBind(window, "touchend", this.end);
     },
+    moveTo: function (top, time) {
+        time = time || 200;
+        this.to(this.scroller, this.property, top, time, iosEase, this.change,function(value){
+            this.reboundEnd(value);
+            this.animationEnd(value);
+        }.bind(this));
+    },
     _start: function (evt) {
        // setTimeout(function(){
             this.isTouchStart = true;
@@ -354,7 +361,6 @@ AlloyTouch.prototype = {
 
 
         var value = el[property];
-        //////console.error("你要干啥",value)
         if (this.intelligentCorrection&&this.hasMax && this.hasMin) {
             var prevPage = this.currentPage;
             var d = this.scroller[this.property] - (this.max - prevPage * this.step);

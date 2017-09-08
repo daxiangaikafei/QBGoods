@@ -79,7 +79,7 @@ class Swipe extends Component {
         if(min==="auto"){
             min = -1000;
             min = -((vertical===false?target.offsetWidth:target.offsetHeight)-(vertical===false?dom.offsetWidth:dom.offsetHeight));
-            console.log(min);
+            // console.log(min);
             min = min>0?0:min;
         }
         this.alloyTouch = new this.AlloyTouch({
@@ -102,7 +102,7 @@ class Swipe extends Component {
             touchMove:_.throttle(function(){
                 touchMove(this,arguments);
             },intervals),
-
+            touchEnd:this.props.touchEnd
         });
 
     }
@@ -138,8 +138,10 @@ Swipe.defaultProps={
     },
     onClick:function(){
 
-    }
+    },
+    touchEnd:function() {
 
+    }
 }
 
 module.exports = Swipe;
