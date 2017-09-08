@@ -20,7 +20,10 @@ const Icon = props => {
   )
 }
 Icon.defaultProps = {
-  color: '#000',
+  color: 'currentColor',
+  strokeWidth: 0,
+  stroke: 'currentColor',
+  fill: 'currentColor',
   size: 16
 }
 export default Icon
