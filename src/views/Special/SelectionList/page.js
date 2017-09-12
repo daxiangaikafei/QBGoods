@@ -30,152 +30,7 @@ class SelectionList extends Component {
         isLoading: false,
         isEnd:false,
         pageData: {},
-        actList: [
-          {
-            "id": 524834100996222,
-            "orderNum": 2670,
-            "name": "艾美特烘干机家用干衣机宝宝衣服烘干暖风干衣双层烘衣机迪士尼版",
-            "finalPrice": 250,
-            "price": 300,
-            "coupon": {
-              "type": "通用券 ",
-              "value": "50元券",
-              "link": "https://shop.m.taobao.com/shop/coupon.htm?seller_id=683584142&activityId=c55c519fae404041ae8ec5715007df1e"
-            },
-            "imgUrl": "http://img03.taobaocdn.com/bao/uploaded/i3/TB1kSlkQpXXXXcBXXXXXXXXXXXX_!!0-item_pic.jpg",
-            "rebateValue": "返7%宝券",
-            "source": "tmall",
-            "url": "https://s.click.taobao.com/t?e=m%3D2%26s%3DTpdXq7a00WwcQipKwQzePOeEDrYVVa64…D6shoT2KTDpJYNrOmOgn7VQfkJRMqt8joULH05QTse17t%2F2uOFUhDVzp%2B3EqY%2Bakgpmw"
-          },
-          {
-            "id": 45197829623222,
-            "orderNum": 868,
-            "name": "海尔干湿两用吸尘器家用桶式 大功率手持强力宾馆商用机HC-T3143R",
-            "finalPrice": 250,
-            "price": 300,
-            "coupon": {
-              "type": "通用券 ",
-              "value": "50元券",
-              "link": "https://shop.m.taobao.com/shop/coupon.htm?seller_id=683584142&activityId=c55c519fae404041ae8ec5715007df1e"
-            },
-            "imgUrl": "http://img02.taobaocdn.com/bao/uploaded/i2/TB1IAZiQXXXXXX8aXXXXXXXXXXX_!!0-item_pic.jpg",
-            "rebateValue": "返5%宝券",
-            "source": "tmall",
-            "url": "https://s.click.taobao.com/t?e=m%3D2%26s%3DIadiMZ1BifocQipKwQzePOeEDrYVVa64…DieJD6shoT2KTDpJYNoKenufVVo5l9O8pqgPSmsRHLy28QnGh7Uy3kkV4La3FnEqY%2Bakgpmw"
-          },
-          {
-            "id": 45197829623222,
-            "orderNum": 868,
-            "name": "海尔干湿两用吸尘器家用桶式 大功率手持强力宾馆商用机HC-T3143R",
-            "finalPrice": 250,
-            "price": 300,
-            "coupon": {
-              "type": "通用券 ",
-              "value": "50元券",
-              "link": "https://shop.m.taobao.com/shop/coupon.htm?seller_id=683584142&activityId=c55c519fae404041ae8ec5715007df1e"
-            },
-            "imgUrl": "http://img02.taobaocdn.com/bao/uploaded/i2/TB1IAZiQXXXXXX8aXXXXXXXXXXX_!!0-item_pic.jpg",
-            "rebateValue": "返5%宝券",
-            "source": "tmall",
-            "url": "https://s.click.taobao.com/t?e=m%3D2%26s%3DIadiMZ1BifocQipKwQzePOeEDrYVVa64…DieJD6shoT2KTDpJYNoKenufVVo5l9O8pqgPSmsRHLy28QnGh7Uy3kkV4La3FnEqY%2Bakgpmw"
-          },
-          {
-            "id": 45197829623222,
-            "orderNum": 868,
-            "name": "海尔干湿两用吸尘器家用桶式 大功率手持强力宾馆商用机HC-T3143R",
-            "finalPrice": 250,
-            "price": 300,
-            "coupon": {
-              "type": "通用券 ",
-              "value": "50元券",
-              "link": "https://shop.m.taobao.com/shop/coupon.htm?seller_id=683584142&activityId=c55c519fae404041ae8ec5715007df1e"
-            },
-            "imgUrl": "http://img02.taobaocdn.com/bao/uploaded/i2/TB1IAZiQXXXXXX8aXXXXXXXXXXX_!!0-item_pic.jpg",
-            "rebateValue": "返5%宝券",
-            "source": "tmall",
-            "url": "https://s.click.taobao.com/t?e=m%3D2%26s%3DIadiMZ1BifocQipKwQzePOeEDrYVVa64…DieJD6shoT2KTDpJYNoKenufVVo5l9O8pqgPSmsRHLy28QnGh7Uy3kkV4La3FnEqY%2Bakgpmw"
-          },
-          {
-            "id": 45197829623222,
-            "orderNum": 868,
-            "name": "海尔干湿两用吸尘器家用桶式 大功率手持强力宾馆商用机HC-T3143R",
-            "finalPrice": 250,
-            "price": 300,
-            "coupon": {
-              "type": "通用券 ",
-              "value": "50元券",
-              "link": "https://shop.m.taobao.com/shop/coupon.htm?seller_id=683584142&activityId=c55c519fae404041ae8ec5715007df1e"
-            },
-            "imgUrl": "http://img02.taobaocdn.com/bao/uploaded/i2/TB1IAZiQXXXXXX8aXXXXXXXXXXX_!!0-item_pic.jpg",
-            "rebateValue": "返5%宝券",
-            "source": "tmall",
-            "url": "https://s.click.taobao.com/t?e=m%3D2%26s%3DIadiMZ1BifocQipKwQzePOeEDrYVVa64…DieJD6shoT2KTDpJYNoKenufVVo5l9O8pqgPSmsRHLy28QnGh7Uy3kkV4La3FnEqY%2Bakgpmw"
-          },
-          {
-            "id": 45197829623222,
-            "orderNum": 868,
-            "name": "海尔干湿两用吸尘器家用桶式 大功率手持强力宾馆商用机HC-T3143R",
-            "finalPrice": 250,
-            "price": 300,
-            "coupon": {
-              "type": "通用券 ",
-              "value": "50元券",
-              "link": "https://shop.m.taobao.com/shop/coupon.htm?seller_id=683584142&activityId=c55c519fae404041ae8ec5715007df1e"
-            },
-            "imgUrl": "http://img02.taobaocdn.com/bao/uploaded/i2/TB1IAZiQXXXXXX8aXXXXXXXXXXX_!!0-item_pic.jpg",
-            "rebateValue": "返5%宝券",
-            "source": "tmall",
-            "url": "https://s.click.taobao.com/t?e=m%3D2%26s%3DIadiMZ1BifocQipKwQzePOeEDrYVVa64…DieJD6shoT2KTDpJYNoKenufVVo5l9O8pqgPSmsRHLy28QnGh7Uy3kkV4La3FnEqY%2Bakgpmw"
-          },
-          {
-            "id": 45197829623222,
-            "orderNum": 868,
-            "name": "海尔干湿两用吸尘器家用桶式 大功率手持强力宾馆商用机HC-T3143R",
-            "finalPrice": 250,
-            "price": 300,
-            "coupon": {
-              "type": "通用券 ",
-              "value": "50元券",
-              "link": "https://shop.m.taobao.com/shop/coupon.htm?seller_id=683584142&activityId=c55c519fae404041ae8ec5715007df1e"
-            },
-            "imgUrl": "http://img02.taobaocdn.com/bao/uploaded/i2/TB1IAZiQXXXXXX8aXXXXXXXXXXX_!!0-item_pic.jpg",
-            "rebateValue": "返5%宝券",
-            "source": "tmall",
-            "url": "https://s.click.taobao.com/t?e=m%3D2%26s%3DIadiMZ1BifocQipKwQzePOeEDrYVVa64…DieJD6shoT2KTDpJYNoKenufVVo5l9O8pqgPSmsRHLy28QnGh7Uy3kkV4La3FnEqY%2Bakgpmw"
-          },
-          {
-            "id": 45197829623222,
-            "orderNum": 868,
-            "name": "海尔干湿两用吸尘器家用桶式 大功率手持强力宾馆商用机HC-T3143R",
-            "finalPrice": 250,
-            "price": 300,
-            "coupon": {
-              "type": "通用券 ",
-              "value": "50元券",
-              "link": "https://shop.m.taobao.com/shop/coupon.htm?seller_id=683584142&activityId=c55c519fae404041ae8ec5715007df1e"
-            },
-            "imgUrl": "http://img02.taobaocdn.com/bao/uploaded/i2/TB1IAZiQXXXXXX8aXXXXXXXXXXX_!!0-item_pic.jpg",
-            "rebateValue": "返5%宝券",
-            "source": "tmall",
-            "url": "https://s.click.taobao.com/t?e=m%3D2%26s%3DIadiMZ1BifocQipKwQzePOeEDrYVVa64…DieJD6shoT2KTDpJYNoKenufVVo5l9O8pqgPSmsRHLy28QnGh7Uy3kkV4La3FnEqY%2Bakgpmw"
-          },
-          {
-            "id": 15540414636222,
-            "orderNum": 17899,
-            "name": "Joyoung/九阳 DJ12B-A603DG豆浆机全自动家用多功能正品豆将特价",
-            "finalPrice": 299,
-            "price": 349,
-            "coupon": {
-              "type": "通用券 ",
-              "value": "50元券",
-              "link": "https://shop.m.taobao.com/shop/coupon.htm?seller_id=683584142&activityId=c55c519fae404041ae8ec5715007df1e"
-            },
-            "imgUrl": "http://img03.taobaocdn.com/bao/uploaded/i3/TB19OIpPVXXXXbpapXXXXXXXXXX_!!0-item_pic.jpg",
-            "rebateValue": "返10%宝券",
-            "source": "tmall",
-            "url": "https://s.click.taobao.com/t?e=m%3D2%26s%3DrzH%2FJhN8XmgcQipKwQzePOeEDrYVVa…DieJD6shoT2KTDpJYNpcN%2BRcH1aDcAnG09SpU71eQxulvlKLYhYKOVHgOwqszSGFCzYOOqAQ"
-          }
-        ],
+        actList: [],
     }
   }
   componentDidMount() {
@@ -290,11 +145,11 @@ class SelectionList extends Component {
       return fetchPosts(url ,{floorId:this.props.params.id},"GET").then((data)=>{
           if(data.responseCode===1000){
               this.setState({
-                pageData: data.data,
+                pageData: data.data.goods,
                 isLoading:false,isEnd: true
               })
-              if(data.data.name){
-                document.title = data.data.name;
+              if(data.data.floor.name){
+                document.title = data.data.floor.name;
               }
               // if(page===1){
               //   _this.setState({
@@ -327,7 +182,7 @@ class SelectionList extends Component {
   render() {
     const { pageData } = this.state
     let noDataTip = "--已经到底了--";
-    if(this.state.items.length===0){
+    if(this.state.pageData.length===0){
       noDataTip = "--敬请期待--"
     }
     let noTip = null;

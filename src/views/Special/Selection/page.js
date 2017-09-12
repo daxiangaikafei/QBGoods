@@ -199,7 +199,9 @@ class Selection extends Component {
                 actTitles,
                 timelimitTabList,
                 timelimitList,
-                timelimitHighlight
+                timelimitHighlight,
+                isLoading:false,
+                isEnd: true,
               })
               // if(page===1){
               //   _this.setState({
@@ -232,7 +234,7 @@ class Selection extends Component {
   render() {
     const { pageData, actTabList, actList, actTitles, timelimitTabList, timelimitList, timelimitHighlight } = this.state
     let noDataTip = "--已经到底了--";
-    if(this.state.items.length===0){
+    if(this.state.actList.length===0){
       noDataTip = "--敬请期待--"
     }
     let noTip = null;
@@ -264,11 +266,11 @@ class Selection extends Component {
             </div>
             {pageData[2] && <div className="classify">
                 {pageData[2].map((item,index) => (
-                  <div className="classify-item" key={index}>
+                  <div className="classify-item" key={index} onClick={()=>{QBFK.Business.go('/SelectionList/'+item.id)}}>
                     <h4>{item.name}</h4>
                     <p>{item.title}</p>
                     <img src={item.imgURL} alt=""/>
-                  </div>)) }
+                  </div>))}
               </div>}
             {pageData[3] && <div className="timelimit">
               <div className="tl-tab">
