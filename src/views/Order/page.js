@@ -10,7 +10,6 @@ import List from "./list";
 import OrderHead from "./head";
 import { eventFun } from 'libs/util'
 import ListState from "./listState";
-import Declare from "./Declare";
 import {fetchPosts} from "components/common/fetch";
 
 class Order extends React.Component {

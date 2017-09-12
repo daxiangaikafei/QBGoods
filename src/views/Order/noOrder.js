@@ -1,6 +1,5 @@
 'use strict'
 import * as React from 'react';
-import Declare from "./Declare";
 
 //import * as _ from "lodash";
 

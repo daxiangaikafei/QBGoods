@@ -11,7 +11,6 @@ import {fetchPosts} from "components/common/fetch";
 import NoOrder from "./noOrder";
 import Info from "./info";
 import { eventFun } from 'libs/util'
-import Declare from "./Declare";
 
 import Modal from "components/modal/index";
 import PopUp from "components/popup/index";
@@ -231,14 +230,13 @@ class OrderList extends React.Component {
             //step:200
         }
         if(j===0&&isLoading===false){
-            return(<div className="my-order-list"><Declare /><NoOrder /></div>)
+            return(<div className="my-order-list"><NoOrder /></div>)
         }else if(j===0&&page===0){
             return (<div></div>)
         }
         //return ({})
         return (
                 <Swipe {...props} onClick={this.handClick}>
-                    <Declare />
                     {$lis}
                     {isLoading===true&&(<div className="no-up">Loading</div>)}
                     {page>1&&isEnd===true&&(<div className="no-up">已经没有更新了</div>)}

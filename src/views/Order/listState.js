@@ -11,7 +11,6 @@ import {fetchPosts} from "components/common/fetch";
 import NoOrder from "./noOrder";
 import InfoState from "./infoState";
 import { eventFun } from 'libs/util'
-import Declare from "./Declare";
 
 import Modal from "components/modal/index";
 import PopUp from "components/popup/index";
@@ -294,7 +293,6 @@ class OrderList extends React.Component {
             }
             return(
                 <div className="my-order-list my-order-list-state" style={{"background": "#fff"}} onClick={this.handClick}>
-                    <Declare />
                     {btn}                  
                 </div>
             )
@@ -304,7 +302,6 @@ class OrderList extends React.Component {
         //return ({})
         return (
                 <Swipe {...props} onClick={this.handClick}>
-                    <Declare />
                     <div className="btns"><div className="btn-begin">立即申诉</div></div>
                     {$lis}
                     {isLoading===true&&(<div className="no-up">Loading</div>)}
