@@ -25,7 +25,7 @@ class ProductList extends Component {
     render() {
         let { pageName, tabId, model } = this.props.eventConfig
         return (
-            <div styleName={classNames({"list":true,"nomore":this.props.listConfig.isNoMore})}>
+            <div styleName={classNames({"list":true,"nomore":this.props.listConfig.isNoMore})} style={this.props.style}>
                 {
                     this.props.listData.length > 0 ?
                         this.props.listConfig.temp == 'similar' ?
@@ -72,6 +72,38 @@ class ProductList extends Component {
                                     <div styleName="tip">
                                         <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, 'self_support_score', item.id)} data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.haohuoUrl} ><div styleName="haohuoScore">{item.haohuoScore}</div></a>
                                     </div>
+                                </div>
+                            </div>
+                        )
+                    : this.props.listConfig.temp == 'selection' ?
+                        this.props.listData.map((item, index) =>
+                            <div className="tl-list-item" key={index}>
+                                <div className="item-start">
+                                  <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, model, item.id)} styleName="img" data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} >
+                                    <img src={item.imgUrl} alt=""/>
+                                  </a>
+                                </div>
+                                <div className="item-end">
+                                    <div className="item-title">
+                                    <img src={icons[item.source]} alt=""/>
+                                      <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, model, item.id)} data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} >
+                                        {item.name}
+                                      </a>
+                                    </div>
+                                    <div className="item-price">
+                                    <span className="item-price-txt">￥{item.couponPrice}</span>{item.couponAmount>0&&'券后价'}
+                                    </div>
+                                    {item.couponAmount>0&&<div className="item-old-price">
+                                    原价￥{item.reservePrice}
+                                    </div>}
+                                    <div>
+                                      <span className="item-rebate">预返积分{item.point}</span>
+                                      <span className="item-sales">销量{item.orderNum}</span>
+                                    </div>
+                                    {item.couponAmount>0 ?
+                                      <div className="btn-buy">领券购买</div> :
+                                      <div className="btn-buy">立即购买</div>
+                                    }
                                 </div>
                             </div>
                         )

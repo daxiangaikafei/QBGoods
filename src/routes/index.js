@@ -24,6 +24,8 @@ import List from "views/Special/List/page"
 import GoodsClass from "views/Special/GoodsClass/page"
 import Coupon from "views/Special/Coupon/page"
 import Man from "views/Special/Man/page"
+import Selection from "views/Special/Selection/page"
+import SelectionList from "views/Special/SelectionList/page"
 import Women from "views/Special/Women/page"
 import BrandShop from "views/Special/BrandShop/page"
 import BrandShopList from "views/Special/BrandShopList/page"
@@ -70,6 +72,8 @@ export default function (ref) {
         <Route path='/Nine/:id' component={Nine} name="9.9专场" />
         <Route path='/Coupon/:id' component={Coupon} name="好券直播" />
         <Route path='/Man/:id' component={Man} name="男士专场" />
+        <Route path='/Selection/:id' component={Selection} name="好物精选" />
+        <Route path='/SelectionList/:id' component={SelectionList} name="好物精选" />
         <Route path='/BrandShopList' component={BrandShopList} name="品牌店铺列表" />
         <Route path='/BrandShop/:id' component={BrandShop} name="品牌店铺" />
         <Route path='/Women/:id' component={Women} name="女士专场" />

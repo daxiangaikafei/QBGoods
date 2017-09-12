@@ -118,4 +118,90 @@ a {
         color: @assetTitleColor;
         line-height: 30px;
     }
+
+    &>.tl-list-item+.tl-list-item {
+        border-top: 1px solid #E6E6E6;
+    }
+    .tl-list-item {
+        padding: 8px 8px 8px 0;        
+        .flex;
+        .item-start {
+          width: 100px;
+          padding: 0 5px;
+          box-sizing: border-box;
+          .flex-item(1,1,0);
+          .flex;
+          .flex-align-center;
+          .item-coupon-bg {
+            width: 100%;
+            height: 100%;
+            background: url('static/imgs/special/coupon-bg.png') no-repeat;
+            background-size: contain;
+            color: #ffffff;
+            .flex;
+            .flex-center;
+            .flex-align-center;
+          }
+          .item-coupon {
+            font-size: 36px;
+            text-shadow: 0 2px 1px rgba(0, 0, 0, .3);
+            vertical-align: bottom;
+            i {
+              font-size: 14px;
+            }
+          }
+        }
+        .item-end {
+          position: relative;
+          .flex-item(2.5,1,0);
+          .flex;
+          .flex-vertical;
+          .flex-justify;
+          .item-title {
+            font-size: 14px;
+            height: 30;
+            .text-line-feed;
+            img {
+              width: 14px;
+              height: 14px;
+              margin-right: 3px;
+            }
+          }
+          .item-price {
+            color: #F42856;
+            font-size: 12px;
+          }
+          .item-price-txt {
+            font-size: 16px;
+            font-weight: bold;
+          }
+          .item-old-price {
+            color:#9A9A9A;
+            font-size: 12px;
+            text-decoration: line-through;
+          }
+          .item-rebate {
+            border: 1px solid #F84A36;
+            font-size: 10px;
+            border-radius: 3px;
+            color: #f84a36;
+            padding: 0 3px;
+          }
+          .item-sales {
+            margin-left: 10px;
+            font-size: 10px;
+            color: #6E6E6E;            
+          }
+          .btn-buy {
+            background: #f64b58;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            padding: 8px;
+            font-size: 12px;
+            color: #ffffff;
+            border-radius: 3px;
+          }
+        }
+      }
 }
