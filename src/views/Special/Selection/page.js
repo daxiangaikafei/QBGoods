@@ -291,10 +291,10 @@ class Selection extends Component {
               <div className="tl-list">
                 {
                   timelimitList[this.state.timelimitTabActive].map((item, index) => (
-                    <div className="tl-list-item" key={index}>
+                    <div className="tl-list-item" key={index} onClick={()=>{timelimitTabList[this.state.timelimitTabActive].status==1&&this.tofrontClick(item.id)}} {...eventFun(this.pageName, 'selection_timilimit_products', item.id)} data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.url}>
                       <div className="tl-list-item-top">
                         <div className="tl-list-item-start">
-                          <div className="tl-list-item-coupon-bg" onClick={()=>{timelimitTabList[this.state.timelimitTabActive].status==1&&this.tofrontClick(item.id)}} {...eventFun(this.pageName, 'selection_timilimit_products', item.id)} data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.url}>
+                          <div className="tl-list-item-coupon-bg">
                             <span className="tl-list-item-coupon">
                               {item.couponAmount}
                               <i>元</i>
@@ -302,7 +302,7 @@ class Selection extends Component {
                           </div>
                         </div>
                         <div className="tl-list-item-middle">
-                          <div className="tl-list-item-title" onClick={()=>{timelimitTabList[this.state.timelimitTabActive].status==1&&this.tofrontClick(item.id)}} {...eventFun(this.pageName, 'selection_timilimit_products', item.id)} data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.url}>
+                          <div className="tl-list-item-title">
                             <img src={icons[item.source]} alt=""/>
                             {item.name}
                           </div>
@@ -314,7 +314,7 @@ class Selection extends Component {
                           </div>
                           <span className="tl-list-item-rebate">预返积分{item.point}</span>
                         </div>
-                        <div className="tl-list-item-end" onClick={()=>{timelimitTabList[this.state.timelimitTabActive].status==1&&this.tofrontClick(item.id)}} {...eventFun(this.pageName, 'selection_timilimit_products', item.id)} data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.url}>
+                        <div className="tl-list-item-end">
                           <img src={item.imgUrl} alt=""/>
                         </div>
                       </div>
