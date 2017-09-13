@@ -25,7 +25,7 @@ class Selection extends Component {
     super(props)
 
     this.state = {
-      avtivityId: getParameterByName('avtivityId',location.search) || props.params.id || "",
+      activityId: getParameterByName('activityId',location.search) || props.params.id || "",
       items:[],
       page: 1,
       active: 2222,
@@ -169,7 +169,7 @@ class Selection extends Component {
       //       isLoading:false});
       //   return;
       // }
-      return fetchPosts(url ,{activityId:this.state.avtivityId},"GET").then((data)=>{
+      return fetchPosts(url ,{activityId:this.state.activityId},"GET").then((data)=>{
           if(data.responseCode===1000){
             let actTabList = [],
                 actList = [],
@@ -392,13 +392,13 @@ class Selection extends Component {
   }
 };
 function getParameterByName(name, url) {
-  if (!url) url = window.location.href;
-  name = name.replace(/[\[\]]/g, "\\$&");
-  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-      results = regex.exec(url);
-  if (!results) return null;
-  if (!results[2]) return '';
-  return decodeURIComponent(results[2].replace(/\+/g, " "));
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 Selection.defaultProps = {
   url: "/cms/activity/index.do",
