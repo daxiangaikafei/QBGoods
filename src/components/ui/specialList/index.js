@@ -24,7 +24,7 @@ class SpecialList extends Component {
       console.log("clickLinkSource  ....  clickLinkSource");
       this.context.router.replace( {"pathname": `frontMatter/${id}`,  state: {} });
       // window.location.href = `/#/frontMatter/frontMatter/${id}`
-      e.preventDefault();
+    //   e.preventDefault();
     }
     render() {
         let { pageName, model } = this.props.eventConfig;
@@ -52,9 +52,9 @@ class SpecialList extends Component {
           case "beauty":
             listTpl = this.props.listData.map((item, index) =>
                 <div styleName="singleitem" key={index}>
-                    <a {...eventFun(pageName, model, item.id)} styleName="img" href={ item.url} onClick={this.clickLinkSource.bind(this,item.url,item.sourcem,item.id)}><img src={item.imgUrl} alt="" /></a>
+                    <a {...eventFun(pageName, model, item.id)} styleName="img" onClick={this.clickLinkSource.bind(this,item.url,item.sourcem,item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.url}><img src={item.imgUrl} alt="" /></a>
                     <div styleName="info">
-                      <a {...eventFun(pageName, model, item.id)} href={item.url} onClick={this.clickLinkSource.bind(this,item.url,item.sourcem,item.id)}><h3>{item.name}</h3></a>
+                      <a {...eventFun(pageName, model, item.id)} onClick={this.clickLinkSource.bind(this,item.url,item.sourcem,item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.url}><h3>{item.name}</h3></a>
                       <div styleName="source">
                           <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                           <span className='estimate'>预估返10%</span>
@@ -101,8 +101,8 @@ class SpecialList extends Component {
             listTpl = this.props.listData.map((item, index) =>
                 <div styleName="item" key={index}>
                     {item.isNew && <i styleName="new-icon">NEW</i>}
-                    <a {...eventFun(pageName, model, item.id)} styleName="img"  onClick={this.clickLinkSource.bind(this,item.url,item.sourcem,item.id)}><img src={item.imgUrl} alt="" /></a>
-                    <a {...eventFun(pageName, model, item.id)} href={item.url}  onClick={this.clickLinkSource.bind(this,item.url,item.sourcem,item.id)}><h3>{item.name}</h3></a>
+                    <a {...eventFun(pageName, model, item.id)} styleName="img"  onClick={this.clickLinkSource.bind(this,item.url,item.sourcem,item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.url}><img src={item.imgUrl} alt="" /></a>
+                    <a {...eventFun(pageName, model, item.id)} onClick={this.clickLinkSource.bind(this,item.url,item.sourcem,item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.url}><h3>{item.name}</h3></a>
                     <div styleName="source">
                         <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                         <span className='estimate'>{item.rebateValue}</span>

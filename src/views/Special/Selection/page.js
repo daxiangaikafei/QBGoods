@@ -26,7 +26,6 @@ class Selection extends Component {
 
     this.state = {
       specialId: props.params.id || "",
-      imgURL: require('static/imgs/activity/banner2.jpg'),
       items:[],
       page: 1,
       active: 2222,
@@ -291,7 +290,8 @@ class Selection extends Component {
               <div className="tl-list">
                 {
                   timelimitList[this.state.timelimitTabActive].map((item, index) => (
-                    <div className="tl-list-item" key={index} onClick={()=>{timelimitTabList[this.state.timelimitTabActive].status==1&&this.tofrontClick(item.id)}} {...eventFun(this.pageName, 'selection_timilimit_products', item.id)} data-href={'newtab://goodstuff.qbao.com/goods?url=' + item.url}>
+                    <div className="tl-list-item" key={index} onClick={()=>{timelimitTabList[this.state.timelimitTabActive].status==1&&this.tofrontClick(item.id)}} {...eventFun(this.pageName, 'selection_timilimit_products', item.id)}>
+                      <a href={'newtab://goodstuff.qbao.com/goods?url=' + item.url}>
                       <div className="tl-list-item-top">
                         <div className="tl-list-item-start">
                           <div className="tl-list-item-coupon-bg">
@@ -323,6 +323,7 @@ class Selection extends Component {
                         【好物推荐】{item.copyWriter}
                         </p>
                       </div>
+                      </a>
                     </div>
                   ))
                 }
@@ -387,7 +388,7 @@ class Selection extends Component {
     )
   }
   tofrontClick = (id) => {
-    id && this.context.router.push( {"pathname": `frontMatter/${id}`, state: {} });
+    // id && this.context.router.push( {"pathname": `frontMatter/${id}`, state: {} });
   }
 };
 Selection.defaultProps = {

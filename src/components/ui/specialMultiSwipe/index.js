@@ -72,8 +72,8 @@ class MultiSwipe extends Component {
                   <div className="swipe-slide">{
                     pages.map(function(item,i){
                       return (<div className="swipe-item" key={i}>
-                            <a {...eventFun(pageName, model, item.id)} href={item.linkUrl} className="imga" onClick={_this.clickLink.bind(_this,item.id,item.source)}><img src={item.imgUrl}/></a>
-                            <a {...eventFun(pageName, model, item.id)} href={item.url} onClick={_this.clickLink.bind(_this,item.id,item.source)}><h3>{item.name}</h3></a>
+                            <a {...eventFun(pageName, model, item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.linkUrl} className="imga" onClick={_this.clickLink.bind(_this,item.id,item.source)}><img src={item.imgUrl}/></a>
+                            <a {...eventFun(pageName, model, item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} onClick={_this.clickLink.bind(_this,item.id,item.source)}><h3>{item.name}</h3></a>
                             <div styleName="source">
                                 <span styleName="icon"><img src={icons[item.source]} alt=""/></span>
                                 <span styleName="return">预估返{item.orderNum}%</span>
