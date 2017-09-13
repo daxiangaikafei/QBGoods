@@ -25,7 +25,7 @@ class Selection extends Component {
     super(props)
 
     this.state = {
-      specialId: props.params.id || "",
+      avtivityId: getParameterByName('avtivityId',location.search) || props.params.id || "",
       items:[],
       page: 1,
       active: 2222,
@@ -169,7 +169,7 @@ class Selection extends Component {
       //       isLoading:false});
       //   return;
       // }
-      return fetchPosts(url ,{activityId:this.props.params.id},"GET").then((data)=>{
+      return fetchPosts(url ,{activityId:this.state.avtivityId},"GET").then((data)=>{
           if(data.responseCode===1000){
             let actTabList = [],
                 actList = [],
@@ -391,6 +391,15 @@ class Selection extends Component {
     // id && this.context.router.push( {"pathname": `frontMatter/${id}`, state: {} });
   }
 };
+function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 Selection.defaultProps = {
   url: "/cms/activity/index.do",
 }
