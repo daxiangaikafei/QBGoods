@@ -40,6 +40,7 @@ const APP_ENTRY_PATHSelfSupport = paths.base(config.dir_client) + '/vendorSelfSu
 const APP_ENTRY_PATHGatherStore = paths.base(config.dir_client) + '/vendorGatherStore.js'
 const APP_ENTRY_PATHMyCustom = paths.base(config.dir_client) + '/vendorMyCustom.js'
 const APP_ENTRY_PATHMySignIn = paths.base(config.dir_client) + '/vendorSignIn.js'
+const APP_ENTRY_PATHSelection = paths.base(config.dir_client) + '/vendorSelection.js'
 
 webpackConfig.entry = {
     index: __DEV__
@@ -62,7 +63,10 @@ webpackConfig.entry = {
         : [APP_ENTRY_PATHMyCustom],
     indexSignIn: __DEV__
         ? [APP_ENTRY_PATHMySignIn, 'webpack-hot-middleware/client?path=/__webpack_hmr']
-        : [APP_ENTRY_PATHMySignIn]
+        : [APP_ENTRY_PATHMySignIn],
+    indexSelection: __DEV__
+        ? [APP_ENTRY_PATHSelection, 'webpack-hot-middleware/client?path=/__webpack_hmr']
+        : [APP_ENTRY_PATHSelection]
 }
 
 // ------------------------------------
