@@ -268,7 +268,7 @@ class Selection extends Component {
                   <div className="classify-item" key={index} onClick={()=>{QBFK.Business.go('/SelectionList/'+item.id)}}>
                     <h4>{item.name}</h4>
                     <p>{item.title}</p>
-                    <img src={item.imgURL} alt=""/>
+                    <img src={item.imgUrl} alt=""/>
                   </div>))}
               </div>}
             {pageData[3] && <div className="timelimit">
@@ -291,21 +291,25 @@ class Selection extends Component {
                 {
                   timelimitList[this.state.timelimitTabActive].map((item, index) => (
                     <div className="tl-list-item" key={index} onClick={()=>{timelimitTabList[this.state.timelimitTabActive].status==1&&this.tofrontClick(item.id)}} {...eventFun(this.pageName, 'selection_timilimit_products', item.id)}>
-                      <a href={'newtab://goodstuff.qbao.com/goods?url=' + item.url}>
+                      
                       <div className="tl-list-item-top">
                         <div className="tl-list-item-start">
-                          <div className="tl-list-item-coupon-bg">
-                            <span className="tl-list-item-coupon">
-                              {item.couponAmount}
-                              <i>元</i>
-                            </span>
-                          </div>
+                          <a href={'newtab://goodstuff.qbao.com/goods?url=' + item.couponLink}>
+                            <div className="tl-list-item-coupon-bg">
+                              <span className="tl-list-item-coupon">
+                                {item.couponAmount}
+                                <i>元</i>
+                              </span>
+                            </div>
+                          </a>
                         </div>
                         <div className="tl-list-item-middle">
-                          <div className="tl-list-item-title">
-                            <img src={icons[item.source]} alt=""/>
-                            {item.name}
-                          </div>
+                          <a href={'newtab://goodstuff.qbao.com/goods?url=' + item.url}>
+                            <div className="tl-list-item-title">
+                              <img src={icons[item.source]} alt=""/>
+                              {item.name}
+                            </div>
+                          </a>
                           <div className="tl-list-item-price">
                             <span className="tl-list-item-price-txt">￥{item.couponPrice}</span>券后价
                           </div>
@@ -323,7 +327,6 @@ class Selection extends Component {
                         【好物推荐】{item.copyWriter}
                         </p>
                       </div>
-                      </a>
                     </div>
                   ))
                 }

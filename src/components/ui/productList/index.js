@@ -100,9 +100,14 @@ class ProductList extends Component {
                                       <span className="item-rebate">预返积分{item.point}</span>
                                       <span className="item-sales">销量{item.orderNum}</span>
                                     </div>
-                                    {item.couponAmount>0 ?
-                                      <div className="btn-buy">领券购买</div> :
-                                      <div className="btn-buy">立即购买</div>
+                                    {item.couponAmount>0 ?                                    
+                                        <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, model, item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.couponLink} >
+                                          <div className="btn-buy">领券购买</div> 
+                                        </a>
+                                        :
+                                        <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, model, item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} >
+                                          <div className="btn-buy">立即购买</div>
+                                        </a>
                                     }
                                 </div>
                             </div>
