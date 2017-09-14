@@ -41,10 +41,9 @@ class Selection extends Component {
       actTabList: [],
       actList: [],
       actTitles: [],
-      timelimitTabActive: 0,
+      timelimitTabActive: -1,
       timelimitTabList: [],
       timelimitList: [],
-      timelimitHighlight: -1,
     }
   }
   componentDidMount() {
@@ -176,7 +175,7 @@ class Selection extends Component {
                 actTitles = [],
                 timelimitTabList = [],
                 timelimitList = [],
-                timelimitHighlight = -1
+                timelimitTabActive = -1
             if (data.data[4]) {
               data.data[4].forEach((item,index) => {
                 actTabList.push(item.name)
@@ -188,7 +187,7 @@ class Selection extends Component {
               data.data[3].forEach((item,index) => {
                 timelimitTabList.push({name:item.name,status:item.status})
                 timelimitList.push(item.goods)
-                item.status == 1 && (timelimitHighlight = index)
+                item.status == 1 && (timelimitTabActive = index)
               })
             }
               this.setState({
@@ -198,7 +197,7 @@ class Selection extends Component {
                 actTitles,
                 timelimitTabList,
                 timelimitList,
-                timelimitHighlight,
+                timelimitTabActive,
                 isLoading:false,
                 isEnd: true,
               })
@@ -231,7 +230,7 @@ class Selection extends Component {
        });
   }
   render() {
-    const { pageData, actTabList, actList, actTitles, timelimitTabList, timelimitList, timelimitHighlight } = this.state
+    const { pageData, actTabList, actList, actTitles, timelimitTabList, timelimitList, timelimitTabActive } = this.state
     let noDataTip = "--已经到底了--";
     if(this.state.actList.length===0){
       noDataTip = "--敬请期待--"
@@ -259,13 +258,17 @@ class Selection extends Component {
       <div style={{height:'100%'}}>
         <Swipe style={{ background:'#fff'}} {...props} >
           <div className="selection-container">
-            <div className="selection-swiper">
-              {/*this.state.imgURL && <img src={this.state.imgURL}/>*/}
-              {pageData[1] && <img src={pageData[1][0].imgUrl} onClick={()=>{QBFK.Business.go('/SelectionList/'+pageData[1][0].id)}}/>}
-            </div>
+            {pageData[1] && <div className="selection-swiper">
+                  <ReactSwipe ref="swiper" className="carousel" swipeOptions={{continuous: true,auto:4000,speed:500, callback: ()=>{}}}>
+                    {pageData[1].map((item, index) => (
+                      <img src={item.imgUrl} key={index} onClick={()=>{this.context.router.push( {"pathname": `SelectionList/${item.id}`, state: {} })}}/>
+                    ))}
+                  </ReactSwipe>
+                </div>
+              }
             {pageData[2] && <div className="classify">
                 {pageData[2].map((item,index) => (
-                  <div className="classify-item" key={index} onClick={()=>{QBFK.Business.go('/SelectionList/'+item.id)}}>
+                  <div className="classify-item" key={index} onClick={()=>{this.context.router.push( {"pathname": `SelectionList/${item.id}`, state: {} })}}>
                     <h4>{item.name}</h4>
                     <p>{item.title}</p>
                     <img src={item.imgUrl} alt=""/>
@@ -277,10 +280,10 @@ class Selection extends Component {
                 {
                   timelimitTabList.map((item, index) => (
                     index==0 ? 
-                    <div className="tl-tab-item" key={index} onClick={()=>{this.timelimitTabOnClick(index)}}>
-                      昨日
+                    <div className={classNames("tl-tab-item",{'active':timelimitTabActive==index})} key={index} onClick={()=>{this.timelimitTabOnClick(index)}}>
+                      {item.name}
                     </div> :
-                    <div className={classNames("tl-tab-item",{'active':timelimitHighlight==index})} key={index} onClick={()=>{this.timelimitTabOnClick(index)}}>
+                    <div className={classNames("tl-tab-item",{'active':timelimitTabActive==index})} key={index} onClick={()=>{this.timelimitTabOnClick(index)}}>
                       <span className="tl-tab-start">{item.name}</span>
                       <span className="tl-tab-end">{item.status==1?'已经开始':'即将开始'}</span>
                     </div>
@@ -304,12 +307,10 @@ class Selection extends Component {
 
                         </div>
                         <div className="tl-list-item-middle">
-                          <a href={'newtab://goodstuff.qbao.com/goods?url=' + item.url}>
-                            <div className="tl-list-item-title">
-                              <img src={icons[item.source]} alt=""/>
-                              {item.name}
-                            </div>
-                          </a>
+                          <div className="tl-list-item-title">
+                            <img src={icons[item.source]} alt=""/>
+                            {item.name}
+                          </div>
                           <div className="tl-list-item-price">
                             <span className="tl-list-item-price-txt">￥{item.couponPrice}</span>券后价
                           </div>
@@ -408,4 +409,7 @@ function getParameterByName(name, url) {
 Selection.defaultProps = {
   url: "/cms/activity/index.do",
 }
+Selection.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 export default CSSModules(Selection,styles,{allowMultiple:true});
