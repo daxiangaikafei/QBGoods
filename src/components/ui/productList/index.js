@@ -79,16 +79,12 @@ class ProductList extends Component {
                         this.props.listData.map((item, index) =>
                             <div className="tl-list-item" key={index}>
                                 <div className="item-start">
-                                  <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, model, item.id)} styleName="img" href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} >
                                     <img src={item.imgUrl} alt=""/>
-                                  </a>
                                 </div>
                                 <div className="item-end">
                                     <div className="item-title">
                                     <img src={icons[item.source]} alt=""/>
-                                      <a onClick={this.tofrontClick.bind(this, item.id)} {...eventFun(pageName, model, item.id)} href={'newtab://goodstuff.qbao.com/goods?url=' + item.url} >
                                         {item.name}
-                                      </a>
                                     </div>
                                     <div className="item-price">
                                     <span className="item-price-txt">￥{item.couponPrice}</span>{item.couponAmount>0&&'券后价'}

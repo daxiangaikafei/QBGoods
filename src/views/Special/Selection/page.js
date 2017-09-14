@@ -290,18 +290,18 @@ class Selection extends Component {
               <div className="tl-list">
                 {
                   timelimitList[this.state.timelimitTabActive].map((item, index) => (
-                    <div className="tl-list-item" key={index} onClick={()=>{timelimitTabList[this.state.timelimitTabActive].status==1&&this.tofrontClick(item.id)}} {...eventFun(this.pageName, 'selection_timilimit_products', item.id)}>
+                    
+                    <div className="tl-list-item" key={index} onClick={()=>{timelimitTabList[this.state.timelimitTabActive].status==1&&this.tofrontClick(item.id,item.couponLink)}} {...eventFun(this.pageName, 'selection_timilimit_products', item.id)}>
                       
                       <div className="tl-list-item-top">
                         <div className="tl-list-item-start">
-                          <a href={'newtab://goodstuff.qbao.com/goods?url=' + item.couponLink}>
                             <div className="tl-list-item-coupon-bg">
                               <span className="tl-list-item-coupon">
                                 {item.couponAmount}
                                 <i>元</i>
                               </span>
                             </div>
-                          </a>
+
                         </div>
                         <div className="tl-list-item-middle">
                           <a href={'newtab://goodstuff.qbao.com/goods?url=' + item.url}>
@@ -390,7 +390,9 @@ class Selection extends Component {
       </div>
     )
   }
-  tofrontClick = (id) => {
+  tofrontClick = (id,url,e) => {
+    location.href = 'newtab://goodstuff.qbao.com/goods?url='+url
+    e && e.preventDefault()
     // id && this.context.router.push( {"pathname": `frontMatter/${id}`, state: {} });
   }
 };
