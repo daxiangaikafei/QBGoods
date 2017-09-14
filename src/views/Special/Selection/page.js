@@ -259,16 +259,16 @@ class Selection extends Component {
         <Swipe style={{ background:'#fff'}} {...props} >
           <div className="selection-container">
             {pageData[1] && <div className="selection-swiper">
-                  <ReactSwipe ref="swiper" className="carousel" swipeOptions={{continuous: true,auto:4000,speed:500, callback: ()=>{}}}>
+                  <ReactSwipe ref="swiper" className="carousel" swipeOptions={{continuous: false,auto:4000,speed:500, callback: ()=>{}}}>
                     {pageData[1].map((item, index) => (
-                      <img src={item.imgUrl} key={index} onClick={()=>{this.context.router.push( {"pathname": `SelectionList/${item.id}`, state: {} })}}/>
+                      <img src={item.imgUrl} key={index} onClick={()=>{this.go('SelectionList',item.id)}}/>
                     ))}
                   </ReactSwipe>
                 </div>
               }
             {pageData[2] && <div className="classify">
                 {pageData[2].map((item,index) => (
-                  <div className="classify-item" key={index} onClick={()=>{this.context.router.push( {"pathname": `SelectionList/${item.id}`, state: {} })}}>
+                  <div className="classify-item" key={index} onClick={()=>{this.go('SelectionList',item.id)}}>
                     <h4>{item.name}</h4>
                     <p>{item.title}</p>
                     <img src={item.imgUrl} alt=""/>
@@ -395,6 +395,13 @@ class Selection extends Component {
     location.href = 'newtab://goodstuff.qbao.com/goods?url='+url
     e && e.preventDefault()
     // id && this.context.router.push( {"pathname": `frontMatter/${id}`, state: {} });
+  }
+  go = (route,id) => {
+    if(QBFK.Util.getDevice() === 'ios') {
+      location.href = `newtab://${location.href.split('indexSelection')[0]}index${route}.html?id=${id}`
+    } else {
+      this.context.router.push( {"pathname": `${route}/${id}`, state: {} })
+    }
   }
 };
 function getParameterByName(name, url) {

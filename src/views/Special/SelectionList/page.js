@@ -24,7 +24,7 @@ class SelectionList extends Component {
     super(props)
 
     this.state = {
-        specialId: props.params.id || "",
+        specialId: getParameterByName('id') || props.params.id || 0,
         items:[],
         page: 1,
         isLoading: false,
@@ -142,7 +142,7 @@ class SelectionList extends Component {
       // let param = Object.assign({},{page: page, cId: activeId, size: pageSize}, searchParam);
       // page = param.page;
 
-      return fetchPosts(url ,{floorId:this.props.params.id},"GET").then((data)=>{
+      return fetchPosts(url ,{floorId:this.state.specialId},"GET").then((data)=>{
           if(data.responseCode===1000){
               this.setState({
                 pageData: data.data.goods,
@@ -219,6 +219,15 @@ class SelectionList extends Component {
   }
 
 };
+function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 SelectionList.defaultProps = {
   url: "/cms/activity/goods.do",
   pageSize: 8
