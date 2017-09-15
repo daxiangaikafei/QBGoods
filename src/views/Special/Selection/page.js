@@ -398,7 +398,7 @@ class Selection extends Component {
   }
   go = (route,id) => {
     if(QBFK.Util.getDevice() === 'ios') {
-      location.href = `newtab://${location.href.split('indexSelection')[0]}index${route}.html?id=${id}`
+      location.href = `newtab://goodstuff.qbao.com/goods?url=${location.href.split('indexSelection')[0]}index${route}.html?id=${id}`
     } else {
       this.context.router.push( {"pathname": `${route}/${id}`, state: {} })
     }
