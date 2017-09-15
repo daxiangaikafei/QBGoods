@@ -34,6 +34,8 @@ import MyLabels from "views/MyLabels/page"
 import MyLabelsTheme from "views/MyLabelsTheme/page"
 import RobGoods from "views/Special/RobGoods/page"
 
+import Home from "views/Home/page"
+
 export default function (ref) {
   return (
     <Router history={ref.history}>
@@ -41,13 +43,14 @@ export default function (ref) {
         <IndexRoute component={GatherGoods} name="聚好货"/>
         <Route path='/FlexLayout' component={FlexLayout} name="布局" />
         <Route path='/HotGoods' component={HotGoods} name="热卖好货" />
+        <Route path='/Home' component={Home} name="我有好物" />
         <Route path='/MyCustom' component={MyCustom} name="我的定制" />
         <Route path='/Themes' component={Themes} name="定制中心" />
         <Route path='/SelfSupport' component={SelfSupport} name="钱宝自营" />
         <Route path='/ShopActivity' component={ShopActivity} name="店铺活动页"/>
         <Route path='/GatherGoods' component={GatherGoods} name="聚好货" />
         <Route path='/GatherStore' component={GatherStore} name="聚好店"/>
-        <Route path='/Order' component={Order} name="我的好货"/>
+        <Route path='/Order' component={Order} name="我有好物"/>
         <Route path='/Appeal' component={Appeal} name="申诉"/>
         <Route path='/BannerEntry' component={BannerEntry} name="活动页面"/>
         <Route path='/Ju/:id' component={Banner01} name="聚好货页面"/>
