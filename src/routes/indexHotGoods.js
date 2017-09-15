@@ -6,7 +6,7 @@ import HotGoods from 'views/Hotgoods/page'
 export default function (ref) {
   return (
     <Router history={ref.history}>
-      <Route path='/' component={CoreLayout} name="有好货">
+      <Route path='/' component={CoreLayout} name="我有好物">
         <IndexRoute component={HotGoods} name="热卖好货"/>
         <Route path='/HotGoods' component={HotGoods} name="热卖好货" />
       </Route>

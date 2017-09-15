@@ -5,7 +5,7 @@ import SelfSupport from 'views/SelfSupport/page'
 export default function (ref) {
   return (
     <Router history={ref.history}>
-      <Route path='/' component={CoreLayout} name="有好货">
+      <Route path='/' component={CoreLayout} name="我有好物">
         <IndexRoute component={SelfSupport} name="钱宝自营"/>
         <Route path='/SelfSupport' component={SelfSupport} name="钱宝自营" />
       </Route>

@@ -201,7 +201,7 @@ class OrderList extends React.Component {
         }else if(className==="btn-begin"){
             this.doApply();
         }else if(className==='js_angin'){
-          Modal.alert("提示","欢迎加入有好货官方群：566261195");
+          Modal.alert("提示","欢迎加入我有好物官方群：566261195");
         }else if(className.indexOf('js_info') > -1){
             this.toInfo(id);
         }else if(className==="js_appeal"){
@@ -248,7 +248,7 @@ class OrderList extends React.Component {
                             <p>{ item.orderId }</p>
                             <p>{ item.appealTime }</p>
                           </p>
-                          <p className="order-item-tip">亲，您好，我们会在24小时内处理尽快处理的，处理完毕后，我们会在我的消息及时通知您噢,  欢迎加入有好货官方群咨询，群1：566261195，群2： 641361648</p>
+                          <p className="order-item-tip">亲，您好，我们会在24小时内处理尽快处理的，处理完毕后，我们会在我的消息及时通知您噢,  欢迎加入我有好物官方群咨询，群1：566261195，群2： 641361648</p>
                         </a>
                       :<a href={item.clickUrl} target="_blank" >
                             <p className="order-item-top">

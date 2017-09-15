@@ -37,7 +37,7 @@ import RobGoods from "views/Special/RobGoods/page"
 export default function (ref) {
   return (
     <Router history={ref.history}>
-      <Route path='/' component={CoreLayout} name="有好货">
+      <Route path='/' component={CoreLayout} name="我有好物">
         <IndexRoute component={GatherGoods} name="聚好货"/>
         <Route path='/FlexLayout' component={FlexLayout} name="布局" />
         <Route path='/HotGoods' component={HotGoods} name="热卖好货" />
@@ -63,7 +63,7 @@ export default function (ref) {
 
         <Route path='/GoodsClass' component={GoodsClass} name="商品分类" />
         <Route path='/List/:id' component={List} name="专场" />
-        <Route path='/FrontMatter/:id' component={FrontMatter} name="有好货" />
+        <Route path='/FrontMatter/:id' component={FrontMatter} name="我有好物" />
         <Route path='/MyLabels' component={MyLabels} name="修改" />
         <Route path='/MyLabelsTheme' component={MyLabelsTheme} name="个性主题" />
 

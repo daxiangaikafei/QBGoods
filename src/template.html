@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-    <title>有好货</title>
+    <title>我有好物</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
     <meta name="format-detection" content="telephone=no">
@@ -13,7 +14,7 @@
                 enumerable: false,
                 configurable: true,
                 writable: true,
-                value: function (target, firstSource) {
+                value: function(target, firstSource) {
                     'use strict';
                     if (target === undefined || target === null) {
                         throw new TypeError('Cannot convert first argument to object');
@@ -40,94 +41,96 @@
             });
         }
 
-        var QBFK= {
+        var QBFK = {
             Business: {
-                clientGoBack:function(){},
-                go:function(){},
-                login:function(){
+                clientGoBack: function() {},
+                go: function() {},
+                login: function() {
                     //android login
-                    if(navigator.userAgent.match(/Android/i)) {
+                    if (navigator.userAgent.match(/Android/i)) {
                         if (typeof QBaoJSBridge != 'undefined') {
                             QBaoJSBridge.login("goodstuff.qbao.com", String());
                         }
                     }
                     //ios login
-                    else if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+                    else if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
                         if (typeof ioswebview != 'undefined') {
                             ioswebview.showLoginViewAnd("goodstuff.qbao.com", String());
                         }
                     }
                 },
-                getName:function(pathname,array){
+                getName: function(pathname, array) {
                     var _result = [];
                     var pageNames = {
                         '/GatherGoods': 101,
-                        '/HotGoods':    102,
+                        '/HotGoods': 102,
                         '/SelfSupport': 103,
                         '/GatherStore': 104,
-                        '/MyCustom':    105,
-                        '/Ju':          106,
+                        '/MyCustom': 105,
+                        '/Ju': 106,
                         '/BannerEntry': 107,
-                        '/ChannelEntry':108,
-                        '/Order':       109,
-                        '/SignIn':      111
+                        '/ChannelEntry': 108,
+                        '/Order': 109,
+                        '/SignIn': 111,
+                        '/Selection': 122,
+                        '/SelectionList': 123
                     }
                     var _pathname = pathname == '/' && array[0] ? array[0].path : pathname
                     _pathname = _pathname.indexOf('/Ju') == 0 ? '/Ju' : _pathname
 
-                    array.forEach(function(item){
-                        if(item.path.toLowerCase() == pathname.toLowerCase()){
+                    array.forEach(function(item) {
+                        if (item.path.toLowerCase() == pathname.toLowerCase()) {
                             _result.push(item)
-                        }
-                        else if(pathname.toLowerCase().match(item.path.toLowerCase().replace(':projectid', '\\\d+'))){
+                        } else if (pathname.toLowerCase().match(item.path.toLowerCase().replace(':projectid', '\\\d+'))) {
                             _result.push(item)
                         }
                     })
                     return {
-                        title: _result.length ? _result[0].name : '有好货',
+                        title: _result.length ? _result[0].name : '我有好物',
                         pageName: pageNames[_pathname]
                     }
                 }
             },
-            Util:{
-                getDevice:function(){
-                    if(navigator.userAgent.match(/Android/i))
-                    return 'android'
-                        else if(navigator.userAgent.match(/iPhone|iPad|iPod/i))
-                    return 'ios'
+            Util: {
+                getDevice: function() {
+                    if (navigator.userAgent.match(/Android/i))
+                        return 'android'
+                    else if (navigator.userAgent.match(/iPhone|iPad|iPod/i))
+                        return 'ios'
                     else
                         return navigator.userAgent.toString()
                 }
             },
-            EventLog:{
-                BASE_DOMAIN:'dig.qbao.com',
-                BASE_PATH:'/wap-site/images/',
-                BASE_IMG:'goods_stuff.jpg',
-                sendMsg:function(params){
+            EventLog: {
+                BASE_DOMAIN: 'dig.qbao.com',
+                BASE_PATH: '/wap-site/images/',
+                BASE_IMG: 'goods_stuff.jpg',
+                sendMsg: function(params) {
                     var i = new Image();
-                    i.src = '//' + this.BASE_DOMAIN + this.BASE_PATH + this.BASE_IMG + this.formatParams(Object.assign({},QBFK.EventLog.baseParams(params),{ts:new Date().getTime()}));
+                    i.src = '//' + this.BASE_DOMAIN + this.BASE_PATH + this.BASE_IMG + this.formatParams(Object.assign({}, QBFK.EventLog.baseParams(params), {
+                        ts: new Date().getTime()
+                    }));
                 },
-                formatParams:function(params){
+                formatParams: function(params) {
                     var s = "";
-                    for(var p in params){
+                    for (var p in params) {
                         s += (s.length > 0 ? '&' : '?') + p + '=' + params[p];
                     }
                     return s;
                 },
-                baseParams:function(params){
-                    var ret = { }
+                baseParams: function(params) {
+                    var ret = {}
                     var deviceId = params.deviceId || ''
                     var userId = params.userId || ''
-                    if(QBFK.Util.getDevice() === 'android' && typeof QBaoJSBridge != 'undefined'){
+                    if (QBFK.Util.getDevice() === 'android' && typeof QBaoJSBridge != 'undefined') {
                         deviceId = QBaoJSBridge.getDeviceId()
                         userId = QBaoJSBridge.getUserId()
-                    }
-                    else if(QBFK.Util.getDevice() === 'ios' && typeof ioswebview != 'undefined'){
+                    } else if (QBFK.Util.getDevice() === 'ios' && typeof ioswebview != 'undefined') {
                         deviceId = ioswebview.getDeviceId()
                         userId = ioswebview.getUserId()
                     }
 
-                    ret.userId =  userId //用户ID
+                    ret.userId = userId //用户ID
                     ret.pageName = params.pageName || 101 //页面名称 101:聚好货、102: 热卖好货、103:钱宝自营、104:聚好店、105:我的定制、106聚好货活动页、107Banner活动页、108频道活动页、109我的好货、110店铺活动页
                     ret.model = params.model || 'default' //模块名称
                     ret.type = params.type || 'click' //类型 page, click
@@ -147,15 +150,181 @@
         };
     </script>
 </head>
+
 <body>
     <div class='page-container'>
 
         <style>
-            html,body{margin:0;padding:0;font-family:"PingFang SC","STHeitiSC-Light","Helvetica Neue","Helvetica","Arial",sans-serif,"Mircosoft YaHei";background:#e5e5e5;height:100%;font-weight:200}.navbar-flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;font-size:18px;background:#fff;color:#000;line-height:18px}.navbar-flex-item{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;-ms-flex-align:center;height:44px;display:flex}.qbii-navbar-container{background:#fff;display:none}.qbii-navbar-top,.qbii-navbar-bottom{background:#fff;color:#000;height:13px}.qbii-navbar{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;font-size:18px;background:#fff;color:#000;line-height:18px}.qbii-navbar .qbii-navbar-left{display:-webkit-flex;display:-ms-flex;-webkit-align-items:center;-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;-ms-flex-align:center;height:44px;display:flex;font-size:15px;align-items:center}.qbii-navbar .qbii-navbar-left .left{display:inline-block;width:15px;height:100%}.left-icon{margin-right:5px;width:10px;height:18px;background:url('static/imgs/nav/array.png') no-repeat;background-size:10px auto;display:inline-block}.qbii-navbar .qbii-navbar-title{-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;white-space:nowrap}.qbii-navbar .qbii-navbar-right{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;-ms-flex-align:center;height:44px;display:flex;font-size:15px;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;align-items:center}.qbii-navbar .qbii-navbar-right .right-icon{width:20px;height:18px;background:url('static/imgs/nav/point.png') no-repeat center;background-size:20px auto}.qbii-navbar .qbii-navbar-right .right{display:inline-block;width:15px;height:100%}.qbii-main-container{position:absolute;width:100%;height:calc(100% - 44px);top:44px;}.container-text{display:inline-block;position:relative;font-size:36px;width:200px;left:calc(50% - 100px);text-align:center;height:70px;top:calc(50% - 70px);color:rgba(10,10,10,0.2);-webkit-animation:container-text-an 2s linear infinite;animation:container-text-an 2s linear infinite;background:-webkit-linear-gradient(-45deg,#e5e5e5 35px,#666 45px,#666 60px,#e5e5e5 70px) -35px 0 no-repeat;-webkit-background-clip:text;-o-background-clip:text;background-clip:text;letter-spacing:-2px;font-weight:500}@-webkit-keyframes container-text-an{to{background-position:170px 0}}@keyframes container-text-an{to{background-position:170px 0}}
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: "PingFang SC", "STHeitiSC-Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif, "Mircosoft YaHei";
+                background: #e5e5e5;
+                height: 100%;
+                font-weight: 200
+            }
+            
+            .navbar-flex {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+                font-size: 18px;
+                background: #fff;
+                color: #000;
+                line-height: 18px
+            }
+            
+            .navbar-flex-item {
+                -webkit-box-flex: 1;
+                -webkit-flex: 1;
+                -ms-flex: 1;
+                flex: 1;
+                -ms-flex-align: center;
+                height: 44px;
+                display: flex
+            }
+            
+            .qbii-navbar-container {
+                background: #fff;
+                display: none
+            }
+            
+            .qbii-navbar-top,
+            .qbii-navbar-bottom {
+                background: #fff;
+                color: #000;
+                height: 13px
+            }
+            
+            .qbii-navbar {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+                font-size: 18px;
+                background: #fff;
+                color: #000;
+                line-height: 18px
+            }
+            
+            .qbii-navbar .qbii-navbar-left {
+                display: -webkit-flex;
+                display: -ms-flex;
+                -webkit-align-items: center;
+                -webkit-box-flex: 1;
+                -webkit-flex: 1;
+                -ms-flex: 1;
+                flex: 1;
+                -ms-flex-align: center;
+                height: 44px;
+                display: flex;
+                font-size: 15px;
+                align-items: center
+            }
+            
+            .qbii-navbar .qbii-navbar-left .left {
+                display: inline-block;
+                width: 15px;
+                height: 100%
+            }
+            
+            .left-icon {
+                margin-right: 5px;
+                width: 10px;
+                height: 18px;
+                background: url('static/imgs/nav/array.png') no-repeat;
+                background-size: 10px auto;
+                display: inline-block
+            }
+            
+            .qbii-navbar .qbii-navbar-title {
+                -webkit-box-pack: center;
+                -webkit-justify-content: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                white-space: nowrap
+            }
+            
+            .qbii-navbar .qbii-navbar-right {
+                -webkit-box-flex: 1;
+                -webkit-flex: 1;
+                -ms-flex: 1;
+                flex: 1;
+                -ms-flex-align: center;
+                height: 44px;
+                display: flex;
+                font-size: 15px;
+                -webkit-box-pack: end;
+                -webkit-justify-content: flex-end;
+                -ms-flex-pack: end;
+                justify-content: flex-end;
+                align-items: center
+            }
+            
+            .qbii-navbar .qbii-navbar-right .right-icon {
+                width: 20px;
+                height: 18px;
+                background: url('static/imgs/nav/point.png') no-repeat center;
+                background-size: 20px auto
+            }
+            
+            .qbii-navbar .qbii-navbar-right .right {
+                display: inline-block;
+                width: 15px;
+                height: 100%
+            }
+            
+            .qbii-main-container {
+                position: absolute;
+                width: 100%;
+                height: calc(100% - 44px);
+                top: 44px;
+            }
+            
+            .container-text {
+                display: inline-block;
+                position: relative;
+                font-size: 36px;
+                width: 200px;
+                left: calc(50% - 100px);
+                text-align: center;
+                height: 70px;
+                top: calc(50% - 70px);
+                color: rgba(10, 10, 10, 0.2);
+                -webkit-animation: container-text-an 2s linear infinite;
+                animation: container-text-an 2s linear infinite;
+                background: -webkit-linear-gradient(-45deg, #e5e5e5 35px, #666 45px, #666 60px, #e5e5e5 70px) -35px 0 no-repeat;
+                -webkit-background-clip: text;
+                -o-background-clip: text;
+                background-clip: text;
+                letter-spacing: -2px;
+                font-weight: 500
+            }
+            
+            @-webkit-keyframes container-text-an {
+                to {
+                    background-position: 170px 0
+                }
+            }
+            
+            @keyframes container-text-an {
+                to {
+                    background-position: 170px 0
+                }
+            }
         </style>
         <div class="qbii-main-container">
-            <div class="container-text">有好货</div>
+            <div class="container-text">我有好物</div>
         </div>
     </div>
 </body>
+
 </html>
