@@ -5,7 +5,7 @@ import CSSModules from 'react-css-modules'
 import styles from './page.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
-import { getCookie, setCookie, priceFormat, eventFun, icons } from 'libs/util';
+import { priceFormat, eventFun, icons, getParamByName } from 'libs/util';
 import GoodsTab from "components/swipe/GoodsTab";
 import {SpecialList,SwiperPagination,Icon} from 'ui';
 import Swipe from "components/swipe/swipe";
@@ -25,7 +25,7 @@ class Selection extends Component {
     super(props)
 
     this.state = {
-      activityId: getParameterByName('activityId',location.search) || props.params.id || "",
+      activityId: getParamByName('activityId',location.search) || props.params.id || "",
       items:[],
       page: 1,
       active: 2222,
@@ -353,7 +353,7 @@ class Selection extends Component {
                 style={{backgroundColor:'#fff'}}
                 listConfig={{temp: 'selection'}} 
                 listData={actList[this.state.actTabActive]} 
-                eventConfig={{pageName:this.pageName,model:`selection_${this.state.actTabActive}_products`}}/>
+                eventConfig={{pageName:this.pageName,model:`selection_activity_products`}}/>
             </div>}
           </div>
           { noTip }
@@ -404,15 +404,7 @@ class Selection extends Component {
     }
   }
 };
-function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
+
 Selection.defaultProps = {
   url: "/cms/activity/index.do",
 }

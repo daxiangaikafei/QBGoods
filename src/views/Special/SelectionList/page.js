@@ -5,7 +5,7 @@ import CSSModules from 'react-css-modules'
 import styles from './page.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
-import { getCookie, setCookie, priceFormat, eventFun, icons } from 'libs/util';
+import { getCookie, setCookie, priceFormat, eventFun, icons, getParamByName } from 'libs/util';
 import GoodsTab from "components/swipe/GoodsTab";
 import {SpecialList,SwiperPagination,Icon} from 'ui';
 import Swipe from "components/swipe/swipe";
@@ -24,7 +24,7 @@ class SelectionList extends Component {
     super(props)
 
     this.state = {
-        specialId: getParameterByName('id') || props.params.id || 0,
+        specialId: getParamByName('id') || props.params.id || 0,
         items:[],
         page: 1,
         isLoading: false,
@@ -219,15 +219,7 @@ class SelectionList extends Component {
   }
 
 };
-function getParameterByName(name, url) {
-  if (!url) url = window.location.href;
-  name = name.replace(/[\[\]]/g, "\\$&");
-  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-      results = regex.exec(url);
-  if (!results) return null;
-  if (!results[2]) return '';
-  return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
+
 SelectionList.defaultProps = {
   url: "/cms/activity/goods.do",
   pageSize: 8
