@@ -17,6 +17,7 @@ import { ProductList } from 'ui'
 import Modal from "components/modal/index";
 import PopUp from "components/popup/index";
 
+
 class Selection extends Component {
   pageName = '122'
   swipe = null
@@ -44,6 +45,7 @@ class Selection extends Component {
       timelimitTabActive: -1,
       timelimitTabList: [],
       timelimitList: [],
+      bannerActive: 0,
     }
   }
   componentDidMount() {
@@ -259,13 +261,20 @@ class Selection extends Component {
         <Swipe style={{ background:'#fff'}} {...props} >
           <div className="selection-container">
             {pageData[1] && <div className="selection-swiper">
-                  <ReactSwipe ref="swiper" className="carousel" swipeOptions={{continuous: false,auto:4000,speed:500, callback: ()=>{}}}>
+                  <ReactSwipe ref="swiper" className="carousel" swipeOptions={{continuous: false, callback: bannerActive=>{this.setState({bannerActive})}}}>
                     {pageData[1].map((item, index) => (
                       <img src={item.imgUrl} key={index} onClick={()=>{this.go('SelectionList',item.id)}}/>
                     ))}
                   </ReactSwipe>
+                  <div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+                    {
+                      pageData[1].map((item,i)=>{
+                        return (<span key={i} className={this.state.bannerActive == i ? 'swiper-pagination-bullet swiper-pagination-bullet-active' : 'swiper-pagination-bullet'}></span>)
+                      })
+                    }
+                  </div>
                 </div>
-              }
+            }
             {pageData[2] && <div className="classify">
                 {pageData[2].map((item,index) => (
                   <div className="classify-item" key={index} onClick={()=>{this.go('SelectionList',item.id)}}>
