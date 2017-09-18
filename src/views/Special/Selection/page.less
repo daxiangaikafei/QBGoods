@@ -51,7 +51,36 @@ main{
     z-index: 1;
     max-height: 260px;
   }
-
+  .swiper-pagination {
+    position: absolute;
+    text-align: center;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    -webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    z-index: 10;
+    bottom: 8px;
+    left: 0;
+    width: 100%;
+  }
+  .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #000;
+    opacity: .5;
+    margin: 0 5px;
+    background-color: #fff;
+  }
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+  
   .classify {
     padding: 5px 3px 8px;
     overflow-x: scroll;
@@ -331,6 +360,23 @@ main{
       text-align: center;
       margin: 0 auto;
       margin-top: 8px;
+    }
+    &.amulet {
+      background: none;
+      .modal-btn-close {
+        background-color: #ffffff;
+        border: 1px solid #000;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: block;
+        line-height: 26px;
+        text-align: center;
+        color: #000000;
+        top: 7px;
+        right: 22px;
+        font-size: 32px;
+      }
     }
   }
 }

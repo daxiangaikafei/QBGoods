@@ -5,7 +5,7 @@ import CSSModules from 'react-css-modules'
 import styles from './page.less'
 import { Link } from 'react-router'
 import classNames from 'classnames'
-import { priceFormat, eventFun, icons, getParamByName } from 'libs/util';
+import { getCookie, setCookie, priceFormat, eventFun, icons, getParamByName } from 'libs/util';
 import GoodsTab from "components/swipe/GoodsTab";
 import {SpecialList,SwiperPagination,Icon} from 'ui';
 import Swipe from "components/swipe/swipe";
@@ -46,10 +46,12 @@ class Selection extends Component {
       timelimitTabList: [],
       timelimitList: [],
       bannerActive: 0,
+      isAmuletShow: false,
     }
   }
   componentDidMount() {
     this.getData();
+    getCookie('amuletShowed') != 1 && this.setState({isAmuletShow:true})
   }
   componentDidUpdate() {
   }
@@ -132,6 +134,12 @@ class Selection extends Component {
     this.setState({
       isModalShow: false
     })
+  }
+  btnAmuletCloseOnClick = () => {
+    this.setState({
+      isAmuletShow: false
+    })
+    setCookie('amuletShowed', 1)
   }
   btnTopOnClick = () => {
     this.swipe.moveTo(0)
@@ -397,6 +405,12 @@ class Selection extends Component {
             )
           }       
         </div>}
+        {this.state.isAmuletShow &&  <div className="modal-container">
+        <div className="modal amulet">
+          <span className="modal-btn-close amulet" onClick={this.btnAmuletCloseOnClick}>×</span>
+          <img src={require('static/imgs/special/index-pop.png')} alt=""/>
+        </div>
+      </div>}
       </div>
     )
   }
