@@ -27,13 +27,13 @@ class IconDoc extends Component {
     return (
       <div styleName="home-container">
         <ul styleName="icons">
-          <li><Icon name="spinner" color="#427cf3" size="32" styleName="loading" /><span styleName="title">spinner</span></li>
-          <li><Icon name="home3" color="#427cf3" size="32" style={{ opacity: 0.4 }} /><span styleName="title">home3</span></li>
+          <li><Icon name="spinner" size="32" styleName="loading" /><span styleName="title">spinner</span></li>
+          <li><Icon name="home3" size="32" style={{ opacity: 0.4 }} /><span styleName="title">home3</span></li>
         {
           icons.map((item, index) => {
             item = item.replace(/icon-/ig, '')
             return <li key={index}>
-              <Icon name={item} color="#427cf3" size="32"  />
+              <Icon name={item} size="32"  />
               <span styleName="title">{item}</span>
             </li>})
         }
