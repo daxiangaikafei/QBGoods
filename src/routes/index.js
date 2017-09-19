@@ -34,6 +34,10 @@ import MyLabels from "views/MyLabels/page"
 import MyLabelsTheme from "views/MyLabelsTheme/page"
 import RobGoods from "views/Special/RobGoods/page"
 
+import GoodsTicker from 'views/Special/GoodsTicker'
+import DoubleScore from 'views/Special/DoubleScroeList'
+import SignScore from 'views/Special/SignScore'
+
 export default function (ref) {
   return (
     <Router history={ref.history}>
@@ -77,6 +81,11 @@ export default function (ref) {
         <Route path='/BrandShopList' component={BrandShopList} name="品牌店铺列表" />
         <Route path='/BrandShop/:id' component={BrandShop} name="品牌店铺" />
         <Route path='/Women/:id' component={Women} name="女士专场" />
+
+
+        <Route path="/GoodsTicker" component={GoodsTicker} name="好券" />
+        <Route path="/DoubleScore" component={DoubleScore} name="双倍积分专区" />
+        <Route path="/SignScore" component={SignScore} name="领宝币" />
       </Route>
     </Router>
   )

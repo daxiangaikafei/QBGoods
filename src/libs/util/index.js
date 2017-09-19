@@ -152,8 +152,36 @@ export const icons = {
   'qbao': require('static/imgs/thirdSource/qbao.png'),
 }
 
+export const sourceLink = {
+  'tmall': "tmall.com",
+  'dangdang': "dangdang.com",
+  'gome': "gome.com",
+  'jd': "jd.com",
+  'jumei': "jumei.com",
+  'kaola': "kaola.com",
+  'mi': "mi.com",
+  'taobao': "taobao.com",
+  'yhd': "yhd.com",
+  'yougou': "yougou",
+  'qbao': "qbao.com"
+}
+
 export function showSourceTip(url,source,PopUp,e){
   console.log(this,PopUp.show);
   
   e.preventDefault();
+}
+
+
+/**获取地址栏中所有的参数**/
+export function getRequest(url){
+  let theRequest = new Object();
+  if (url.indexOf("?") != -1) {
+    let str = url.substr(1);
+    strs = str.split("&");
+    for(var i = 0; i < strs.length; i ++) {
+      theRequest[strs[i].split("=")[0]]=decodeURI(strs[i].split("=")[1]);
+    }
+  }
+  return theRequest;
 }
